@@ -2,7 +2,7 @@ import { type Metadata } from 'next'
 
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
-import FileUpload from '@/components/FileUpload'
+import WatermarkProcessor from '@/components/WatermarkProcessor'
 
 export const metadata: Metadata = {
   description: 'Remove watermarks from your images with our AI-powered tool.',
@@ -22,7 +22,7 @@ export default async function Home() {
             </p>
           </div>
           <div className="w-5/12">
-            <FileUpload />
+            <WatermarkProcessor />
           </div>
         </FadeIn>
       </Container>

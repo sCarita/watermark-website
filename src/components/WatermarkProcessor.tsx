@@ -2,11 +2,17 @@
 
 import { useRef, useState } from 'react'
 
-export default function FileUpload() {
+interface ProcessResult {
+  originalImage: string;
+  processedImage: string;
+  maskImage?: string;
+}
+
+export default function WatermarkProcessor() {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [file, setFile] = useState<File | null>(null)
   const [isLoading, setIsLoading] = useState(false)
-  const [result, setResult] = useState<{ originalImage: string; processedImage: string } | null>(null)
+  const [result, setResult] = useState<ProcessResult | null>(null)
   const [error, setError] = useState<string | null>(null)
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -61,11 +67,16 @@ export default function FileUpload() {
 
       const data = await response.json()
       
-      // Assuming the API returns the processed image as base64
-      setResult({
-        originalImage: `data:${file.type};base64,${base64}`,
-        processedImage: `data:${file.type};base64,${data.processedImageBase64 || data.data?.processedImageBase64}`
-      })
+      // Handle the specific response format
+      if (data.result && data.result.success) {
+        setResult({
+          originalImage: `data:${file.type};base64,${base64}`,
+          processedImage: data.result.inpaintedImageUrl,
+          maskImage: data.result.maskBase64 ? `data:image/png;base64,${data.result.maskBase64}` : undefined
+        })
+      } else {
+        throw new Error('Processing failed or returned unexpected format')
+      }
     } catch (err) {
       console.error('Error processing image:', err)
       setError(err instanceof Error ? err.message : 'An unknown error occurred')
@@ -115,7 +126,14 @@ export default function FileUpload() {
           disabled={isLoading}
           className="w-full rounded-lg bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700 disabled:bg-blue-400"
         >
-          {isLoading ? 'Processing...' : 'Remove Watermark'}
+          {isLoading ? (
+            <div className="flex items-center justify-center">
+              <div className="mr-2 h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+              Processing...
+            </div>
+          ) : (
+            'Remove Watermark'
+          )}
         </button>
       )}
 
@@ -126,32 +144,45 @@ export default function FileUpload() {
       )}
 
       {result && (
-        <div className="mt-4 grid w-full grid-cols-2 gap-4">
-          <div className="flex flex-col items-center">
-            <h3 className="mb-2 text-lg font-medium">Original</h3>
-            <img 
-              src={result.originalImage} 
-              alt="Original" 
-              className="max-h-[300px] w-full rounded-lg object-contain"
-            />
+        <div className="mt-4 w-full">
+          <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
+            <div className="flex flex-col items-center">
+              <h3 className="mb-2 text-lg font-medium">Original</h3>
+              <img 
+                src={result.originalImage} 
+                alt="Original" 
+                className="max-h-[300px] w-full rounded-lg object-contain"
+              />
+            </div>
+            <div className="flex flex-col items-center">
+              <h3 className="mb-2 text-lg font-medium">Processed</h3>
+              <img 
+                src={result.processedImage} 
+                alt="Processed" 
+                className="max-h-[300px] w-full rounded-lg object-contain"
+              />
+              <a 
+                href={result.processedImage} 
+                download="processed-image.jpg"
+                className="mt-2 rounded-lg bg-green-600 px-3 py-1 text-sm text-white transition-colors hover:bg-green-700"
+              >
+                Download
+              </a>
+            </div>
           </div>
-          <div className="flex flex-col items-center">
-            <h3 className="mb-2 text-lg font-medium">Processed</h3>
-            <img 
-              src={result.processedImage} 
-              alt="Processed" 
-              className="max-h-[300px] w-full rounded-lg object-contain"
-            />
-            <a 
-              href={result.processedImage} 
-              download="processed-image.jpg"
-              className="mt-2 rounded-lg bg-green-600 px-3 py-1 text-sm text-white transition-colors hover:bg-green-700"
-            >
-              Download
-            </a>
-          </div>
+          
+          {result.maskImage && (
+            <div className="mt-4 flex flex-col items-center">
+              <h3 className="mb-2 text-lg font-medium">Mask</h3>
+              <img 
+                src={result.maskImage} 
+                alt="Mask" 
+                className="max-h-[200px] w-full max-w-[300px] rounded-lg object-contain"
+              />
+            </div>
+          )}
         </div>
       )}
     </div>
   )
-}
+} 
