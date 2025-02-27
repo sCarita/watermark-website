@@ -1,15 +1,17 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useState } from 'react'
+import { Button } from './Button'
+import FileDropUpload from './FileDropUpload'
+import Alert from './Alert'
 
 interface ProcessResult {
-  originalImage: string;
-  processedImage: string;
-  maskImage?: string;
+  originalImage: string
+  processedImage: string
+  maskImage?: string
 }
 
 export default function WatermarkProcessor() {
-  const fileInputRef = useRef<HTMLInputElement>(null)
   const [file, setFile] = useState<File | null>(null)
   const [imageUrl, setImageUrl] = useState<string>('')
   const [isLoading, setIsLoading] = useState(false)
@@ -18,8 +20,8 @@ export default function WatermarkProcessor() {
   const [inputMethod, setInputMethod] = useState<'file' | 'url'>('file')
   const [previewError, setPreviewError] = useState<boolean>(false)
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
+  const handleFileChange = (files: FileList | null) => {
+    const file = files?.[0]
     if (file) {
       setFile(file)
       setImageUrl('')
@@ -50,177 +52,181 @@ export default function WatermarkProcessor() {
     })
   }
 
-  const fetchImageAsBase64 = async (url: string): Promise<{ base64: string; contentType: string }> => {
+  const fetchImageAsBase64 = async (
+    url: string,
+  ): Promise<{ base64: string; contentType: string }> => {
     try {
       // Check if the URL is already a data URL
       if (url.startsWith('data:')) {
-        const parts = url.split(',');
-        const contentType = parts[0].split(':')[1].split(';')[0];
-        const base64 = parts[1];
-        return { base64, contentType };
+        const parts = url.split(',')
+        const contentType = parts[0].split(':')[1].split(';')[0]
+        const base64 = parts[1]
+        return { base64, contentType }
       }
-      
+
       // For external URLs, use a CORS proxy
-      const corsProxyUrl = `https://corsproxy.io/?${encodeURIComponent(url)}`;
-      
-      const response = await fetch(corsProxyUrl);
+      const corsProxyUrl = `https://corsproxy.io/?${encodeURIComponent(url)}`
+
+      const response = await fetch(corsProxyUrl)
       if (!response.ok) {
-        throw new Error(`Failed to fetch image: ${response.status}`);
+        throw new Error(`Failed to fetch image: ${response.status}`)
       }
-      
-      const blob = await response.blob();
-      const contentType = blob.type || 'image/jpeg';
-      
+
+      const blob = await response.blob()
+      const contentType = blob.type || 'image/jpeg'
+
       return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(blob);
+        const reader = new FileReader()
+        reader.readAsDataURL(blob)
         reader.onload = () => {
-          const base64String = reader.result as string;
+          const base64String = reader.result as string
           // Remove the data:image/jpeg;base64, prefix
-          const base64 = base64String.split(',')[1];
-          resolve({ base64, contentType });
-        };
-        reader.onerror = (error) => reject(error);
-      });
+          const base64 = base64String.split(',')[1]
+          resolve({ base64, contentType })
+        }
+        reader.onerror = (error) => reject(error)
+      })
     } catch (error) {
-      console.error("Error fetching image:", error);
-      throw new Error(`Error fetching image: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      console.error('Error fetching image:', error)
+      throw new Error(
+        `Error fetching image: ${error instanceof Error ? error.message : 'Unknown error'}`,
+      )
     }
-  };
+  }
 
   const processImage = async () => {
-    if (!file && !imageUrl) return;
+    if (!file && !imageUrl) return
 
     try {
-      setIsLoading(true);
-      setError(null);
-      
-      let base64: string;
-      let contentType: string = 'image/jpeg';
-      
+      setIsLoading(true)
+      setError(null)
+
+      let base64: string
+      let contentType: string = 'image/jpeg'
+
       // Get base64 from either file or URL
       if (file) {
-        base64 = await convertToBase64(file);
-        contentType = file.type;
+        base64 = await convertToBase64(file)
+        contentType = file.type
       } else if (imageUrl) {
         try {
           // Validate URL format
           if (!imageUrl.startsWith('data:') && !imageUrl.startsWith('http')) {
-            throw new Error('Please enter a valid URL starting with http:// or https://');
+            throw new Error(
+              'Please enter a valid URL starting with http:// or https://',
+            )
           }
-          
-          const result = await fetchImageAsBase64(imageUrl);
-          base64 = result.base64;
-          contentType = result.contentType;
+
+          const result = await fetchImageAsBase64(imageUrl)
+          base64 = result.base64
+          contentType = result.contentType
         } catch (err) {
-          console.error("URL processing error:", err);
-          throw new Error(`Could not access the image URL. ${err instanceof Error ? err.message : ''} Please try downloading the image and uploading it directly.`);
+          console.error('URL processing error:', err)
+          throw new Error(
+            `Could not access the image URL. ${err instanceof Error ? err.message : ''} Please try downloading the image and uploading it directly.`,
+          )
         }
       } else {
-        throw new Error('No image provided');
+        throw new Error('No image provided')
       }
-      
+
       // Call the API
-      const response = await fetch('https://processwatermark-k677kyuleq-uc.a.run.app/processWatermark', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        'https://processwatermark-k677kyuleq-uc.a.run.app/processWatermark',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            data: {
+              imageBase64: base64,
+            },
+          }),
         },
-        body: JSON.stringify({
-          data: {
-            imageBase64: base64
-          }
-        }),
-      });
+      )
 
       if (!response.ok) {
-        throw new Error(`API error: ${response.status}`);
+        throw new Error(`API error: ${response.status}`)
       }
 
-      const data = await response.json();
-      
+      const data = await response.json()
+
       // Handle the specific response format
       if (data.result && data.result.success) {
         setResult({
-          originalImage: file ? 
-            `data:${contentType};base64,${base64}` : 
-            imageUrl,
+          originalImage: file
+            ? `data:${contentType};base64,${base64}`
+            : imageUrl,
           processedImage: data.result.inpaintedImageUrl,
           // Still store the mask image in case we need it later, but don't display it
-          maskImage: data.result.maskBase64 ? `data:image/png;base64,${data.result.maskBase64}` : undefined
-        });
+          maskImage: data.result.maskBase64
+            ? `data:image/png;base64,${data.result.maskBase64}`
+            : undefined,
+        })
       } else {
-        throw new Error('Processing failed or returned unexpected format');
+        throw new Error('Processing failed or returned unexpected format')
       }
     } catch (err) {
-      console.error('Error processing image:', err);
-      setError(err instanceof Error ? err.message : 'An unknown error occurred');
+      console.error('Error processing image:', err)
+      setError(err instanceof Error ? err.message : 'An unknown error occurred')
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   const handleImageError = () => {
-    setPreviewError(true);
-  };
+    setPreviewError(true)
+  }
 
   return (
     <div className="flex w-full flex-col items-center justify-center gap-4">
-      <div className="flex w-full gap-4 mb-2">
-        <button
+      <div className="flex w-full gap-4">
+        <Button
           onClick={() => setInputMethod('file')}
-          className={`flex-1 py-2 px-4 rounded-lg transition-colors ${
-            inputMethod === 'file' 
-              ? 'bg-blue-600 text-white' 
-              : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-          }`}
+          className="flex-1"
+          variant={inputMethod === 'file' ? 'primary' : 'neutral'}
         >
           Upload File
-        </button>
-        <button
+        </Button>
+        <Button
           onClick={() => setInputMethod('url')}
-          className={`flex-1 py-2 px-4 rounded-lg transition-colors ${
-            inputMethod === 'url' 
-              ? 'bg-blue-600 text-white' 
-              : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-          }`}
+          className="flex-1"
+          variant={inputMethod === 'url' ? 'primary' : 'neutral'}
         >
           Image URL
-        </button>
+        </Button>
       </div>
 
       {inputMethod === 'file' ? (
         <div className="relative flex h-full w-full flex-col items-center justify-center">
-          <button
-            disabled={!!file}
-            onClick={() => !file && fileInputRef.current?.click()}
-            className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-lg border border-slate-800 bg-neutral-950 p-4 text-4xl text-neutral-400 transition-colors duration-500 hover:bg-neutral-800 disabled:bg-neutral-950"
-          >
-            {!file && <span>Upload image</span>}
-            {file && <span>{file?.name}</span>}
-          </button>
-
-          {file && (
-            <button
-              className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-red-500 text-white transition-colors duration-500 hover:bg-red-600"
-              onClick={(e) => {
-                e.stopPropagation()
-                setFile(null)
-                setResult(null)
-                setError(null)
-              }}
-            >
-              x
-            </button>
+          {!file && (
+            <FileDropUpload
+              className="w-full"
+              onSelectFile={handleFileChange}
+            />
           )}
 
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            className="hidden"
-            onChange={handleFileChange}
-          />
+          {file && (
+            <>
+              <img
+                src={URL.createObjectURL(file)}
+                alt="File"
+                className="w-full"
+              />
+              <button
+                className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-red-500 text-white transition-colors duration-500 hover:bg-red-600"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setFile(null)
+                  setResult(null)
+                  setError(null)
+                }}
+              >
+                x
+              </button>
+            </>
+          )}
         </div>
       ) : (
         <div className="w-full">
@@ -248,9 +254,9 @@ export default function WatermarkProcessor() {
           </div>
           {imageUrl && !previewError && (
             <div className="mt-2 rounded-lg border border-slate-800 p-2">
-              <img 
-                src={imageUrl} 
-                alt="Preview" 
+              <img
+                src={imageUrl}
+                alt="Preview"
                 className="max-h-[200px] w-full rounded-lg object-contain"
                 onError={handleImageError}
               />
@@ -258,57 +264,66 @@ export default function WatermarkProcessor() {
           )}
           {imageUrl && previewError && (
             <div className="mt-2 rounded-lg border border-slate-800 bg-neutral-900 p-4 text-yellow-400">
-              <p>Cannot preview this image due to CORS restrictions, but we'll still try to process it.</p>
-              <p className="mt-2 text-sm text-neutral-400">If processing fails, try downloading the image and uploading it directly.</p>
+              <p>
+                Cannot preview this image due to CORS restrictions, but we'll
+                still try to process it.
+              </p>
+              <p className="mt-2 text-sm text-neutral-400">
+                If processing fails, try downloading the image and uploading it
+                directly.
+              </p>
             </div>
           )}
         </div>
       )}
 
-      {((inputMethod === 'file' && file) || (inputMethod === 'url' && imageUrl)) && !result && (
-        <button
-          onClick={processImage}
-          disabled={isLoading}
-          className="w-full rounded-lg bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700 disabled:bg-blue-400"
-        >
-          {isLoading ? (
-            <div className="flex items-center justify-center">
-              <div className="mr-2 h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
-              Processing...
-            </div>
-          ) : (
-            'Remove Watermark'
-          )}
-        </button>
-      )}
+      {((inputMethod === 'file' && file) ||
+        (inputMethod === 'url' && imageUrl)) &&
+        !result && (
+          <Button
+            onClick={processImage}
+            disabled={isLoading}
+            variant="success"
+            className="w-full"
+          >
+            {isLoading ? (
+              <div className="flex items-center justify-center">
+                <div className="mr-2 h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+                Processing...
+              </div>
+            ) : (
+              'Remove Watermark'
+            )}
+          </Button>
+        )}
 
-      {error && (
-        <div className="w-full rounded-lg bg-red-100 p-3 text-red-700">
-          {error}
-        </div>
-      )}
+      {error && <Alert type="error" message={error} className="w-full" />}
 
       {result && (
         <div className="mt-4 w-full">
           <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
             <div className="flex flex-col items-center">
               <h3 className="mb-2 text-lg font-medium">Original</h3>
-              <img 
-                src={result.originalImage} 
-                alt="Original" 
+              <img
+                src={result.originalImage}
+                alt="Original"
                 className="max-h-[300px] w-full rounded-lg object-contain"
-                onError={() => setError('Cannot display original image due to CORS restrictions')}
+                onError={() =>
+                  setError(
+                    'Cannot display original image due to CORS restrictions',
+                  )
+                }
               />
             </div>
             <div className="flex flex-col items-center">
               <h3 className="mb-2 text-lg font-medium">Processed</h3>
-              <img 
-                src={result.processedImage} 
-                alt="Processed" 
+              <img
+                src={result.processedImage}
+                alt="Processed"
                 className="max-h-[300px] w-full rounded-lg object-contain"
               />
-              <a 
-                href={result.processedImage} 
+              <a
+                href={result.processedImage}
                 download="processed-image.jpg"
                 className="mt-2 rounded-lg bg-green-600 px-3 py-1 text-sm text-white transition-colors hover:bg-green-700"
               >
@@ -320,4 +335,4 @@ export default function WatermarkProcessor() {
       )}
     </div>
   )
-} 
+}
