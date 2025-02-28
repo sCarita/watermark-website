@@ -19,33 +19,28 @@ const variantStyles = {
   outline: {
     slate:
       'ring-slate-200 text-slate-700 hover:text-slate-900 hover:ring-slate-300 active:bg-slate-100 active:text-slate-600 focus-visible:outline-blue-600 focus-visible:ring-slate-300',
+    blue: 'ring-blue-200 text-blue-700 hover:text-blue-900 hover:ring-blue-300 active:bg-blue-100 active:text-blue-600 focus-visible:outline-blue-600 focus-visible:ring-blue-300',
     white:
       'ring-slate-700 text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white',
   },
 }
 
-type ButtonProps = (
-  | {
-      variant?: 'solid'
-      color?: keyof typeof variantStyles.solid
-    }
-  | {
-      variant: 'outline'
-      color?: keyof typeof variantStyles.outline
-    }
-) &
-  (
-    | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'color'>
-    | (Omit<React.ComponentPropsWithoutRef<'button'>, 'color'> & {
-        href?: undefined
-      })
-  )
+type ButtonProps = {
+  variant?: 'solid' | 'outline'
+  color?: keyof typeof variantStyles.solid & keyof typeof variantStyles.outline
+} & (
+  | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'color'>
+  | (Omit<React.ComponentPropsWithoutRef<'button'>, 'color'> & {
+      href?: undefined
+    })
+)
 
 export function Button({ className, ...props }: ButtonProps) {
   props.variant ??= 'solid'
   props.color ??= 'slate'
 
   className = clsx(
+    'cursor-pointer',
     baseStyles[props.variant],
     props.variant === 'outline'
       ? variantStyles.outline[props.color]

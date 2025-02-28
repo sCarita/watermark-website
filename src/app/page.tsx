@@ -6,6 +6,7 @@ import { Hero } from '@/components/Hero'
 import { Pricing } from '@/components/Pricing'
 import { PrimaryFeatures } from '@/components/PrimaryFeatures'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
+import Showcase from '@/components/Showcase'
 import { Testimonials } from '@/components/Testimonials'
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Showcase />
         <PrimaryFeatures />
         <SecondaryFeatures />
         <CallToAction />
