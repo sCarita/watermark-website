@@ -1,22 +1,14 @@
-import Image from 'next/image'
-
-import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-import logoLaravel from '@/images/logos/laravel.svg'
-import logoMirage from '@/images/logos/mirage.svg'
-import logoStatamic from '@/images/logos/statamic.svg'
-import logoStaticKit from '@/images/logos/statickit.svg'
-import logoTransistor from '@/images/logos/transistor.svg'
-import logoTuple from '@/images/logos/tuple.svg'
-import WatermarkProcessor from './WatermarkProcessor'
 import { FadeIn } from './FadeIn'
+import WatermarkProcessor from './WatermarkProcessor'
+import Badge from './Badge'
 
 export function Hero() {
   return (
-    <Container className="flex min-h-[calc(100vh-120px)] items-center">
-      <FadeIn className="flex flex-col gap-8 md:flex-row">
-        <div className="w-full md:w-7/12">
-          <h1 className="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight text-slate-900 sm:text-7xl">
+    <Container className="flex min-h-[calc(100vh-80px)] py-5 md:min-h-[calc(100vh-120px)]">
+      <FadeIn className="flex flex-1 flex-col gap-8 md:flex-row">
+        <div className="flex w-full flex-col justify-center md:w-7/12">
+          <h1 className="mx-auto font-display text-4xl font-medium tracking-tight text-slate-900 max-sm:leading-tight sm:text-5xl sm:text-7xl">
             Remove{' '}
             <span className="relative whitespace-nowrap text-blue-600">
               <svg
@@ -31,11 +23,11 @@ export function Hero() {
             </span>{' '}
             from your images.
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg tracking-tight text-slate-700">
+          <p className="mt-6 text-lg tracking-tight text-slate-700">
             Remove watermarks from your images with our AI-powered tool.
           </p>
         </div>
-        <div className="w-full md:w-5/12">
+        <div className="flex w-full flex-col justify-center md:w-5/12">
           <WatermarkProcessor />
         </div>
       </FadeIn>

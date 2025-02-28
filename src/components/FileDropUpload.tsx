@@ -35,7 +35,7 @@ const FileDropUpload = ({ onSelectFile, className }: FileDropUploadProps) => {
 
   return (
     <div
-      className={clsx('relative', className)}
+      className={clsx('relative flex min-h-[230px]', className)}
       onDrop={handleDrop}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
@@ -43,7 +43,7 @@ const FileDropUpload = ({ onSelectFile, className }: FileDropUploadProps) => {
       <label
         htmlFor="file"
         className={clsx(
-          'border-primary flex min-h-[230px] w-full cursor-pointer items-center justify-center rounded-md border border-dashed p-6 transition-colors hover:border-blue-600',
+          'group flex w-full flex-1 cursor-pointer items-center justify-center rounded-md border border-dashed border-gray-400 p-6 transition-colors hover:border-blue-600',
           {
             'bg-blue-400/10': isDragging,
           },
@@ -58,7 +58,7 @@ const FileDropUpload = ({ onSelectFile, className }: FileDropUploadProps) => {
             className="sr-only"
             onChange={(e) => onSelectFile(e.target.files)}
           />
-          <span className="border-stroke dark:border-dark-3 dark:bg-dark-2 mx-auto mb-3 flex h-[50px] w-[50px] items-center justify-center rounded-full border bg-white">
+          <span className="border-stroke mx-auto mb-3 flex h-[50px] w-[50px] items-center justify-center rounded-full border border-gray-300 bg-white transition-colors group-hover:border-blue-600">
             <svg
               width="20"
               height="20"
@@ -86,9 +86,9 @@ const FileDropUpload = ({ onSelectFile, className }: FileDropUploadProps) => {
               ></path>
             </svg>
           </span>
-          <span className="text-body-color dark:text-dark-6 text-base">
+          <span className="text-base text-gray-400">
             Drag &amp; drop or
-            <span className="text-primary underline"> browse </span>
+            <span className="text-blue-600 underline"> browse </span>
           </span>
         </div>
       </label>

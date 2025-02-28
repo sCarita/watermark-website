@@ -4,6 +4,195 @@ import { useState } from 'react'
 import { Button } from './Button'
 import FileDropUpload from './FileDropUpload'
 import Alert from './Alert'
+import Badge from './Badge'
+import Input from './Input'
+
+const FileUploadTab = ({
+  file,
+  isLoading,
+  handleFileChange,
+  removeFile,
+}: {
+  file: File | null
+  isLoading: boolean
+  handleFileChange: (files: FileList | null) => void
+  removeFile: () => void
+}) => {
+  return (
+    <>
+      <div className="relative flex min-h-[250px] w-full flex-col items-center justify-center">
+        {!file && (
+          <FileDropUpload
+            className="w-full flex-1"
+            onSelectFile={handleFileChange}
+          />
+        )}
+
+        {file && (
+          <div className="relative flex w-full flex-1 items-center justify-center rounded-sm border border-slate-300 p-2">
+            <img
+              src={URL.createObjectURL(file)}
+              alt="File"
+              className="max-h-[200px] w-full flex-1 object-contain"
+            />
+            <button
+              className="absolute top-2 right-2 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-red-500 text-white transition-colors duration-500 hover:bg-red-600 disabled:opacity-50"
+              onClick={(e) => {
+                e.stopPropagation()
+                removeFile()
+              }}
+              disabled={isLoading}
+            >
+              x
+            </button>
+          </div>
+        )}
+      </div>
+    </>
+  )
+}
+
+const UrlUploadTab = ({
+  imageUrl,
+  isLoading,
+  previewError,
+  handleUrl,
+  removeImageUrl,
+  handleImageError,
+}: {
+  imageUrl: string
+  isLoading: boolean
+  previewError: boolean
+  handleUrl: (url: string) => void
+  removeImageUrl: () => void
+  handleImageError: () => void
+}) => {
+  const [url, setUrl] = useState(imageUrl)
+  return (
+    <div className="flex min-h-[250px] w-full">
+      {!imageUrl && (
+        <form className="flex w-full flex-col" onSubmit={() => handleUrl(url)}>
+          <Input
+            type="url"
+            value={url}
+            placeholder="Enter image URL (https://example.com/image.jpg)"
+            className="w-full"
+            onChange={(e) => setUrl(e.target.value)}
+          />
+          <Button
+            type="submit"
+            disabled={isLoading || !url}
+            className="mt-2 disabled:opacity-50"
+          >
+            Submit
+          </Button>
+        </form>
+      )}
+      {imageUrl && !previewError && (
+        <div className="relative flex w-full flex-1 items-center justify-center rounded-sm border border-slate-300 p-2">
+          <img
+            src={imageUrl}
+            alt="Preview"
+            className="max-h-[200px] w-full flex-1 object-contain"
+            onError={handleImageError}
+          />
+          <button
+            className="absolute top-2 right-2 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-red-500 text-white transition-colors duration-500 hover:bg-red-600 disabled:opacity-50"
+            onClick={removeImageUrl}
+            disabled={isLoading}
+          >
+            x
+          </button>
+        </div>
+      )}
+      {imageUrl && previewError && (
+        <div className="mt-2 rounded-lg border border-slate-800 bg-neutral-900 p-4 text-yellow-400">
+          <p>
+            Cannot preview this image. The url is invalid or it may due due to
+            CORS restrictions. If this is the case we'll still try to process
+            it.
+          </p>
+          <p className="mt-2 text-sm text-neutral-400">
+            If processing fails, try downloading the image and uploading it
+            directly.
+          </p>
+        </div>
+      )}
+    </div>
+  )
+}
+
+const ResultDisplay = ({
+  result,
+  setError,
+  resetImage,
+}: {
+  result: ProcessResult
+  setError: (error: string) => void
+  resetImage: () => void
+}) => {
+  const handleDownload = async () => {
+    try {
+      const response = await fetch(result.processedImage)
+      const blob = await response.blob()
+      const url = window.URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = 'processed-image.jpg'
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      window.URL.revokeObjectURL(url)
+    } catch (error) {
+      setError('Failed to download the image')
+    }
+  }
+
+  return (
+    <div className="min-h-[250px] w-full">
+      <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="flex flex-col items-center">
+          <h3 className="mb-1 font-display text-lg">Original</h3>
+          <img
+            src={result.originalImage}
+            alt="Original"
+            className="w-full rounded-lg object-contain"
+            onError={() =>
+              setError('Cannot display original image due to CORS restrictions')
+            }
+          />
+        </div>
+        <div className="flex flex-col items-center">
+          <h3 className="mb-1 font-display text-lg">Processed</h3>
+          <img
+            src={result.processedImage}
+            alt="Processed"
+            className="w-full rounded-lg object-contain"
+          />
+        </div>
+      </div>
+      <div className="mt-2 flex flex-col gap-1">
+        <Button
+          onClick={handleDownload}
+          download="processed-image.jpg"
+          className="w-full"
+          color="slate"
+        >
+          Download
+        </Button>
+        <Button
+          onClick={resetImage}
+          download="processed-image.jpg"
+          className="w-full"
+          color="slate"
+          variant="outline"
+        >
+          Process another image
+        </Button>
+      </div>
+    </div>
+  )
+}
 
 interface ProcessResult {
   originalImage: string
@@ -30,8 +219,8 @@ export default function WatermarkProcessor() {
     }
   }
 
-  const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setImageUrl(e.target.value)
+  const handleUrl = (url: string) => {
+    setImageUrl(url)
     setFile(null)
     setResult(null)
     setError(null)
@@ -180,10 +369,14 @@ export default function WatermarkProcessor() {
   }
 
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-4">
-      <div className="flex w-full gap-4">
+    <div className="flex w-full flex-col gap-2">
+      <div className="mb-2 flex w-full gap-4">
         <Button
-          onClick={() => setInputMethod('file')}
+          onClick={() => {
+            setInputMethod('file')
+            setImageUrl('')
+            setError(null)
+          }}
           className="flex-1"
           color={inputMethod === 'file' ? 'blue' : 'slate'}
           variant={inputMethod === 'file' ? 'solid' : 'outline'}
@@ -191,7 +384,11 @@ export default function WatermarkProcessor() {
           Upload File
         </Button>
         <Button
-          onClick={() => setInputMethod('url')}
+          onClick={() => {
+            setInputMethod('url')
+            setFile(null)
+            setError(null)
+          }}
           className="flex-1"
           color={inputMethod === 'url' ? 'blue' : 'slate'}
           variant={inputMethod === 'url' ? 'solid' : 'outline'}
@@ -200,82 +397,69 @@ export default function WatermarkProcessor() {
         </Button>
       </div>
 
-      {inputMethod === 'file' ? (
-        <div className="relative flex h-full w-full flex-col items-center justify-center">
-          {!file && (
-            <FileDropUpload
-              className="w-full"
-              onSelectFile={handleFileChange}
-            />
-          )}
-
-          {file && (
-            <>
-              <img
-                src={URL.createObjectURL(file)}
-                alt="File"
-                className="w-full"
-              />
-              <button
-                className="absolute top-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-red-500 text-white transition-colors duration-500 hover:bg-red-600"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  setFile(null)
-                  setResult(null)
-                  setError(null)
-                }}
-              >
-                x
-              </button>
-            </>
-          )}
-        </div>
+      {!result ? (
+        inputMethod === 'file' ? (
+          <FileUploadTab
+            file={file}
+            isLoading={isLoading}
+            handleFileChange={handleFileChange}
+            removeFile={() => {
+              setFile(null)
+              setResult(null)
+              setError(null)
+            }}
+          />
+        ) : (
+          <UrlUploadTab
+            imageUrl={imageUrl}
+            previewError={previewError}
+            isLoading={isLoading}
+            handleUrl={handleUrl}
+            handleImageError={handleImageError}
+            removeImageUrl={() => {
+              setImageUrl('')
+              setResult(null)
+              setError(null)
+              setPreviewError(false)
+            }}
+          />
+        )
       ) : (
-        <div className="w-full">
-          <div className="flex w-full">
-            <input
-              type="url"
-              value={imageUrl}
-              onChange={handleUrlChange}
-              placeholder="Enter image URL (https://example.com/image.jpg)"
-              className="w-full rounded-lg border border-slate-800 bg-neutral-950 p-4 text-neutral-400 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            />
-            {imageUrl && (
-              <button
-                className="ml-2 flex h-12 w-12 items-center justify-center rounded-full bg-red-500 text-white transition-colors duration-500 hover:bg-red-600"
-                onClick={() => {
-                  setImageUrl('')
-                  setResult(null)
-                  setError(null)
-                  setPreviewError(false)
-                }}
-              >
-                x
-              </button>
-            )}
+        ''
+      )}
+
+      {!file && !imageUrl && !result && (
+        <div>
+          <div className="flex flex-wrap gap-x-2 gap-y-1">
+            <span className="mt-1 shrink-0 text-xs text-slate-500">
+              Supports:
+            </span>
+            <div className="flex flex-col">
+              <div className="flex flex-wrap gap-1">
+                <Badge>PNG</Badge>
+                <Badge>JPG</Badge>
+                <Badge>JPEG</Badge>
+                <Badge>GIF</Badge>
+                <Badge>BMP</Badge>
+                <Badge>TIFF</Badge>
+                <Badge>WebP</Badge>
+              </div>
+              <span className="mt-1 text-xs text-slate-400">
+                (upto resolution 5,000 x 5,000 px)
+              </span>
+            </div>
           </div>
-          {imageUrl && !previewError && (
-            <div className="mt-2 rounded-lg border border-slate-800 p-2">
-              <img
-                src={imageUrl}
-                alt="Preview"
-                className="max-h-[200px] w-full rounded-lg object-contain"
-                onError={handleImageError}
-              />
-            </div>
-          )}
-          {imageUrl && previewError && (
-            <div className="mt-2 rounded-lg border border-slate-800 bg-neutral-900 p-4 text-yellow-400">
-              <p>
-                Cannot preview this image due to CORS restrictions, but we'll
-                still try to process it.
-              </p>
-              <p className="mt-2 text-sm text-neutral-400">
-                If processing fails, try downloading the image and uploading it
-                directly.
-              </p>
-            </div>
-          )}
+
+          <p className="mt-2 text-xs text-slate-500">
+            By uploading an image or URL you agree to our{' '}
+            <a href="/terms" className="text-blue-600">
+              Terms of Use
+            </a>{' '}
+            and{' '}
+            <a href="/privacy" className="text-blue-600">
+              Privacy Policy
+            </a>
+          </p>
         </div>
       )}
 
@@ -299,42 +483,20 @@ export default function WatermarkProcessor() {
           </Button>
         )}
 
-      {error && <Alert type="error" message={error} className="w-full" />}
-
       {result && (
-        <div className="mt-4 w-full">
-          <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
-            <div className="flex flex-col items-center">
-              <h3 className="mb-2 text-lg font-medium">Original</h3>
-              <img
-                src={result.originalImage}
-                alt="Original"
-                className="max-h-[300px] w-full rounded-lg object-contain"
-                onError={() =>
-                  setError(
-                    'Cannot display original image due to CORS restrictions',
-                  )
-                }
-              />
-            </div>
-            <div className="flex flex-col items-center">
-              <h3 className="mb-2 text-lg font-medium">Processed</h3>
-              <img
-                src={result.processedImage}
-                alt="Processed"
-                className="max-h-[300px] w-full rounded-lg object-contain"
-              />
-              <a
-                href={result.processedImage}
-                download="processed-image.jpg"
-                className="mt-2 rounded-lg bg-green-600 px-3 py-1 text-sm text-white transition-colors hover:bg-green-700"
-              >
-                Download
-              </a>
-            </div>
-          </div>
-        </div>
+        <ResultDisplay
+          result={result}
+          setError={(error) => setError(error)}
+          resetImage={() => {
+            setResult(null)
+            setError(null)
+            setFile(null)
+            setImageUrl('')
+          }}
+        />
       )}
+
+      {error && <Alert type="error" message={error} className="w-full" />}
     </div>
   )
 }

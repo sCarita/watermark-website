@@ -11,10 +11,10 @@ const Showcase = () => {
       <Container>
         <FadeIn>
           <div className="mb-10 text-center">
-            <h1 className="font-display text-3xl font-medium tracking-tight [text-wrap:balance] text-neutral-950 sm:text-4xl lg:text-5xl xl:text-6xl">
+            <h2 className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">
               Check out the results
-            </h1>
-            <p className="mt-2 text-xl text-neutral-600">
+            </h2>
+            <p className="mt-4 text-lg tracking-tight text-slate-700">
               We have results like no other.
             </p>
           </div>
