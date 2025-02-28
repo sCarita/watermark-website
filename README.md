@@ -1,6 +1,6 @@
-# Studio
+# Salient
 
-Studio is a [Tailwind UI](https://tailwindui.com) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
+Salient is a [Tailwind UI](https://tailwindui.com) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
 
 ## Getting started
 
@@ -32,6 +32,4 @@ To learn more about the technologies used in this site template, see the followi
 
 - [Tailwind CSS](https://tailwindcss.com/docs) - the official Tailwind CSS documentation
 - [Next.js](https://nextjs.org/docs) - the official Next.js documentation
-- [Framer Motion](https://www.framer.com/docs/) - the official Framer Motion documentation
-- [MDX](https://mdxjs.com/) - the official MDX documentation
-# watermark-website
+- [Headless UI](https://headlessui.dev) - the official Headless UI documentation
