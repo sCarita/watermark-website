@@ -1,0 +1,335 @@
+{
+  "common": {
+    "appName": "Unwatermark",
+    "tagline": "Remove watermarks from your images.",
+    "getStarted": "Get started",
+    "getStartedToday": "Get started today",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "features": "Features",
+    "testimonials": "Testimonials",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "home": "Home",
+    "back": "Go back home",
+    "loading": "Processing...",
+    "error": "Uh oh, something went wrong",
+    "success": "Success! Everything went well.",
+    "info": "For your information.",
+    "warning": "Warning! Check this out.",
+    "navigation": {
+      "features": "Features",
+      "testimonials": "Testimonials",
+      "pricing": "Pricing",
+      "signIn": "Sign in",
+      "getStarted": "Get started",
+      "getStartedToday": "Get started today"
+    },
+    "buttons": {
+      "getStarted": "Get started",
+      "getStartedToday": "Get started today",
+      "get6MonthsFree": "Get 6 months free",
+      "submit": "Submit"
+    },
+    "copyright": "Copyright © {{year}} TaxPal. All rights reserved.",
+    "language": {
+      "en": "English",
+      "es": "Español",
+      "select": "Select language"
+    }
+  },
+  "hero": {
+    "title": "Remove watermarks from your images.",
+    "subtitle": "Remove watermarks from your images with our AI-powered tool."
+  },
+  "showcase": {
+    "title": "Check out the results",
+    "subtitle": "We have results like no other."
+  },
+  "primaryFeatures": {
+    "title": "Everything you need to run your books.",
+    "subtitle": "Well everything you need if you aren't that picky about minor details like tax compliance.",
+    "features": [
+      {
+        "title": "Payroll",
+        "description": "Keep track of everyone's salaries and whether or not they've been paid. Direct deposit not supported."
+      },
+      {
+        "title": "Claim expenses",
+        "description": "All of your receipts organized into one place, as long as you don't mind typing in the data by hand."
+      },
+      {
+        "title": "VAT handling",
+        "description": "We only sell our software to companies who don't deal with VAT at all, so technically we do all the VAT stuff they need."
+      },
+      {
+        "title": "Reporting",
+        "description": "Easily export your data into an Excel spreadsheet where you can do whatever the hell you want with it."
+      }
+    ]
+  },
+  "secondaryFeatures": {
+    "title": "Simplify everyday business tasks.",
+    "subtitle": "Because you'd probably be a little confused if we suggested you complicate your everyday business tasks instead.",
+    "features": [
+      {
+        "name": "Reporting",
+        "summary": "Stay on top of things with always up-to-date reporting features.",
+        "description": "We talked about reporting in the section above but we needed three items here, so mentioning it one more time for posterity."
+      },
+      {
+        "name": "Inventory",
+        "summary": "Never lose track of what's in stock with accurate inventory tracking.",
+        "description": "We don't offer this as part of our software but that statement is inarguably true. Accurate inventory tracking would help you for sure."
+      },
+      {
+        "name": "Contacts",
+        "summary": "Organize all of your contacts, service providers, and invoices in one place.",
+        "description": "This also isn't actually a feature, it's just some friendly advice. We definitely recommend that you do this, you'll feel really organized and professional."
+      }
+    ]
+  },
+  "callToAction": {
+    "title": "Get started today",
+    "subtitle": "It's time to take control of your books. Buy our software so you can feel like you're doing something productive.",
+    "button": "Get 6 months free"
+  },
+  "testimonials": {
+    "title": "Loved by businesses worldwide.",
+    "subtitle": "Our software is so simple that people can't help but fall in love with it. Simplicity is easy when you just skip tons of mission-critical features.",
+    "testimonials": [
+      {
+        "content": "TaxPal is so easy to use I can't help but wonder if it's really doing the things the government expects me to do.",
+        "author": {
+          "name": "Sheryl Berge",
+          "role": "CEO at Lynch LLC"
+        }
+      },
+      {
+        "content": "I'm trying to get a hold of someone in support, I'm in a lot of trouble right now and they are saying it has something to do with my books. Please get back to me right away.",
+        "author": {
+          "name": "Amy Hahn",
+          "role": "Director at Velocity Industries"
+        }
+      },
+      {
+        "content": "The best part about TaxPal is every time I pay my employees, my bank balance doesn't go down like it used to. Looking forward to spending this extra cash when I figure out why my card is being declined.",
+        "author": {
+          "name": "Leland Kiehn",
+          "role": "Founder of Kiehn and Sons"
+        }
+      },
+      {
+        "content": "There are so many things I had to do with my old software that I just don't do at all with TaxPal. Suspicious but I can't say I don't love it.",
+        "author": {
+          "name": "Erin Powlowski",
+          "role": "COO at Armstrong Inc"
+        }
+      },
+      {
+        "content": "I used to have to remit tax to the EU and with TaxPal I somehow don't have to do that anymore. Nervous to travel there now though.",
+        "author": {
+          "name": "Peter Renolds",
+          "role": "Founder of West Inc"
+        }
+      },
+      {
+        "content": "This is the fourth email I've sent to your support team. I am literally being held in jail for tax fraud. Please answer your damn emails, this is important.",
+        "author": {
+          "name": "Amy Hahn",
+          "role": "Director at Velocity Industries"
+        }
+      }
+    ]
+  },
+  "pricing": {
+    "title": "Simple pricing, for everyone.",
+    "subtitle": "It doesn't matter what size your business is, our software won't work well for you.",
+    "plans": {
+      "starter": {
+        "name": "Starter",
+        "price": "$9",
+        "description": "Good for anyone who is self-employed and just getting started.",
+        "features": [
+          "Send 10 quotes and invoices",
+          "Connect up to 2 bank accounts",
+          "Track up to 15 expenses per month",
+          "Manual payroll support",
+          "Export up to 3 reports"
+        ]
+      },
+      "smallBusiness": {
+        "name": "Small business",
+        "price": "$15",
+        "description": "Perfect for small / medium sized businesses.",
+        "features": [
+          "Send 25 quotes and invoices",
+          "Connect up to 5 bank accounts",
+          "Track up to 50 expenses per month",
+          "Automated payroll support",
+          "Export up to 12 reports",
+          "Bulk reconcile transactions",
+          "Track in multiple currencies"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "$39",
+        "description": "For even the biggest enterprise companies.",
+        "features": [
+          "Send unlimited quotes and invoices",
+          "Connect up to 15 bank accounts",
+          "Track up to 200 expenses per month",
+          "Automated payroll support",
+          "Export up to 25 reports, including TPS"
+        ]
+      }
+    }
+  },
+  "faqs": {
+    "title": "Frequently asked questions",
+    "subtitle": "If you can't find what you're looking for, email our support team and if you're lucky someone will get back to you.",
+    "questions": [
+      {
+        "question": "Does TaxPal handle VAT?",
+        "answer": "Well no, but if you move your company offshore you can probably ignore it."
+      },
+      {
+        "question": "Can I pay for my subscription via purchase order?",
+        "answer": "Absolutely, we are happy to take your money in all forms."
+      },
+      {
+        "question": "How do I apply for a job at TaxPal?",
+        "answer": "We only hire our customers, so subscribe for a minimum of 6 months and then let's talk."
+      },
+      {
+        "question": "What was that testimonial about tax fraud all about?",
+        "answer": "TaxPal is just a software application, ultimately your books are your responsibility."
+      },
+      {
+        "question": "TaxPal sounds horrible but why do I still feel compelled to purchase?",
+        "answer": "This is the power of excellent visual design. You just can't resist it, no matter how poorly it actually functions."
+      },
+      {
+        "question": "I found other companies called TaxPal, are you sure you can use this name?",
+        "answer": "Honestly not sure at all. We haven't actually incorporated or anything, we just thought it sounded cool and made this website."
+      },
+      {
+        "question": "How do you generate reports?",
+        "answer": "You just tell us what data you need a report for, and we get our kids to create beautiful charts for you using only the finest crayons."
+      },
+      {
+        "question": "Can we expect more inventory features?",
+        "answer": "In life it's really better to never expect anything at all."
+      },
+      {
+        "question": "I lost my password, how do I get into my account?",
+        "answer": "Send us an email and we will send you a copy of our latest password spreadsheet so you can find your information."
+      }
+    ]
+  },
+  "auth": {
+    "login": {
+      "title": "Sign in to your account",
+      "subtitle": "Don't have an account? Sign up for a free trial.",
+      "emailLabel": "Email address",
+      "passwordLabel": "Password",
+      "submitButton": "Sign in"
+    },
+    "register": {
+      "title": "Get started for free",
+      "subtitle": "Already registered? Sign in to your account.",
+      "firstNameLabel": "First name",
+      "lastNameLabel": "Last name",
+      "emailLabel": "Email address",
+      "passwordLabel": "Password",
+      "referralLabel": "How did you hear about us?",
+      "referralOptions": [
+        "AltaVista search",
+        "Super Bowl commercial",
+        "Our route 34 city bus ad",
+        "The \"Never Use This\" podcast"
+      ],
+      "submitButton": "Sign up"
+    }
+  },
+  "watermarkProcessor": {
+    "fileAlt": "File",
+    "previewAlt": "Preview",
+    "originalAlt": "Original image",
+    "processedAlt": "Processed image",
+    "original": "Original",
+    "processed": "Processed",
+    "urlPlaceholder": "Enter image URL (https://example.com/image.jpg)",
+    "supports": "Supports",
+    "resolution": "(upto resolution 5,000 x 5,000 px)",
+    "termsAgreement": "By uploading an image or URL you agree to our",
+    "termsOfUse": "Terms of Use",
+    "privacyPolicy": "Privacy Policy",
+    "processing": "Processing...",
+    "removeFile": "Remove file",
+    "removeImage": "Remove image",
+    "buttons": {
+      "uploadFile": "Upload File",
+      "imageUrl": "Image URL",
+      "submit": "Submit",
+      "download": "Download",
+      "processAnother": "Process another image",
+      "removeWatermark": "Remove Watermark"
+    },
+    "previewError": {
+      "message": "Cannot preview this image. The url is invalid or it may due due to CORS restrictions. If this is the case we'll still try to process it.",
+      "suggestion": "If processing fails, try downloading the image and uploading it directly."
+    },
+    "errors": {
+      "downloadFailed": "Failed to download the image",
+      "corsRestriction": "Cannot display original image due to CORS restrictions",
+      "fetchFailed": "Failed to fetch image",
+      "fetchingImage": "Error fetching image",
+      "unknown": "Unknown error",
+      "invalidUrl": "Please enter a valid URL starting with http:// or https://",
+      "urlAccess": "Could not access the image URL.",
+      "tryDirectUpload": "Please try downloading the image and uploading it directly.",
+      "noImage": "No image provided",
+      "apiError": "API error",
+      "processingFailed": "Processing failed or returned unexpected format"
+    },
+    "removeWatermark": "Remove Watermark",
+    "dragAndDrop": "Drag & drop or browse",
+    "supportedFormats": "Supports:",
+    "imageFormats": ["PNG", "JPG", "JPEG", "GIF", "BMP", "TIFF", "WebP"],
+    "termsText": "By uploading an image or URL you agree to our Terms of Use and Privacy Policy",
+    "termsLink": "Terms of Use",
+    "privacyLink": "Privacy Policy",
+    "corsError": {
+      "title": "Cannot preview this image. The url is invalid or it may due due to CORS restrictions. If this is the case we'll still try to process it.",
+      "suggestion": "If processing fails, try downloading the image and uploading it directly."
+    },
+    "fileDropUpload": {
+      "dragAndDrop": "Drag & drop or",
+      "browse": "browse",
+      "acceptedFileTypes": "image/*",
+      "inputLabel": "file"
+    }
+  },
+  "accessibility": {
+    "toggleNavigation": "Toggle Navigation",
+    "taxPalOnX": "TaxPal on X",
+    "taxPalOnGitHub": "TaxPal on GitHub",
+    "featuresForRunningYourBooks": "Features for running your books",
+    "featuresForSimplifyingEverydayBusinessTasks": "Features for simplifying everyday business tasks",
+    "whatOurCustomersAreSaying": "What our customers are saying",
+    "getPlanButtonLabel": "Get started with the {{name}} plan for {{price}}"
+  },
+  "errors": {
+    "notFound": {
+      "code": "404",
+      "title": "Page not found",
+      "message": "Sorry, we couldn't find the page you're looking for."
+    }
+  },
+  "metadata": {
+    "title": "TaxPal - Accounting made simple for small businesses",
+    "description": "Most bookkeeping software is accurate, but hard to use. We make the opposite trade-off, and hope you don't get audited."
+  }
+} 

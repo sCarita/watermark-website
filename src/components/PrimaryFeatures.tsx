@@ -11,35 +11,35 @@ import screenshotExpenses from '@/images/screenshots/expenses.png'
 import screenshotPayroll from '@/images/screenshots/payroll.png'
 import screenshotReporting from '@/images/screenshots/reporting.png'
 import screenshotVatReturns from '@/images/screenshots/vat-returns.png'
-
-const features = [
-  {
-    title: 'Payroll',
-    description:
-      "Keep track of everyone's salaries and whether or not they've been paid. Direct deposit not supported.",
-    image: screenshotPayroll,
-  },
-  {
-    title: 'Claim expenses',
-    description:
-      "All of your receipts organized into one place, as long as you don't mind typing in the data by hand.",
-    image: screenshotExpenses,
-  },
-  {
-    title: 'VAT handling',
-    description:
-      "We only sell our software to companies who don't deal with VAT at all, so technically we do all the VAT stuff they need.",
-    image: screenshotVatReturns,
-  },
-  {
-    title: 'Reporting',
-    description:
-      'Easily export your data into an Excel spreadsheet where you can do whatever the hell you want with it.',
-    image: screenshotReporting,
-  },
-]
+import { useI18n } from '@/hooks/useI18n'
+import { LanguageSelector } from '@/components/LanguageSelector'
 
 export function PrimaryFeatures() {
+  const { t } = useI18n()
+  
+  const features = [
+    {
+      title: t('primaryFeatures.features.0.title'),
+      description: t('primaryFeatures.features.0.description'),
+      image: screenshotPayroll,
+    },
+    {
+      title: t('primaryFeatures.features.1.title'),
+      description: t('primaryFeatures.features.1.description'),
+      image: screenshotExpenses,
+    },
+    {
+      title: t('primaryFeatures.features.2.title'),
+      description: t('primaryFeatures.features.2.description'),
+      image: screenshotVatReturns,
+    },
+    {
+      title: t('primaryFeatures.features.3.title'),
+      description: t('primaryFeatures.features.3.description'),
+      image: screenshotReporting,
+    },
+  ]
+
   let [tabOrientation, setTabOrientation] = useState<'horizontal' | 'vertical'>(
     'horizontal',
   )
@@ -62,7 +62,7 @@ export function PrimaryFeatures() {
   return (
     <section
       id="features"
-      aria-label="Features for running your books"
+      aria-label={t('accessibility.featuresForRunningYourBooks')}
       className="relative overflow-hidden bg-blue-600 pt-20 pb-28 sm:py-32"
     >
       <Image
@@ -76,12 +76,14 @@ export function PrimaryFeatures() {
       <Container className="relative">
         <div className="max-w-2xl md:mx-auto md:text-center xl:max-w-none">
           <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl md:text-5xl">
-            Everything you need to run your books.
+            {t('primaryFeatures.title')}
           </h2>
           <p className="mt-6 text-lg tracking-tight text-blue-100">
-            Well everything you need if you aren’t that picky about minor
-            details like tax compliance.
+            {t('primaryFeatures.subtitle')}
           </p>
+          <div className="mt-4 flex justify-center">
+            <LanguageSelector variant="dark" />
+          </div>
         </div>
         <TabGroup
           className="mt-16 grid grid-cols-1 items-center gap-y-2 pt-10 sm:gap-y-6 md:mt-20 lg:grid-cols-12 lg:pt-0"

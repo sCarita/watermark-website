@@ -1,10 +1,16 @@
+'use client'
+
 import Image from 'next/image'
 
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background-call-to-action.jpg'
+import { useI18n } from '@/hooks/useI18n'
+import { LanguageSelector } from '@/components/LanguageSelector'
 
 export function CallToAction() {
+  const { t } = useI18n()
+  
   return (
     <section
       id="get-started-today"
@@ -21,14 +27,16 @@ export function CallToAction() {
       <Container className="relative">
         <div className="mx-auto max-w-lg text-center">
           <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl">
-            Get started today
+            {t('callToAction.title')}
           </h2>
           <p className="mt-4 text-lg tracking-tight text-white">
-            It’s time to take control of your books. Buy our software so you can
-            feel like you’re doing something productive.
+            {t('callToAction.subtitle')}
           </p>
+          <div className="mt-6 flex justify-center">
+            <LanguageSelector variant="dark" />
+          </div>
           <Button href="/register" color="white" className="mt-10">
-            Get 6 months free
+            {t('common.buttons.get6MonthsFree')}
           </Button>
         </div>
       </Container>

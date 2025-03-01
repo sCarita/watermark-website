@@ -1,0 +1,337 @@
+{
+  "common": {
+    "appName": "Unwatermark",
+    "tagline": "Supprimez les filigranes de vos images.",
+    "getStarted": "Commencer",
+    "getStartedToday": "Commencez aujourd'hui",
+    "signIn": "Se connecter",
+    "signUp": "S'inscrire",
+    "features": "Fonctionnalités",
+    "testimonials": "Témoignages",
+    "pricing": "Tarifs",
+    "faq": "FAQ",
+    "home": "Accueil",
+    "back": "Retour à l'accueil",
+    "loading": "Traitement en cours...",
+    "error": "Oups, quelque chose s'est mal passé",
+    "success": "Succès ! Tout s'est bien passé.",
+    "info": "Pour votre information.",
+    "warning": "Attention ! Vérifiez ceci.",
+    "navigation": {
+      "features": "Fonctionnalités",
+      "testimonials": "Témoignages",
+      "pricing": "Tarifs",
+      "signIn": "Se connecter",
+      "getStarted": "Commencer",
+      "getStartedToday": "Commencez aujourd'hui"
+    },
+    "buttons": {
+      "getStarted": "Commencer",
+      "getStartedToday": "Commencez aujourd'hui",
+      "get6MonthsFree": "Obtenez 6 mois gratuits",
+      "submit": "Envoyer"
+    },
+    "copyright": "Copyright © {{year}} TaxPal. Tous droits réservés.",
+    "language": {
+      "en": "English",
+      "es": "Español",
+      "fr": "Français",
+      "select": "Sélectionner la langue"
+    }
+  },
+  "hero": {
+    "title": "Supprimez les filigranes de vos images.",
+    "subtitle": "Supprimez les filigranes de vos images avec notre outil alimenté par l'IA."
+  },
+  "showcase": {
+    "title": "Découvrez les résultats",
+    "subtitle": "Nous avons des résultats comme aucun autre."
+  },
+  "primaryFeatures": {
+    "title": "Tout ce dont vous avez besoin pour gérer votre comptabilité.",
+    "subtitle": "Enfin, tout ce dont vous avez besoin si vous n'êtes pas trop pointilleux sur des détails mineurs comme la conformité fiscale.",
+    "features": [
+      {
+        "title": "Paie",
+        "description": "Suivez les salaires de tous vos employés et vérifiez s'ils ont été payés. Dépôt direct non pris en charge."
+      },
+      {
+        "title": "Réclamation de dépenses",
+        "description": "Tous vos reçus organisés en un seul endroit, tant que ça ne vous dérange pas de saisir les données manuellement."
+      },
+      {
+        "title": "Gestion de la TVA",
+        "description": "Nous ne vendons notre logiciel qu'aux entreprises qui ne traitent pas du tout la TVA, donc techniquement, nous faisons tout ce dont elles ont besoin en matière de TVA."
+      },
+      {
+        "title": "Rapports",
+        "description": "Exportez facilement vos données dans un tableur Excel où vous pourrez en faire ce que vous voulez."
+      }
+    ]
+  },
+  "secondaryFeatures": {
+    "title": "Simplifiez les tâches quotidiennes de votre entreprise.",
+    "subtitle": "Parce que vous seriez probablement un peu confus si nous vous suggérions de compliquer vos tâches quotidiennes à la place.",
+    "features": [
+      {
+        "name": "Rapports",
+        "summary": "Restez au courant grâce à des fonctionnalités de rapport toujours à jour.",
+        "description": "Nous avons parlé des rapports dans la section ci-dessus, mais nous avions besoin de trois éléments ici, donc nous le mentionnons une fois de plus pour la postérité."
+      },
+      {
+        "name": "Inventaire",
+        "summary": "Ne perdez jamais la trace de ce qui est en stock grâce à un suivi précis de l'inventaire.",
+        "description": "Nous n'offrons pas cette fonctionnalité dans notre logiciel, mais cette affirmation est indéniablement vraie. Un suivi précis de l'inventaire vous aiderait certainement."
+      },
+      {
+        "name": "Contacts",
+        "summary": "Organisez tous vos contacts, prestataires de services et factures en un seul endroit.",
+        "description": "Ce n'est pas non plus une fonctionnalité, c'est juste un conseil amical. Nous vous recommandons vivement de le faire, vous vous sentirez vraiment organisé et professionnel."
+      }
+    ]
+  },
+  "callToAction": {
+    "title": "Commencez aujourd'hui",
+    "subtitle": "Il est temps de prendre le contrôle de votre comptabilité. Achetez notre logiciel pour avoir l'impression de faire quelque chose de productif.",
+    "button": "Obtenez 6 mois gratuits"
+  },
+  "testimonials": {
+    "title": "Adoré par les entreprises du monde entier.",
+    "subtitle": "Notre logiciel est si simple que les gens ne peuvent s'empêcher de l'adorer. La simplicité est facile quand on saute des tonnes de fonctionnalités essentielles.",
+    "quotes": [
+      {
+        "content": "TaxPal est si facile à utiliser que je ne peux m'empêcher de me demander s'il fait vraiment ce que le gouvernement attend de moi.",
+        "author": {
+          "name": "Sheryl Berge",
+          "role": "PDG de Lynch LLC"
+        }
+      },
+      {
+        "content": "J'essaie de contacter quelqu'un du support, je suis dans une situation difficile et ils disent que cela a quelque chose à voir avec ma comptabilité. Veuillez me rappeler dès que possible.",
+        "author": {
+          "name": "Amy Hahn",
+          "role": "Directrice chez Velocity Industries"
+        }
+      },
+      {
+        "content": "Ce que j'aime le plus avec TaxPal, c'est que chaque fois que je paie mes employés, mon solde bancaire ne diminue plus comme avant. J'ai hâte de dépenser cet argent supplémentaire quand je comprendrai pourquoi ma carte est refusée.",
+        "author": {
+          "name": "Leland Kiehn",
+          "role": "Fondateur de Kiehn and Sons"
+        }
+      },
+      {
+        "content": "Il y a tellement de choses que je devais faire avec mon ancien logiciel que je ne fais plus du tout avec TaxPal. C'est suspect, mais je ne peux pas dire que je n'adore pas ça.",
+        "author": {
+          "name": "Erin Powlowski",
+          "role": "Directrice des opérations chez Armstrong Inc"
+        }
+      },
+      {
+        "content": "Je devais payer des taxes à l'UE et avec TaxPal, je n'ai plus à le faire. Je suis nerveux d'y voyager maintenant cependant.",
+        "author": {
+          "name": "Peter Renolds",
+          "role": "Fondateur de West Inc"
+        }
+      },
+      {
+        "content": "C'est le quatrième e-mail que j'envoie à votre équipe de support. Je suis littéralement en prison pour fraude fiscale. Veuillez répondre à vos e-mails, c'est important.",
+        "author": {
+          "name": "Amy Hahn",
+          "role": "Directrice chez Velocity Industries"
+        }
+      }
+    ]
+  },
+  "pricing": {
+    "title": "Tarification simple, pour tous.",
+    "subtitle": "Peu importe la taille de votre entreprise, notre logiciel ne fonctionnera pas bien pour vous.",
+    "plans": {
+      "starter": {
+        "name": "Débutant",
+        "price": "9 €",
+        "description": "Idéal pour les travailleurs indépendants qui débutent.",
+        "features": [
+          "Envoyez 10 devis et factures",
+          "Connectez jusqu'à 2 comptes bancaires",
+          "Suivez jusqu'à 15 dépenses par mois",
+          "Support de paie manuel",
+          "Exportez jusqu'à 3 rapports"
+        ]
+      },
+      "smallBusiness": {
+        "name": "Petite entreprise",
+        "price": "15 €",
+        "description": "Parfait pour les petites et moyennes entreprises.",
+        "features": [
+          "Envoyez 25 devis et factures",
+          "Connectez jusqu'à 5 comptes bancaires",
+          "Suivez jusqu'à 50 dépenses par mois",
+          "Support de paie automatisé",
+          "Exportez jusqu'à 12 rapports",
+          "Réconciliation en masse des transactions",
+          "Suivi en plusieurs devises"
+        ]
+      },
+      "enterprise": {
+        "name": "Entreprise",
+        "price": "39 €",
+        "description": "Pour même les plus grandes entreprises.",
+        "features": [
+          "Envoyez des devis et factures illimités",
+          "Connectez jusqu'à 15 comptes bancaires",
+          "Suivez jusqu'à 200 dépenses par mois",
+          "Support de paie automatisé",
+          "Exportez jusqu'à 25 rapports, y compris TPS"
+        ]
+      }
+    }
+  },
+  "faqs": {
+    "title": "Questions fréquemment posées",
+    "subtitle": "Si vous ne trouvez pas ce que vous cherchez, envoyez un e-mail à notre équipe de support et, avec un peu de chance, quelqu'un vous répondra.",
+    "questions": [
+      {
+        "question": "TaxPal gère-t-il la TVA ?",
+        "answer": "Non, mais si vous délocalisez votre entreprise, vous pouvez probablement l'ignorer."
+      },
+      {
+        "question": "Puis-je payer mon abonnement par bon de commande ?",
+        "answer": "Absolument, nous sommes heureux de prendre votre argent sous toutes ses formes."
+      },
+      {
+        "question": "Comment postuler pour un emploi chez TaxPal ?",
+        "answer": "Nous n'embauchons que nos clients, alors abonnez-vous pour un minimum de 6 mois et nous en reparlerons."
+      },
+      {
+        "question": "Qu'est-ce que c'était que ce témoignage sur la fraude fiscale ?",
+        "answer": "TaxPal n'est qu'une application logicielle, en fin de compte, votre comptabilité est votre responsabilité."
+      },
+      {
+        "question": "TaxPal semble horrible, mais pourquoi ai-je toujours envie de l'acheter ?",
+        "answer": "C'est le pouvoir d'un excellent design visuel. Vous ne pouvez tout simplement pas y résister, peu importe à quel point il fonctionne mal."
+      },
+      {
+        "question": "J'ai trouvé d'autres entreprises appelées TaxPal, êtes-vous sûr de pouvoir utiliser ce nom ?",
+        "answer": "Honnêtement, pas du tout sûr. Nous ne nous sommes pas vraiment constitués en société ni rien, nous avons juste pensé que ça sonnait bien et avons créé ce site web."
+      },
+      {
+        "question": "Comment générez-vous des rapports ?",
+        "answer": "Vous nous dites simplement pour quelles données vous avez besoin d'un rapport, et nous demandons à nos enfants de créer de beaux graphiques pour vous en utilisant uniquement les meilleurs crayons."
+      },
+      {
+        "question": "Pouvons-nous nous attendre à plus de fonctionnalités d'inventaire ?",
+        "answer": "Dans la vie, il est vraiment préférable de ne jamais rien attendre du tout."
+      },
+      {
+        "question": "J'ai perdu mon mot de passe, comment puis-je accéder à mon compte ?",
+        "answer": "Envoyez-nous un e-mail et nous vous enverrons une copie de notre dernier tableur de mots de passe pour que vous puissiez trouver vos informations."
+      }
+    ]
+  },
+  "auth": {
+    "login": {
+      "title": "Connectez-vous à votre compte",
+      "subtitle": "Vous n'avez pas de compte ? Inscrivez-vous pour un essai gratuit.",
+      "emailLabel": "Adresse e-mail",
+      "passwordLabel": "Mot de passe",
+      "submitButton": "Se connecter"
+    },
+    "register": {
+      "title": "Commencez gratuitement",
+      "subtitle": "Déjà inscrit ? Connectez-vous à votre compte.",
+      "firstNameLabel": "Prénom",
+      "lastNameLabel": "Nom",
+      "emailLabel": "Adresse e-mail",
+      "passwordLabel": "Mot de passe",
+      "referralLabel": "Comment avez-vous entendu parler de nous ?",
+      "referralOptions": [
+        "Recherche AltaVista",
+        "Publicité du Super Bowl",
+        "Notre publicité sur le bus de la ligne 34",
+        "Le podcast \"Ne jamais utiliser ceci\""
+      ],
+      "submitButton": "S'inscrire"
+    }
+  },
+  "watermarkProcessor": {
+    "fileAlt": "Fichier",
+    "previewAlt": "Aperçu",
+    "originalAlt": "Image originale",
+    "processedAlt": "Image traitée",
+    "original": "Original",
+    "processed": "Traité",
+    "urlPlaceholder": "Entrez l'URL de l'image (https://exemple.com/image.jpg)",
+    "supports": "Supporte",
+    "resolution": "(jusqu'à une résolution de 5 000 x 5 000 px)",
+    "termsAgreement": "En téléchargeant une image ou une URL, vous acceptez nos",
+    "termsOfUse": "Conditions d'utilisation",
+    "privacyPolicy": "Politique de confidentialité",
+    "processing": "Traitement en cours...",
+    "removeFile": "Supprimer le fichier",
+    "removeImage": "Supprimer l'image",
+    "buttons": {
+      "uploadFile": "Télécharger un fichier",
+      "imageUrl": "URL de l'image",
+      "submit": "Soumettre",
+      "download": "Télécharger",
+      "processAnother": "Traiter une autre image",
+      "removeWatermark": "Supprimer le filigrane"
+    },
+    "previewError": {
+      "message": "Impossible de prévisualiser cette image. L'URL est invalide ou cela peut être dû à des restrictions CORS. Si c'est le cas, nous essaierons quand même de la traiter.",
+      "suggestion": "Si le traitement échoue, essayez de télécharger l'image et de la téléverser directement."
+    },
+    "errors": {
+      "downloadFailed": "Échec du téléchargement de l'image",
+      "corsRestriction": "Impossible d'afficher l'image originale en raison des restrictions CORS",
+      "fetchFailed": "Échec de la récupération de l'image",
+      "fetchingImage": "Erreur lors de la récupération de l'image",
+      "unknown": "Erreur inconnue",
+      "invalidUrl": "Veuillez entrer une URL valide commençant par http:// ou https://",
+      "urlAccess": "Impossible d'accéder à l'URL de l'image.",
+      "tryDirectUpload": "Veuillez essayer de télécharger l'image et de la téléverser directement.",
+      "noImage": "Aucune image fournie",
+      "apiError": "Erreur d'API",
+      "processingFailed": "Le traitement a échoué ou a renvoyé un format inattendu"
+    },
+    "removeWatermark": "Supprimer le filigrane",
+    "dragAndDrop": "Glisser-déposer ou parcourir",
+    "supportedFormats": "Formats supportés :",
+    "imageFormats": ["PNG", "JPG", "JPEG", "GIF", "BMP", "TIFF", "WebP"],
+    "termsText": "En téléchargeant une image ou une URL, vous acceptez nos Conditions d'utilisation et notre Politique de confidentialité",
+    "termsLink": "Conditions d'utilisation",
+    "privacyLink": "Politique de confidentialité",
+    "corsError": {
+      "title": "Impossible de prévisualiser cette image. L'URL est invalide ou cela peut être dû à des restrictions CORS. Si c'est le cas, nous essaierons quand même de la traiter.",
+      "suggestion": "Si le traitement échoue, essayez de télécharger l'image et de la téléverser directement."
+    },
+    "fileDropUpload": {
+      "dragAndDrop": "Glisser-déposer ou",
+      "browse": "parcourir",
+      "acceptedFileTypes": "image/*",
+      "inputLabel": "fichier"
+    }
+  },
+  "accessibility": {
+    "toggleNavigation": "Basculer la navigation",
+    "home": "Accueil",
+    "taxPalOnX": "TaxPal sur X",
+    "taxPalOnGitHub": "TaxPal sur GitHub",
+    "featuresForRunningYourBooks": "Fonctionnalités pour gérer votre comptabilité",
+    "featuresForSimplifyingEverydayBusinessTasks": "Fonctionnalités pour simplifier les tâches quotidiennes de l'entreprise",
+    "whatOurCustomersAreSaying": "Ce que disent nos clients",
+    "getPlanButtonLabel": "Commencez avec le plan {{name}} pour {{price}}"
+  },
+  "errors": {
+    "notFound": {
+      "code": "404",
+      "title": "Page non trouvée",
+      "message": "Désolé, nous n'avons pas pu trouver la page que vous cherchez."
+    }
+  },
+  "metadata": {
+    "title": "TaxPal - La comptabilité simplifiée pour les petites entreprises",
+    "description": "La plupart des logiciels de comptabilité sont précis, mais difficiles à utiliser. Nous faisons le compromis inverse, et espérons que vous ne serez pas audité."
+  }
+} 

@@ -1,8 +1,13 @@
+'use client'
+
 import { Container } from './Container'
 import { FadeIn } from './FadeIn'
 import ImageComparisonSlider from './ImageComparisonSlider'
+import { useI18n } from '@/hooks/useI18n'
 
 const Showcase = () => {
+  const { t } = useI18n()
+  
   return (
     <section
       id="showcase"
@@ -12,10 +17,10 @@ const Showcase = () => {
         <FadeIn>
           <div className="mb-10 text-center">
             <h2 className="font-display text-3xl tracking-tight text-slate-900 sm:text-4xl">
-              Check out the results
+              {t('showcase.title')}
             </h2>
             <p className="mt-4 text-lg tracking-tight text-slate-700">
-              We have results like no other.
+              {t('showcase.subtitle')}
             </p>
           </div>
           <ImageComparisonSlider

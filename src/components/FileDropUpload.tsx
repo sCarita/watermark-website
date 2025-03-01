@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react'
 import clsx from 'clsx'
+import { useI18n } from '@/hooks/useI18n'
 
 interface FileDropUploadProps {
   onSelectFile: (files: FileList | null) => void
@@ -7,6 +8,7 @@ interface FileDropUploadProps {
 }
 
 const FileDropUpload = ({ onSelectFile, className }: FileDropUploadProps) => {
+  const { t } = useI18n()
   const [isDragging, setIsDragging] = useState(false)
 
   const handleDrop = useCallback(
@@ -57,6 +59,7 @@ const FileDropUpload = ({ onSelectFile, className }: FileDropUploadProps) => {
             id="file"
             className="sr-only"
             onChange={(e) => onSelectFile(e.target.files)}
+            aria-label={t('watermarkProcessor.fileDropUpload.inputLabel')}
           />
           <span className="border-stroke mx-auto mb-3 flex h-[50px] w-[50px] items-center justify-center rounded-full border border-gray-300 bg-white transition-colors group-hover:border-blue-600">
             <svg
@@ -65,6 +68,7 @@ const FileDropUpload = ({ onSelectFile, className }: FileDropUploadProps) => {
               viewBox="0 0 20 20"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
               <path
                 fillRule="evenodd"
@@ -87,8 +91,8 @@ const FileDropUpload = ({ onSelectFile, className }: FileDropUploadProps) => {
             </svg>
           </span>
           <span className="text-base text-gray-400">
-            Drag &amp; drop or
-            <span className="text-blue-600 underline"> browse </span>
+            {t('watermarkProcessor.fileDropUpload.dragAndDrop')}
+            <span className="text-blue-600 underline"> {t('watermarkProcessor.fileDropUpload.browse')} </span>
           </span>
         </div>
       </label>

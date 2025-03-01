@@ -6,6 +6,7 @@ import FileDropUpload from './FileDropUpload'
 import Alert from './Alert'
 import Badge from './Badge'
 import Input from './Input'
+import { useI18n } from '@/hooks/useI18n'
 
 const FileUploadTab = ({
   file,
@@ -18,6 +19,8 @@ const FileUploadTab = ({
   handleFileChange: (files: FileList | null) => void
   removeFile: () => void
 }) => {
+  const { t } = useI18n()
+  
   return (
     <>
       <div className="relative flex min-h-[250px] w-full flex-col items-center justify-center">
@@ -32,7 +35,7 @@ const FileUploadTab = ({
           <div className="relative flex w-full flex-1 items-center justify-center rounded-sm border border-slate-300 p-2">
             <img
               src={URL.createObjectURL(file)}
-              alt="File"
+              alt={t('watermarkProcessor.fileAlt')}
               className="max-h-[200px] w-full flex-1 object-contain"
             />
             <button
@@ -42,6 +45,7 @@ const FileUploadTab = ({
                 removeFile()
               }}
               disabled={isLoading}
+              aria-label={t('watermarkProcessor.removeFile')}
             >
               x
             </button>
@@ -67,6 +71,7 @@ const UrlUploadTab = ({
   removeImageUrl: () => void
   handleImageError: () => void
 }) => {
+  const { t } = useI18n()
   const [url, setUrl] = useState(imageUrl)
   return (
     <div className="flex min-h-[250px] w-full">
@@ -75,7 +80,7 @@ const UrlUploadTab = ({
           <Input
             type="url"
             value={url}
-            placeholder="Enter image URL (https://example.com/image.jpg)"
+            placeholder={t('watermarkProcessor.urlPlaceholder')}
             className="w-full"
             onChange={(e) => setUrl(e.target.value)}
           />
@@ -84,7 +89,7 @@ const UrlUploadTab = ({
             disabled={isLoading || !url}
             className="mt-2 disabled:opacity-50"
           >
-            Submit
+            {t('common.buttons.submit')}
           </Button>
         </form>
       )}
@@ -92,7 +97,7 @@ const UrlUploadTab = ({
         <div className="relative flex w-full flex-1 items-center justify-center rounded-sm border border-slate-300 p-2">
           <img
             src={imageUrl}
-            alt="Preview"
+            alt={t('watermarkProcessor.previewAlt')}
             className="max-h-[200px] w-full flex-1 object-contain"
             onError={handleImageError}
           />
@@ -100,6 +105,7 @@ const UrlUploadTab = ({
             className="absolute top-2 right-2 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-red-500 text-white transition-colors duration-500 hover:bg-red-600 disabled:opacity-50"
             onClick={removeImageUrl}
             disabled={isLoading}
+            aria-label={t('watermarkProcessor.removeImage')}
           >
             x
           </button>
@@ -108,13 +114,10 @@ const UrlUploadTab = ({
       {imageUrl && previewError && (
         <div className="mt-2 rounded-lg border border-slate-800 bg-neutral-900 p-4 text-yellow-400">
           <p>
-            Cannot preview this image. The url is invalid or it may due due to
-            CORS restrictions. If this is the case we'll still try to process
-            it.
+            {t('watermarkProcessor.previewError.message')}
           </p>
           <p className="mt-2 text-sm text-neutral-400">
-            If processing fails, try downloading the image and uploading it
-            directly.
+            {t('watermarkProcessor.previewError.suggestion')}
           </p>
         </div>
       )}
@@ -131,6 +134,8 @@ const ResultDisplay = ({
   setError: (error: string) => void
   resetImage: () => void
 }) => {
+  const { t } = useI18n()
+  
   const handleDownload = async () => {
     try {
       const response = await fetch(result.processedImage)
@@ -144,7 +149,7 @@ const ResultDisplay = ({
       document.body.removeChild(link)
       window.URL.revokeObjectURL(url)
     } catch (error) {
-      setError('Failed to download the image')
+      setError(t('watermarkProcessor.errors.downloadFailed'))
     }
   }
 
@@ -152,21 +157,21 @@ const ResultDisplay = ({
     <div className="min-h-[250px] w-full">
       <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
         <div className="flex flex-col items-center">
-          <h3 className="mb-1 font-display text-lg">Original</h3>
+          <h3 className="mb-1 font-display text-lg">{t('watermarkProcessor.original')}</h3>
           <img
             src={result.originalImage}
-            alt="Original"
+            alt={t('watermarkProcessor.originalAlt')}
             className="w-full rounded-lg object-contain"
             onError={() =>
-              setError('Cannot display original image due to CORS restrictions')
+              setError(t('watermarkProcessor.errors.corsRestriction'))
             }
           />
         </div>
         <div className="flex flex-col items-center">
-          <h3 className="mb-1 font-display text-lg">Processed</h3>
+          <h3 className="mb-1 font-display text-lg">{t('watermarkProcessor.processed')}</h3>
           <img
             src={result.processedImage}
-            alt="Processed"
+            alt={t('watermarkProcessor.processedAlt')}
             className="w-full rounded-lg object-contain"
           />
         </div>
@@ -178,7 +183,7 @@ const ResultDisplay = ({
           className="w-full"
           color="slate"
         >
-          Download
+          {t('watermarkProcessor.buttons.download')}
         </Button>
         <Button
           onClick={resetImage}
@@ -187,7 +192,7 @@ const ResultDisplay = ({
           color="slate"
           variant="outline"
         >
-          Process another image
+          {t('watermarkProcessor.buttons.processAnother')}
         </Button>
       </div>
     </div>
@@ -201,6 +206,7 @@ interface ProcessResult {
 }
 
 export default function WatermarkProcessor() {
+  const { t } = useI18n()
   const [file, setFile] = useState<File | null>(null)
   const [imageUrl, setImageUrl] = useState<string>('')
   const [isLoading, setIsLoading] = useState(false)
@@ -258,7 +264,7 @@ export default function WatermarkProcessor() {
 
       const response = await fetch(corsProxyUrl)
       if (!response.ok) {
-        throw new Error(`Failed to fetch image: ${response.status}`)
+        throw new Error(`${t('watermarkProcessor.errors.fetchFailed')}: ${response.status}`)
       }
 
       const blob = await response.blob()
@@ -278,7 +284,7 @@ export default function WatermarkProcessor() {
     } catch (error) {
       console.error('Error fetching image:', error)
       throw new Error(
-        `Error fetching image: ${error instanceof Error ? error.message : 'Unknown error'}`,
+        `${t('watermarkProcessor.errors.fetchingImage')}: ${error instanceof Error ? error.message : t('watermarkProcessor.errors.unknown')}`,
       )
     }
   }
@@ -302,7 +308,7 @@ export default function WatermarkProcessor() {
           // Validate URL format
           if (!imageUrl.startsWith('data:') && !imageUrl.startsWith('http')) {
             throw new Error(
-              'Please enter a valid URL starting with http:// or https://',
+              t('watermarkProcessor.errors.invalidUrl')
             )
           }
 
@@ -312,11 +318,11 @@ export default function WatermarkProcessor() {
         } catch (err) {
           console.error('URL processing error:', err)
           throw new Error(
-            `Could not access the image URL. ${err instanceof Error ? err.message : ''} Please try downloading the image and uploading it directly.`,
+            `${t('watermarkProcessor.errors.urlAccess')} ${err instanceof Error ? err.message : ''} ${t('watermarkProcessor.errors.tryDirectUpload')}`
           )
         }
       } else {
-        throw new Error('No image provided')
+        throw new Error(t('watermarkProcessor.errors.noImage'))
       }
 
       // Call the API
@@ -336,7 +342,7 @@ export default function WatermarkProcessor() {
       )
 
       if (!response.ok) {
-        throw new Error(`API error: ${response.status}`)
+        throw new Error(`${t('watermarkProcessor.errors.apiError')}: ${response.status}`)
       }
 
       const data = await response.json()
@@ -354,11 +360,11 @@ export default function WatermarkProcessor() {
             : undefined,
         })
       } else {
-        throw new Error('Processing failed or returned unexpected format')
+        throw new Error(t('watermarkProcessor.errors.processingFailed'))
       }
     } catch (err) {
       console.error('Error processing image:', err)
-      setError(err instanceof Error ? err.message : 'An unknown error occurred')
+      setError(err instanceof Error ? err.message : t('watermarkProcessor.errors.unknown'))
     } finally {
       setIsLoading(false)
     }
@@ -381,7 +387,7 @@ export default function WatermarkProcessor() {
           color={inputMethod === 'file' ? 'blue' : 'slate'}
           variant={inputMethod === 'file' ? 'solid' : 'outline'}
         >
-          Upload File
+          {t('watermarkProcessor.buttons.uploadFile')}
         </Button>
         <Button
           onClick={() => {
@@ -393,7 +399,7 @@ export default function WatermarkProcessor() {
           color={inputMethod === 'url' ? 'blue' : 'slate'}
           variant={inputMethod === 'url' ? 'solid' : 'outline'}
         >
-          Image URL
+          {t('watermarkProcessor.buttons.imageUrl')}
         </Button>
       </div>
 
@@ -432,7 +438,7 @@ export default function WatermarkProcessor() {
         <div>
           <div className="flex flex-wrap gap-x-2 gap-y-1">
             <span className="mt-1 shrink-0 text-xs text-slate-500">
-              Supports:
+              {t('watermarkProcessor.supports')}:
             </span>
             <div className="flex flex-col">
               <div className="flex flex-wrap gap-1">
@@ -445,19 +451,19 @@ export default function WatermarkProcessor() {
                 <Badge>WebP</Badge>
               </div>
               <span className="mt-1 text-xs text-slate-400">
-                (upto resolution 5,000 x 5,000 px)
+                {t('watermarkProcessor.resolution')}
               </span>
             </div>
           </div>
 
           <p className="mt-2 text-xs text-slate-500">
-            By uploading an image or URL you agree to our{' '}
+            {t('watermarkProcessor.termsAgreement')}{' '}
             <a href="/terms" className="text-blue-600">
-              Terms of Use
+              {t('watermarkProcessor.termsOfUse')}
             </a>{' '}
-            and{' '}
+            {t('common.and')}{' '}
             <a href="/privacy" className="text-blue-600">
-              Privacy Policy
+              {t('watermarkProcessor.privacyPolicy')}
             </a>
           </p>
         </div>
@@ -475,10 +481,10 @@ export default function WatermarkProcessor() {
             {isLoading ? (
               <div className="flex items-center justify-center">
                 <div className="mr-2 h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
-                Processing...
+                {t('watermarkProcessor.processing')}
               </div>
             ) : (
-              'Remove Watermark'
+              t('watermarkProcessor.buttons.removeWatermark')
             )}
           </Button>
         )}
