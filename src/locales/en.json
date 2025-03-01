@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "Unwatermark",
+    "appName": "clear.photo",
     "tagline": "Remove watermarks from your images.",
     "getStarted": "Get started",
     "getStartedToday": "Get started today",
@@ -31,7 +31,7 @@
       "get6MonthsFree": "Get 6 months free",
       "submit": "Submit"
     },
-    "copyright": "Copyright © {{year}} TaxPal. All rights reserved.",
+    "copyright": "Copyright © {{year}} clear.photo. All rights reserved.",
     "language": {
       "en": "English",
       "es": "Español",
@@ -100,7 +100,7 @@
     "subtitle": "Our software is so simple that people can't help but fall in love with it. Simplicity is easy when you just skip tons of mission-critical features.",
     "testimonials": [
       {
-        "content": "TaxPal is so easy to use I can't help but wonder if it's really doing the things the government expects me to do.",
+        "content": "clear.photo is so easy to use I can't help but wonder if it's really doing the things the government expects me to do.",
         "author": {
           "name": "Sheryl Berge",
           "role": "CEO at Lynch LLC"
@@ -114,21 +114,21 @@
         }
       },
       {
-        "content": "The best part about TaxPal is every time I pay my employees, my bank balance doesn't go down like it used to. Looking forward to spending this extra cash when I figure out why my card is being declined.",
+        "content": "The best part about clear.photo is every time I pay my employees, my bank balance doesn't go down like it used to. Looking forward to spending this extra cash when I figure out why my card is being declined.",
         "author": {
           "name": "Leland Kiehn",
           "role": "Founder of Kiehn and Sons"
         }
       },
       {
-        "content": "There are so many things I had to do with my old software that I just don't do at all with TaxPal. Suspicious but I can't say I don't love it.",
+        "content": "There are so many things I had to do with my old software that I just don't do at all with clear.photo. Suspicious but I can't say I don't love it.",
         "author": {
           "name": "Erin Powlowski",
           "role": "COO at Armstrong Inc"
         }
       },
       {
-        "content": "I used to have to remit tax to the EU and with TaxPal I somehow don't have to do that anymore. Nervous to travel there now though.",
+        "content": "I used to have to remit tax to the EU and with clear.photo I somehow don't have to do that anymore. Nervous to travel there now though.",
         "author": {
           "name": "Peter Renolds",
           "role": "Founder of West Inc"
@@ -192,7 +192,7 @@
     "subtitle": "If you can't find what you're looking for, email our support team and if you're lucky someone will get back to you.",
     "questions": [
       {
-        "question": "Does TaxPal handle VAT?",
+        "question": "Does clear.photo handle VAT?",
         "answer": "Well no, but if you move your company offshore you can probably ignore it."
       },
       {
@@ -200,19 +200,19 @@
         "answer": "Absolutely, we are happy to take your money in all forms."
       },
       {
-        "question": "How do I apply for a job at TaxPal?",
+        "question": "How do I apply for a job at clear.photo?",
         "answer": "We only hire our customers, so subscribe for a minimum of 6 months and then let's talk."
       },
       {
         "question": "What was that testimonial about tax fraud all about?",
-        "answer": "TaxPal is just a software application, ultimately your books are your responsibility."
+        "answer": "clear.photo is just a software application, ultimately your books are your responsibility."
       },
       {
         "question": "TaxPal sounds horrible but why do I still feel compelled to purchase?",
         "answer": "This is the power of excellent visual design. You just can't resist it, no matter how poorly it actually functions."
       },
       {
-        "question": "I found other companies called TaxPal, are you sure you can use this name?",
+        "question": "I found other companies called clear.photo, are you sure you can use this name?",
         "answer": "Honestly not sure at all. We haven't actually incorporated or anything, we just thought it sounded cool and made this website."
       },
       {
@@ -315,8 +315,8 @@
   },
   "accessibility": {
     "toggleNavigation": "Toggle Navigation",
-    "taxPalOnX": "TaxPal on X",
-    "taxPalOnGitHub": "TaxPal on GitHub",
+    "taxPalOnX": "clear.photo on X",
+    "taxPalOnGitHub": "clear.photo on GitHub",
     "featuresForRunningYourBooks": "Features for running your books",
     "featuresForSimplifyingEverydayBusinessTasks": "Features for simplifying everyday business tasks",
     "whatOurCustomersAreSaying": "What our customers are saying",
@@ -330,7 +330,7 @@
     }
   },
   "metadata": {
-    "title": "TaxPal - Accounting made simple for small businesses",
+    "title": "clear.photo - Accounting made simple for small businesses",
     "description": "Most bookkeeping software is accurate, but hard to use. We make the opposite trade-off, and hope you don't get audited."
   }
 } 

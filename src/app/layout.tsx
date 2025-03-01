@@ -7,11 +7,11 @@ import { I18nProvider } from '@/components/I18nProvider'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - TaxPal',
-    default: 'TaxPal - Accounting made simple for small businesses',
+    template: '%s - clear.photo',
+    default: 'clear.photo - Remove watermarks from your images',
   },
   description:
-    "Most bookkeeping software is accurate, but hard to use. We make the opposite trade-off, and hope you don't get audited.",
+    "Remove watermarks from your images with our AI-powered tool.",
 }
 
 const inter = Inter({

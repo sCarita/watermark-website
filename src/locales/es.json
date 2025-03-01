@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "Unwatermark",
+    "appName": "clear.photo",
     "navigation": {
       "features": "Características",
       "testimonials": "Testimonios",
@@ -15,7 +15,7 @@
       "get6MonthsFree": "Obtén 6 meses gratis",
       "submit": "Enviar"
     },
-    "copyright": "Copyright © {{year}} TaxPal. Todos los derechos reservados.",
+    "copyright": "Copyright © {{year}} clear.photo. Todos los derechos reservados.",
     "language": {
       "en": "English",
       "es": "Español",
