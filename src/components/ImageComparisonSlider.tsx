@@ -115,13 +115,16 @@ const ImageComparisonSlider: React.FC<ImageComparisonSliderProps> = ({
         src={processedImage}
         alt="Processed"
         className="absolute left-0 top-0 h-full w-full object-cover"
-        style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
+        style={{ 
+          clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
+          transition: isDragging ? 'none' : 'clip-path 0.1s ease-out'
+        }}
         draggable="false"
       />
 
       {/* Slider line */}
       <div
-        className="absolute bottom-0 top-0 transition-all duration-200"
+        className="absolute bottom-0 top-0"
         style={{
           left: `${sliderPosition}%`,
           width: isDragging || isHovering ? '2px' : '1px',
@@ -130,23 +133,25 @@ const ImageComparisonSlider: React.FC<ImageComparisonSliderProps> = ({
             : 'rgba(255,255,255,0.5)',
           boxShadow: isDragging || isHovering ? '0 0 8px rgba(0,0,0,0.3)' : 'none',
           zIndex: 5,
+          transition: isDragging ? 'none' : 'all 0.1s ease-out'
         }}
       />
 
       {/* Slider handle */}
       <div 
-        className="absolute transition-all duration-200"
+        className="absolute"
         style={{
           left: `${sliderPosition}%`,
           top: '50%',
           transform: 'translate(-50%, -50%)',
           zIndex: 15,
           opacity: isDragging || isHovering ? 1 : 0.7,
+          transition: isDragging ? 'none' : 'all 0.1s ease-out'
         }}
       >
         <div className="relative">
           <div 
-            className="absolute rounded-full transition-all duration-200"
+            className="absolute rounded-full"
             style={{
               width: isDragging || isHovering ? '44px' : '36px',
               height: isDragging || isHovering ? '44px' : '36px',
@@ -156,24 +161,27 @@ const ImageComparisonSlider: React.FC<ImageComparisonSliderProps> = ({
               boxShadow: isDragging || isHovering 
                 ? '0 0 20px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(255,255,255,0.3)' 
                 : '0 0 10px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(255,255,255,0.2)',
+              transition: isDragging ? 'none' : 'all 0.1s ease-out'
             }}
           />
           <div 
-            className="absolute rounded-full bg-white transition-all duration-200"
+            className="absolute rounded-full bg-white"
             style={{
               width: isDragging || isHovering ? '18px' : '14px',
               height: isDragging || isHovering ? '18px' : '14px',
               transform: 'translate(-50%, -50%)',
               boxShadow: '0 0 10px rgba(0,0,0,0.2)',
+              transition: isDragging ? 'none' : 'all 0.1s ease-out'
             }}
           />
           
           {/* Arrows */}
           <div 
-            className="absolute transition-all duration-200"
+            className="absolute"
             style={{
               opacity: isDragging || isHovering ? 1 : 0,
               transform: 'translate(-50%, -50%)',
+              transition: isDragging ? 'none' : 'all 0.1s ease-out'
             }}
           >
             <div className="flex items-center gap-[30px]">
