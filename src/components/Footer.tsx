@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import { Logo } from '@/components/Logo'
@@ -25,11 +26,13 @@ export function Footer() {
   return (
     <footer className="bg-slate-50">
       <Container>
-        <div className="py-16">
+        <div className="py-12 md:py-16">
           <Link href={baseUrl}>
             <Logo className="mx-auto h-10 w-auto" />
           </Link>
-          <nav className="mt-10 text-sm" aria-label="quick links">
+          
+          {/* Desktop navigation */}
+          <nav className="mt-10 hidden md:block text-sm" aria-label="quick links">
             <div className="-my-1 flex justify-center gap-x-6">
               <NavLink href={isNotHomePage ? `${baseUrl}#features` : '#features'}>{t('common.navigation.features')}</NavLink>
               <NavLink href={isNotHomePage ? `${baseUrl}#testimonials` : '#testimonials'}>{t('common.navigation.testimonials')}</NavLink>
@@ -38,8 +41,27 @@ export function Footer() {
               <NavLink href={`${langPrefix}/privacy`}>{t('common.navigation.privacy')}</NavLink>
             </div>
           </nav>
+          
+          {/* Mobile navigation - two rows */}
+          <nav className="mt-8 md:hidden text-sm" aria-label="mobile quick links">
+            <div className="flex flex-col space-y-4">
+              <div className="flex justify-center gap-x-5">
+                <NavLink href={isNotHomePage ? `${baseUrl}#features` : '#features'}>{t('common.navigation.features')}</NavLink>
+                <NavLink href={isNotHomePage ? `${baseUrl}#testimonials` : '#testimonials'}>{t('common.navigation.testimonials')}</NavLink>
+                <NavLink href={isNotHomePage ? `${baseUrl}#pricing` : '#pricing'}>{t('common.navigation.pricing')}</NavLink>
+              </div>
+              <div className="flex justify-center gap-x-5">
+                <NavLink href={`${langPrefix}/terms`}>{t('common.navigation.terms')}</NavLink>
+                <NavLink href={`${langPrefix}/privacy`}>{t('common.navigation.privacy')}</NavLink>
+              </div>
+            </div>
+          </nav>
         </div>
-        <div className="flex flex-col items-center border-t border-slate-400/10 py-10 sm:flex-row-reverse sm:justify-between">
+        
+        <div className={clsx(
+          "flex flex-col items-center border-t border-slate-400/10 py-10",
+          "sm:flex-row-reverse sm:justify-between"
+        )}>
           <div className="flex gap-x-6">
             <Link href="https://twitter.com/clearphotoai" className="group" aria-label={t('accessibility.taxPalOnX')}>
               <svg
