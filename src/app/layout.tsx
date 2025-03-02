@@ -28,12 +28,17 @@ const lexend = Lexend({
 
 export default function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode
+  params: { lang?: string }
 }) {
+  // Default language is English
+  const lang = params.lang || 'en'
+  
   return (
     <html
-      lang="en"
+      lang={lang}
       className={clsx(
         'h-full scroll-smooth bg-white antialiased',
         inter.variable,

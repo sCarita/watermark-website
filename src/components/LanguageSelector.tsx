@@ -5,6 +5,7 @@ import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import clsx from 'clsx'
 import { useI18n } from '@/hooks/useI18n'
+import { usePathname, useRouter } from 'next/navigation'
 
 interface LanguageSelectorProps {
   variant?: 'light' | 'dark'
@@ -84,6 +85,8 @@ const FranceFlag = () => (
 
 export function LanguageSelector({ variant = 'light' }: LanguageSelectorProps) {
   const { t, i18n, changeLanguage } = useI18n()
+  const router = useRouter()
+  const pathname = usePathname()
   
   const languages = [
     { code: 'en', name: t('common.language.en'), flag: EnglishFlag },
@@ -94,7 +97,50 @@ export function LanguageSelector({ variant = 'light' }: LanguageSelectorProps) {
   const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0]
   
   const handleLanguageChange = (languageCode: string) => {
+    // First change the language in i18next
     changeLanguage(languageCode)
+    
+    // Set a cookie for the middleware
+    document.cookie = `NEXT_LOCALE=${languageCode}; path=/; max-age=31536000`
+    
+    // Check if the current pathname is a locale root
+    const isLocaleRoot = /^\/[a-z]{2}$/.test(pathname || '')
+    
+    // If we're at a locale root (like /fr or /es), just switch to the new locale root
+    if (isLocaleRoot) {
+      if (languageCode === 'en') {
+        router.push('/')
+      } else {
+        router.push(`/${languageCode}`)
+      }
+      return
+    }
+    
+    // For other paths, handle as before
+    const currentLocale = i18n.language || 'en'
+    
+    // If we're on the homepage
+    if (pathname === '/') {
+      if (languageCode === 'en') {
+        router.push('/')
+      } else {
+        router.push(`/${languageCode}`)
+      }
+      return
+    }
+    
+    // For other pages, replace the locale segment
+    if (pathname?.startsWith(`/${currentLocale}/`)) {
+      const newPath = pathname.replace(`/${currentLocale}/`, `/${languageCode}/`)
+      router.push(newPath)
+    } else if (pathname?.startsWith('/')) {
+      // If there's no locale in the path
+      if (languageCode === 'en') {
+        router.push(pathname)
+      } else {
+        router.push(`/${languageCode}${pathname}`)
+      }
+    }
   }
   
   return (
