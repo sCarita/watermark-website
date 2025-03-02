@@ -113,7 +113,6 @@ export function Header() {
             </Link>
             <div className="hidden md:flex md:gap-x-6">
               <NavLink href="#features">{t('common.navigation.features')}</NavLink>
-              <NavLink href="#testimonials">{t('common.navigation.testimonials')}</NavLink>
               <NavLink href="#pricing">{t('common.navigation.pricing')}</NavLink>
             </div>
           </div>
