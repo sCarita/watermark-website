@@ -6,7 +6,7 @@ export function Logo(props: React.ComponentPropsWithoutRef<'svg'>) {
       <svg 
         aria-hidden="true" 
         viewBox="0 0 40 40" 
-        className="h-10 w-10 mr-2"
+        className="h-10 w-10 mr-4"
         {...props}
       >
         <path
