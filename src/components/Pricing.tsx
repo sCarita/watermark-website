@@ -13,6 +13,11 @@ function SwirlyDoodle(props: React.ComponentPropsWithoutRef<'svg'>) {
       aria-hidden="true"
       viewBox="0 0 281 40"
       preserveAspectRatio="none"
+      className={clsx(
+        'absolute top-1/2 left-0 h-[0.8em] w-full fill-blue-400',
+        'max-w-[80%] sm:max-w-[90%] md:max-w-full',
+        props.className
+      )}
       {...props}
     >
       <path
@@ -78,16 +83,16 @@ function Plan({
         featured ? 'order-first bg-blue-600 py-8 lg:order-none' : 'lg:py-8',
       )}
     >
-      <h3 className="mt-5 font-display text-lg text-white">{name}</h3>
+      <h3 className="mt-5 font-display text-base sm:text-lg text-white">{name}</h3>
       <p
         className={clsx(
-          'mt-2 text-base',
+          'mt-2 text-sm sm:text-base',
           featured ? 'text-white' : 'text-slate-400',
         )}
       >
         {description}
       </p>
-      <p className="order-first font-display text-5xl font-light tracking-tight text-white">
+      <p className="order-first font-display text-4xl sm:text-5xl font-light tracking-tight text-white">
         {price}
       </p>
       <ul
@@ -128,13 +133,13 @@ export function Pricing() {
     >
       <Container>
         <div className="md:text-center">
-          <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl tracking-tight text-white">
             <span className="relative whitespace-nowrap">
-              <SwirlyDoodle className="absolute top-1/2 left-0 h-[1em] w-full fill-blue-400" />
+              <SwirlyDoodle />
               <span className="relative">{t('pricing.title')}</span>
             </span>
           </h2>
-          <p className="mt-4 text-lg text-slate-400">
+          <p className="mt-4 text-base sm:text-lg text-slate-400">
             {t('pricing.subtitle')}
           </p>
           <div className="mt-4 flex justify-center">
