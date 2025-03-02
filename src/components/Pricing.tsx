@@ -14,7 +14,7 @@ function SwirlyDoodle(props: React.ComponentPropsWithoutRef<'svg'>) {
       viewBox="0 0 281 40"
       preserveAspectRatio="none"
       className={clsx(
-        'absolute top-1/2 left-0 h-[0.8em] w-full fill-blue-400',
+        'absolute top-1/2 left-0 h-[0.8em] w-full fill-blue-400 animate-wave',
         'max-w-[80%] sm:max-w-[90%] md:max-w-full',
         props.className
       )}

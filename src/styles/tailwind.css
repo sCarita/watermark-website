@@ -38,3 +38,16 @@
 
   --container-2xl: 40rem;
 }
+
+@keyframes waveMotion {
+  0%, 100% {
+    transform: translateX(0%) scaleX(1.05);
+  }
+  50% {
+    transform: translateX(4%) scaleX(0.95);
+  }
+}
+
+.wave-animation {
+  animation: waveMotion 4s ease-in-out infinite;
+}
