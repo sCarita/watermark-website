@@ -8,38 +8,13 @@ import clsx from 'clsx'
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background-features.jpg'
 import screenshotExpenses from '@/images/screenshots/expenses.png'
-import screenshotPayroll from '@/images/screenshots/payroll.png'
+import Demo0 from '@/images/screenshots/demo_0.png'
 import screenshotReporting from '@/images/screenshots/reporting.png'
 import screenshotVatReturns from '@/images/screenshots/vat-returns.png'
 import { useI18n } from '@/hooks/useI18n'
-import { LanguageSelector } from '@/components/LanguageSelector'
 
 export function PrimaryFeatures() {
   const { t } = useI18n()
-  
-  const features = [
-    {
-      title: t('primaryFeatures.features.0.title'),
-      description: t('primaryFeatures.features.0.description'),
-      image: screenshotPayroll,
-    },
-    {
-      title: t('primaryFeatures.features.1.title'),
-      description: t('primaryFeatures.features.1.description'),
-      image: screenshotExpenses,
-    },
-    {
-      title: t('primaryFeatures.features.2.title'),
-      description: t('primaryFeatures.features.2.description'),
-      image: screenshotVatReturns,
-    },
-    {
-      title: t('primaryFeatures.features.3.title'),
-      description: t('primaryFeatures.features.3.description'),
-      image: screenshotReporting,
-    },
-  ]
-
   let [tabOrientation, setTabOrientation] = useState<'horizontal' | 'vertical'>(
     'horizontal',
   )
@@ -59,6 +34,30 @@ export function PrimaryFeatures() {
     }
   }, [])
 
+  // Get features from translations
+  const features = [
+    {
+      title: t('primaryFeatures.features.0.title'),
+      description: t('primaryFeatures.features.0.description'),
+      image: Demo0,
+    },
+    {
+      title: t('primaryFeatures.features.1.title'),
+      description: t('primaryFeatures.features.1.description'),
+      image: screenshotExpenses,
+    },
+    {
+      title: t('primaryFeatures.features.2.title'),
+      description: t('primaryFeatures.features.2.description'),
+      image: screenshotVatReturns,
+    },
+    {
+      title: t('primaryFeatures.features.3.title'),
+      description: t('primaryFeatures.features.3.description'),
+      image: screenshotReporting,
+    },
+  ]
+
   return (
     <section
       id="features"
@@ -66,7 +65,7 @@ export function PrimaryFeatures() {
       className="relative overflow-hidden bg-blue-600 pt-20 pb-28 sm:py-32"
     >
       <Image
-        className="absolute top-1/2 left-1/2 max-w-none translate-x-[-44%] translate-y-[-42%]"
+        className="absolute top-1/2 left-1/2 max-w-none translate-x-[-44%] translate-y-[-42%] opacity-20"
         src={backgroundImage}
         alt=""
         width={2245}
@@ -81,9 +80,6 @@ export function PrimaryFeatures() {
           <p className="mt-6 text-lg tracking-tight text-blue-100">
             {t('primaryFeatures.subtitle')}
           </p>
-          <div className="mt-4 flex justify-center">
-            <LanguageSelector variant="dark" />
-          </div>
         </div>
         <TabGroup
           className="mt-16 grid grid-cols-1 items-center gap-y-2 pt-10 sm:gap-y-6 md:mt-20 lg:grid-cols-12 lg:pt-0"
@@ -134,19 +130,26 @@ export function PrimaryFeatures() {
                 {features.map((feature) => (
                   <TabPanel key={feature.title} unmount={false}>
                     <div className="relative sm:px-6 lg:hidden">
-                      <div className="absolute -inset-x-4 top-[-6.5rem] bottom-[-4.25rem] bg-white/10 ring-1 ring-white/10 ring-inset sm:inset-x-0 sm:rounded-t-xl" />
+                      <div className="absolute -inset-x-4 top-[-6.5rem] bottom-[-4.25rem] ring-1 ring-white/10 ring-inset sm:inset-x-0 sm:rounded-t-xl" />
                       <p className="relative mx-auto max-w-2xl text-base text-white sm:text-center">
                         {feature.description}
                       </p>
                     </div>
-                    <div className="mt-10 w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
-                      <Image
-                        className="w-full"
-                        src={feature.image}
-                        alt=""
-                        priority
-                        sizes="(min-width: 1024px) 67.8125rem, (min-width: 640px) 100vw, 45rem"
-                      />
+                    <div className="mt-10 overflow-hidden rounded-xl bg-transparent shadow-xl shadow-blue-900/20 mx-auto max-w-full">
+                      <div className="relative w-full h-full flex justify-center items-center">
+                        <Image
+                          className="object-contain"
+                          src={feature.image}
+                          alt={feature.title}
+                          priority
+                          width={800}
+                          height={600}
+                          style={{
+                            maxWidth: '100%',
+                            height: 'auto',
+                          }}
+                        />
+                      </div>
                     </div>
                   </TabPanel>
                 ))}

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 
 interface ImageComparisonSliderProps {
   originalImage: string
@@ -11,79 +11,182 @@ const ImageComparisonSlider: React.FC<ImageComparisonSliderProps> = ({
   originalImage,
   processedImage,
 }) => {
-  const sliderRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const [sliderPosition, setSliderPosition] = useState(50)
+  const [isDragging, setIsDragging] = useState(false)
+  const [isHovering, setIsHovering] = useState(false)
 
-  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSliderPosition(Number(e.target.value))
+  // Handle direct click and drag functionality
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return
+    
+    setIsDragging(true)
+    
+    // Calculate slider position based on click position
+    const rect = containerRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const newPosition = (x / rect.width) * 100
+    setSliderPosition(Math.min(Math.max(newPosition, 0), 100))
+    
+    // Prevent default behavior to avoid text selection
+    e.preventDefault()
   }
+  
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!containerRef.current || !e.touches[0]) return
+    
+    setIsDragging(true)
+    
+    // Calculate slider position based on touch position
+    const rect = containerRef.current.getBoundingClientRect()
+    const x = e.touches[0].clientX - rect.left
+    const newPosition = (x / rect.width) * 100
+    setSliderPosition(Math.min(Math.max(newPosition, 0), 100))
+    
+    // Prevent default behavior to avoid scrolling
+    e.preventDefault()
+  }
+  
+  const handleMouseMove = (e: MouseEvent) => {
+    if (!isDragging || !containerRef.current) return
+    
+    // Calculate slider position based on mouse position
+    const rect = containerRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const newPosition = (x / rect.width) * 100
+    setSliderPosition(Math.min(Math.max(newPosition, 0), 100))
+  }
+  
+  const handleTouchMove = (e: TouchEvent) => {
+    if (!isDragging || !containerRef.current || !e.touches[0]) return
+    
+    // Calculate slider position based on touch position
+    const rect = containerRef.current.getBoundingClientRect()
+    const x = e.touches[0].clientX - rect.left
+    const newPosition = (x / rect.width) * 100
+    setSliderPosition(Math.min(Math.max(newPosition, 0), 100))
+  }
+  
+  const handleMouseUp = () => {
+    setIsDragging(false)
+  }
+  
+  // Add and remove event listeners
+  useEffect(() => {
+    document.addEventListener('mousemove', handleMouseMove)
+    document.addEventListener('mouseup', handleMouseUp)
+    document.addEventListener('touchmove', handleTouchMove)
+    document.addEventListener('touchend', handleMouseUp)
+    
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('mouseup', handleMouseUp)
+      document.removeEventListener('touchmove', handleTouchMove)
+      document.removeEventListener('touchend', handleMouseUp)
+    }
+  }, [isDragging])
 
   return (
-    <div className="relative h-[500px] w-full overflow-hidden">
+    <div 
+      ref={containerRef}
+      className="relative h-[500px] w-full overflow-hidden rounded-2xl cursor-grab active:cursor-grabbing"
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+      onMouseDown={handleMouseDown}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={() => setTimeout(() => setIsHovering(false), 3000)}
+    >
+      {/* Labels */}
+      <div className="absolute top-4 left-4 z-20 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-white text-sm font-medium transition-opacity duration-300" style={{ opacity: isHovering ? 0.9 : 0 }}>
+        Before
+      </div>
+      <div className="absolute top-4 right-4 z-20 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-white text-sm font-medium transition-opacity duration-300" style={{ opacity: isHovering ? 0.9 : 0 }}>
+        After
+      </div>
+
+      {/* Images */}
       <img
         src={originalImage}
         alt="Original"
         className="absolute left-0 top-0 h-full w-full object-cover"
+        draggable="false"
       />
       <img
         src={processedImage}
         alt="Processed"
         className="absolute left-0 top-0 h-full w-full object-cover"
         style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
+        draggable="false"
       />
-      <input
-        type="range"
-        min="0"
-        max="100"
-        step="0.5"
-        value={sliderPosition}
-        onChange={handleSliderChange}
-        className="absolute bottom-0 left-0 h-full w-full appearance-none"
-        style={{ zIndex: 10 }}
-      />
+
+      {/* Slider line */}
       <div
-        className="absolute bottom-0 top-0"
+        className="absolute bottom-0 top-0 transition-all duration-200"
         style={{
           left: `${sliderPosition}%`,
-          width: '0px',
-          borderLeft: '1px dashed white',
+          width: isDragging || isHovering ? '2px' : '1px',
+          background: isDragging || isHovering 
+            ? 'linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.7))' 
+            : 'rgba(255,255,255,0.5)',
+          boxShadow: isDragging || isHovering ? '0 0 8px rgba(0,0,0,0.3)' : 'none',
           zIndex: 5,
         }}
       />
 
-      <style jsx>{`
-        input[type='range'] {
-          -webkit-appearance: none;
-          width: calc(100% + 30px);
-          height: 100%;
-          background: transparent;
-          left: -15px;
-        }
-
-        input[type='range']::-webkit-slider-thumb {
-          -webkit-appearance: none;
-          appearance: none;
-          width: 15px;
-          height: 30px;
-          background: #eee;
-          border-radius: 3px;
-          cursor: grab;
-          position: relative;
-          top: 50%;
-          transform: translateY(-50%);
-        }
-
-        input[type='range']::-moz-range-thumb {
-          width: 15px;
-          height: 30px;
-          background: #eee;
-          border-radius: 3px;
-          cursor: grab;
-          position: relative;
-          top: 50%;
-          transform: translateY(-50%);
-        }
-      `}</style>
+      {/* Slider handle */}
+      <div 
+        className="absolute transition-all duration-200"
+        style={{
+          left: `${sliderPosition}%`,
+          top: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: 15,
+          opacity: isDragging || isHovering ? 1 : 0.7,
+        }}
+      >
+        <div className="relative">
+          <div 
+            className="absolute rounded-full transition-all duration-200"
+            style={{
+              width: isDragging || isHovering ? '44px' : '36px',
+              height: isDragging || isHovering ? '44px' : '36px',
+              background: 'rgba(255,255,255,0.15)',
+              backdropFilter: 'blur(8px)',
+              transform: 'translate(-50%, -50%)',
+              boxShadow: isDragging || isHovering 
+                ? '0 0 20px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(255,255,255,0.3)' 
+                : '0 0 10px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(255,255,255,0.2)',
+            }}
+          />
+          <div 
+            className="absolute rounded-full bg-white transition-all duration-200"
+            style={{
+              width: isDragging || isHovering ? '18px' : '14px',
+              height: isDragging || isHovering ? '18px' : '14px',
+              transform: 'translate(-50%, -50%)',
+              boxShadow: '0 0 10px rgba(0,0,0,0.2)',
+            }}
+          />
+          
+          {/* Arrows */}
+          <div 
+            className="absolute transition-all duration-200"
+            style={{
+              opacity: isDragging || isHovering ? 1 : 0,
+              transform: 'translate(-50%, -50%)',
+            }}
+          >
+            <div className="flex items-center gap-[30px]">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

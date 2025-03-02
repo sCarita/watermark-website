@@ -4,6 +4,9 @@ import { Container } from './Container'
 import { FadeIn } from './FadeIn'
 import ImageComparisonSlider from './ImageComparisonSlider'
 import { useI18n } from '@/hooks/useI18n'
+// Import your local images
+import originalImage from '@/images/screenshots/original.png'
+import processedImage from '@/images/screenshots/processed.jpg'
 
 const Showcase = () => {
   const { t } = useI18n()
@@ -24,8 +27,8 @@ const Showcase = () => {
             </p>
           </div>
           <ImageComparisonSlider
-            originalImage="https://images.unsplash.com/photo-1738193026574-cfbcccbeb052?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            processedImage="https://images.unsplash.com/photo-1740094714220-1b0c181be46d?q=80&w=2976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            originalImage={processedImage.src}
+            processedImage={originalImage.src}
           />
         </FadeIn>
       </Container>
