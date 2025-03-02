@@ -1,7 +1,7 @@
 {
   "common": {
     "appName": "clear.photo",
-    "tagline": "Remove watermarks from your images.",
+    "tagline": "Remove watermarks from your images with clear.photo.",
     "getStarted": "Get started",
     "getStartedToday": "Get started today",
     "signIn": "Sign in",
@@ -40,102 +40,102 @@
     }
   },
   "hero": {
-    "title": "Remove watermarks from your images.",
-    "subtitle": "Remove watermarks from your images with our AI-powered tool."
+    "title": "Remove watermarks from your images automatically with AI.",
+    "subtitle": "clear.photo is the fastest, cheapest, and most advanced watermark remover you’ll ever need."
   },
   "showcase": {
     "title": "Check out the results",
-    "subtitle": "We have results like no other."
+    "subtitle": "Our AI does the heavy lifting. Seamlessly remove text, logos, or any unwanted overlay from your pictures."
   },
   "primaryFeatures": {
-    "title": "Everything you need to run your books.",
-    "subtitle": "Well everything you need if you aren't that picky about minor details like tax compliance.",
+    "title": "The features your business needs to eliminate watermarks for good.",
+    "subtitle": "Whether you’re a photographer or a social media manager, let our AI handle the cleanup so you can focus on creativity.",
     "features": [
       {
-        "title": "Payroll",
-        "description": "Keep track of everyone's salaries and whether or not they've been paid. Direct deposit not supported."
+        "title": "Automatic Watermark Removal",
+        "description": "With our advanced AI, wipe off watermarks instantly. Just upload your file, and let clear.photo handle the rest."
       },
       {
-        "title": "Claim expenses",
-        "description": "All of your receipts organized into one place, as long as you don't mind typing in the data by hand."
+        "title": "Manual/Guided Erase",
+        "description": "For tricky overlays, our guided removal tool helps you remove watermarks precisely—perfect for delicate logos."
       },
       {
-        "title": "VAT handling",
-        "description": "We only sell our software to companies who don't deal with VAT at all, so technically we do all the VAT stuff they need."
+        "title": "Object Removal",
+        "description": "Got extra elements cluttering your photo? Delete logos, text, or unwanted objects for a flawless finish."
       },
       {
-        "title": "Reporting",
-        "description": "Easily export your data into an Excel spreadsheet where you can do whatever the hell you want with it."
+        "title": "API Integration",
+        "description": "Integrate our watermark remove solution into your workflow. Bulk removal, e-commerce listings, or social media campaigns—our API has you covered."
       }
     ]
   },
   "secondaryFeatures": {
-    "title": "Simplify everyday business tasks.",
-    "subtitle": "Because you'd probably be a little confused if we suggested you complicate your everyday business tasks instead.",
+    "title": "Simplify the process of removing watermarks and logos.",
+    "subtitle": "We believe in making your life easier, not harder. That’s why clear.photo helps you clean up images seamlessly.",
     "features": [
       {
-        "name": "Reporting",
-        "summary": "Stay on top of things with always up-to-date reporting features.",
-        "description": "We talked about reporting in the section above but we needed three items here, so mentioning it one more time for posterity."
+        "name": "High-Quality Results",
+        "summary": "Never lose clarity or detail.",
+        "description": "Our AI preserves the original photo’s resolution. Even when you clear watermark text or remove a logo, the outcome looks natural."
       },
       {
-        "name": "Inventory",
-        "summary": "Never lose track of what's in stock with accurate inventory tracking.",
-        "description": "We don't offer this as part of our software but that statement is inarguably true. Accurate inventory tracking would help you for sure."
+        "name": "Bulk Processing",
+        "summary": "Save time with automated batch removal.",
+        "description": "Managing multiple images? Our system handles large sets of photos in one go, so you can focus on creative tasks."
       },
       {
-        "name": "Contacts",
-        "summary": "Organize all of your contacts, service providers, and invoices in one place.",
-        "description": "This also isn't actually a feature, it's just some friendly advice. We definitely recommend that you do this, you'll feel really organized and professional."
+        "name": "Multi-Platform Access",
+        "summary": "Works on desktop, mobile, and via API.",
+        "description": "No matter where you are or what device you use, clear.photo is here. Speed, consistency, and convenience—right at your fingertips."
       }
     ]
   },
   "callToAction": {
     "title": "Get started today",
-    "subtitle": "It's time to take control of your books. Buy our software so you can feel like you're doing something productive.",
+    "subtitle": "Sign up for clear.photo and discover how easy it is to remove unwanted overlays. Reclaim your photos and keep your audience engaged with fresh visuals.",
     "button": "Get 6 months free"
   },
   "testimonials": {
-    "title": "Loved by businesses worldwide.",
-    "subtitle": "Our software is so simple that people can't help but fall in love with it. Simplicity is easy when you just skip tons of mission-critical features.",
+    "title": "Trusted by photographers, designers, and brands everywhere.",
+    "subtitle": "Our watermark remover has turned skeptics into believers. Read why people are raving about clear.photo.",
     "testimonials": [
       {
-        "content": "clear.photo is so easy to use I can't help but wonder if it's really doing the things the government expects me to do.",
+        "content": "clear.photo made removing Shutterstock watermarks a breeze. My marketing materials look so clean now!",
         "author": {
           "name": "Sheryl Berge",
           "role": "CEO at Lynch LLC"
         }
       },
       {
-        "content": "I'm trying to get a hold of someone in support, I'm in a lot of trouble right now and they are saying it has something to do with my books. Please get back to me right away.",
+        "content": "I needed to erase a logo from a picture for my website design. clear.photo worked like a charm, and the final result was flawless.",
         "author": {
           "name": "Amy Hahn",
           "role": "Director at Velocity Industries"
         }
       },
       {
-        "content": "The best part about clear.photo is every time I pay my employees, my bank balance doesn't go down like it used to. Looking forward to spending this extra cash when I figure out why my card is being declined.",
+        "content": "I can finally delete watermarks in bulk—something Photoshop alone couldn’t handle effectively. clear.photo is a time-saver.",
         "author": {
           "name": "Leland Kiehn",
           "role": "Founder of Kiehn and Sons"
         }
       },
       {
-        "content": "There are so many things I had to do with my old software that I just don't do at all with clear.photo. Suspicious but I can't say I don't love it.",
+        "content": "As a freelance photographer, I often see my original images watermarked by others. clear.photo makes it easy to get rid of them fast!",
         "author": {
           "name": "Erin Powlowski",
           "role": "COO at Armstrong Inc"
         }
       },
       {
-        "content": "I used to have to remit tax to the EU and with clear.photo I somehow don't have to do that anymore. Nervous to travel there now though.",
+        "content": "The best free watermark remover I’ve tried yet. Surprised by how well the AI reconstructs the background behind the text.",
         "author": {
           "name": "Peter Renolds",
           "role": "Founder of West Inc"
         }
       },
       {
-        "content": "This is the fourth email I've sent to your support team. I am literally being held in jail for tax fraud. Please answer your damn emails, this is important.",
+        "content": "We’ve integrated clear.photo’s API into our platform to automatically remove watermarks from photo submissions. Customers love the clean, professional look.",
         "author": {
           "name": "Amy Hahn",
           "role": "Director at Velocity Industries"
@@ -145,111 +145,108 @@
   },
   "pricing": {
     "title": "Simple pricing, for everyone.",
-    "subtitle": "It doesn't matter what size your business is, our software won't work well for you.",
+    "subtitle": "From casual users to enterprise-level clients, our watermark remover fits your needs and budget perfectly.",
     "plans": {
       "starter": {
         "name": "Starter",
         "price": "$9",
-        "description": "Good for anyone who is self-employed and just getting started.",
+        "description": "Perfect for individuals who occasionally need to remove watermarks from photos.",
         "features": [
-          "Send 10 quotes and invoices",
-          "Connect up to 2 bank accounts",
-          "Track up to 15 expenses per month",
-          "Manual payroll support",
-          "Export up to 3 reports"
+          "Remove up to 50 watermarks per month",
+          "Basic AI watermark detection",
+          "Email support",
+          "Access to manual/guided removal"
         ]
       },
       "smallBusiness": {
-        "name": "Small business",
+        "name": "Small Business",
         "price": "$15",
-        "description": "Perfect for small / medium sized businesses.",
+        "description": "Ideal for creators, freelancers, or small teams handling moderate image cleanup tasks.",
         "features": [
-          "Send 25 quotes and invoices",
-          "Connect up to 5 bank accounts",
-          "Track up to 50 expenses per month",
-          "Automated payroll support",
-          "Export up to 12 reports",
-          "Bulk reconcile transactions",
-          "Track in multiple currencies"
+          "Remove up to 200 watermarks per month",
+          "Full AI watermark detection with advanced object removal",
+          "Priority email support",
+          "Bulk processing (up to 20 images at once)",
+          "APIs for simple workflow integration"
         ]
       },
       "enterprise": {
         "name": "Enterprise",
         "price": "$39",
-        "description": "For even the biggest enterprise companies.",
+        "description": "Unlimited access for large organizations requiring high-volume watermark removal and custom solutions.",
         "features": [
-          "Send unlimited quotes and invoices",
-          "Connect up to 15 bank accounts",
-          "Track up to 200 expenses per month",
-          "Automated payroll support",
-          "Export up to 25 reports, including TPS"
+          "Unlimited watermark removal",
+          "Advanced AI for complex logos and text",
+          "Dedicated account manager and 24/7 support",
+          "Full API access with custom endpoint solutions",
+          "Batch processing with no cap on images"
         ]
       }
     }
   },
   "faqs": {
     "title": "Frequently asked questions",
-    "subtitle": "If you can't find what you're looking for, email our support team and if you're lucky someone will get back to you.",
+    "subtitle": "Looking for more details about how to remove a logo from a picture or how to clear watermarks effectively? We have answers.",
     "questions": [
       {
-        "question": "Does clear.photo handle VAT?",
-        "answer": "Well no, but if you move your company offshore you can probably ignore it."
+        "question": "How does your watermark remover actually work?",
+        "answer": "Our AI analyzes the region around the watermark, reconstructs the background, and seamlessly cleans up the image."
       },
       {
-        "question": "Can I pay for my subscription via purchase order?",
-        "answer": "Absolutely, we are happy to take your money in all forms."
+        "question": "Will the final image quality be affected?",
+        "answer": "Our technology preserves resolution and color accuracy. In most cases, you won’t notice any difference besides the watermark disappearing."
       },
       {
-        "question": "How do I apply for a job at clear.photo?",
-        "answer": "We only hire our customers, so subscribe for a minimum of 6 months and then let's talk."
+        "question": "Do you support bulk or batch removal?",
+        "answer": "Absolutely. Our higher-tier plans offer bulk removal, and the Enterprise plan even removes unlimited watermarks with no daily cap."
       },
       {
-        "question": "What was that testimonial about tax fraud all about?",
-        "answer": "clear.photo is just a software application, ultimately your books are your responsibility."
+        "question": "Can I remove Shutterstock or Getty Images watermarks?",
+        "answer": "Yes. clear.photo can eliminate any watermark, but please ensure you have the legal right to remove a watermark before doing so."
       },
       {
-        "question": "TaxPal sounds horrible but why do I still feel compelled to purchase?",
-        "answer": "This is the power of excellent visual design. You just can't resist it, no matter how poorly it actually functions."
+        "question": "Is there a mobile app to remove watermarks?",
+        "answer": "Yes! clear.photo works great on mobile browsers and we’re developing a dedicated app to help you remove a watermark on the go."
       },
       {
-        "question": "I found other companies called clear.photo, are you sure you can use this name?",
-        "answer": "Honestly not sure at all. We haven't actually incorporated or anything, we just thought it sounded cool and made this website."
+        "question": "How accurate is the manual removal?",
+        "answer": "Manual removal provides precise control. You can highlight exactly which parts of the watermark need erasing, especially for complex overlays."
       },
       {
-        "question": "How do you generate reports?",
-        "answer": "You just tell us what data you need a report for, and we get our kids to create beautiful charts for you using only the finest crayons."
+        "question": "How do I integrate the API for enterprise workflows?",
+        "answer": "Our Enterprise plan includes full API documentation. We’ll guide you through authentication, request parameters, and bulk endpoint usage."
       },
       {
-        "question": "Can we expect more inventory features?",
-        "answer": "In life it's really better to never expect anything at all."
+        "question": "Is there a free trial?",
+        "answer": "Yes, new accounts get free tokens to remove or clean unwanted text from images. Sign up to get started instantly."
       },
       {
-        "question": "I lost my password, how do I get into my account?",
-        "answer": "Send us an email and we will send you a copy of our latest password spreadsheet so you can find your information."
+        "question": "How can I remove a logo from a picture if it’s large?",
+        "answer": "Our advanced AI can handle logos of all sizes, whether it’s a subtle watermark or a big overlay. Just upload your file and choose the removal mode."
       }
     ]
   },
   "auth": {
     "login": {
-      "title": "Sign in to your account",
-      "subtitle": "Don't have an account? Sign up for a free trial.",
+      "title": "Sign in to clear.photo",
+      "subtitle": "Don’t have an account? Sign up for a free trial and eliminate watermarks today.",
       "emailLabel": "Email address",
       "passwordLabel": "Password",
       "submitButton": "Sign in"
     },
     "register": {
       "title": "Get started for free",
-      "subtitle": "Already registered? Sign in to your account.",
+      "subtitle": "Already registered? Sign in to your account now.",
       "firstNameLabel": "First name",
       "lastNameLabel": "Last name",
       "emailLabel": "Email address",
       "passwordLabel": "Password",
       "referralLabel": "How did you hear about us?",
       "referralOptions": [
-        "AltaVista search",
-        "Super Bowl commercial",
-        "Our route 34 city bus ad",
-        "The \"Never Use This\" podcast"
+        "Google search",
+        "Friend or colleague",
+        "Social media advertisement",
+        "Podcast mention"
       ],
       "submitButton": "Sign up"
     }
@@ -263,7 +260,7 @@
     "processed": "Processed",
     "urlPlaceholder": "Enter image URL (https://example.com/image.jpg)",
     "supports": "Supports",
-    "resolution": "(upto resolution 5,000 x 5,000 px)",
+    "resolution": "(up to resolution 5,000 x 5,000 px)",
     "termsAgreement": "By uploading an image or URL you agree to our",
     "termsOfUse": "Terms of Use",
     "privacyPolicy": "Privacy Policy",
@@ -279,7 +276,7 @@
       "removeWatermark": "Remove Watermark"
     },
     "previewError": {
-      "message": "Cannot preview this image. The url is invalid or it may due due to CORS restrictions. If this is the case we'll still try to process it.",
+      "message": "Cannot preview this image. The URL may be invalid or CORS restrictions may apply. We'll still attempt to process it if possible.",
       "suggestion": "If processing fails, try downloading the image and uploading it directly."
     },
     "errors": {
@@ -293,7 +290,7 @@
       "tryDirectUpload": "Please try downloading the image and uploading it directly.",
       "noImage": "No image provided",
       "apiError": "API error",
-      "processingFailed": "Processing failed or returned unexpected format"
+      "processingFailed": "Processing failed or returned an unexpected format"
     },
     "removeWatermark": "Remove Watermark",
     "dragAndDrop": "Drag & drop or browse",
@@ -303,7 +300,7 @@
     "termsLink": "Terms of Use",
     "privacyLink": "Privacy Policy",
     "corsError": {
-      "title": "Cannot preview this image. The url is invalid or it may due due to CORS restrictions. If this is the case we'll still try to process it.",
+      "title": "Cannot preview this image. The URL may be invalid or CORS restrictions may apply. We'll still try to process it.",
       "suggestion": "If processing fails, try downloading the image and uploading it directly."
     },
     "fileDropUpload": {
@@ -317,8 +314,8 @@
     "toggleNavigation": "Toggle Navigation",
     "taxPalOnX": "clear.photo on X",
     "taxPalOnGitHub": "clear.photo on GitHub",
-    "featuresForRunningYourBooks": "Features for running your books",
-    "featuresForSimplifyingEverydayBusinessTasks": "Features for simplifying everyday business tasks",
+    "featuresForRunningYourBooks": "Features for removing watermarks",
+    "featuresForSimplifyingEverydayBusinessTasks": "Features for simplifying watermark removal tasks",
     "whatOurCustomersAreSaying": "What our customers are saying",
     "getPlanButtonLabel": "Get started with the {{name}} plan for {{price}}"
   },
@@ -330,7 +327,7 @@
     }
   },
   "metadata": {
-    "title": "clear.photo - Accounting made simple for small businesses",
-    "description": "Most bookkeeping software is accurate, but hard to use. We make the opposite trade-off, and hope you don't get audited."
+    "title": "clear.photo – Watermark Remover & Logo Eraser for Your Images",
+    "description": "Looking to remove watermarks from a photo or get rid of a logo? clear.photo uses advanced AI to handle watermark removal seamlessly. Try our free app and see the difference."
   }
-} 
+}

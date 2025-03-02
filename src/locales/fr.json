@@ -1,7 +1,7 @@
 {
   "common": {
     "appName": "clear.photo",
-    "tagline": "Supprimez les filigranes de vos images.",
+    "tagline": "Supprimez les filigranes de vos images avec clear.photo.",
     "getStarted": "Commencer",
     "getStartedToday": "Commencez aujourd'hui",
     "signIn": "Se connecter",
@@ -31,7 +31,7 @@
       "get6MonthsFree": "Obtenez 6 mois gratuits",
       "submit": "Envoyer"
     },
-    "copyright": "Copyright © {{year}} TaxPal. Tous droits réservés.",
+    "copyright": "Copyright © {{year}} clear.photo. Tous droits réservés.",
     "language": {
       "en": "English",
       "es": "Español",
@@ -40,216 +40,213 @@
     }
   },
   "hero": {
-    "title": "Supprimez les filigranes de vos images.",
-    "subtitle": "Supprimez les filigranes de vos images avec notre outil alimenté par l'IA."
+    "title": "Supprimez les filigranes de vos images grâce à l'IA",
+    "subtitle": "clear.photo est un outil en ligne pour enlever un filigrane rapidement et sans effort."
   },
   "showcase": {
     "title": "Découvrez les résultats",
-    "subtitle": "Nous avons des résultats comme aucun autre."
+    "subtitle": "Transformez vos photos en quelques clics. Plus besoin de logiciels compliqués pour supprimer filigrane ou logo."
   },
   "primaryFeatures": {
-    "title": "Tout ce dont vous avez besoin pour gérer votre comptabilité.",
-    "subtitle": "Enfin, tout ce dont vous avez besoin si vous n'êtes pas trop pointilleux sur des détails mineurs comme la conformité fiscale.",
+    "title": "Tout ce dont vous avez besoin pour enlever un filigrane facilement",
+    "subtitle": "Profitez de notre technologie IA de pointe. Que vous souhaitiez un outil gratuit pour enlever un filigrane ou un service professionnel, nous avons la solution.",
     "features": [
       {
-        "title": "Paie",
-        "description": "Suivez les salaires de tous vos employés et vérifiez s'ils ont été payés. Dépôt direct non pris en charge."
+        "title": "Suppression automatique",
+        "description": "Téléversez votre image et laissez l'IA détecter et supprimer filigrane, logo ou texte indésirable. Simple et rapide."
       },
       {
-        "title": "Réclamation de dépenses",
-        "description": "Tous vos reçus organisés en un seul endroit, tant que ça ne vous dérange pas de saisir les données manuellement."
+        "title": "Mode manuel/assisté",
+        "description": "Pour un contrôle plus précis, sélectionnez manuellement la zone à effacer. Parfait pour enlever filigrane complexe."
       },
       {
-        "title": "Gestion de la TVA",
-        "description": "Nous ne vendons notre logiciel qu'aux entreprises qui ne traitent pas du tout la TVA, donc techniquement, nous faisons tout ce dont elles ont besoin en matière de TVA."
+        "title": "Outil gratuit pour enlever un filigrane",
+        "description": "Profitez de notre version gratuite pour tester nos fonctionnalités. Découvrez comment supprimer un filigrane gratuitement, en quelques secondes."
       },
       {
-        "title": "Rapports",
-        "description": "Exportez facilement vos données dans un tableur Excel où vous pourrez en faire ce que vous voulez."
+        "title": "Traitement par lots et API",
+        "description": "Besoin de traiter plusieurs images ? Notre API et notre mode batch vous permettent de gagner du temps et d’intégrer clear.photo à votre flux de travail."
       }
     ]
   },
   "secondaryFeatures": {
-    "title": "Simplifiez les tâches quotidiennes de votre entreprise.",
-    "subtitle": "Parce que vous seriez probablement un peu confus si nous vous suggérions de compliquer vos tâches quotidiennes à la place.",
+    "title": "Simplifiez la retouche et le nettoyage de vos photos",
+    "subtitle": "En ligne ou via notre futur module desktop, débarrassez-vous des filigranes. Voici quelques points forts :",
     "features": [
       {
-        "name": "Rapports",
-        "summary": "Restez au courant grâce à des fonctionnalités de rapport toujours à jour.",
-        "description": "Nous avons parlé des rapports dans la section ci-dessus, mais nous avions besoin de trois éléments ici, donc nous le mentionnons une fois de plus pour la postérité."
+        "name": "Guide pour supprimer un filigrane rapidement",
+        "summary": "Commencez en quelques étapes",
+        "description": "Nous proposons un tutoriel détaillé expliquant comment retirer un watermark d’une photo en quelques minutes. Vous n’avez pas besoin de compétences techniques."
       },
       {
-        "name": "Inventaire",
-        "summary": "Ne perdez jamais la trace de ce qui est en stock grâce à un suivi précis de l'inventaire.",
-        "description": "Nous n'offrons pas cette fonctionnalité dans notre logiciel, mais cette affirmation est indéniablement vraie. Un suivi précis de l'inventaire vous aiderait certainement."
+        "name": "Supprimer le filigrane Shutterstock",
+        "summary": "Compatible avec tous les grands sites d'images",
+        "description": "Notre IA est capable de gérer les filigranes les plus communs. Shutterstock, iStock, ou autres, vous pouvez dire adieu aux logos imposants."
       },
       {
-        "name": "Contacts",
-        "summary": "Organisez tous vos contacts, prestataires de services et factures en un seul endroit.",
-        "description": "Ce n'est pas non plus une fonctionnalité, c'est juste un conseil amical. Nous vous recommandons vivement de le faire, vous vous sentirez vraiment organisé et professionnel."
+        "name": "Fonctionnement sur tous les appareils",
+        "summary": "Utilisez clear.photo n’importe où",
+        "description": "Un ordinateur portable, une tablette ou un mobile : notre interface s’adapte pour vous permettre de supprimer filigrane où que vous soyez."
       }
     ]
   },
   "callToAction": {
     "title": "Commencez aujourd'hui",
-    "subtitle": "Il est temps de prendre le contrôle de votre comptabilité. Achetez notre logiciel pour avoir l'impression de faire quelque chose de productif.",
+    "subtitle": "Découvrez comment supprimer un filigrane gratuitement ou optez pour des fonctionnalités avancées. Nettoyez vos images et gagnez un temps précieux.",
     "button": "Obtenez 6 mois gratuits"
   },
   "testimonials": {
-    "title": "Adoré par les entreprises du monde entier.",
-    "subtitle": "Notre logiciel est si simple que les gens ne peuvent s'empêcher de l'adorer. La simplicité est facile quand on saute des tonnes de fonctionnalités essentielles.",
+    "title": "Approuvé par des photographes, designers et créateurs de contenu",
+    "subtitle": "clear.photo simplifie réellement le travail. Lisez comment notre outil en ligne pour enlever un filigrane a changé la donne pour eux.",
     "quotes": [
       {
-        "content": "TaxPal est si facile à utiliser que je ne peux m'empêcher de me demander s'il fait vraiment ce que le gouvernement attend de moi.",
+        "content": "J’avais besoin d’un outil gratuit pour enlever un filigrane avant de publier mes visuels. clear.photo a fait le travail en quelques secondes.",
         "author": {
-          "name": "Sheryl Berge",
-          "role": "PDG de Lynch LLC"
+          "name": "Lucie Martin",
+          "role": "Responsable Marketing"
         }
       },
       {
-        "content": "J'essaie de contacter quelqu'un du support, je suis dans une situation difficile et ils disent que cela a quelque chose à voir avec ma comptabilité. Veuillez me rappeler dès que possible.",
+        "content": "Je cherchais comment supprimer un filigrane gratuitement, surtout un logo Shutterstock récalcitrant. Avec clear.photo, fini les images marquées !",
         "author": {
-          "name": "Amy Hahn",
-          "role": "Directrice chez Velocity Industries"
+          "name": "Jean Dupont",
+          "role": "Blogueur Voyage"
         }
       },
       {
-        "content": "Ce que j'aime le plus avec TaxPal, c'est que chaque fois que je paie mes employés, mon solde bancaire ne diminue plus comme avant. J'ai hâte de dépenser cet argent supplémentaire quand je comprendrai pourquoi ma carte est refusée.",
+        "content": "Le mode manuel est parfait pour enlever filigrane quand l’automatique manque de précision. Résultat impeccable, sans traces.",
         "author": {
-          "name": "Leland Kiehn",
-          "role": "Fondateur de Kiehn and Sons"
+          "name": "Sarah Lemoine",
+          "role": "Designer Graphique"
         }
       },
       {
-        "content": "Il y a tellement de choses que je devais faire avec mon ancien logiciel que je ne fais plus du tout avec TaxPal. C'est suspect, mais je ne peux pas dire que je n'adore pas ça.",
+        "content": "Notre agence de création reçoit souvent des images avec filigranes clients. L'IA de clear.photo nous fait gagner un temps fou.",
         "author": {
-          "name": "Erin Powlowski",
-          "role": "Directrice des opérations chez Armstrong Inc"
+          "name": "Dominique Roy",
+          "role": "Directeur Artistique"
         }
       },
       {
-        "content": "Je devais payer des taxes à l'UE et avec TaxPal, je n'ai plus à le faire. Je suis nerveux d'y voyager maintenant cependant.",
+        "content": "Le meilleur outil en ligne pour enlever un filigrane que j’ai testé jusqu’à présent. Simple, rapide et sans abonnement obligatoire.",
         "author": {
-          "name": "Peter Renolds",
-          "role": "Fondateur de West Inc"
+          "name": "Sophie Laurent",
+          "role": "Freelance en communication"
         }
       },
       {
-        "content": "C'est le quatrième e-mail que j'envoie à votre équipe de support. Je suis littéralement en prison pour fraude fiscale. Veuillez répondre à vos e-mails, c'est important.",
+        "content": "Même pour supprimer le filigrane Shutterstock, clear.photo gère très bien. Je l'utilise presque tous les jours pour mes projets.",
         "author": {
-          "name": "Amy Hahn",
-          "role": "Directrice chez Velocity Industries"
+          "name": "Kevin Moreau",
+          "role": "Photographe professionnel"
         }
       }
     ]
   },
   "pricing": {
-    "title": "Tarification simple, pour tous.",
-    "subtitle": "Peu importe la taille de votre entreprise, notre logiciel ne fonctionnera pas bien pour vous.",
+    "title": "Tarifs simples et adaptés à tous",
+    "subtitle": "Que vous souhaitiez seulement enlever quelques filigranes par mois ou que vous ayez besoin d’une solution illimitée, nous avons un plan pour vous.",
     "plans": {
       "starter": {
         "name": "Débutant",
         "price": "9 €",
-        "description": "Idéal pour les travailleurs indépendants qui débutent.",
+        "description": "Idéal pour les particuliers qui souhaitent apprendre comment supprimer un filigrane gratuitement et au-delà.",
         "features": [
-          "Envoyez 10 devis et factures",
-          "Connectez jusqu'à 2 comptes bancaires",
-          "Suivez jusqu'à 15 dépenses par mois",
-          "Support de paie manuel",
-          "Exportez jusqu'à 3 rapports"
+          "Jusqu’à 50 images traitées par mois",
+          "IA de base pour filigranes standards",
+          "Support par e-mail",
+          "Mode manuel inclus"
         ]
       },
       "smallBusiness": {
         "name": "Petite entreprise",
         "price": "15 €",
-        "description": "Parfait pour les petites et moyennes entreprises.",
+        "description": "Parfait pour les créateurs, indépendants et PME traitant un volume modéré de visuels.",
         "features": [
-          "Envoyez 25 devis et factures",
-          "Connectez jusqu'à 5 comptes bancaires",
-          "Suivez jusqu'à 50 dépenses par mois",
-          "Support de paie automatisé",
-          "Exportez jusqu'à 12 rapports",
-          "Réconciliation en masse des transactions",
-          "Suivi en plusieurs devises"
+          "Jusqu’à 200 images traitées par mois",
+          "IA avancée pour logos complexes",
+          "Support prioritaire par e-mail",
+          "Traitement par lots (jusqu’à 20 images)",
+          "Accès API pour automatiser vos tâches"
         ]
       },
       "enterprise": {
         "name": "Entreprise",
         "price": "39 €",
-        "description": "Pour même les plus grandes entreprises.",
+        "description": "Pour un volume illimité et des besoins spécifiques en matière d’images.",
         "features": [
-          "Envoyez des devis et factures illimités",
-          "Connectez jusqu'à 15 comptes bancaires",
-          "Suivez jusqu'à 200 dépenses par mois",
-          "Support de paie automatisé",
-          "Exportez jusqu'à 25 rapports, y compris TPS"
+          "Traitement illimité de filigranes",
+          "Algorithmes spécialisés pour tout type de watermark",
+          "Gestionnaire de compte dédié, support 24/7",
+          "Accès complet à l’API avec options sur mesure",
+          "Traitement de gros volumes sans restrictions"
         ]
       }
     }
   },
   "faqs": {
     "title": "Questions fréquemment posées",
-    "subtitle": "Si vous ne trouvez pas ce que vous cherchez, envoyez un e-mail à notre équipe de support et, avec un peu de chance, quelqu'un vous répondra.",
+    "subtitle": "Vous voulez en savoir plus sur comment retirer un watermark d’une photo ou supprimer filigrane ? Voici nos réponses.",
     "questions": [
       {
-        "question": "TaxPal gère-t-il la TVA ?",
-        "answer": "Non, mais si vous délocalisez votre entreprise, vous pouvez probablement l'ignorer."
+        "question": "Comment supprimer un filigrane gratuitement avec clear.photo ?",
+        "answer": "Notre formule gratuite vous permet de tester l’IA. Téléversez votre image, sélectionnez la zone à enlever, et le filigrane disparaît instantanément."
       },
       {
-        "question": "Puis-je payer mon abonnement par bon de commande ?",
-        "answer": "Absolument, nous sommes heureux de prendre votre argent sous toutes ses formes."
+        "question": "Puis-je supprimer le filigrane Shutterstock ou d’autres banques d’images ?",
+        "answer": "Oui, nous sommes compatibles avec la plupart des filigranes connus, y compris Shutterstock. Veillez simplement à respecter les conditions d’utilisation légales."
       },
       {
-        "question": "Comment postuler pour un emploi chez TaxPal ?",
-        "answer": "Nous n'embauchons que nos clients, alors abonnez-vous pour un minimum de 6 mois et nous en reparlerons."
+        "question": "Avez-vous un guide pour supprimer un filigrane rapidement ?",
+        "answer": "Oui, consultez notre section ‘Guide Rapide’ dans l’interface ou sur notre site. Vous y trouverez des astuces et étapes simples."
       },
       {
-        "question": "Qu'est-ce que c'était que ce témoignage sur la fraude fiscale ?",
-        "answer": "TaxPal n'est qu'une application logicielle, en fin de compte, votre comptabilité est votre responsabilité."
+        "question": "Comment enlever filigrane en mode manuel ?",
+        "answer": "Il suffit de peindre la zone du filigrane que vous souhaitez retirer. Notre IA comble ensuite l’espace pour un rendu naturel."
       },
       {
-        "question": "TaxPal semble horrible, mais pourquoi ai-je toujours envie de l'acheter ?",
-        "answer": "C'est le pouvoir d'un excellent design visuel. Vous ne pouvez tout simplement pas y résister, peu importe à quel point il fonctionne mal."
+        "question": "Le traitement altère-t-il la qualité de l’image ?",
+        "answer": "clear.photo conserve la résolution d’origine autant que possible. Vous devriez à peine remarquer une différence en dehors du filigrane supprimé."
       },
       {
-        "question": "J'ai trouvé d'autres entreprises appelées TaxPal, êtes-vous sûr de pouvoir utiliser ce nom ?",
-        "answer": "Honnêtement, pas du tout sûr. Nous ne nous sommes pas vraiment constitués en société ni rien, nous avons juste pensé que ça sonnait bien et avons créé ce site web."
+        "question": "Offrez-vous un outil gratuit pour enlever un filigrane sur mobile ?",
+        "answer": "Nous prévoyons de lancer prochainement une application mobile. Pour l’instant, vous pouvez déjà utiliser clear.photo via votre navigateur mobile."
       },
       {
-        "question": "Comment générez-vous des rapports ?",
-        "answer": "Vous nous dites simplement pour quelles données vous avez besoin d'un rapport, et nous demandons à nos enfants de créer de beaux graphiques pour vous en utilisant uniquement les meilleurs crayons."
+        "question": "Puis-je automatiser la suppression de filigrane dans mon workflow ?",
+        "answer": "Absolument, notre plan Entreprise inclut une API complète pour gérer de grands volumes d’images ou intégrer la suppression directement dans vos outils."
       },
       {
-        "question": "Pouvons-nous nous attendre à plus de fonctionnalités d'inventaire ?",
-        "answer": "Dans la vie, il est vraiment préférable de ne jamais rien attendre du tout."
+        "question": "Quelles sont les limites de résolution ?",
+        "answer": "Nous prenons en charge des images jusqu’à 5 000 x 5 000 px, ainsi que plusieurs formats (PNG, JPG, GIF, etc.)."
       },
       {
-        "question": "J'ai perdu mon mot de passe, comment puis-je accéder à mon compte ?",
-        "answer": "Envoyez-nous un e-mail et nous vous enverrons une copie de notre dernier tableur de mots de passe pour que vous puissiez trouver vos informations."
+        "question": "Proposez-vous une période d’essai ?",
+        "answer": "Oui, chaque compte reçoit des jetons gratuits pour tester la suppression de filigranes. Ensuite, vous pouvez choisir le plan qui convient le mieux à vos besoins."
       }
     ]
   },
   "auth": {
     "login": {
-      "title": "Connectez-vous à votre compte",
-      "subtitle": "Vous n'avez pas de compte ? Inscrivez-vous pour un essai gratuit.",
+      "title": "Connectez-vous à votre compte clear.photo",
+      "subtitle": "Pas encore de compte ? Inscrivez-vous pour essayer gratuitement et enlever filigrane dès maintenant.",
       "emailLabel": "Adresse e-mail",
       "passwordLabel": "Mot de passe",
       "submitButton": "Se connecter"
     },
     "register": {
       "title": "Commencez gratuitement",
-      "subtitle": "Déjà inscrit ? Connectez-vous à votre compte.",
+      "subtitle": "Déjà inscrit ? Connectez-vous dès maintenant.",
       "firstNameLabel": "Prénom",
       "lastNameLabel": "Nom",
       "emailLabel": "Adresse e-mail",
       "passwordLabel": "Mot de passe",
       "referralLabel": "Comment avez-vous entendu parler de nous ?",
       "referralOptions": [
-        "Recherche AltaVista",
-        "Publicité du Super Bowl",
-        "Notre publicité sur le bus de la ligne 34",
-        "Le podcast \"Ne jamais utiliser ceci\""
+        "Recherche Google",
+        "Recommandation d’un ami",
+        "Publicité sur les réseaux sociaux",
+        "Podcast"
       ],
       "submitButton": "S'inscrire"
     }
@@ -271,15 +268,15 @@
     "removeFile": "Supprimer le fichier",
     "removeImage": "Supprimer l'image",
     "buttons": {
-      "uploadFile": "Télécharger un fichier",
+      "uploadFile": "Téléverser un fichier",
       "imageUrl": "URL de l'image",
-      "submit": "Soumettre",
+      "submit": "Envoyer",
       "download": "Télécharger",
       "processAnother": "Traiter une autre image",
       "removeWatermark": "Supprimer le filigrane"
     },
     "previewError": {
-      "message": "Impossible de prévisualiser cette image. L'URL est invalide ou cela peut être dû à des restrictions CORS. Si c'est le cas, nous essaierons quand même de la traiter.",
+      "message": "Impossible de prévisualiser cette image. L'URL est invalide ou il se peut que des restrictions CORS s'appliquent. Nous essaierons quand même de la traiter.",
       "suggestion": "Si le traitement échoue, essayez de télécharger l'image et de la téléverser directement."
     },
     "errors": {
@@ -303,7 +300,7 @@
     "termsLink": "Conditions d'utilisation",
     "privacyLink": "Politique de confidentialité",
     "corsError": {
-      "title": "Impossible de prévisualiser cette image. L'URL est invalide ou cela peut être dû à des restrictions CORS. Si c'est le cas, nous essaierons quand même de la traiter.",
+      "title": "Impossible de prévisualiser cette image. L'URL est invalide ou il se peut que des restrictions CORS s'appliquent. Nous essaierons quand même de la traiter.",
       "suggestion": "Si le traitement échoue, essayez de télécharger l'image et de la téléverser directement."
     },
     "fileDropUpload": {
@@ -316,10 +313,10 @@
   "accessibility": {
     "toggleNavigation": "Basculer la navigation",
     "home": "Accueil",
-    "taxPalOnX": "TaxPal sur X",
-    "taxPalOnGitHub": "TaxPal sur GitHub",
-    "featuresForRunningYourBooks": "Fonctionnalités pour gérer votre comptabilité",
-    "featuresForSimplifyingEverydayBusinessTasks": "Fonctionnalités pour simplifier les tâches quotidiennes de l'entreprise",
+    "taxPalOnX": "clear.photo sur X",
+    "taxPalOnGitHub": "clear.photo sur GitHub",
+    "featuresForRunningYourBooks": "Fonctionnalités pour supprimer les filigranes",
+    "featuresForSimplifyingEverydayBusinessTasks": "Fonctionnalités pour simplifier l’édition d'images au quotidien",
     "whatOurCustomersAreSaying": "Ce que disent nos clients",
     "getPlanButtonLabel": "Commencez avec le plan {{name}} pour {{price}}"
   },
@@ -331,7 +328,7 @@
     }
   },
   "metadata": {
-    "title": "TaxPal - La comptabilité simplifiée pour les petites entreprises",
-    "description": "La plupart des logiciels de comptabilité sont précis, mais difficiles à utiliser. Nous faisons le compromis inverse, et espérons que vous ne serez pas audité."
+    "title": "clear.photo - Outil pour enlever un filigrane et nettoyer vos images",
+    "description": "Découvrez comment supprimer un filigrane gratuitement ou traiter des images en masse. clear.photo utilise l’IA pour éliminer logos et textes rapidement."
   }
-} 
+}

@@ -23,191 +23,189 @@
     }
   },
   "hero": {
-    "title": "Elimina marcas de agua de tus imágenes.",
-    "subtitle": "Elimina marcas de agua de tus imágenes con nuestra herramienta potenciada por IA."
+    "title": "Quita marcas de agua de tus imágenes de forma sencilla",
+    "subtitle": "clear.photo usa IA de última generación para ayudarte a borrar marcas de agua y logos fácilmente."
   },
   "showcase": {
-    "title": "Mira los resultados",
-    "subtitle": "Tenemos resultados como ningún otro."
+    "title": "Observa los resultados",
+    "subtitle": "Eliminar marcas de agua nunca fue tan rápido. Experimenta resultados profesionales que lucen como si el logo nunca hubiera estado ahí."
   },
   "primaryFeatures": {
-    "title": "Todo lo que necesitas para gestionar tus libros.",
-    "subtitle": "Bueno, todo lo que necesitas si no eres muy exigente con detalles menores como el cumplimiento fiscal.",
+    "title": "Todo lo que necesitas para quitar marcas de agua al instante",
+    "subtitle": "Porque sabemos que quieres fotos limpias y sin distracciones. Despídete de los métodos complicados y disfruta de nuestras funciones basadas en IA.",
     "features": [
       {
-        "title": "Nómina",
-        "description": "Mantén un registro de los salarios de todos y si han sido pagados o no. Depósito directo no compatible."
+        "title": "Eliminación automática",
+        "description": "Carga tu imagen y deja que nuestra IA identifique y borre marcas de agua o textos no deseados sin esfuerzo."
       },
       {
-        "title": "Reclamar gastos",
-        "description": "Todos tus recibos organizados en un solo lugar, siempre que no te importe introducir los datos manualmente."
+        "title": "Modo manual/guiado",
+        "description": "Para casos complejos o marcas de agua muy grandes, elige nuestro modo manual y selecciona exactamente lo que deseas eliminar."
       },
       {
-        "title": "Gestión de IVA",
-        "description": "Solo vendemos nuestro software a empresas que no tratan con IVA, así que técnicamente hacemos todo lo relacionado con IVA que necesitan."
+        "title": "Objetos y logotipos",
+        "description": "Quita no solo marcas de agua, sino también logotipos, sellos y cualquier elemento que te moleste en tus fotos."
       },
       {
-        "title": "Informes",
-        "description": "Exporta fácilmente tus datos a una hoja de Excel donde puedes hacer lo que quieras con ellos."
+        "title": "API flexible",
+        "description": "Integra fácilmente clear.photo en tus flujos de trabajo. Procesa cientos de imágenes y automatiza la eliminación de marcas de agua a gran escala."
       }
     ]
   },
   "secondaryFeatures": {
-    "title": "Simplifica las tareas empresariales cotidianas.",
-    "subtitle": "Porque probablemente estarías un poco confundido si sugiriéramos que compliques tus tareas empresariales cotidianas.",
+    "title": "Simplifica el proceso de edición con IA",
+    "subtitle": "En lugar de complicar tu flujo de trabajo, ofrecemos herramientas diseñadas para agilizarlo. Quita marcas de agua y ahorra tiempo.",
     "features": [
       {
-        "name": "Informes",
-        "summary": "Mantente al día con funciones de informes siempre actualizadas.",
-        "description": "Hablamos de informes en la sección anterior, pero necesitábamos tres elementos aquí, así que lo mencionamos una vez más para la posteridad."
+        "name": "Tutorial rápido para eliminar marca de agua",
+        "summary": "Aprende en minutos",
+        "description": "Descubre cómo usar clear.photo para eliminar marcas de agua con un sencillo tutorial. Perfecto para quienes necesitan resultados inmediatos."
       },
       {
-        "name": "Inventario",
-        "summary": "Nunca pierdas el rastro de lo que hay en stock con un seguimiento preciso del inventario.",
-        "description": "No ofrecemos esto como parte de nuestro software, pero esa afirmación es indiscutiblemente cierta. Un seguimiento preciso del inventario te ayudaría seguro."
+        "name": "Aplicación para quitar marca de agua en el móvil",
+        "summary": "Quita logos desde donde estés",
+        "description": "Estamos preparando una aplicación para smartphone que te permitirá borrar marcas de agua y logos mientras viajas o trabajas fuera de casa."
       },
       {
-        "name": "Contactos",
-        "summary": "Organiza todos tus contactos, proveedores de servicios y facturas en un solo lugar.",
-        "description": "Esto tampoco es realmente una característica, es solo un consejo amistoso. Definitivamente recomendamos que hagas esto, te sentirás muy organizado y profesional."
+        "name": "Compatibilidad con Photoshop",
+        "summary": "Combina IA y edición avanzada",
+        "description": "¿Prefieres Photoshop? Usa clear.photo para un borrado rápido y luego ajusta los detalles en tu software favorito. Ideal para borrar logo de una imagen con Photoshop y retocar a tu gusto."
       }
     ]
   },
   "callToAction": {
     "title": "Comienza hoy",
-    "subtitle": "Es hora de tomar el control de tus libros. Compra nuestro software para que sientas que estás haciendo algo productivo."
+    "subtitle": "Pon a prueba nuestra IA y descubre lo fácil que es quitar marcas de agua de tus imágenes. Optimiza tu contenido y sorprende a tu público.",
+    "button": "Obtén 6 meses gratis"
   },
   "testimonials": {
-    "title": "Amado por empresas en todo el mundo.",
-    "subtitle": "Nuestro software es tan simple que la gente no puede evitar enamorarse de él. La simplicidad es fácil cuando omites toneladas de características críticas para la misión.",
+    "title": "Amado por fotógrafos, creadores de contenido y marcas de todo el mundo",
+    "subtitle": "clear.photo es tan simple y eficiente que la gente se pregunta cómo sobrevivían antes. Mira sus historias:",
     "quotes": [
       {
-        "content": "TaxPal es tan fácil de usar que no puedo evitar preguntarme si realmente está haciendo las cosas que el gobierno espera que haga.",
+        "content": "Necesitaba borrar marca de agua de unas imágenes para mi tienda en línea. clear.photo lo hizo en segundos y mis productos se ven fantásticos.",
         "author": {
-          "name": "Sheryl Berge",
-          "role": "CEO en Lynch LLC"
+          "name": "Laura Sánchez",
+          "role": "Gerente de E-commerce"
         }
       },
       {
-        "content": "Estoy tratando de contactar con alguien de soporte, estoy en muchos problemas ahora mismo y dicen que tiene algo que ver con mis libros. Por favor, respóndanme de inmediato.",
+        "content": "Hice un breve tutorial rápido para eliminar marca de agua usando clear.photo. Mis seguidores en redes sociales quedaron impresionados.",
         "author": {
-          "name": "Amy Hahn",
-          "role": "Directora en Velocity Industries"
+          "name": "Carlos Ruiz",
+          "role": "Influencer en Instagram"
         }
       },
       {
-        "content": "Lo mejor de TaxPal es que cada vez que pago a mis empleados, mi saldo bancario no baja como solía hacerlo. Espero gastar este dinero extra cuando descubra por qué mi tarjeta está siendo rechazada.",
+        "content": "Antes pasaba horas en Photoshop intentando quitar marcas de agua. Ahora subo las fotos a clear.photo y listo. ¡Un gran ahorro de tiempo!",
         "author": {
-          "name": "Leland Kiehn",
-          "role": "Fundador de Kiehn and Sons"
+          "name": "Sofía Gómez",
+          "role": "Fotógrafa profesional"
         }
       },
       {
-        "content": "Hay tantas cosas que tenía que hacer con mi antiguo software que simplemente no hago en absoluto con TaxPal. Sospechoso, pero no puedo decir que no me encante.",
+        "content": "Nuestra empresa recibe imágenes con diversos logos. clear.photo nos permitió automatizar el proceso y dejar todo listo para nuestro catálogo.",
         "author": {
-          "name": "Erin Powlowski",
-          "role": "COO en Armstrong Inc"
+          "name": "Diego Martínez",
+          "role": "Director de Marketing"
         }
       },
       {
-        "content": "Antes tenía que remitir impuestos a la UE y con TaxPal de alguna manera ya no tengo que hacerlo. Aunque ahora estoy nervioso por viajar allí.",
+        "content": "La opción de modo guiado es perfecta para eliminar una gran marca de agua sin comprometer la calidad de la foto.",
         "author": {
-          "name": "Peter Renolds",
-          "role": "Fundador de West Inc"
+          "name": "Mariana López",
+          "role": "Diseñadora Gráfica"
         }
       },
       {
-        "content": "Este es el cuarto correo electrónico que envío a su equipo de soporte. Literalmente estoy detenido por fraude fiscal. Por favor, respondan sus malditos correos electrónicos, esto es importante.",
+        "content": "Estoy probando la integración con su API y ya procesé más de 500 imágenes en lote. Funciona increíble.",
         "author": {
-          "name": "Amy Hahn",
-          "role": "Directora en Velocity Industries"
+          "name": "Pedro Andrade",
+          "role": "Desarrollador Full Stack"
         }
       }
     ]
   },
   "pricing": {
-    "title": "Precios simples, para todos.",
-    "subtitle": "No importa el tamaño de tu negocio, nuestro software no funcionará bien para ti.",
+    "title": "Precios sencillos para todos",
+    "subtitle": "Tanto si solo quieres borrar unas cuantas marcas de agua al mes como si necesitas procesamiento ilimitado, tenemos un plan para ti.",
     "plans": {
       "starter": {
         "name": "Inicial",
         "price": "9€",
-        "description": "Bueno para cualquiera que sea autónomo y esté empezando.",
+        "description": "Para quienes necesitan quitar marcas de agua de forma ocasional.",
         "features": [
-          "Envía 10 presupuestos y facturas",
-          "Conecta hasta 2 cuentas bancarias",
-          "Rastrea hasta 15 gastos por mes",
-          "Soporte de nómina manual",
-          "Exporta hasta 3 informes"
+          "Hasta 50 eliminaciones al mes",
+          "IA básica de detección de marca de agua",
+          "Soporte por correo electrónico",
+          "Modo manual/guiado incluido"
         ]
       },
       "smallBusiness": {
         "name": "Pequeña empresa",
         "price": "15€",
-        "description": "Perfecto para pequeñas y medianas empresas.",
+        "description": "Ideal para creadores de contenido y equipos que trabajan con varias imágenes al día.",
         "features": [
-          "Envía 25 presupuestos y facturas",
-          "Conecta hasta 5 cuentas bancarias",
-          "Rastrea hasta 50 gastos por mes",
-          "Soporte de nómina automatizado",
-          "Exporta hasta 12 informes",
-          "Conciliación masiva de transacciones",
-          "Seguimiento en múltiples divisas"
+          "Hasta 200 eliminaciones al mes",
+          "IA avanzada para textos y logos complejos",
+          "Prioridad en soporte",
+          "Procesamiento por lotes (hasta 20 imágenes)",
+          "Acceso a la API para flujos automatizados"
         ]
       },
       "enterprise": {
         "name": "Empresa",
         "price": "39€",
-        "description": "Para incluso las empresas más grandes.",
+        "description": "Para grandes volúmenes de imágenes y necesidades de personalización.",
         "features": [
-          "Envía presupuestos y facturas ilimitados",
-          "Conecta hasta 15 cuentas bancarias",
-          "Rastrea hasta 200 gastos por mes",
-          "Soporte de nómina automatizado",
-          "Exporta hasta 25 informes, incluyendo TPS"
+          "Eliminaciones ilimitadas",
+          "Algoritmos optimizados para cualquier tipo de marca de agua",
+          "Gestor de cuenta dedicado y soporte 24/7",
+          "Acceso completo a la API con endpoints personalizados",
+          "Procesamiento masivo sin restricciones"
         ]
       }
     }
   },
   "faqs": {
     "title": "Preguntas frecuentes",
-    "subtitle": "Si no encuentras lo que buscas, envía un correo electrónico a nuestro equipo de soporte y, si tienes suerte, alguien te responderá.",
+    "subtitle": "¿Tienes dudas sobre cómo quitar marca de agua de una foto o usar la IA? Encuentra respuestas aquí.",
     "questions": [
       {
-        "question": "¿TaxPal maneja el IVA?",
-        "answer": "Bueno, no, pero si trasladas tu empresa al extranjero probablemente puedas ignorarlo."
+        "question": "¿Cómo quitar marca de agua de una foto con clear.photo?",
+        "answer": "Solo sube tu imagen y nuestra IA detectará la marca de agua. Puedes usar el modo automático o el manual para más control."
       },
       {
-        "question": "¿Puedo pagar mi suscripción mediante orden de compra?",
-        "answer": "Absolutamente, estamos encantados de recibir tu dinero en todas sus formas."
+        "question": "¿Puedo borrar logo de una imagen con Photoshop y clear.photo a la vez?",
+        "answer": "Sí. Primero usa clear.photo para el borrado inicial y luego realiza retoques finos en Photoshop si lo deseas."
       },
       {
-        "question": "¿Cómo solicito un trabajo en TaxPal?",
-        "answer": "Solo contratamos a nuestros clientes, así que suscríbete por un mínimo de 6 meses y luego hablamos."
+        "question": "¿Ofrecen una aplicación para quitar marca de agua en el móvil?",
+        "answer": "Estamos desarrollándola para Android e iOS. Mientras tanto, puedes acceder a clear.photo desde tu navegador móvil."
       },
       {
-        "question": "¿De qué trataba ese testimonio sobre fraude fiscal?",
-        "answer": "TaxPal es solo una aplicación de software, en última instancia tus libros son tu responsabilidad."
+        "question": "¿Se reduce la calidad de la imagen al eliminar la marca de agua?",
+        "answer": "Mantenemos la resolución original tanto como sea posible. En la mayoría de casos, no notarás diferencia en calidad."
       },
       {
-        "question": "TaxPal suena horrible, pero ¿por qué sigo sintiendo la necesidad de comprarlo?",
-        "answer": "Este es el poder de un excelente diseño visual. Simplemente no puedes resistirte, sin importar lo mal que funcione realmente."
+        "question": "¿Cuánto tarda en procesar cada foto?",
+        "answer": "El procesamiento suele ser casi inmediato, aunque depende del tamaño del archivo y la carga del servidor."
       },
       {
-        "question": "Encontré otras empresas llamadas TaxPal, ¿están seguros de que pueden usar este nombre?",
-        "answer": "Honestamente, no estamos seguros en absoluto. En realidad no nos hemos constituido ni nada, solo pensamos que sonaba bien e hicimos este sitio web."
+        "question": "¿Podemos usar la API para grandes volúmenes?",
+        "answer": "Sí. El plan Empresa ofrece acceso completo para procesar imágenes masivamente, sin límites de cantidad."
       },
       {
-        "question": "¿Cómo generan informes?",
-        "answer": "Solo nos dices para qué datos necesitas un informe, y hacemos que nuestros hijos creen hermosos gráficos para ti usando solo los mejores crayones."
+        "question": "¿Qué formatos de imagen soportan?",
+        "answer": "PNG, JPG/JPEG, GIF, BMP, TIFF y WebP. También soportamos resoluciones de hasta 5.000 x 5.000 px."
       },
       {
-        "question": "¿Podemos esperar más características de inventario?",
-        "answer": "En la vida es realmente mejor no esperar nunca nada en absoluto."
+        "question": "¿Cómo funciona el modo manual/guiado?",
+        "answer": "Simplemente pinta o marca la zona donde está la marca de agua, y nuestro sistema la elimina con precisión."
       },
       {
-        "question": "Perdí mi contraseña, ¿cómo accedo a mi cuenta?",
-        "answer": "Envíanos un correo electrónico y te enviaremos una copia de nuestra última hoja de cálculo de contraseñas para que puedas encontrar tu información."
+        "question": "¿Tengo que registrarme para probar clear.photo?",
+        "answer": "Puedes usar la prueba gratuita con un número limitado de eliminaciones. Regístrate para desbloquear más funciones y obtener 6 meses gratis si aplicas."
       }
     ]
   },
@@ -236,7 +234,7 @@
       "removeWatermark": "Eliminar Marca de Agua"
     },
     "previewError": {
-      "message": "No se puede previsualizar esta imagen. La URL es inválida o puede deberse a restricciones CORS. Si este es el caso, aún intentaremos procesarla.",
+      "message": "No se puede previsualizar esta imagen. La URL es inválida o puede deberse a restricciones CORS. Aun así intentaremos procesarla.",
       "suggestion": "Si el procesamiento falla, intenta descargar la imagen y subirla directamente."
     },
     "errors": {
@@ -247,7 +245,7 @@
       "unknown": "Error desconocido",
       "invalidUrl": "Por favor, introduce una URL válida que comience con http:// o https://",
       "urlAccess": "No se pudo acceder a la URL de la imagen.",
-      "tryDirectUpload": "Por favor, intenta descargar la imagen y subirla directamente.",
+      "tryDirectUpload": "Intenta descargar la imagen y subirla directamente.",
       "noImage": "No se proporcionó ninguna imagen",
       "apiError": "Error de API",
       "processingFailed": "El procesamiento falló o devolvió un formato inesperado"
@@ -260,7 +258,7 @@
     "termsLink": "Términos de Uso",
     "privacyLink": "Política de Privacidad",
     "corsError": {
-      "title": "No se puede previsualizar esta imagen. La URL es inválida o puede deberse a restricciones CORS. Si este es el caso, aún intentaremos procesarla.",
+      "title": "No se puede previsualizar esta imagen. La URL es inválida o puede deberse a restricciones CORS. Aun así intentaremos procesarla.",
       "suggestion": "Si el procesamiento falla, intenta descargar la imagen y subirla directamente."
     },
     "fileDropUpload": {
@@ -273,11 +271,11 @@
   "accessibility": {
     "toggleNavigation": "Alternar Navegación",
     "home": "Inicio",
-    "taxPalOnX": "TaxPal en X",
-    "taxPalOnGitHub": "TaxPal en GitHub",
-    "featuresForRunningYourBooks": "Características para gestionar tus libros",
-    "featuresForSimplifyingEverydayBusinessTasks": "Características para simplificar tareas empresariales cotidianas",
+    "taxPalOnX": "clear.photo en X",
+    "taxPalOnGitHub": "clear.photo en GitHub",
+    "featuresForRunningYourBooks": "Características para eliminar marcas de agua",
+    "featuresForSimplifyingEverydayBusinessTasks": "Características para simplificar tu edición diaria",
     "whatOurCustomersAreSaying": "Lo que dicen nuestros clientes",
     "getPlanButtonLabel": "Comienza con el plan {{name}} por {{price}}"
   }
-} 
+}
