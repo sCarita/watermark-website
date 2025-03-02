@@ -23,7 +23,9 @@
       "pricing": "Pricing",
       "signIn": "Sign in",
       "getStarted": "Get started",
-      "getStartedToday": "Get started today"
+      "getStartedToday": "Get started today",
+      "privacy": "Privacy",
+      "terms": "Terms"
     },
     "buttons": {
       "getStarted": "Get started",
@@ -41,7 +43,7 @@
   },
   "hero": {
     "title": "Remove watermarks from your images automatically with AI.",
-    "subtitle": "clear.photo is the fastest, cheapest, and most advanced watermark remover you’ll ever need."
+    "subtitle": "clear.photo is the fastest, cheapest, and most advanced watermark remover you'll ever need."
   },
   "showcase": {
     "title": "Check out the results",
@@ -49,7 +51,7 @@
   },
   "primaryFeatures": {
     "title": "The features your business needs to eliminate watermarks for good.",
-    "subtitle": "Whether you’re a photographer or a social media manager, let our AI handle the cleanup so you can focus on creativity.",
+    "subtitle": "Whether you're a photographer or a social media manager, let our AI handle the cleanup so you can focus on creativity.",
     "features": [
       {
         "title": "Automatic Watermark Removal",
@@ -71,12 +73,12 @@
   },
   "secondaryFeatures": {
     "title": "Simplify the process of removing watermarks and logos.",
-    "subtitle": "We believe in making your life easier, not harder. That’s why clear.photo helps you clean up images seamlessly.",
+    "subtitle": "We believe in making your life easier, not harder. That's why clear.photo helps you clean up images seamlessly.",
     "features": [
       {
         "name": "High-Quality Results",
         "summary": "Never lose clarity or detail.",
-        "description": "Our AI preserves the original photo’s resolution. Even when you clear watermark text or remove a logo, the outcome looks natural."
+        "description": "Our AI preserves the original photo's resolution. Even when you clear watermark text or remove a logo, the outcome looks natural."
       },
       {
         "name": "Bulk Processing",
@@ -114,7 +116,7 @@
         }
       },
       {
-        "content": "I can finally delete watermarks in bulk—something Photoshop alone couldn’t handle effectively. clear.photo is a time-saver.",
+        "content": "I can finally delete watermarks in bulk—something Photoshop alone couldn't handle effectively. clear.photo is a time-saver.",
         "author": {
           "name": "Leland Kiehn",
           "role": "Founder of Kiehn and Sons"
@@ -128,14 +130,14 @@
         }
       },
       {
-        "content": "The best free watermark remover I’ve tried yet. Surprised by how well the AI reconstructs the background behind the text.",
+        "content": "The best free watermark remover I've tried yet. Surprised by how well the AI reconstructs the background behind the text.",
         "author": {
           "name": "Peter Renolds",
           "role": "Founder of West Inc"
         }
       },
       {
-        "content": "We’ve integrated clear.photo’s API into our platform to automatically remove watermarks from photo submissions. Customers love the clean, professional look.",
+        "content": "We've integrated clear.photo's API into our platform to automatically remove watermarks from photo submissions. Customers love the clean, professional look.",
         "author": {
           "name": "Amy Hahn",
           "role": "Director at Velocity Industries"
@@ -194,7 +196,7 @@
       },
       {
         "question": "Will the final image quality be affected?",
-        "answer": "Our technology preserves resolution and color accuracy. In most cases, you won’t notice any difference besides the watermark disappearing."
+        "answer": "Our technology preserves resolution and color accuracy. In most cases, you won't notice any difference besides the watermark disappearing."
       },
       {
         "question": "Do you support bulk or batch removal?",
@@ -206,7 +208,7 @@
       },
       {
         "question": "Is there a mobile app to remove watermarks?",
-        "answer": "Yes! clear.photo works great on mobile browsers and we’re developing a dedicated app to help you remove a watermark on the go."
+        "answer": "Yes! clear.photo works great on mobile browsers and we're developing a dedicated app to help you remove a watermark on the go."
       },
       {
         "question": "How accurate is the manual removal?",
@@ -214,22 +216,22 @@
       },
       {
         "question": "How do I integrate the API for enterprise workflows?",
-        "answer": "Our Enterprise plan includes full API documentation. We’ll guide you through authentication, request parameters, and bulk endpoint usage."
+        "answer": "Our Enterprise plan includes full API documentation. We'll guide you through authentication, request parameters, and bulk endpoint usage."
       },
       {
         "question": "Is there a free trial?",
         "answer": "Yes, new accounts get free tokens to remove or clean unwanted text from images. Sign up to get started instantly."
       },
       {
-        "question": "How can I remove a logo from a picture if it’s large?",
-        "answer": "Our advanced AI can handle logos of all sizes, whether it’s a subtle watermark or a big overlay. Just upload your file and choose the removal mode."
+        "question": "How can I remove a logo from a picture if it's large?",
+        "answer": "Our advanced AI can handle logos of all sizes, whether it's a subtle watermark or a big overlay. Just upload your file and choose the removal mode."
       }
     ]
   },
   "auth": {
     "login": {
       "title": "Sign in to clear.photo",
-      "subtitle": "Don’t have an account? Sign up for a free trial and eliminate watermarks today.",
+      "subtitle": "Don't have an account? Sign up for a free trial and eliminate watermarks today.",
       "emailLabel": "Email address",
       "passwordLabel": "Password",
       "submitButton": "Sign in"

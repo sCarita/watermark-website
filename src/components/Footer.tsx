@@ -21,6 +21,8 @@ export function Footer() {
               <NavLink href="#features">{t('common.navigation.features')}</NavLink>
               <NavLink href="#testimonials">{t('common.navigation.testimonials')}</NavLink>
               <NavLink href="#pricing">{t('common.navigation.pricing')}</NavLink>
+              <NavLink href="/terms">{t('common.navigation.terms')}</NavLink>
+              <NavLink href="/privacy">{t('common.navigation.privacy')}</NavLink>
             </div>
           </nav>
         </div>

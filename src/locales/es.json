@@ -1,13 +1,31 @@
 {
   "common": {
     "appName": "clear.photo",
+    "tagline": "Elimina marcas de agua de tus imágenes con clear.photo.",
+    "getStarted": "Comenzar",
+    "getStartedToday": "Comenzar hoy",
+    "signIn": "Iniciar sesión",
+    "signUp": "Registrarse",
+    "features": "Características",
+    "testimonials": "Testimonios",
+    "pricing": "Precios",
+    "faq": "Preguntas frecuentes",
+    "home": "Inicio",
+    "back": "Volver al inicio",
+    "loading": "Procesando...",
+    "error": "Ups, algo salió mal",
+    "success": "¡Éxito! Todo salió bien.",
+    "info": "Para tu información.",
+    "warning": "¡Advertencia! Revisa esto.",
     "navigation": {
       "features": "Características",
       "testimonials": "Testimonios",
       "pricing": "Precios",
       "signIn": "Iniciar sesión",
       "getStarted": "Comenzar",
-      "getStartedToday": "Comienza hoy"
+      "getStartedToday": "Comenzar hoy",
+      "privacy": "Privacidad",
+      "terms": "Términos"
     },
     "buttons": {
       "getStarted": "Comenzar",

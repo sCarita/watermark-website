@@ -83,6 +83,8 @@ function MobileNavigation() {
               <MobileNavLink href="#features">{t('common.navigation.features')}</MobileNavLink>
               <MobileNavLink href="#testimonials">{t('common.navigation.testimonials')}</MobileNavLink>
               <MobileNavLink href="#pricing">{t('common.navigation.pricing')}</MobileNavLink>
+              <MobileNavLink href="/terms">{t('common.navigation.terms')}</MobileNavLink>
+              <MobileNavLink href="/privacy">{t('common.navigation.privacy')}</MobileNavLink>
             </div>
           </div>
           

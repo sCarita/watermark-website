@@ -3,7 +3,7 @@
     "appName": "clear.photo",
     "tagline": "Supprimez les filigranes de vos images avec clear.photo.",
     "getStarted": "Commencer",
-    "getStartedToday": "Commencez aujourd'hui",
+    "getStartedToday": "Commencer aujourd'hui",
     "signIn": "Se connecter",
     "signUp": "S'inscrire",
     "features": "Fonctionnalités",
@@ -23,11 +23,13 @@
       "pricing": "Tarifs",
       "signIn": "Se connecter",
       "getStarted": "Commencer",
-      "getStartedToday": "Commencez aujourd'hui"
+      "getStartedToday": "Commencer aujourd'hui",
+      "privacy": "Confidentialité",
+      "terms": "Conditions"
     },
     "buttons": {
       "getStarted": "Commencer",
-      "getStartedToday": "Commencez aujourd'hui",
+      "getStartedToday": "Commencer aujourd'hui",
       "get6MonthsFree": "Obtenez 6 mois gratuits",
       "submit": "Envoyer"
     },
@@ -65,7 +67,7 @@
       },
       {
         "title": "Traitement par lots et API",
-        "description": "Besoin de traiter plusieurs images ? Notre API et notre mode batch vous permettent de gagner du temps et d’intégrer clear.photo à votre flux de travail."
+        "description": "Besoin de traiter plusieurs images ? Notre API et notre mode batch vous permettent de gagner du temps et d'intégrer clear.photo à votre flux de travail."
       }
     ]
   },
@@ -76,7 +78,7 @@
       {
         "name": "Guide pour supprimer un filigrane rapidement",
         "summary": "Commencez en quelques étapes",
-        "description": "Nous proposons un tutoriel détaillé expliquant comment retirer un watermark d’une photo en quelques minutes. Vous n’avez pas besoin de compétences techniques."
+        "description": "Nous proposons un tutoriel détaillé expliquant comment retirer un watermark d'une photo en quelques minutes. Vous n'avez pas besoin de compétences techniques."
       },
       {
         "name": "Supprimer le filigrane Shutterstock",
@@ -85,8 +87,8 @@
       },
       {
         "name": "Fonctionnement sur tous les appareils",
-        "summary": "Utilisez clear.photo n’importe où",
-        "description": "Un ordinateur portable, une tablette ou un mobile : notre interface s’adapte pour vous permettre de supprimer filigrane où que vous soyez."
+        "summary": "Utilisez clear.photo n'importe où",
+        "description": "Un ordinateur portable, une tablette ou un mobile : notre interface s'adapte pour vous permettre de supprimer filigrane où que vous soyez."
       }
     ]
   },
@@ -100,7 +102,7 @@
     "subtitle": "clear.photo simplifie réellement le travail. Lisez comment notre outil en ligne pour enlever un filigrane a changé la donne pour eux.",
     "quotes": [
       {
-        "content": "J’avais besoin d’un outil gratuit pour enlever un filigrane avant de publier mes visuels. clear.photo a fait le travail en quelques secondes.",
+        "content": "J'avais besoin d'un outil gratuit pour enlever un filigrane avant de publier mes visuels. clear.photo a fait le travail en quelques secondes.",
         "author": {
           "name": "Lucie Martin",
           "role": "Responsable Marketing"
@@ -114,7 +116,7 @@
         }
       },
       {
-        "content": "Le mode manuel est parfait pour enlever filigrane quand l’automatique manque de précision. Résultat impeccable, sans traces.",
+        "content": "Le mode manuel est parfait pour enlever filigrane quand l'automatique manque de précision. Résultat impeccable, sans traces.",
         "author": {
           "name": "Sarah Lemoine",
           "role": "Designer Graphique"
@@ -128,7 +130,7 @@
         }
       },
       {
-        "content": "Le meilleur outil en ligne pour enlever un filigrane que j’ai testé jusqu’à présent. Simple, rapide et sans abonnement obligatoire.",
+        "content": "Le meilleur outil en ligne pour enlever un filigrane que j'ai testé jusqu'à présent. Simple, rapide et sans abonnement obligatoire.",
         "author": {
           "name": "Sophie Laurent",
           "role": "Freelance en communication"
@@ -145,14 +147,14 @@
   },
   "pricing": {
     "title": "Tarifs simples et adaptés à tous",
-    "subtitle": "Que vous souhaitiez seulement enlever quelques filigranes par mois ou que vous ayez besoin d’une solution illimitée, nous avons un plan pour vous.",
+    "subtitle": "Que vous souhaitiez seulement enlever quelques filigranes par mois ou que vous ayez besoin d'une solution illimitée, nous avons un plan pour vous.",
     "plans": {
       "starter": {
         "name": "Débutant",
         "price": "9 €",
         "description": "Idéal pour les particuliers qui souhaitent apprendre comment supprimer un filigrane gratuitement et au-delà.",
         "features": [
-          "Jusqu’à 50 images traitées par mois",
+          "Jusqu'à 50 images traitées par mois",
           "IA de base pour filigranes standards",
           "Support par e-mail",
           "Mode manuel inclus"
@@ -163,22 +165,22 @@
         "price": "15 €",
         "description": "Parfait pour les créateurs, indépendants et PME traitant un volume modéré de visuels.",
         "features": [
-          "Jusqu’à 200 images traitées par mois",
+          "Jusqu'à 200 images traitées par mois",
           "IA avancée pour logos complexes",
           "Support prioritaire par e-mail",
-          "Traitement par lots (jusqu’à 20 images)",
+          "Traitement par lots (jusqu'à 20 images)",
           "Accès API pour automatiser vos tâches"
         ]
       },
       "enterprise": {
         "name": "Entreprise",
         "price": "39 €",
-        "description": "Pour un volume illimité et des besoins spécifiques en matière d’images.",
+        "description": "Pour un volume illimité et des besoins spécifiques en matière d'images.",
         "features": [
           "Traitement illimité de filigranes",
           "Algorithmes spécialisés pour tout type de watermark",
           "Gestionnaire de compte dédié, support 24/7",
-          "Accès complet à l’API avec options sur mesure",
+          "Accès complet à l'API avec options sur mesure",
           "Traitement de gros volumes sans restrictions"
         ]
       }
@@ -186,42 +188,42 @@
   },
   "faqs": {
     "title": "Questions fréquemment posées",
-    "subtitle": "Vous voulez en savoir plus sur comment retirer un watermark d’une photo ou supprimer filigrane ? Voici nos réponses.",
+    "subtitle": "Vous voulez en savoir plus sur comment retirer un watermark d'une photo ou supprimer filigrane ? Voici nos réponses.",
     "questions": [
       {
         "question": "Comment supprimer un filigrane gratuitement avec clear.photo ?",
-        "answer": "Notre formule gratuite vous permet de tester l’IA. Téléversez votre image, sélectionnez la zone à enlever, et le filigrane disparaît instantanément."
+        "answer": "Notre formule gratuite vous permet de tester l'IA. Téléversez votre image, sélectionnez la zone à enlever, et le filigrane disparaît instantanément."
       },
       {
-        "question": "Puis-je supprimer le filigrane Shutterstock ou d’autres banques d’images ?",
-        "answer": "Oui, nous sommes compatibles avec la plupart des filigranes connus, y compris Shutterstock. Veillez simplement à respecter les conditions d’utilisation légales."
+        "question": "Puis-je supprimer le filigrane Shutterstock ou d'autres banques d'images ?",
+        "answer": "Oui, nous sommes compatibles avec la plupart des filigranes connus, y compris Shutterstock. Veillez simplement à respecter les conditions d'utilisation légales."
       },
       {
         "question": "Avez-vous un guide pour supprimer un filigrane rapidement ?",
-        "answer": "Oui, consultez notre section ‘Guide Rapide’ dans l’interface ou sur notre site. Vous y trouverez des astuces et étapes simples."
+        "answer": "Oui, consultez notre section 'Guide Rapide' dans l'interface ou sur notre site. Vous y trouverez des astuces et étapes simples."
       },
       {
         "question": "Comment enlever filigrane en mode manuel ?",
-        "answer": "Il suffit de peindre la zone du filigrane que vous souhaitez retirer. Notre IA comble ensuite l’espace pour un rendu naturel."
+        "answer": "Il suffit de peindre la zone du filigrane que vous souhaitez retirer. Notre IA comble ensuite l'espace pour un rendu naturel."
       },
       {
-        "question": "Le traitement altère-t-il la qualité de l’image ?",
-        "answer": "clear.photo conserve la résolution d’origine autant que possible. Vous devriez à peine remarquer une différence en dehors du filigrane supprimé."
+        "question": "Le traitement altère-t-il la qualité de l'image ?",
+        "answer": "clear.photo conserve la résolution d'origine autant que possible. Vous devriez à peine remarquer une différence en dehors du filigrane supprimé."
       },
       {
         "question": "Offrez-vous un outil gratuit pour enlever un filigrane sur mobile ?",
-        "answer": "Nous prévoyons de lancer prochainement une application mobile. Pour l’instant, vous pouvez déjà utiliser clear.photo via votre navigateur mobile."
+        "answer": "Nous prévoyons de lancer prochainement une application mobile. Pour l'instant, vous pouvez déjà utiliser clear.photo via votre navigateur mobile."
       },
       {
         "question": "Puis-je automatiser la suppression de filigrane dans mon workflow ?",
-        "answer": "Absolument, notre plan Entreprise inclut une API complète pour gérer de grands volumes d’images ou intégrer la suppression directement dans vos outils."
+        "answer": "Absolument, notre plan Entreprise inclut une API complète pour gérer de grands volumes d'images ou intégrer la suppression directement dans vos outils."
       },
       {
         "question": "Quelles sont les limites de résolution ?",
-        "answer": "Nous prenons en charge des images jusqu’à 5 000 x 5 000 px, ainsi que plusieurs formats (PNG, JPG, GIF, etc.)."
+        "answer": "Nous prenons en charge des images jusqu'à 5 000 x 5 000 px, ainsi que plusieurs formats (PNG, JPG, GIF, etc.)."
       },
       {
-        "question": "Proposez-vous une période d’essai ?",
+        "question": "Proposez-vous une période d'essai ?",
         "answer": "Oui, chaque compte reçoit des jetons gratuits pour tester la suppression de filigranes. Ensuite, vous pouvez choisir le plan qui convient le mieux à vos besoins."
       }
     ]
@@ -244,7 +246,7 @@
       "referralLabel": "Comment avez-vous entendu parler de nous ?",
       "referralOptions": [
         "Recherche Google",
-        "Recommandation d’un ami",
+        "Recommandation d'un ami",
         "Publicité sur les réseaux sociaux",
         "Podcast"
       ],
@@ -316,7 +318,7 @@
     "taxPalOnX": "clear.photo sur X",
     "taxPalOnGitHub": "clear.photo sur GitHub",
     "featuresForRunningYourBooks": "Fonctionnalités pour supprimer les filigranes",
-    "featuresForSimplifyingEverydayBusinessTasks": "Fonctionnalités pour simplifier l’édition d'images au quotidien",
+    "featuresForSimplifyingEverydayBusinessTasks": "Fonctionnalités pour simplifier l'édition d'images au quotidien",
     "whatOurCustomersAreSaying": "Ce que disent nos clients",
     "getPlanButtonLabel": "Commencez avec le plan {{name}} pour {{price}}"
   },
@@ -329,6 +331,6 @@
   },
   "metadata": {
     "title": "clear.photo - Outil pour enlever un filigrane et nettoyer vos images",
-    "description": "Découvrez comment supprimer un filigrane gratuitement ou traiter des images en masse. clear.photo utilise l’IA pour éliminer logos et textes rapidement."
+    "description": "Découvrez comment supprimer un filigrane gratuitement ou traiter des images en masse. clear.photo utilise l'IA pour éliminer logos et textes rapidement."
   }
 }
