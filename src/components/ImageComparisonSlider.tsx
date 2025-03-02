@@ -15,6 +15,7 @@ const ImageComparisonSlider: React.FC<ImageComparisonSliderProps> = ({
   const [sliderPosition, setSliderPosition] = useState(50)
   const [isDragging, setIsDragging] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
+  const [isTouching, setIsTouching] = useState(false)
 
   // Handle direct click and drag functionality
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -36,6 +37,7 @@ const ImageComparisonSlider: React.FC<ImageComparisonSliderProps> = ({
     if (!containerRef.current || !e.touches[0]) return
     
     setIsDragging(true)
+    setIsTouching(true)
     
     // Calculate slider position based on touch position
     const rect = containerRef.current.getBoundingClientRect()
@@ -71,20 +73,31 @@ const ImageComparisonSlider: React.FC<ImageComparisonSliderProps> = ({
     setIsDragging(false)
   }
   
+  const handleTouchEnd = () => {
+    setIsDragging(false)
+    // Keep the touch state active for a short period to keep labels visible
+    setTimeout(() => {
+      setIsTouching(false)
+    }, 3000)
+  }
+  
   // Add and remove event listeners
   useEffect(() => {
     document.addEventListener('mousemove', handleMouseMove)
     document.addEventListener('mouseup', handleMouseUp)
     document.addEventListener('touchmove', handleTouchMove)
-    document.addEventListener('touchend', handleMouseUp)
+    document.addEventListener('touchend', handleTouchEnd)
     
     return () => {
       document.removeEventListener('mousemove', handleMouseMove)
       document.removeEventListener('mouseup', handleMouseUp)
       document.removeEventListener('touchmove', handleTouchMove)
-      document.removeEventListener('touchend', handleMouseUp)
+      document.removeEventListener('touchend', handleTouchEnd)
     }
   }, [isDragging])
+
+  // Determine if labels should be visible
+  const shouldShowLabels = isHovering || isDragging || isTouching
 
   return (
     <div 
@@ -94,13 +107,18 @@ const ImageComparisonSlider: React.FC<ImageComparisonSliderProps> = ({
       onMouseLeave={() => setIsHovering(false)}
       onMouseDown={handleMouseDown}
       onTouchStart={handleTouchStart}
-      onTouchEnd={() => setTimeout(() => setIsHovering(false), 3000)}
     >
       {/* Labels */}
-      <div className="absolute top-4 left-4 z-20 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-white text-sm font-medium transition-opacity duration-300" style={{ opacity: isHovering ? 0.9 : 0 }}>
+      <div 
+        className="absolute top-4 left-4 z-20 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-white text-sm font-medium transition-opacity duration-300" 
+        style={{ opacity: shouldShowLabels ? 0.9 : 0 }}
+      >
         Before
       </div>
-      <div className="absolute top-4 right-4 z-20 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-white text-sm font-medium transition-opacity duration-300" style={{ opacity: isHovering ? 0.9 : 0 }}>
+      <div 
+        className="absolute top-4 right-4 z-20 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full text-white text-sm font-medium transition-opacity duration-300" 
+        style={{ opacity: shouldShowLabels ? 0.9 : 0 }}
+      >
         After
       </div>
 
@@ -127,11 +145,11 @@ const ImageComparisonSlider: React.FC<ImageComparisonSliderProps> = ({
         className="absolute bottom-0 top-0"
         style={{
           left: `${sliderPosition}%`,
-          width: isDragging || isHovering ? '2px' : '1px',
-          background: isDragging || isHovering 
+          width: isDragging || isHovering || isTouching ? '2px' : '1px',
+          background: isDragging || isHovering || isTouching 
             ? 'linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.7))' 
             : 'rgba(255,255,255,0.5)',
-          boxShadow: isDragging || isHovering ? '0 0 8px rgba(0,0,0,0.3)' : 'none',
+          boxShadow: isDragging || isHovering || isTouching ? '0 0 8px rgba(0,0,0,0.3)' : 'none',
           zIndex: 5,
           transition: isDragging ? 'none' : 'all 0.1s ease-out'
         }}
@@ -145,7 +163,7 @@ const ImageComparisonSlider: React.FC<ImageComparisonSliderProps> = ({
           top: '50%',
           transform: 'translate(-50%, -50%)',
           zIndex: 15,
-          opacity: isDragging || isHovering ? 1 : 0.7,
+          opacity: isDragging || isHovering || isTouching ? 1 : 0.7,
           transition: isDragging ? 'none' : 'all 0.1s ease-out'
         }}
       >
@@ -153,12 +171,12 @@ const ImageComparisonSlider: React.FC<ImageComparisonSliderProps> = ({
           <div 
             className="absolute rounded-full"
             style={{
-              width: isDragging || isHovering ? '44px' : '36px',
-              height: isDragging || isHovering ? '44px' : '36px',
+              width: isDragging || isHovering || isTouching ? '44px' : '36px',
+              height: isDragging || isHovering || isTouching ? '44px' : '36px',
               background: 'rgba(255,255,255,0.15)',
               backdropFilter: 'blur(8px)',
               transform: 'translate(-50%, -50%)',
-              boxShadow: isDragging || isHovering 
+              boxShadow: isDragging || isHovering || isTouching 
                 ? '0 0 20px rgba(0,0,0,0.3), inset 0 0 0 1px rgba(255,255,255,0.3)' 
                 : '0 0 10px rgba(0,0,0,0.2), inset 0 0 0 1px rgba(255,255,255,0.2)',
               transition: isDragging ? 'none' : 'all 0.1s ease-out'
@@ -167,8 +185,8 @@ const ImageComparisonSlider: React.FC<ImageComparisonSliderProps> = ({
           <div 
             className="absolute rounded-full bg-white"
             style={{
-              width: isDragging || isHovering ? '18px' : '14px',
-              height: isDragging || isHovering ? '18px' : '14px',
+              width: isDragging || isHovering || isTouching ? '18px' : '14px',
+              height: isDragging || isHovering || isTouching ? '18px' : '14px',
               transform: 'translate(-50%, -50%)',
               boxShadow: '0 0 10px rgba(0,0,0,0.2)',
               transition: isDragging ? 'none' : 'all 0.1s ease-out'
@@ -179,7 +197,7 @@ const ImageComparisonSlider: React.FC<ImageComparisonSliderProps> = ({
           <div 
             className="absolute"
             style={{
-              opacity: isDragging || isHovering ? 1 : 0,
+              opacity: isDragging || isHovering || isTouching ? 1 : 0,
               transform: 'translate(-50%, -50%)',
               transition: isDragging ? 'none' : 'all 0.1s ease-out'
             }}
