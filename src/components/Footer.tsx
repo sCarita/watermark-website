@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import { Container } from '@/components/Container'
 import { Logo } from '@/components/Logo'
@@ -10,25 +11,37 @@ import { LanguageSelector } from '@/components/LanguageSelector'
 
 export function Footer() {
   const { t } = useI18n()
+  const pathname = usePathname()
+  
+  // Determine if we're on a non-homepage page
+  const isNotHomePage = pathname !== '/' && pathname !== '/es' && pathname !== '/fr'
+  
+  // Get the language prefix from the pathname
+  const langPrefix = pathname.startsWith('/es') ? '/es' : pathname.startsWith('/fr') ? '/fr' : ''
+  
+  // Create the base URL for navigation
+  const baseUrl = langPrefix || '/'
   
   return (
     <footer className="bg-slate-50">
       <Container>
         <div className="py-16">
-          <Logo className="mx-auto h-10 w-auto" />
+          <Link href={baseUrl}>
+            <Logo className="mx-auto h-10 w-auto" />
+          </Link>
           <nav className="mt-10 text-sm" aria-label="quick links">
             <div className="-my-1 flex justify-center gap-x-6">
-              <NavLink href="#features">{t('common.navigation.features')}</NavLink>
-              <NavLink href="#testimonials">{t('common.navigation.testimonials')}</NavLink>
-              <NavLink href="#pricing">{t('common.navigation.pricing')}</NavLink>
-              <NavLink href="/terms">{t('common.navigation.terms')}</NavLink>
-              <NavLink href="/privacy">{t('common.navigation.privacy')}</NavLink>
+              <NavLink href={isNotHomePage ? `${baseUrl}#features` : '#features'}>{t('common.navigation.features')}</NavLink>
+              <NavLink href={isNotHomePage ? `${baseUrl}#testimonials` : '#testimonials'}>{t('common.navigation.testimonials')}</NavLink>
+              <NavLink href={isNotHomePage ? `${baseUrl}#pricing` : '#pricing'}>{t('common.navigation.pricing')}</NavLink>
+              <NavLink href={`${langPrefix}/terms`}>{t('common.navigation.terms')}</NavLink>
+              <NavLink href={`${langPrefix}/privacy`}>{t('common.navigation.privacy')}</NavLink>
             </div>
           </nav>
         </div>
         <div className="flex flex-col items-center border-t border-slate-400/10 py-10 sm:flex-row-reverse sm:justify-between">
           <div className="flex gap-x-6">
-            <Link href="#" className="group" aria-label={t('accessibility.taxPalOnX')}>
+            <Link href="https://twitter.com/clearphotoai" className="group" aria-label={t('accessibility.taxPalOnX')}>
               <svg
                 className="h-6 w-6 fill-slate-500 group-hover:fill-slate-700"
                 aria-hidden="true"
@@ -37,7 +50,7 @@ export function Footer() {
                 <path d="M13.3174 10.7749L19.1457 4H17.7646L12.7039 9.88256L8.66193 4H4L10.1122 12.8955L4 20H5.38119L10.7254 13.7878L14.994 20H19.656L13.3171 10.7749H13.3174ZM11.4257 12.9738L10.8064 12.0881L5.87886 5.03974H8.00029L11.9769 10.728L12.5962 11.6137L17.7652 19.0075H15.6438L11.4257 12.9742V12.9738Z" />
               </svg>
             </Link>
-            <Link href="#" className="group" aria-label={t('accessibility.taxPalOnGitHub')}>
+            <Link href="https://github.com/clearphotoai" className="group" aria-label={t('accessibility.taxPalOnGitHub')}>
               <svg
                 className="h-6 w-6 fill-slate-500 group-hover:fill-slate-700"
                 aria-hidden="true"

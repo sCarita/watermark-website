@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import {
   Popover,
   PopoverButton,
@@ -60,6 +61,16 @@ function MobileNavIcon({ open }: { open: boolean }) {
 
 function MobileNavigation() {
   const { t } = useI18n()
+  const pathname = usePathname()
+  
+  // Determine if we're on a non-homepage page
+  const isNotHomePage = pathname !== '/' && pathname !== '/es' && pathname !== '/fr'
+  
+  // Get the language prefix from the pathname
+  const langPrefix = pathname.startsWith('/es') ? '/es' : pathname.startsWith('/fr') ? '/fr' : ''
+  
+  // Create the base URL for navigation
+  const baseUrl = isNotHomePage ? langPrefix || '/' : ''
   
   return (
     <Popover>
@@ -80,19 +91,19 @@ function MobileNavigation() {
           
           <div className="py-3 border-b border-slate-200">
             <div className="space-y-1">
-              <MobileNavLink href="#features">{t('common.navigation.features')}</MobileNavLink>
-              <MobileNavLink href="#testimonials">{t('common.navigation.testimonials')}</MobileNavLink>
-              <MobileNavLink href="#pricing">{t('common.navigation.pricing')}</MobileNavLink>
-              <MobileNavLink href="/terms">{t('common.navigation.terms')}</MobileNavLink>
-              <MobileNavLink href="/privacy">{t('common.navigation.privacy')}</MobileNavLink>
+              <MobileNavLink href={isNotHomePage ? `${baseUrl}#features` : '#features'}>{t('common.navigation.features')}</MobileNavLink>
+              <MobileNavLink href={isNotHomePage ? `${baseUrl}#testimonials` : '#testimonials'}>{t('common.navigation.testimonials')}</MobileNavLink>
+              <MobileNavLink href={isNotHomePage ? `${baseUrl}#pricing` : '#pricing'}>{t('common.navigation.pricing')}</MobileNavLink>
+              <MobileNavLink href={`${langPrefix}/terms`}>{t('common.navigation.terms')}</MobileNavLink>
+              <MobileNavLink href={`${langPrefix}/privacy`}>{t('common.navigation.privacy')}</MobileNavLink>
             </div>
           </div>
           
           <div className="pt-4 space-y-3">
-            <Button href="/login" variant="outline" className="w-full justify-center text-sm">
+            <Button href={`${langPrefix}/login`} variant="outline" className="w-full justify-center text-sm">
               {t('common.navigation.signIn')}
             </Button>
-            <Button href="/register" className="w-full justify-center text-sm">
+            <Button href={`${langPrefix}/register`} className="w-full justify-center text-sm">
               {t('common.navigation.getStarted')}
             </Button>
           </div>
@@ -104,29 +115,39 @@ function MobileNavigation() {
 
 export function Header() {
   const { t } = useI18n()
+  const pathname = usePathname()
+  
+  // Determine if we're on a non-homepage page
+  const isNotHomePage = pathname !== '/' && pathname !== '/es' && pathname !== '/fr'
+  
+  // Get the language prefix from the pathname
+  const langPrefix = pathname.startsWith('/es') ? '/es' : pathname.startsWith('/fr') ? '/fr' : ''
+  
+  // Create the base URL for navigation
+  const baseUrl = langPrefix || '/'
   
   return (
     <header className="py-4 md:py-10">
       <Container>
         <nav className="relative z-50 flex items-center justify-between">
           <div className="flex items-center md:gap-x-12">
-            <Link href="#" aria-label={t('accessibility.home')}>
+            <Link href={baseUrl} aria-label={t('accessibility.home')}>
               <Logo className="h-10 w-auto" />
             </Link>
             <div className="hidden md:flex md:gap-x-6">
-              <NavLink href="#features">{t('common.navigation.features')}</NavLink>
-              <NavLink href="#pricing">{t('common.navigation.pricing')}</NavLink>
+              <NavLink href={isNotHomePage ? `${baseUrl}#features` : '#features'}>{t('common.navigation.features')}</NavLink>
+              <NavLink href={isNotHomePage ? `${baseUrl}#pricing` : '#pricing'}>{t('common.navigation.pricing')}</NavLink>
             </div>
           </div>
           <div className="flex items-center gap-x-3 md:gap-x-8">
             <div className="hidden md:block">
-              <NavLink href="/login">{t('common.navigation.signIn')}</NavLink>
+              <NavLink href={`${langPrefix}/login`}>{t('common.navigation.signIn')}</NavLink>
             </div>
             <div className="hidden md:block">
               <LanguageSelector />
             </div>
             <div className="hidden md:block">
-              <Button href="/register" color="blue">
+              <Button href={`${langPrefix}/register`} color="blue">
                 <span>
                   {t('common.navigation.getStartedToday')}
                 </span>
