@@ -9,6 +9,7 @@ import { FadeIn } from '@/components/FadeIn'
 import { PageIntro } from '@/components/PageIntro'
 import { formatDate } from '@/lib/formatDate'
 import { loadArticles } from '@/lib/mdx'
+import { cookies } from 'next/headers'
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -17,7 +18,10 @@ export const metadata: Metadata = {
 }
 
 export default async function Blog() {
-  let articles = await loadArticles()
+  const cookieStore = cookies()
+  const locale = cookieStore.get('NEXT_LOCALE')?.value || 'en'
+
+  let articles = await loadArticles(locale)
 
   return (
     <>

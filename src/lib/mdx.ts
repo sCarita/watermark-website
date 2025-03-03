@@ -4,18 +4,20 @@ import glob from 'fast-glob'
 async function loadEntries<T extends { date: string }>(
   directory: string,
   metaName: string,
+  locale: string = 'en',
 ): Promise<Array<MDXEntry<T>>> {
+  locale = locale === 'en' ? '' : `/${locale}`
   return (
     await Promise.all(
-      (await glob('**/page.mdx', { cwd: `src/app/${directory}` })).map(
+      (await glob('**/page.mdx', { cwd: `src/app${locale}/${directory}` })).map(
         async (filename) => {
-          let metadata = (await import(`../app/${directory}/${filename}`))[
-            metaName
-          ] as T
+          let metadata = (
+            await import(`../app${locale}/${directory}/${filename}`)
+          )[metaName] as T
           return {
             ...metadata,
             metadata,
-            href: `/${directory}/${filename.replace(/\/page\.mdx$/, '')}`,
+            href: `${locale}/${directory}/${filename.replace(/\/page\.mdx$/, '')}`,
           }
         },
       ),
@@ -38,28 +40,6 @@ export interface Article {
   }
 }
 
-export interface CaseStudy {
-  date: string
-  client: string
-  title: string
-  description: string
-  summary: Array<string>
-  logo: ImageProps['src']
-  image: ImagePropsWithOptionalAlt
-  service: string
-  testimonial: {
-    author: {
-      name: string
-      role: string
-    }
-    content: string
-  }
-}
-
-export function loadArticles() {
-  return loadEntries<Article>('blog', 'article')
-}
-
-export function loadCaseStudies() {
-  return loadEntries<CaseStudy>('work', 'caseStudy')
+export function loadArticles(locale: string = 'en') {
+  return loadEntries<Article>('blog', 'article', locale)
 }

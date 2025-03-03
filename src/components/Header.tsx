@@ -183,7 +183,7 @@ export function Header() {
               <NavLink href={isNotHomePage ? `${baseUrl}#pricing` : '#pricing'}>
                 {t('common.navigation.pricing')}
               </NavLink>
-              <NavLink href={'/blog'}>Blog</NavLink>
+              <NavLink href={`${langPrefix}/blog`}>Blog</NavLink>
             </div>
           </div>
           <div className="flex items-center gap-x-3 md:gap-x-8">
