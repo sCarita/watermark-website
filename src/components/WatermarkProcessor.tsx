@@ -20,7 +20,7 @@ const FileUploadTab = ({
   removeFile: () => void
 }) => {
   const { t } = useI18n()
-  
+
   return (
     <>
       <div className="relative flex min-h-[250px] w-full flex-col items-center justify-center">
@@ -32,7 +32,7 @@ const FileUploadTab = ({
         )}
 
         {file && (
-          <div className="relative flex w-full flex-1 items-center justify-center rounded-sm border border-slate-300 p-2">
+          <div className="relative flex w-full flex-1 items-center justify-center rounded-sm border border-slate-200 p-2">
             <img
               src={URL.createObjectURL(file)}
               alt={t('watermarkProcessor.fileAlt')}
@@ -47,7 +47,20 @@ const FileUploadTab = ({
               disabled={isLoading}
               aria-label={t('watermarkProcessor.removeFile')}
             >
-              x
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
             </button>
           </div>
         )}
@@ -94,7 +107,7 @@ const UrlUploadTab = ({
         </form>
       )}
       {imageUrl && !previewError && (
-        <div className="relative flex w-full flex-1 items-center justify-center rounded-sm border border-slate-300 p-2">
+        <div className="relative flex w-full flex-1 items-center justify-center rounded-sm border border-slate-200 p-2">
           <img
             src={imageUrl}
             alt={t('watermarkProcessor.previewAlt')}
@@ -107,15 +120,26 @@ const UrlUploadTab = ({
             disabled={isLoading}
             aria-label={t('watermarkProcessor.removeImage')}
           >
-            x
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
           </button>
         </div>
       )}
       {imageUrl && previewError && (
         <div className="mt-2 rounded-lg border border-slate-800 bg-neutral-900 p-4 text-yellow-400">
-          <p>
-            {t('watermarkProcessor.previewError.message')}
-          </p>
+          <p>{t('watermarkProcessor.previewError.message')}</p>
           <p className="mt-2 text-sm text-neutral-400">
             {t('watermarkProcessor.previewError.suggestion')}
           </p>
@@ -135,7 +159,7 @@ const ResultDisplay = ({
   resetImage: () => void
 }) => {
   const { t } = useI18n()
-  
+
   const handleDownload = async () => {
     try {
       const response = await fetch(result.processedImage)
@@ -157,7 +181,9 @@ const ResultDisplay = ({
     <div className="min-h-[250px] w-full">
       <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
         <div className="flex flex-col items-center">
-          <h3 className="mb-1 font-display text-lg">{t('watermarkProcessor.original')}</h3>
+          <h3 className="mb-1 font-display text-lg">
+            {t('watermarkProcessor.original')}
+          </h3>
           <img
             src={result.originalImage}
             alt={t('watermarkProcessor.originalAlt')}
@@ -168,7 +194,9 @@ const ResultDisplay = ({
           />
         </div>
         <div className="flex flex-col items-center">
-          <h3 className="mb-1 font-display text-lg">{t('watermarkProcessor.processed')}</h3>
+          <h3 className="mb-1 font-display text-lg">
+            {t('watermarkProcessor.processed')}
+          </h3>
           <img
             src={result.processedImage}
             alt={t('watermarkProcessor.processedAlt')}
@@ -264,7 +292,9 @@ export default function WatermarkProcessor() {
 
       const response = await fetch(corsProxyUrl)
       if (!response.ok) {
-        throw new Error(`${t('watermarkProcessor.errors.fetchFailed')}: ${response.status}`)
+        throw new Error(
+          `${t('watermarkProcessor.errors.fetchFailed')}: ${response.status}`,
+        )
       }
 
       const blob = await response.blob()
@@ -307,9 +337,7 @@ export default function WatermarkProcessor() {
         try {
           // Validate URL format
           if (!imageUrl.startsWith('data:') && !imageUrl.startsWith('http')) {
-            throw new Error(
-              t('watermarkProcessor.errors.invalidUrl')
-            )
+            throw new Error(t('watermarkProcessor.errors.invalidUrl'))
           }
 
           const result = await fetchImageAsBase64(imageUrl)
@@ -318,7 +346,7 @@ export default function WatermarkProcessor() {
         } catch (err) {
           console.error('URL processing error:', err)
           throw new Error(
-            `${t('watermarkProcessor.errors.urlAccess')} ${err instanceof Error ? err.message : ''} ${t('watermarkProcessor.errors.tryDirectUpload')}`
+            `${t('watermarkProcessor.errors.urlAccess')} ${err instanceof Error ? err.message : ''} ${t('watermarkProcessor.errors.tryDirectUpload')}`,
           )
         }
       } else {
@@ -342,7 +370,9 @@ export default function WatermarkProcessor() {
       )
 
       if (!response.ok) {
-        throw new Error(`${t('watermarkProcessor.errors.apiError')}: ${response.status}`)
+        throw new Error(
+          `${t('watermarkProcessor.errors.apiError')}: ${response.status}`,
+        )
       }
 
       const data = await response.json()
@@ -364,7 +394,11 @@ export default function WatermarkProcessor() {
       }
     } catch (err) {
       console.error('Error processing image:', err)
-      setError(err instanceof Error ? err.message : t('watermarkProcessor.errors.unknown'))
+      setError(
+        err instanceof Error
+          ? err.message
+          : t('watermarkProcessor.errors.unknown'),
+      )
     } finally {
       setIsLoading(false)
     }
@@ -476,7 +510,7 @@ export default function WatermarkProcessor() {
             onClick={processImage}
             disabled={isLoading}
             color="blue"
-            className="w-full"
+            className="w-full bg-linear-to-r from-sky-500 to-indigo-500 py-4 !text-lg"
           >
             {isLoading ? (
               <div className="flex items-center justify-center">
