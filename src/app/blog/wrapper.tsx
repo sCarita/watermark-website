@@ -1,10 +1,11 @@
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
+import { Header } from '@/components/Header'
 import { MDXComponents } from '@/components/MDXComponents'
 import { PageLinks } from '@/components/PageLinks'
 import { formatDate } from '@/lib/formatDate'
 import { type Article, type MDXEntry, loadArticles } from '@/lib/mdx'
-
+import { cookies } from 'next/headers'
 export default async function BlogArticleWrapper({
   article,
   children,
@@ -12,14 +13,18 @@ export default async function BlogArticleWrapper({
   article: MDXEntry<Article>
   children: React.ReactNode
 }) {
-  let allArticles = await loadArticles()
+  const cookieStore = cookies()
+  const locale = cookieStore.get('NEXT_LOCALE')?.value || 'en'
+
+  let allArticles = await loadArticles(locale)
   let moreArticles = allArticles
     .filter(({ metadata }) => metadata !== article)
     .slice(0, 2)
 
   return (
     <>
-      <Container as="article" className="mt-24 sm:mt-32 lg:mt-40">
+      <Header />
+      <Container as="article" className="mt-10">
         <FadeIn>
           <header className="mx-auto flex max-w-5xl flex-col text-center">
             <h1 className="mt-6 font-display text-5xl font-medium tracking-tight [text-wrap:balance] text-neutral-950 sm:text-6xl">

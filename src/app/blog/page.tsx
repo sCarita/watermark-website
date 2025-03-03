@@ -10,6 +10,7 @@ import { PageIntro } from '@/components/PageIntro'
 import { formatDate } from '@/lib/formatDate'
 import { loadArticles } from '@/lib/mdx'
 import { cookies } from 'next/headers'
+import { Header } from '@/components/Header'
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -25,6 +26,8 @@ export default async function Blog() {
 
   return (
     <>
+      <Header />
+
       <PageIntro eyebrow="Blog" title="The latest articles and news">
         <p>
           Stay up-to-date with the latest industry news as our marketing teams
