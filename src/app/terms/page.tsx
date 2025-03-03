@@ -7,6 +7,8 @@ import { FadeIn } from '@/components/FadeIn'
 import { useI18n } from '@/hooks/useI18n'
 
 export default function Terms() {
+  const { t } = useI18n()
+
   return (
     <>
       <Header />
@@ -15,240 +17,192 @@ export default function Terms() {
           <FadeIn>
             <div className="prose prose-slate mx-auto max-w-4xl">
               <h1 className="font-display text-3xl font-medium tracking-tight text-slate-900 sm:text-4xl">
-                Terms of Service
+                {t('common.terms.title')}
               </h1>
-              <p className="text-sm text-slate-600">Last Updated: 01/03/2025</p>
+              <p className="text-sm text-slate-600">
+                {t('common.terms.lastUpdated')}
+              </p>
 
               <div className="mt-8">
                 <p className="text-lg text-slate-700">
-                  Welcome to Gravura Poderosa LDA ("<strong>we</strong>," "
-                  <strong>us</strong>," or "<strong>our</strong>"), a company
-                  incorporated in Portugal with the fiscal number{' '}
-                  <strong>517517787</strong>. These Terms of Service ("
-                  <strong>Terms</strong>") govern your use of our image
-                  watermark removal tool (the "<strong>Tool</strong>"), located
-                  at{' '}
-                  <a href="/" className="text-blue-600 hover:text-blue-800">
-                    clear.photo
-                  </a>
-                  .
+                  {t('common.terms.intro.welcome')}
                 </p>
                 <p className="mt-4 text-lg text-slate-700">
-                  By accessing or using the Tool, you agree to be bound by these
-                  Terms. If you do not agree to all the Terms, do not use the
-                  Tool.
+                  {t('common.terms.intro.agreement')}
                 </p>
               </div>
 
               <hr className="my-8" />
 
-              <h2 className="mt-12 font-display text-2xl font-medium tracking-tight text-slate-900">
-                1. Acceptance of Terms
-              </h2>
-              <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
-                1.1 Contractual Relationship
-              </h3>
-              <p className="text-slate-700">
-                By accessing or using the Tool, you acknowledge that you have
-                read, understood, and agree to be bound by these Terms, as well
-                as our{' '}
-                <a
-                  href="/privacy"
-                  className="text-blue-600 hover:text-blue-800"
-                >
-                  Privacy Policy
-                </a>
-                , which is incorporated by reference.
-              </p>
+              {/* Acceptance of Terms */}
+              <div>
+                <h2 className="mt-12 font-display text-2xl font-medium tracking-tight text-slate-900">
+                  {t('common.terms.sections.acceptance.title')}
+                </h2>
+                <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
+                  {t('common.terms.sections.acceptance.contractual.title')}
+                </h3>
+                <p className="text-slate-700">
+                  {t('common.terms.sections.acceptance.contractual.text')}
+                </p>
 
-              <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
-                1.2 Eligibility
-              </h3>
-              <p className="text-slate-700">
-                You may not use the Tool if you are not legally eligible to form
-                a binding contract under applicable laws, or if your use of the
-                Tool is prohibited by any applicable laws or regulations.
-              </p>
+                <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
+                  {t('common.terms.sections.acceptance.eligibility.title')}
+                </h3>
+                <p className="text-slate-700">
+                  {t('common.terms.sections.acceptance.eligibility.text')}
+                </p>
+              </div>
 
               <hr className="my-8" />
 
-              <h2 className="mt-10 font-display text-2xl font-medium tracking-tight text-slate-900">
-                2. Modifications to Terms
-              </h2>
-              <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
-                2.1 Updates
-              </h3>
-              <p className="text-slate-700">
-                We reserve the right to modify these Terms at any time. Changes
-                will be effective immediately upon posting to our website unless
-                otherwise indicated.
-              </p>
+              {/* Modifications to Terms */}
+              <div>
+                <h2 className="mt-10 font-display text-2xl font-medium tracking-tight text-slate-900">
+                  {t('common.terms.sections.modifications.title')}
+                </h2>
+                <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
+                  {t('common.terms.sections.modifications.updates.title')}
+                </h3>
+                <p className="text-slate-700">
+                  {t('common.terms.sections.modifications.updates.text')}
+                </p>
 
-              <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
-                2.2 Notification
-              </h3>
-              <p className="text-slate-700">
-                We will provide notice of any material changes (e.g., via a
-                prominent statement on our homepage or by email). Your continued
-                use of the Tool after the effective date of any updated Terms
-                constitutes your acceptance of the changes.
-              </p>
+                <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
+                  {t('common.terms.sections.modifications.notification.title')}
+                </h3>
+                <p className="text-slate-700">
+                  {t('common.terms.sections.modifications.notification.text')}
+                </p>
+              </div>
 
               <hr className="my-8" />
 
-              <h2 className="mt-10 font-display text-2xl font-medium tracking-tight text-slate-900">
-                3. Description, Responsible Use, and Scope of the Tool
-              </h2>
-              <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
-                3.1 Responsible Use: Fostering AI Advancements
-              </h3>
-              <p className="text-slate-700">
-                Our Tool is designed to facilitate the removal of watermarks
-                from images in ways that support{' '}
-                <strong>scientific research</strong>,{' '}
-                <strong>educational pursuits</strong>, and the{' '}
-                <strong>development of new technologies</strong>. We encourage
-                users to harness this Tool as a resource for advancing{' '}
-                <strong>artificial intelligence (AI)</strong>—particularly in
-                image processing, machine learning, and computer vision. Through
-                responsible and ethical usage:
-              </p>
-              <ul className="list-disc pl-6 text-slate-700">
-                <li>
-                  <strong>Research & Collaboration</strong>: You may use the
-                  Tool to prototype innovative approaches in AI, explore
-                  open-source libraries, and collaborate on academic or
-                  community-driven projects.
-                </li>
-                <li>
-                  <strong>AI Evolution</strong>: We believe imagery systems have
-                  the potential to drive the{' '}
-                  <strong>artificialization of intelligence</strong> in a
-                  similar transformative manner as language technologies have
-                  shaped human-computer interactions. By combining visual and
-                  linguistic capabilities, we can extend the boundaries of AI to
-                  mirror the analytical and creative aspects of human intellect.
-                </li>
-                <li>
-                  <strong>Ethical Considerations</strong>: You are encouraged to
-                  abide by ethical principles in AI research, including respect
-                  for data privacy, avoidance of biases, and transparency about
-                  your usage of this Tool.
-                </li>
-              </ul>
+              {/* Description and Scope */}
+              <div>
+                <h2 className="mt-10 font-display text-2xl font-medium tracking-tight text-slate-900">
+                  {t('common.terms.sections.description.title')}
+                </h2>
+                <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
+                  {t('common.terms.sections.description.responsibleUse.title')}
+                </h3>
+                <p className="text-slate-700">
+                  {t('common.terms.sections.description.responsibleUse.text')}
+                </p>
+                <ul className="list-disc pl-6 text-slate-700">
+                  {(
+                    t(
+                      'common.terms.sections.description.responsibleUse.items',
+                      { returnObjects: true },
+                    ) as Array<{ title: string; text: string }>
+                  ).map((item, index) => (
+                    <li key={index}>
+                      <strong>{item.title}</strong>: {item.text}
+                    </li>
+                  ))}
+                </ul>
 
-              <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
-                3.2 Exclusive for Scientific and Development Purposes
-              </h3>
-              <p className="text-slate-700">
-                The Tool is offered <strong>exclusively</strong> for{' '}
-                <strong>
-                  non-commercial, scientific, experimental, and developmental
-                </strong>{' '}
-                uses. By using this Tool, you agree to:
-              </p>
-              <ol className="list-decimal pl-6 text-slate-700">
-                <li>
-                  <strong>Avoid Commercial Exploitation</strong>: You shall not
-                  use or modify any output or processed images derived from the
-                  Tool for direct or indirect commercial gain.
-                </li>
-                <li>
-                  <strong>Open Source Engagement</strong>: Where applicable, we
-                  encourage contributions to or usage of open-source projects
-                  that foster the improvement of AI-related technologies.
-                </li>
-                <li>
-                  <strong>Prohibit Unauthorized Use</strong>: You must not use
-                  the Tool to infringe on intellectual property rights or to
-                  engage in any activity that violates local or international
-                  law.
-                </li>
-              </ol>
-              <p className="mt-4 text-slate-700">
-                Any use of the Tool outside the scope of scientific,
-                educational, or developmental purposes is strictly prohibited.
-                If you have questions about permissible uses or wish to request
-                permission for commercial usage, please contact us in advance.
-              </p>
+                <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
+                  {t('common.terms.sections.description.scientificUse.title')}
+                </h3>
+                <p className="text-slate-700">
+                  {t('common.terms.sections.description.scientificUse.text')}
+                </p>
+                <ol className="list-decimal pl-6 text-slate-700">
+                  {(
+                    t('common.terms.sections.description.scientificUse.items', {
+                      returnObjects: true,
+                    }) as Array<{ title: string; text: string }>
+                  ).map((item, index) => (
+                    <li key={index}>
+                      <strong>{item.title}</strong>: {item.text}
+                    </li>
+                  ))}
+                </ol>
+                <p className="mt-4 text-slate-700">
+                  {t('common.terms.sections.description.scientificUse.note')}
+                </p>
+              </div>
 
               <hr className="my-8" />
 
-              <h2 className="mt-10 font-display text-2xl font-medium tracking-tight text-slate-900">
-                4. User Responsibilities
-              </h2>
-              <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
-                4.1 Lawful Use
-              </h3>
-              <p className="text-slate-700">
-                You represent and warrant that you own or have the necessary
-                rights and permissions to the content you upload for watermark
-                removal. You agree not to upload any images whose watermark
-                removal would infringe on any party's rights or violate any
-                laws.
-              </p>
+              {/* User Responsibilities */}
+              <div>
+                <h2 className="mt-10 font-display text-2xl font-medium tracking-tight text-slate-900">
+                  {t('common.terms.sections.userResponsibilities.title')}
+                </h2>
+                <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
+                  {t(
+                    'common.terms.sections.userResponsibilities.lawfulUse.title',
+                  )}
+                </h3>
+                <p className="text-slate-700">
+                  {t(
+                    'common.terms.sections.userResponsibilities.lawfulUse.text',
+                  )}
+                </p>
 
-              <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
-                4.2 Prohibited Content
-              </h3>
-              <p className="text-slate-700">
-                You agree not to upload or distribute any content that:
-              </p>
-              <ul className="list-disc pl-6 text-slate-700">
-                <li>
-                  Violates applicable laws or regulations, including but not
-                  limited to copyright, trademark, or defamation laws.
-                </li>
-                <li>
-                  Contains or promotes hate speech, violence, or illegal
-                  activities.
-                </li>
-                <li>
-                  Infringes any intellectual property or proprietary rights of a
-                  third party.
-                </li>
-              </ul>
+                <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
+                  {t(
+                    'common.terms.sections.userResponsibilities.prohibitedContent.title',
+                  )}
+                </h3>
+                <p className="text-slate-700">
+                  {t(
+                    'common.terms.sections.userResponsibilities.prohibitedContent.text',
+                  )}
+                </p>
+                <ul className="list-disc pl-6 text-slate-700">
+                  {(
+                    t(
+                      'common.terms.sections.userResponsibilities.prohibitedContent.items',
+                      { returnObjects: true },
+                    ) as Array<string>
+                  ).map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
+                </ul>
 
-              <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
-                4.3 Accuracy of Information
-              </h3>
-              <p className="text-slate-700">
-                When creating an account or otherwise providing information to
-                us, you agree to provide accurate and up-to-date information.
-              </p>
+                <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
+                  {t(
+                    'common.terms.sections.userResponsibilities.accuracy.title',
+                  )}
+                </h3>
+                <p className="text-slate-700">
+                  {t(
+                    'common.terms.sections.userResponsibilities.accuracy.text',
+                  )}
+                </p>
+              </div>
 
               <hr className="my-8" />
 
-              <h2 className="mt-10 font-display text-2xl font-medium tracking-tight text-slate-900">
-                5. Data Retention Policy
-              </h2>
-              <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
-                5.1 24-Hour Storage
-              </h3>
-              <p className="text-slate-700">
-                To manage operational costs and protect user privacy, we store
-                your processed images on our servers for a maximum period of{' '}
-                <strong>24 hours</strong> after the watermark removal process is
-                completed.
-              </p>
+              {/* Data Retention */}
+              <div>
+                <h2 className="mt-10 font-display text-2xl font-medium tracking-tight text-slate-900">
+                  {t('common.terms.sections.dataRetention.title')}
+                </h2>
+                <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
+                  {t('common.terms.sections.dataRetention.storage.title')}
+                </h3>
+                <p className="text-slate-700">
+                  {t('common.terms.sections.dataRetention.storage.text')}
+                </p>
 
-              <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
-                5.2 Automatic Deletion
-              </h3>
-              <p className="text-slate-700">
-                After 24 hours, the processed images (and any user-uploaded
-                images) are automatically and irreversibly deleted from our
-                servers.
-              </p>
+                <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
+                  {t('common.terms.sections.dataRetention.deletion.title')}
+                </h3>
+                <p className="text-slate-700">
+                  {t('common.terms.sections.dataRetention.deletion.text')}
+                </p>
 
-              <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
-                5.3 No Recovery
-              </h3>
-              <p className="text-slate-700">
-                Once deleted, these images cannot be recovered. We are not
-                liable for any loss you may incur if you fail to download your
-                processed images within the 24-hour window.
-              </p>
+                <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
+                  {t('common.terms.sections.dataRetention.noRecovery.title')}
+                </h3>
+                <p className="text-slate-700">
+                  {t('common.terms.sections.dataRetention.noRecovery.text')}
+                </p>
+              </div>
 
               <hr className="my-8" />
 

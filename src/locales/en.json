@@ -39,6 +39,234 @@
       "es": "Español",
       "fr": "Français",
       "select": "Select language"
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "lastUpdated": "Last Updated: 01/03/2025",
+      "intro": {
+        "welcome": "Welcome to Gravura Poderosa LDA (\"we,\" \"us,\" or \"our\"), a company incorporated in Portugal with the fiscal number 517517787. These Terms of Service (\"Terms\") govern your use of our image watermark removal tool (the \"Tool\"), located at clear.photo.",
+        "agreement": "By accessing or using the Tool, you agree to be bound by these Terms. If you do not agree to all the Terms, do not use the Tool."
+      },
+      "sections": {
+        "acceptance": {
+          "title": "1. Acceptance of Terms",
+          "contractual": {
+            "title": "1.1 Contractual Relationship",
+            "text": "By accessing or using the Tool, you acknowledge that you have read, understood, and agree to be bound by these Terms, as well as our Privacy Policy, which is incorporated by reference."
+          },
+          "eligibility": {
+            "title": "1.2 Eligibility",
+            "text": "You may not use the Tool if you are not legally eligible to form a binding contract under applicable laws, or if your use of the Tool is prohibited by any applicable laws or regulations."
+          }
+        },
+        "modifications": {
+          "title": "2. Modifications to Terms",
+          "updates": {
+            "title": "2.1 Updates",
+            "text": "We reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting to our website unless otherwise indicated."
+          },
+          "notification": {
+            "title": "2.2 Notification",
+            "text": "We will provide notice of any material changes (e.g., via a prominent statement on our homepage or by email). Your continued use of the Tool after the effective date of any updated Terms constitutes your acceptance of the changes."
+          }
+        },
+        "description": {
+          "title": "3. Description, Responsible Use, and Scope of the Tool",
+          "responsibleUse": {
+            "title": "3.1 Responsible Use: Fostering AI Advancements",
+            "text": "Our Tool is designed to facilitate the removal of watermarks from images in ways that support scientific research, educational pursuits, and the development of new technologies. We encourage users to harness this Tool as a resource for advancing artificial intelligence (AI)—particularly in image processing, machine learning, and computer vision. Through responsible and ethical usage:",
+            "items": [
+              {
+                "title": "Research & Collaboration",
+                "text": "You may use the Tool to prototype innovative approaches in AI, explore open-source libraries, and collaborate on academic or community-driven projects."
+              },
+              {
+                "title": "AI Evolution",
+                "text": "We believe imagery systems have the potential to drive the artificialization of intelligence in a similar transformative manner as language technologies have shaped human-computer interactions. By combining visual and linguistic capabilities, we can extend the boundaries of AI to mirror the analytical and creative aspects of human intellect."
+              },
+              {
+                "title": "Ethical Considerations",
+                "text": "You are encouraged to abide by ethical principles in AI research, including respect for data privacy, avoidance of biases, and transparency about your usage of this Tool."
+              }
+            ]
+          },
+          "scientificUse": {
+            "title": "3.2 Exclusive for Scientific and Development Purposes",
+            "text": "The Tool is offered exclusively for non-commercial, scientific, experimental, and developmental uses. By using this Tool, you agree to:",
+            "items": [
+              {
+                "title": "Avoid Commercial Exploitation",
+                "text": "You shall not use or modify any output or processed images derived from the Tool for direct or indirect commercial gain."
+              },
+              {
+                "title": "Open Source Engagement",
+                "text": "Where applicable, we encourage contributions to or usage of open-source projects that foster the improvement of AI-related technologies."
+              },
+              {
+                "title": "Prohibit Unauthorized Use",
+                "text": "You must not use the Tool to infringe on intellectual property rights or to engage in any activity that violates local or international law."
+              }
+            ],
+            "note": "Any use of the Tool outside the scope of scientific, educational, or developmental purposes is strictly prohibited. If you have questions about permissible uses or wish to request permission for commercial usage, please contact us in advance."
+          }
+        },
+        "userResponsibilities": {
+          "title": "4. User Responsibilities",
+          "lawfulUse": {
+            "title": "4.1 Lawful Use",
+            "text": "You represent and warrant that you own or have the necessary rights and permissions to the content you upload for watermark removal. You agree not to upload any images whose watermark removal would infringe on any party's rights or violate any laws."
+          },
+          "prohibitedContent": {
+            "title": "4.2 Prohibited Content",
+            "text": "You agree not to upload or distribute any content that:",
+            "items": [
+              "Violates applicable laws or regulations, including but not limited to copyright, trademark, or defamation laws.",
+              "Contains or promotes hate speech, violence, or illegal activities.",
+              "Infringes any intellectual property or proprietary rights of a third party."
+            ]
+          },
+          "accuracy": {
+            "title": "4.3 Accuracy of Information",
+            "text": "When creating an account or otherwise providing information to us, you agree to provide accurate and up-to-date information."
+          }
+        },
+        "dataRetention": {
+          "title": "5. Data Retention Policy",
+          "storage": {
+            "title": "5.1 24-Hour Storage",
+            "text": "To manage operational costs and protect user privacy, we store your processed images on our servers for a maximum period of 24 hours after the watermark removal process is completed."
+          },
+          "deletion": {
+            "title": "5.2 Automatic Deletion",
+            "text": "After 24 hours, the processed images (and any user-uploaded images) are automatically and irreversibly deleted from our servers."
+          },
+          "noRecovery": {
+            "title": "5.3 No Recovery",
+            "text": "Once deleted, these images cannot be recovered. We are not liable for any loss you may incur if you fail to download your processed images within the 24-hour window."
+          }
+        }
+      }
+    },
+    "privacy": {
+      "title": "Personal Data Disclaimer",
+      "lastUpdated": "Last Updated: 01/03/2025",
+      "intro": {
+        "text": "This Personal Data Disclaimer governs your use of the watermark removal tool (the \"Tool\") operated by Gravura Poderosa LDA (\"we,\" \"us,\" \"our\"), Fiscal Number (NIF): 517517787, located at clear.photo. It supplements our Terms of Service and clarifies our strict no-personal-data policy regarding uploads."
+      },
+      "sections": {
+        "noPersonalData": {
+          "title": "1. No Personal Data Allowed",
+          "items": {
+            "1": {
+              "title": "Non-Personal Content Only",
+              "text": "Our Tool is intended exclusively for images without any personal data."
+            },
+            "2": {
+              "title": "Prohibited Uploads",
+              "text": "Do not upload images containing faces, names, identification numbers, or any sensitive information (e.g., medical, financial, or location data)."
+            }
+          }
+        },
+        "dataController": {
+          "title": "2. You Are the Data Controller (If You Upload Personal Data)",
+          "items": {
+            "1": {
+              "title": "Your Responsibility",
+              "text": "If, in violation of this Disclaimer, you upload personal data, you become the \"data controller\" under GDPR or other applicable data protection laws."
+            },
+            "2": {
+              "title": "No Guarantees from Us",
+              "text": "We provide no support, assurance, or legal compliance for personal data processing. You must satisfy all privacy, consent, and transparency obligations."
+            }
+          }
+        },
+        "userRepresentations": {
+          "title": "3. User Representations & Warranties",
+          "intro": "By using our Tool, you represent and warrant that:",
+          "items": {
+            "1": {
+              "title": "Filtering/Anonymization",
+              "text": "You have verified or anonymized your images so they do not contain personal data."
+            },
+            "2": {
+              "title": "No Automated Unsupervised Uploads",
+              "text": "You will not use bots or scripts to upload unverified images en masse."
+            },
+            "3": {
+              "title": "Lawful Use",
+              "text": "You will comply with all laws, including GDPR and copyright regulations, and accept full liability if your uploads violate these rules."
+            }
+          }
+        },
+        "limitedRole": {
+          "title": "4. Our Limited Role",
+          "items": {
+            "1": {
+              "title": "Technical Process Only",
+              "text": "We only provide an automated function to remove watermarks. We have no means to identify, filter, or handle personal data."
+            },
+            "2": {
+              "title": "No Detection or Reporting Mechanisms",
+              "text": "We do not maintain any automated systems to detect or signal personal data, nor do we produce logs or reports that might facilitate a data controller's GDPR-related due diligence. We also do not implement specific safety features designed to protect personal data."
+            },
+            "3": {
+              "title": "No Liability for Personal Data",
+              "text": "If personal data appears in uploaded images, we are neither a GDPR \"controller\" nor able to offer any compliance guarantees. You are solely responsible for all regulatory, legal, or privacy obligations if you choose to upload personal data despite these warnings."
+            }
+          }
+        },
+        "breach": {
+          "title": "5. Breach & Possible Action",
+          "items": {
+            "1": {
+              "title": "Policy Violation",
+              "text": "Uploading personal data violates this Disclaimer and possibly our Terms of Service."
+            },
+            "2": {
+              "title": "Investigation & Consequences",
+              "text": "If we learn of personal data uploads, we may investigate and, if needed, block or terminate your access to the Tool."
+            }
+          }
+        },
+        "noWarranty": {
+          "title": "6. No Warranty & No Liability",
+          "items": {
+            "1": {
+              "text": "We disclaim all warranties related to personal data usage, including any implied fitness for GDPR or privacy law compliance."
+            },
+            "2": {
+              "text": "We are not liable for any legal, regulatory, or reputational consequences arising from your uploads of personal data."
+            }
+          }
+        },
+        "complaints": {
+          "title": "7. Making Complaints or Reporting Unauthorized Use",
+          "items": {
+            "1": {
+              "title": "Suspected Unauthorized Processing",
+              "text": "If you believe your image was processed through our Tool without your authorization, or if you suspect that personal data has been uploaded or processed in violation of this Disclaimer, please contact us at:",
+              "contact": {
+                "email": "Email: support@clear.photo",
+                "address": "Address: Gravura Poderosa LDA, Portugal"
+              }
+            },
+            "2": {
+              "text": "We will investigate any complaints or reports promptly and, if necessary, take appropriate measures (e.g., removing the content, blocking the user, or involving legal authorities)."
+            }
+          }
+        },
+        "changes": {
+          "title": "8. Changes to This Disclaimer",
+          "items": {
+            "1": {
+              "text": "We may update this Disclaimer at any time. If changes are significant, we will notify you (e.g., via our homepage or email)."
+            },
+            "2": {
+              "text": "Continued use of the Tool after any updates constitutes your acceptance of the revised Disclaimer."
+            }
+          }
+        }
+      }
     }
   },
   "hero": {

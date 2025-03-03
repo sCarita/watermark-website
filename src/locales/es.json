@@ -38,6 +38,234 @@
       "en": "English",
       "es": "Español",
       "select": "Seleccionar idioma"
+    },
+    "terms": {
+      "title": "Términos de Servicio",
+      "lastUpdated": "Última actualización: 01/03/2025",
+      "intro": {
+        "welcome": "Bienvenido a Gravura Poderosa LDA (\"nosotros,\" \"nos,\" o \"nuestro\"), una empresa constituida en Portugal con el número fiscal 517517787. Estos Términos de Servicio (\"Términos\") rigen el uso de nuestra herramienta de eliminación de marcas de agua (la \"Herramienta\"), ubicada en clear.photo.",
+        "agreement": "Al acceder o utilizar la Herramienta, aceptas estar sujeto a estos Términos. Si no estás de acuerdo con todos los Términos, no uses la Herramienta."
+      },
+      "sections": {
+        "acceptance": {
+          "title": "1. Aceptación de los Términos",
+          "contractual": {
+            "title": "1.1 Relación Contractual",
+            "text": "Al acceder o utilizar la Herramienta, reconoces que has leído, entendido y aceptas estar sujeto a estos Términos, así como a nuestra Política de Privacidad, que se incorpora por referencia."
+          },
+          "eligibility": {
+            "title": "1.2 Elegibilidad",
+            "text": "No puedes utilizar la Herramienta si no eres legalmente elegible para formar un contrato vinculante según las leyes aplicables, o si tu uso de la Herramienta está prohibido por cualquier ley o regulación aplicable."
+          }
+        },
+        "modifications": {
+          "title": "2. Modificaciones a los Términos",
+          "updates": {
+            "title": "2.1 Actualizaciones",
+            "text": "Nos reservamos el derecho de modificar estos Términos en cualquier momento. Los cambios serán efectivos inmediatamente después de su publicación en nuestro sitio web, a menos que se indique lo contrario."
+          },
+          "notification": {
+            "title": "2.2 Notificación",
+            "text": "Proporcionaremos aviso de cualquier cambio material (por ejemplo, a través de una declaración destacada en nuestra página de inicio o por correo electrónico). Tu uso continuado de la Herramienta después de la fecha efectiva de cualquier Término actualizado constituye tu aceptación de los cambios."
+          }
+        },
+        "description": {
+          "title": "3. Descripción, Uso Responsable y Alcance de la Herramienta",
+          "responsibleUse": {
+            "title": "3.1 Uso Responsable: Fomentando los Avances en IA",
+            "text": "Nuestra Herramienta está diseñada para facilitar la eliminación de marcas de agua de imágenes de manera que apoye la investigación científica, los objetivos educativos y el desarrollo de nuevas tecnologías. Alentamos a los usuarios a aprovechar esta Herramienta como un recurso para avanzar en la inteligencia artificial (IA), particularmente en el procesamiento de imágenes, aprendizaje automático y visión por computadora. A través de un uso responsable y ético:",
+            "items": [
+              {
+                "title": "Investigación y Colaboración",
+                "text": "Puedes usar la Herramienta para prototipar enfoques innovadores en IA, explorar bibliotecas de código abierto y colaborar en proyectos académicos o impulsados por la comunidad."
+              },
+              {
+                "title": "Evolución de la IA",
+                "text": "Creemos que los sistemas de imágenes tienen el potencial de impulsar la artificialización de la inteligencia de manera similar a como las tecnologías del lenguaje han dado forma a las interacciones humano-computadora. Al combinar capacidades visuales y lingüísticas, podemos extender los límites de la IA para reflejar los aspectos analíticos y creativos del intelecto humano."
+              },
+              {
+                "title": "Consideraciones Éticas",
+                "text": "Se te anima a cumplir con los principios éticos en la investigación de IA, incluyendo el respeto a la privacidad de los datos, la evitación de sesgos y la transparencia sobre tu uso de esta Herramienta."
+              }
+            ]
+          },
+          "scientificUse": {
+            "title": "3.2 Exclusivo para Fines Científicos y de Desarrollo",
+            "text": "La Herramienta se ofrece exclusivamente para usos no comerciales, científicos, experimentales y de desarrollo. Al usar esta Herramienta, aceptas:",
+            "items": [
+              {
+                "title": "Evitar la Explotación Comercial",
+                "text": "No deberás usar ni modificar ninguna salida o imagen procesada derivada de la Herramienta para beneficio comercial directo o indirecto."
+              },
+              {
+                "title": "Compromiso con el Código Abierto",
+                "text": "Cuando sea aplicable, alentamos las contribuciones o el uso de proyectos de código abierto que fomenten la mejora de las tecnologías relacionadas con la IA."
+              },
+              {
+                "title": "Prohibir el Uso No Autorizado",
+                "text": "No debes usar la Herramienta para infringir derechos de propiedad intelectual o participar en cualquier actividad que viole la ley local o internacional."
+              }
+            ],
+            "note": "Cualquier uso de la Herramienta fuera del alcance de propósitos científicos, educativos o de desarrollo está estrictamente prohibido. Si tienes preguntas sobre usos permitidos o deseas solicitar permiso para uso comercial, contáctanos con anticipación."
+          }
+        },
+        "userResponsibilities": {
+          "title": "4. Responsabilidades del Usuario",
+          "lawfulUse": {
+            "title": "4.1 Uso Legal",
+            "text": "Declaras y garantizas que posees o tienes los derechos y permisos necesarios para el contenido que subes para la eliminación de marcas de agua. Aceptas no subir ninguna imagen cuya eliminación de marca de agua infringiría los derechos de cualquier parte o violaría alguna ley."
+          },
+          "prohibitedContent": {
+            "title": "4.2 Contenido Prohibido",
+            "text": "Aceptas no subir ni distribuir ningún contenido que:",
+            "items": [
+              "Viole leyes o regulaciones aplicables, incluyendo pero no limitado a leyes de derechos de autor, marcas registradas o difamación.",
+              "Contenga o promueva discurso de odio, violencia o actividades ilegales.",
+              "Infrinja cualquier derecho de propiedad intelectual o derechos propietarios de terceros."
+            ]
+          },
+          "accuracy": {
+            "title": "4.3 Precisión de la Información",
+            "text": "Al crear una cuenta o proporcionar información de otro modo, aceptas proporcionar información precisa y actualizada."
+          }
+        },
+        "dataRetention": {
+          "title": "5. Política de Retención de Datos",
+          "storage": {
+            "title": "5.1 Almacenamiento de 24 Horas",
+            "text": "Para gestionar los costos operativos y proteger la privacidad del usuario, almacenamos tus imágenes procesadas en nuestros servidores por un período máximo de 24 horas después de que se completa el proceso de eliminación de marca de agua."
+          },
+          "deletion": {
+            "title": "5.2 Eliminación Automática",
+            "text": "Después de 24 horas, las imágenes procesadas (y cualquier imagen subida por el usuario) se eliminan automática e irreversiblemente de nuestros servidores."
+          },
+          "noRecovery": {
+            "title": "5.3 Sin Recuperación",
+            "text": "Una vez eliminadas, estas imágenes no pueden recuperarse. No somos responsables de ninguna pérdida que puedas sufrir si no descargas tus imágenes procesadas dentro del período de 24 horas."
+          }
+        }
+      }
+    },
+    "privacy": {
+      "title": "Aviso de Datos Personales",
+      "lastUpdated": "Última actualización: 01/03/2025",
+      "intro": {
+        "text": "Este Aviso de Datos Personales rige el uso de la herramienta de eliminación de marcas de agua (la \"Herramienta\") operada por Gravura Poderosa LDA (\"nosotros,\" \"nos,\" \"nuestro\"), Número Fiscal (NIF): 517517787, ubicada en clear.photo. Complementa nuestros Términos de Servicio y aclara nuestra estricta política de no datos personales con respecto a las cargas."
+      },
+      "sections": {
+        "noPersonalData": {
+          "title": "1. No Se Permiten Datos Personales",
+          "items": {
+            "1": {
+              "title": "Solo Contenido No Personal",
+              "text": "Nuestra Herramienta está destinada exclusivamente para imágenes sin ningún dato personal."
+            },
+            "2": {
+              "title": "Cargas Prohibidas",
+              "text": "NO cargue imágenes que contengan rostros, nombres, números de identificación o cualquier información sensible (por ejemplo, datos médicos, financieros o de ubicación)."
+            }
+          }
+        },
+        "dataController": {
+          "title": "2. Usted es el Controlador de Datos (Si Carga Datos Personales)",
+          "items": {
+            "1": {
+              "title": "Su Responsabilidad",
+              "text": "Si, en violación de este Aviso, carga datos personales, se convierte en el \"controlador de datos\" según el RGPD u otras leyes de protección de datos aplicables."
+            },
+            "2": {
+              "title": "Sin Garantías de Nuestra Parte",
+              "text": "No proporcionamos soporte, garantía o cumplimiento legal para el procesamiento de datos personales. Debe satisfacer todas las obligaciones de privacidad, consentimiento y transparencia."
+            }
+          }
+        },
+        "userRepresentations": {
+          "title": "3. Representaciones y Garantías del Usuario",
+          "intro": "Al usar nuestra Herramienta, usted representa y garantiza que:",
+          "items": {
+            "1": {
+              "title": "Filtrado/Anonimización",
+              "text": "Ha verificado o anonimizado sus imágenes para que no contengan datos personales."
+            },
+            "2": {
+              "title": "Sin Cargas Automatizadas Sin Supervisión",
+              "text": "No utilizará bots o scripts para cargar imágenes no verificadas en masa."
+            },
+            "3": {
+              "title": "Uso Legal",
+              "text": "Cumplirá con todas las leyes, incluidas las regulaciones RGPD y de derechos de autor, y acepta toda la responsabilidad si sus cargas violan estas reglas."
+            }
+          }
+        },
+        "limitedRole": {
+          "title": "4. Nuestro Rol Limitado",
+          "items": {
+            "1": {
+              "title": "Solo Proceso Técnico",
+              "text": "Solo proporcionamos una función automatizada para eliminar marcas de agua. No tenemos medios para identificar, filtrar o manejar datos personales."
+            },
+            "2": {
+              "title": "Sin Mecanismos de Detección o Informes",
+              "text": "No mantenemos sistemas automatizados para detectar o señalar datos personales, ni producimos registros o informes que puedan facilitar la debida diligencia relacionada con el RGPD de un controlador de datos. Tampoco implementamos características de seguridad específicas diseñadas para proteger datos personales."
+            },
+            "3": {
+              "title": "Sin Responsabilidad por Datos Personales",
+              "text": "Si aparecen datos personales en las imágenes cargadas, no somos ni un \"controlador\" RGPD ni podemos ofrecer garantías de cumplimiento. Usted es el único responsable de todas las obligaciones regulatorias, legales o de privacidad si elige cargar datos personales a pesar de estas advertencias."
+            }
+          }
+        },
+        "breach": {
+          "title": "5. Incumplimiento y Posible Acción",
+          "items": {
+            "1": {
+              "title": "Violación de la Política",
+              "text": "Cargar datos personales viola este Aviso y posiblemente nuestros Términos de Servicio."
+            },
+            "2": {
+              "title": "Investigación y Consecuencias",
+              "text": "Si nos enteramos de cargas de datos personales, podemos investigar y, si es necesario, bloquear o terminar su acceso a la Herramienta."
+            }
+          }
+        },
+        "noWarranty": {
+          "title": "6. Sin Garantía y Sin Responsabilidad",
+          "items": {
+            "1": {
+              "text": "Renunciamos a todas las garantías relacionadas con el uso de datos personales, incluida cualquier aptitud implícita para el cumplimiento del RGPD o la ley de privacidad."
+            },
+            "2": {
+              "text": "No somos responsables de ninguna consecuencia legal, regulatoria o reputacional que surja de sus cargas de datos personales."
+            }
+          }
+        },
+        "complaints": {
+          "title": "7. Presentación de Quejas o Reporte de Uso No Autorizado",
+          "items": {
+            "1": {
+              "title": "Procesamiento No Autorizado Sospechoso",
+              "text": "Si cree que su imagen fue procesada a través de nuestra Herramienta sin su autorización, o si sospecha que se han cargado o procesado datos personales en violación de este Aviso, contáctenos en:",
+              "contact": {
+                "email": "Email: support@clear.photo",
+                "address": "Dirección: Gravura Poderosa LDA, Portugal"
+              }
+            },
+            "2": {
+              "text": "Investigaremos cualquier queja o informe rápidamente y, si es necesario, tomaremos las medidas apropiadas (por ejemplo, eliminar el contenido, bloquear al usuario o involucrar a las autoridades legales)."
+            }
+          }
+        },
+        "changes": {
+          "title": "8. Cambios en este Aviso",
+          "items": {
+            "1": {
+              "text": "Podemos actualizar este Aviso en cualquier momento. Si los cambios son significativos, se lo notificaremos (por ejemplo, a través de nuestra página de inicio o correo electrónico)."
+            },
+            "2": {
+              "text": "El uso continuado de la Herramienta después de cualquier actualización constituye su aceptación del Aviso revisado."
+            }
+          }
+        }
+      }
     }
   },
   "hero": {

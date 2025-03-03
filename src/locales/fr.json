@@ -39,6 +39,234 @@
       "es": "Español",
       "fr": "Français",
       "select": "Sélectionner la langue"
+    },
+    "terms": {
+      "title": "Conditions d'Utilisation",
+      "lastUpdated": "Dernière mise à jour : 01/03/2025",
+      "intro": {
+        "welcome": "Bienvenue chez Gravura Poderosa LDA (\"nous,\" \"notre,\" \"nos\"), une société constituée au Portugal sous le numéro fiscal 517517787. Ces Conditions d'Utilisation (\"Conditions\") régissent votre utilisation de notre outil de suppression de filigrane (l'\"Outil\"), situé sur clear.photo.",
+        "agreement": "En accédant ou en utilisant l'Outil, vous acceptez d'être lié par ces Conditions. Si vous n'acceptez pas toutes les Conditions, n'utilisez pas l'Outil."
+      },
+      "sections": {
+        "acceptance": {
+          "title": "1. Acceptation des Conditions",
+          "contractual": {
+            "title": "1.1 Relation Contractuelle",
+            "text": "En accédant ou en utilisant l'Outil, vous reconnaissez avoir lu, compris et accepté d'être lié par ces Conditions, ainsi que par notre Politique de Confidentialité, qui est incorporée par référence."
+          },
+          "eligibility": {
+            "title": "1.2 Éligibilité",
+            "text": "Vous ne pouvez pas utiliser l'Outil si vous n'êtes pas légalement éligible pour former un contrat contraignant selon les lois applicables, ou si votre utilisation de l'Outil est interdite par toute loi ou réglementation applicable."
+          }
+        },
+        "modifications": {
+          "title": "2. Modifications des Conditions",
+          "updates": {
+            "title": "2.1 Mises à Jour",
+            "text": "Nous nous réservons le droit de modifier ces Conditions à tout moment. Les changements seront effectifs immédiatement après leur publication sur notre site web, sauf indication contraire."
+          },
+          "notification": {
+            "title": "2.2 Notification",
+            "text": "Nous fournirons un avis de tout changement important (par exemple, via une déclaration visible sur notre page d'accueil ou par email). Votre utilisation continue de l'Outil après la date d'effet de toute Condition mise à jour constitue votre acceptation des changements."
+          }
+        },
+        "description": {
+          "title": "3. Description, Utilisation Responsable et Portée de l'Outil",
+          "responsibleUse": {
+            "title": "3.1 Utilisation Responsable : Favoriser les Avancées en IA",
+            "text": "Notre Outil est conçu pour faciliter la suppression des filigranes des images de manière à soutenir la recherche scientifique, les objectifs éducatifs et le développement de nouvelles technologies. Nous encourageons les utilisateurs à exploiter cet Outil comme une ressource pour faire progresser l'intelligence artificielle (IA), particulièrement dans le traitement d'images, l'apprentissage automatique et la vision par ordinateur. À travers une utilisation responsable et éthique :",
+            "items": [
+              {
+                "title": "Recherche et Collaboration",
+                "text": "Vous pouvez utiliser l'Outil pour prototyper des approches innovantes en IA, explorer des bibliothèques open source et collaborer sur des projets académiques ou communautaires."
+              },
+              {
+                "title": "Évolution de l'IA",
+                "text": "Nous croyons que les systèmes d'imagerie ont le potentiel de stimuler l'artificialisation de l'intelligence d'une manière similaire à la façon dont les technologies du langage ont façonné les interactions homme-machine. En combinant les capacités visuelles et linguistiques, nous pouvons étendre les limites de l'IA pour refléter les aspects analytiques et créatifs de l'intellect humain."
+              },
+              {
+                "title": "Considérations Éthiques",
+                "text": "Vous êtes encouragé à respecter les principes éthiques dans la recherche en IA, y compris le respect de la confidentialité des données, l'évitement des biais et la transparence concernant votre utilisation de cet Outil."
+              }
+            ]
+          },
+          "scientificUse": {
+            "title": "3.2 Exclusif aux Fins Scientifiques et de Développement",
+            "text": "L'Outil est proposé exclusivement pour des utilisations non commerciales, scientifiques, expérimentales et de développement. En utilisant cet Outil, vous acceptez :",
+            "items": [
+              {
+                "title": "Éviter l'Exploitation Commerciale",
+                "text": "Vous ne devez pas utiliser ou modifier les sorties ou images traitées dérivées de l'Outil pour un gain commercial direct ou indirect."
+              },
+              {
+                "title": "Engagement Open Source",
+                "text": "Le cas échéant, nous encourageons les contributions ou l'utilisation de projets open source qui favorisent l'amélioration des technologies liées à l'IA."
+              },
+              {
+                "title": "Interdire l'Utilisation Non Autorisée",
+                "text": "Vous ne devez pas utiliser l'Outil pour enfreindre les droits de propriété intellectuelle ou vous engager dans toute activité qui viole la loi locale ou internationale."
+              }
+            ],
+            "note": "Toute utilisation de l'Outil en dehors du cadre des fins scientifiques, éducatives ou de développement est strictement interdite. Si vous avez des questions sur les utilisations autorisées ou souhaitez demander une autorisation pour une utilisation commerciale, veuillez nous contacter à l'avance."
+          }
+        },
+        "userResponsibilities": {
+          "title": "4. Responsabilités de l'Utilisateur",
+          "lawfulUse": {
+            "title": "4.1 Utilisation Légale",
+            "text": "Vous déclarez et garantissez que vous possédez ou avez les droits et permissions nécessaires pour le contenu que vous téléchargez pour la suppression de filigrane. Vous acceptez de ne pas télécharger d'images dont la suppression du filigrane enfreindrait les droits de toute partie ou violerait des lois."
+          },
+          "prohibitedContent": {
+            "title": "4.2 Contenu Interdit",
+            "text": "Vous acceptez de ne pas télécharger ou distribuer tout contenu qui :",
+            "items": [
+              "Viole les lois ou réglementations applicables, y compris mais sans s'y limiter, les lois sur le droit d'auteur, les marques déposées ou la diffamation.",
+              "Contient ou promeut des discours haineux, la violence ou des activités illégales.",
+              "Enfreint tout droit de propriété intellectuelle ou droits propriétaires d'un tiers."
+            ]
+          },
+          "accuracy": {
+            "title": "4.3 Exactitude des Informations",
+            "text": "Lors de la création d'un compte ou de la fourniture d'informations, vous acceptez de fournir des informations exactes et à jour."
+          }
+        },
+        "dataRetention": {
+          "title": "5. Politique de Conservation des Données",
+          "storage": {
+            "title": "5.1 Stockage de 24 Heures",
+            "text": "Pour gérer les coûts opérationnels et protéger la confidentialité des utilisateurs, nous stockons vos images traitées sur nos serveurs pendant une période maximale de 24 heures après la fin du processus de suppression du filigrane."
+          },
+          "deletion": {
+            "title": "5.2 Suppression Automatique",
+            "text": "Après 24 heures, les images traitées (et toutes les images téléchargées par l'utilisateur) sont automatiquement et irréversiblement supprimées de nos serveurs."
+          },
+          "noRecovery": {
+            "title": "5.3 Pas de Récupération",
+            "text": "Une fois supprimées, ces images ne peuvent pas être récupérées. Nous ne sommes pas responsables des pertes que vous pourriez subir si vous ne téléchargez pas vos images traitées dans le délai de 24 heures."
+          }
+        }
+      }
+    },
+    "privacy": {
+      "title": "Avis sur les Données Personnelles",
+      "lastUpdated": "Dernière mise à jour : 01/03/2025",
+      "intro": {
+        "text": "Cet Avis sur les Données Personnelles régit l'utilisation de l'outil de suppression de filigrane (l'\"Outil\") exploité par Gravura Poderosa LDA (\"nous,\" \"notre,\" \"nos\"), Numéro Fiscal (NIF) : 517517787, situé à clear.photo. Il complète nos Conditions d'Utilisation et clarifie notre politique stricte de non-utilisation des données personnelles concernant les téléchargements."
+      },
+      "sections": {
+        "noPersonalData": {
+          "title": "1. Aucune Donnée Personnelle Autorisée",
+          "items": {
+            "1": {
+              "title": "Contenu Non Personnel Uniquement",
+              "text": "Notre Outil est destiné exclusivement aux images ne contenant aucune donnée personnelle."
+            },
+            "2": {
+              "title": "Téléchargements Interdits",
+              "text": "NE téléchargez PAS d'images contenant des visages, des noms, des numéros d'identification ou toute information sensible (par exemple, données médicales, financières ou de localisation)."
+            }
+          }
+        },
+        "dataController": {
+          "title": "2. Vous Êtes le Responsable du Traitement (Si Vous Téléchargez des Données Personnelles)",
+          "items": {
+            "1": {
+              "title": "Votre Responsabilité",
+              "text": "Si, en violation de cet Avis, vous téléchargez des données personnelles, vous devenez le \"responsable du traitement\" selon le RGPD ou d'autres lois applicables sur la protection des données."
+            },
+            "2": {
+              "title": "Aucune Garantie de Notre Part",
+              "text": "Nous ne fournissons aucun support, assurance ou conformité légale pour le traitement des données personnelles. Vous devez satisfaire à toutes les obligations de confidentialité, de consentement et de transparence."
+            }
+          }
+        },
+        "userRepresentations": {
+          "title": "3. Déclarations et Garanties de l'Utilisateur",
+          "intro": "En utilisant notre Outil, vous déclarez et garantissez que :",
+          "items": {
+            "1": {
+              "title": "Filtrage/Anonymisation",
+              "text": "Vous avez vérifié ou anonymisé vos images pour qu'elles ne contiennent pas de données personnelles."
+            },
+            "2": {
+              "title": "Pas de Téléchargements Automatisés Sans Surveillance",
+              "text": "Vous n'utiliserez pas de bots ou de scripts pour télécharger en masse des images non vérifiées."
+            },
+            "3": {
+              "title": "Utilisation Légale",
+              "text": "Vous respecterez toutes les lois, y compris les réglementations RGPD et les droits d'auteur, et acceptez l'entière responsabilité si vos téléchargements violent ces règles."
+            }
+          }
+        },
+        "limitedRole": {
+          "title": "4. Notre Rôle Limité",
+          "items": {
+            "1": {
+              "title": "Processus Technique Uniquement",
+              "text": "Nous fournissons uniquement une fonction automatisée pour supprimer les filigranes. Nous n'avons aucun moyen d'identifier, de filtrer ou de gérer les données personnelles."
+            },
+            "2": {
+              "title": "Pas de Mécanismes de Détection ou de Rapport",
+              "text": "Nous ne maintenons aucun système automatisé pour détecter ou signaler les données personnelles, ni ne produisons de journaux ou de rapports qui pourraient faciliter la diligence raisonnable liée au RGPD d'un responsable du traitement. Nous n'implémentons pas non plus de fonctionnalités de sécurité spécifiques conçues pour protéger les données personnelles."
+            },
+            "3": {
+              "title": "Aucune Responsabilité pour les Données Personnelles",
+              "text": "Si des données personnelles apparaissent dans les images téléchargées, nous ne sommes ni un \"responsable du traitement\" RGPD ni en mesure d'offrir des garanties de conformité. Vous êtes seul responsable de toutes les obligations réglementaires, légales ou de confidentialité si vous choisissez de télécharger des données personnelles malgré ces avertissements."
+            }
+          }
+        },
+        "breach": {
+          "title": "5. Violation et Action Possible",
+          "items": {
+            "1": {
+              "title": "Violation de la Politique",
+              "text": "Le téléchargement de données personnelles viole cet Avis et potentiellement nos Conditions d'Utilisation."
+            },
+            "2": {
+              "title": "Enquête et Conséquences",
+              "text": "Si nous apprenons des téléchargements de données personnelles, nous pouvons enquêter et, si nécessaire, bloquer ou mettre fin à votre accès à l'Outil."
+            }
+          }
+        },
+        "noWarranty": {
+          "title": "6. Aucune Garantie et Aucune Responsabilité",
+          "items": {
+            "1": {
+              "text": "Nous déclinons toute garantie liée à l'utilisation des données personnelles, y compris toute aptitude implicite à la conformité au RGPD ou à la loi sur la protection de la vie privée."
+            },
+            "2": {
+              "text": "Nous ne sommes pas responsables des conséquences juridiques, réglementaires ou réputationnelles découlant de vos téléchargements de données personnelles."
+            }
+          }
+        },
+        "complaints": {
+          "title": "7. Dépôt de Plaintes ou Signalement d'Utilisation Non Autorisée",
+          "items": {
+            "1": {
+              "title": "Traitement Non Autorisé Suspecté",
+              "text": "Si vous pensez que votre image a été traitée via notre Outil sans votre autorisation, ou si vous soupçonnez que des données personnelles ont été téléchargées ou traitées en violation de cet Avis, veuillez nous contacter à :",
+              "contact": {
+                "email": "Email : support@clear.photo",
+                "address": "Adresse : Gravura Poderosa LDA, Portugal"
+              }
+            },
+            "2": {
+              "text": "Nous enquêterons rapidement sur toute plainte ou signalement et, si nécessaire, prendrons les mesures appropriées (par exemple, suppression du contenu, blocage de l'utilisateur ou implication des autorités légales)."
+            }
+          }
+        },
+        "changes": {
+          "title": "8. Modifications de cet Avis",
+          "items": {
+            "1": {
+              "text": "Nous pouvons mettre à jour cet Avis à tout moment. Si les changements sont importants, nous vous en informerons (par exemple, via notre page d'accueil ou par email)."
+            },
+            "2": {
+              "text": "L'utilisation continue de l'Outil après toute mise à jour constitue votre acceptation de l'Avis révisé."
+            }
+          }
+        }
+      }
     }
   },
   "hero": {
