@@ -9,12 +9,13 @@ import { usePathname, useRouter } from 'next/navigation'
 
 interface LanguageSelectorProps {
   variant?: 'light' | 'dark'
+  direction?: 'top end' | 'top start' | 'bottom end' | 'bottom start'
 }
 
 // Simplified flag components
 const EnglishFlag = () => (
   <div
-    className="mr-2 inline-block overflow-hidden"
+    className="inline-block overflow-hidden"
     style={{ width: '16px', height: '12px' }}
   >
     <div className="relative h-full w-full">
@@ -92,7 +93,7 @@ const EnglishFlag = () => (
 
 const SpainFlag = () => (
   <div
-    className="mr-2 inline-block overflow-hidden"
+    className="inline-block overflow-hidden"
     style={{ width: '16px', height: '12px' }}
   >
     <div className="relative h-full w-full">
@@ -107,7 +108,7 @@ const SpainFlag = () => (
 
 const FranceFlag = () => (
   <div
-    className="mr-2 inline-block overflow-hidden"
+    className="inline-block overflow-hidden"
     style={{ width: '16px', height: '12px' }}
   >
     <div className="flex h-full w-full">
@@ -118,7 +119,10 @@ const FranceFlag = () => (
   </div>
 )
 
-export function LanguageSelector({ variant = 'light' }: LanguageSelectorProps) {
+export function LanguageSelector({
+  variant = 'light',
+  direction,
+}: LanguageSelectorProps) {
   const { t, i18n, changeLanguage } = useI18n()
   const router = useRouter()
   const pathname = usePathname()
@@ -197,7 +201,7 @@ export function LanguageSelector({ variant = 'light' }: LanguageSelectorProps) {
         )}
       >
         <currentLanguage.flag />
-        {currentLanguage.name}
+        <span className="hidden sm:block">{currentLanguage.name}</span>
         <ChevronDownIcon
           className={clsx(
             '-mr-1 h-5 w-5',
@@ -207,7 +211,15 @@ export function LanguageSelector({ variant = 'light' }: LanguageSelectorProps) {
         />
       </MenuButton>
 
-      <MenuItems className="ring-opacity-5 absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black focus:outline-none">
+      <MenuItems
+        transition
+        anchor={direction}
+        className={clsx(
+          'ring-opacity-5 absolute right-0 z-10 mt-2 w-40 origin-top origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black transition duration-200 ease-out focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0',
+          direction?.includes('top') && '-mt-4',
+          direction?.includes('bottom') && 'mt-2',
+        )}
+      >
         <div className="py-1">
           {languages.map((language) => (
             <MenuItem key={language.code} as={Fragment}>
@@ -216,7 +228,7 @@ export function LanguageSelector({ variant = 'light' }: LanguageSelectorProps) {
                   onClick={() => handleLanguageChange(language.code)}
                   className={clsx(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block flex w-full items-center px-4 py-2 text-left text-sm',
+                    'block flex w-full items-center gap-1.5 px-4 py-2 text-left text-sm',
                     language.code === currentLanguage.code
                       ? 'font-medium'
                       : 'font-normal',

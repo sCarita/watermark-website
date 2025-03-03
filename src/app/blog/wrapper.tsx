@@ -1,5 +1,6 @@
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
+import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { MDXComponents } from '@/components/MDXComponents'
 import { PageLinks } from '@/components/PageLinks'
@@ -56,6 +57,7 @@ export default async function BlogArticleWrapper({
           pages={moreArticles}
         />
       )}
+      <Footer />
     </>
   )
 }

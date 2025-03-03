@@ -82,7 +82,7 @@ export function PrimaryFeatures() {
           </p>
         </div>
         <TabGroup
-          className="mt-16 grid grid-cols-1 items-center gap-y-2 pt-10 sm:gap-y-6 md:mt-20 lg:grid-cols-12 lg:pt-0"
+          className="mt-16 grid grid-cols-1 items-center gap-x-4 gap-y-2 pt-10 sm:gap-x-10 sm:gap-y-6 md:mt-20 lg:grid-cols-12 lg:pt-0"
           vertical={tabOrientation === 'vertical'}
         >
           {({ selectedIndex }) => (
@@ -135,8 +135,8 @@ export function PrimaryFeatures() {
                         {feature.description}
                       </p>
                     </div>
-                    <div className="mt-10 overflow-hidden rounded-xl bg-transparent shadow-xl shadow-blue-900/20 mx-auto max-w-full">
-                      <div className="relative w-full h-full flex justify-center items-center">
+                    <div className="mx-auto mt-10 max-w-full overflow-hidden rounded-xl bg-transparent shadow-xl shadow-blue-900/20">
+                      <div className="relative flex h-full w-full items-center justify-center">
                         <Image
                           className="object-contain"
                           src={feature.image}

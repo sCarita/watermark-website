@@ -89,7 +89,10 @@ function MobileNavigation() {
       >
         {({ open }) => <MobileNavIcon open={open} />}
       </PopoverButton>
-      <PopoverBackdrop className="fixed inset-0 z-10 bg-slate-300/50 opacity-100 backdrop-blur" />
+      <PopoverBackdrop
+        transition
+        className="fixed inset-0 bg-slate-300/50 duration-150 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
+      />
       <PopoverPanel className="ui-closed:opacity-0 ui-closed:scale-95 absolute top-full right-0 z-20 mt-2 w-screen max-w-[320px] origin-top-right rounded-lg bg-white opacity-100 shadow-lg ring-1 ring-slate-900/5">
         <div className="p-4">
           <div className="border-b border-slate-200 pb-4">
@@ -104,13 +107,6 @@ function MobileNavigation() {
                 href={isNotHomePage ? `${baseUrl}#features` : '#features'}
               >
                 {t('common.navigation.features')}
-              </MobileNavLink>
-              <MobileNavLink
-                href={
-                  isNotHomePage ? `${baseUrl}#testimonials` : '#testimonials'
-                }
-              >
-                {t('common.navigation.testimonials')}
               </MobileNavLink>
               <MobileNavLink
                 href={isNotHomePage ? `${baseUrl}#pricing` : '#pricing'}
@@ -169,8 +165,8 @@ export function Header() {
   return (
     <header className="py-4 md:py-10">
       <Container>
-        <nav className="relative z-50 flex items-center justify-between">
-          <div className="flex items-center md:gap-x-12">
+        <nav className="relative z-50 flex items-center justify-between gap-1">
+          <div className="flex items-center md:gap-x-6 lg:gap-x-12">
             <Link href={baseUrl} aria-label={t('accessibility.home')}>
               <Logo className="h-10 w-auto" />
             </Link>
@@ -186,12 +182,7 @@ export function Header() {
               <NavLink href={`${langPrefix}/blog`}>Blog</NavLink>
             </div>
           </div>
-          <div className="flex items-center gap-x-3 md:gap-x-8">
-            <div className="hidden md:block">
-              <NavLink href={`${langPrefix}/login`}>
-                {t('common.navigation.signIn')}
-              </NavLink>
-            </div>
+          <div className="flex items-center gap-x-3 md:gap-x-4 lg:gap-x-8">
             <div className="hidden md:block">
               <LanguageSelector />
             </div>

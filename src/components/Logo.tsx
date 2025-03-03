@@ -2,11 +2,11 @@ import React from 'react'
 
 export function Logo(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
-    <div className="flex items-center">
-      <svg 
-        aria-hidden="true" 
-        viewBox="0 0 40 40" 
-        className="h-10 w-10 mr-4"
+    <div className="inline-flex items-center">
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 40 40"
+        className="mr-4 h-10 w-10"
         {...props}
       >
         <path
@@ -16,7 +16,7 @@ export function Logo(props: React.ComponentPropsWithoutRef<'svg'>) {
           fill="#2563EB"
         />
       </svg>
-      <div className="font-bold text-xl">
+      <div className="ml-1.5 text-xl font-bold">
         <span className="text-slate-900">clear.</span>
         <span className="text-blue-600">photo</span>
       </div>

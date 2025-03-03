@@ -11,6 +11,7 @@ import { formatDate } from '@/lib/formatDate'
 import { loadArticles } from '@/lib/mdx'
 import { cookies } from 'next/headers'
 import { Header } from '@/components/Header'
+import { Footer } from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -35,7 +36,7 @@ export default async function Blog() {
         </p>
       </PageIntro>
 
-      <Container className="mt-24 sm:mt-32 lg:mt-40">
+      <Container className="mt-24 mb-24 sm:mt-32 lg:mt-40">
         <div className="space-y-24 lg:space-y-32">
           {articles.map((article) => (
             <FadeIn key={article.href}>
@@ -88,6 +89,8 @@ export default async function Blog() {
           ))}
         </div>
       </Container>
+
+      <Footer />
     </>
   )
 }
