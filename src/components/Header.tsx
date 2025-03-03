@@ -101,7 +101,7 @@ function MobileNavigation() {
             </div>
           </div>
 
-          <div className="border-b border-slate-200 py-3">
+          <div>
             <div className="space-y-1">
               <MobileNavLink
                 href={isNotHomePage ? `${baseUrl}#features` : '#features'}
@@ -123,7 +123,7 @@ function MobileNavigation() {
             </div>
           </div>
 
-          <div className="space-y-3 pt-4">
+          {/* <div className="space-y-3 pt-4">
             <Button
               href={`${langPrefix}/login`}
               variant="outline"
@@ -137,7 +137,7 @@ function MobileNavigation() {
             >
               {t('common.navigation.getStarted')}
             </Button>
-          </div>
+          </div> */}
         </div>
       </PopoverPanel>
     </Popover>
@@ -186,11 +186,11 @@ export function Header() {
             <div className="hidden md:block">
               <LanguageSelector />
             </div>
-            <div className="hidden md:block">
+            {/* <div className="hidden md:block">
               <Button href={`${langPrefix}/register`} color="blue">
                 <span>{t('common.navigation.getStartedToday')}</span>
               </Button>
-            </div>
+            </div> */}
             <div className="md:hidden">
               <div className="flex items-center gap-x-3">
                 <LanguageSelector />

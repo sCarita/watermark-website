@@ -14,9 +14,9 @@ function SwirlyDoodle(props: React.ComponentPropsWithoutRef<'svg'>) {
       viewBox="0 0 281 40"
       preserveAspectRatio="none"
       className={clsx(
-        'absolute top-1/2 left-0 h-[0.8em] w-full fill-blue-400 animate-wave',
+        'animate-wave absolute top-1/2 left-0 h-[0.8em] w-full fill-blue-400',
         'max-w-[80%] sm:max-w-[90%] md:max-w-full',
-        props.className
+        props.className,
       )}
       {...props}
     >
@@ -75,7 +75,7 @@ function Plan({
   featured?: boolean
 }) {
   const { t } = useI18n()
-  
+
   return (
     <section
       className={clsx(
@@ -83,7 +83,9 @@ function Plan({
         featured ? 'order-first bg-blue-600 py-8 lg:order-none' : 'lg:py-8',
       )}
     >
-      <h3 className="mt-5 font-display text-base sm:text-lg text-white">{name}</h3>
+      <h3 className="mt-5 font-display text-base text-white sm:text-lg">
+        {name}
+      </h3>
       <p
         className={clsx(
           'mt-2 text-sm sm:text-base',
@@ -92,7 +94,7 @@ function Plan({
       >
         {description}
       </p>
-      <p className="order-first font-display text-4xl sm:text-5xl font-light tracking-tight text-white">
+      <p className="order-first font-display text-4xl font-light tracking-tight text-white sm:text-5xl">
         {price}
       </p>
       <ul
@@ -116,7 +118,7 @@ function Plan({
         className="mt-8"
         aria-label={t('accessibility.getPlanButtonLabel', { name, price })}
       >
-        {t('common.buttons.getStarted')}
+        {t('common.buttons.contact')}
       </Button>
     </section>
   )
@@ -124,7 +126,7 @@ function Plan({
 
 export function Pricing() {
   const { t } = useI18n()
-  
+
   return (
     <section
       id="pricing"
@@ -133,13 +135,13 @@ export function Pricing() {
     >
       <Container>
         <div className="md:text-center">
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl tracking-tight text-white">
+          <h2 className="font-display text-2xl tracking-tight text-white sm:text-3xl md:text-4xl">
             <span className="relative whitespace-nowrap">
               <SwirlyDoodle />
               <span className="relative">{t('pricing.title')}</span>
             </span>
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-400">
+          <p className="mt-4 text-base text-slate-400 sm:text-lg">
             {t('pricing.subtitle')}
           </p>
           <div className="mt-4 flex justify-center">
@@ -151,7 +153,7 @@ export function Pricing() {
             name={t('pricing.plans.starter.name')}
             price={t('pricing.plans.starter.price')}
             description={t('pricing.plans.starter.description')}
-            href="/register"
+            href="mailto:contact@clear.photo"
             features={[
               t('pricing.plans.starter.features.0'),
               t('pricing.plans.starter.features.1'),
@@ -165,7 +167,7 @@ export function Pricing() {
             name={t('pricing.plans.smallBusiness.name')}
             price={t('pricing.plans.smallBusiness.price')}
             description={t('pricing.plans.smallBusiness.description')}
-            href="/register"
+            href="mailto:contact@clear.photo"
             features={[
               t('pricing.plans.smallBusiness.features.0'),
               t('pricing.plans.smallBusiness.features.1'),
@@ -180,7 +182,7 @@ export function Pricing() {
             name={t('pricing.plans.enterprise.name')}
             price={t('pricing.plans.enterprise.price')}
             description={t('pricing.plans.enterprise.description')}
-            href="/register"
+            href="mailto:contact@clear.photo"
             features={[
               t('pricing.plans.enterprise.features.0'),
               t('pricing.plans.enterprise.features.1'),
