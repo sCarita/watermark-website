@@ -16,7 +16,7 @@ import { Footer } from '@/components/Footer'
 export const metadata: Metadata = {
   title: 'Blog',
   description:
-    'Stay up-to-date with the latest industry news as our marketing teams finds new ways to re-purpose old CSS tricks articles.',
+    'Explore our blog for expert tips on watermark removal techniques, tutorials on how to remove watermarks from photos, and guides on using AI to clean unwanted text from images. Learn how to erase logos from pictures and discover the best free watermark remover tools available online.',
 }
 
 export default async function Blog() {

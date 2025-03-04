@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     default: 'clear.photo - Remove watermarks from your images',
   },
   description:
-    "Remove watermarks from your images with our AI-powered tool.",
+    "Free online watermark remover tool. Easily remove watermarks, logos, and text from photos and images. Our AI-powered technology helps you get rid of watermarks from Getty Images, Shutterstock, and more. Clean up your pictures with the best free watermark remover available online.",
 }
 
 const inter = Inter({

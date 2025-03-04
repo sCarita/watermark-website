@@ -6,6 +6,9 @@ import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { useI18n } from '@/hooks/useI18n'
 
+// Metadata is exported from a separate file since this is a client component
+// See src/app/terms/metadata.ts
+
 export default function Terms() {
   const { t } = useI18n()
 

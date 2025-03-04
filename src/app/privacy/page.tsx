@@ -6,6 +6,9 @@ import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { useI18n } from '@/hooks/useI18n'
 
+// Metadata is exported from a separate file since this is a client component
+// src/app/privacy/metadata.ts would be the ideal place for this
+
 export default function Privacy() {
   const { t } = useI18n()
 
