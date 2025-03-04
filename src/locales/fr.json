@@ -495,7 +495,7 @@
     "termsAgreement": "En téléchargeant une image ou une URL, vous acceptez nos",
     "termsOfUse": "Conditions d'utilisation",
     "privacyPolicy": "Politique de confidentialité",
-    "processing": "Traitement en cours...",
+    "processing": "Traitement en cours, veuillez patienter...",
     "removeFile": "Supprimer le fichier",
     "removeImage": "Supprimer l'image",
     "buttons": {
@@ -503,7 +503,7 @@
       "imageUrl": "URL de l'image",
       "submit": "Envoyer",
       "download": "Télécharger",
-      "processAnother": "Traiter une autre image",
+      "processAnother": "Traiter une autre",
       "removeWatermark": "Supprimer le filigrane"
     },
     "previewError": {

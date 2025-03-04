@@ -94,7 +94,7 @@ const Alert: React.FC<AlertProps> = ({ type, message, className }) => {
     >
       <p className={`flex items-center text-sm font-medium ${textColor}`}>
         <span
-          className={`${iconColor} mr-3 flex h-5 w-5 items-center justify-center rounded-full`}
+          className={`${iconColor} mr-3 flex h-5 w-5 shrink-0 items-center justify-center rounded-full`}
         >
           <svg
             width="12"
@@ -106,7 +106,7 @@ const Alert: React.FC<AlertProps> = ({ type, message, className }) => {
             {iconPath}
           </svg>
         </span>
-        {message || defaultMessage}
+        <span>{message || defaultMessage}</span>
       </p>
     </div>
   )

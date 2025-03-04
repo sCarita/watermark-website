@@ -1,0 +1,68 @@
+/* From Uiverse.io by Shoh2008 */
+.loading-image-loader {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.loading-image-loader:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg) translate(30%, 40%);
+  background: #50a2ff;
+  box-shadow: 16px -17px 0 2.5px #165dfb;
+  animation: slide 2s infinite ease-in-out alternate;
+}
+
+.loading-image-loader:after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #165dfb;
+  transform: rotate(0deg);
+  transform-origin: 15px 72.5px;
+  animation: rotate 2s infinite ease-in-out;
+}
+
+@keyframes slide {
+  0%,
+  100% {
+    bottom: -35px;
+  }
+
+  25%,
+  75% {
+    bottom: -2px;
+  }
+
+  20%,
+  80% {
+    bottom: 2px;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(-15deg);
+  }
+
+  25%,
+  75% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(25deg);
+  }
+}

@@ -495,7 +495,7 @@
     "termsAgreement": "By uploading an image or URL you agree to our",
     "termsOfUse": "Terms of Use",
     "privacyPolicy": "Privacy Policy",
-    "processing": "Processing...",
+    "processing": "Processing image, please wait...",
     "removeFile": "Remove file",
     "removeImage": "Remove image",
     "buttons": {
@@ -503,7 +503,7 @@
       "imageUrl": "Image URL",
       "submit": "Submit",
       "download": "Download",
-      "processAnother": "Process another image",
+      "processAnother": "Process another",
       "removeWatermark": "Remove Watermark"
     },
     "previewError": {

@@ -1,21 +1,26 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from './Button'
 import FileDropUpload from './FileDropUpload'
 import Alert from './Alert'
 import Badge from './Badge'
 import Input from './Input'
 import { useI18n } from '@/hooks/useI18n'
+import LoadingBar from './LoadingBar'
+import clsx from 'clsx'
+import LoadingImage from './LoadingImage'
 
 const FileUploadTab = ({
   file,
   isLoading,
+  progress,
   handleFileChange,
   removeFile,
 }: {
   file: File | null
   isLoading: boolean
+  progress: number
   handleFileChange: (files: FileList | null) => void
   removeFile: () => void
 }) => {
@@ -23,7 +28,7 @@ const FileUploadTab = ({
 
   return (
     <>
-      <div className="relative flex min-h-[250px] w-full flex-col items-center justify-center">
+      <div className="relative flex min-h-[300px] w-full flex-col items-center justify-center">
         {!file && (
           <FileDropUpload
             className="w-full flex-1"
@@ -32,14 +37,15 @@ const FileUploadTab = ({
         )}
 
         {file && (
-          <div className="relative flex w-full flex-1 items-center justify-center rounded-sm border border-slate-200 p-2">
+          <div className="relative flex w-full flex-1 items-center justify-center rounded-sm border border-slate-200 bg-black p-2">
             <img
               src={URL.createObjectURL(file)}
               alt={t('watermarkProcessor.fileAlt')}
-              className="max-h-[200px] w-full flex-1 object-contain"
+              className="max-h-[220px] w-full flex-1 object-contain"
             />
+
             <button
-              className="absolute top-2 right-2 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-red-500 text-white transition-colors duration-500 hover:bg-red-600 disabled:opacity-50"
+              className="absolute -top-2 -right-2 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-red-500 text-white transition-colors duration-500 hover:bg-red-600 disabled:pointer-events-none disabled:opacity-50"
               onClick={(e) => {
                 e.stopPropagation()
                 removeFile()
@@ -62,6 +68,16 @@ const FileUploadTab = ({
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </button>
+
+            {isLoading && (
+              <div className="absolute top-0 left-0 flex h-full w-full flex-col items-center justify-center bg-black/50 text-white">
+                <div className="flex items-center gap-2">
+                  <LoadingImage />
+                  {t('watermarkProcessor.processing')}
+                </div>
+                <LoadingBar className="mt-2" progress={progress} />
+              </div>
+            )}
           </div>
         )}
       </div>
@@ -73,6 +89,7 @@ const UrlUploadTab = ({
   imageUrl,
   isLoading,
   previewError,
+  progress,
   handleUrl,
   removeImageUrl,
   handleImageError,
@@ -80,6 +97,7 @@ const UrlUploadTab = ({
   imageUrl: string
   isLoading: boolean
   previewError: boolean
+  progress: number
   handleUrl: (url: string) => void
   removeImageUrl: () => void
   handleImageError: () => void
@@ -87,9 +105,12 @@ const UrlUploadTab = ({
   const { t } = useI18n()
   const [url, setUrl] = useState(imageUrl)
   return (
-    <div className="flex min-h-[250px] w-full">
+    <div className="flex min-h-[300px] w-full items-start">
       {!imageUrl && (
-        <form className="flex w-full flex-col" onSubmit={() => handleUrl(url)}>
+        <form
+          className="flex h-full w-full flex-col items-start gap-1 rounded-md border border-dashed border-gray-400 p-6 sm:flex-row"
+          onSubmit={() => handleUrl(url)}
+        >
           <Input
             type="url"
             value={url}
@@ -100,22 +121,23 @@ const UrlUploadTab = ({
           <Button
             type="submit"
             disabled={isLoading || !url}
-            className="mt-2 disabled:opacity-50"
+            className="w-full disabled:pointer-events-none disabled:opacity-50 sm:max-w-[100px]"
           >
             {t('common.buttons.submit')}
           </Button>
         </form>
       )}
+
       {imageUrl && !previewError && (
-        <div className="relative flex w-full flex-1 items-center justify-center rounded-sm border border-slate-200 p-2">
+        <div className="relative flex w-full flex-1 items-center justify-center rounded-sm border border-slate-200 bg-black p-2">
           <img
             src={imageUrl}
             alt={t('watermarkProcessor.previewAlt')}
-            className="max-h-[200px] w-full flex-1 object-contain"
+            className="max-h-[220px] w-full flex-1 object-contain"
             onError={handleImageError}
           />
           <button
-            className="absolute top-2 right-2 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-red-500 text-white transition-colors duration-500 hover:bg-red-600 disabled:opacity-50"
+            className="absolute -top-2 -right-2 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-red-500 text-white transition-colors duration-500 hover:bg-red-600 disabled:pointer-events-none disabled:opacity-50"
             onClick={removeImageUrl}
             disabled={isLoading}
             aria-label={t('watermarkProcessor.removeImage')}
@@ -135,14 +157,46 @@ const UrlUploadTab = ({
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </button>
+
+          {isLoading && (
+            <div className="absolute top-0 left-0 flex h-full w-full flex-col items-center justify-center bg-black/50 text-white">
+              <div className="flex items-center gap-2">
+                <LoadingImage />
+                {t('watermarkProcessor.processing')}
+              </div>
+              <LoadingBar className="mt-2" progress={progress} />
+            </div>
+          )}
         </div>
       )}
+
       {imageUrl && previewError && (
-        <div className="mt-2 rounded-lg border border-slate-800 bg-neutral-900 p-4 text-yellow-400">
+        <div className="relative flex h-full flex-col justify-center rounded-md border border-slate-800 bg-neutral-900 p-4 text-yellow-400">
           <p>{t('watermarkProcessor.previewError.message')}</p>
           <p className="mt-2 text-sm text-neutral-400">
             {t('watermarkProcessor.previewError.suggestion')}
           </p>
+          <button
+            className="absolute -top-2 -right-2 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full bg-red-500 text-white transition-colors duration-500 hover:bg-red-600 disabled:pointer-events-none disabled:opacity-50"
+            onClick={removeImageUrl}
+            disabled={isLoading}
+            aria-label={t('watermarkProcessor.removeImage')}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
         </div>
       )}
     </div>
@@ -178,7 +232,7 @@ const ResultDisplay = ({
   }
 
   return (
-    <div className="min-h-[250px] w-full">
+    <div className="min-h-[300px] w-full">
       <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
         <div className="flex flex-col items-center">
           <h3 className="mb-1 font-display text-lg">
@@ -204,15 +258,7 @@ const ResultDisplay = ({
           />
         </div>
       </div>
-      <div className="mt-2 flex flex-col gap-1">
-        <Button
-          onClick={handleDownload}
-          download="processed-image.jpg"
-          className="w-full"
-          color="slate"
-        >
-          {t('watermarkProcessor.buttons.download')}
-        </Button>
+      <div className="mt-2 flex flex-col gap-x-1 gap-y-2 sm:flex-row">
         <Button
           onClick={resetImage}
           download="processed-image.jpg"
@@ -221,6 +267,14 @@ const ResultDisplay = ({
           variant="outline"
         >
           {t('watermarkProcessor.buttons.processAnother')}
+        </Button>
+        <Button
+          onClick={handleDownload}
+          download="processed-image.jpg"
+          className="w-full"
+          color="slate"
+        >
+          {t('watermarkProcessor.buttons.download')}
         </Button>
       </div>
     </div>
@@ -235,11 +289,17 @@ interface ProcessResult {
 
 export default function WatermarkProcessor() {
   const { t } = useI18n()
+
   const [file, setFile] = useState<File | null>(null)
   const [imageUrl, setImageUrl] = useState<string>('')
+
+  const [isProcessing, setIsProcessing] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [progress, setProgress] = useState(0)
+
   const [result, setResult] = useState<ProcessResult | null>(null)
   const [error, setError] = useState<string | null>(null)
+
   const [inputMethod, setInputMethod] = useState<'file' | 'url'>('file')
   const [previewError, setPreviewError] = useState<boolean>(false)
 
@@ -323,6 +383,8 @@ export default function WatermarkProcessor() {
     if (!file && !imageUrl) return
 
     try {
+      setProgress(0)
+      setIsProcessing(true)
       setIsLoading(true)
       setError(null)
 
@@ -400,7 +462,7 @@ export default function WatermarkProcessor() {
           : t('watermarkProcessor.errors.unknown'),
       )
     } finally {
-      setIsLoading(false)
+      setIsProcessing(false)
     }
   }
 
@@ -408,16 +470,51 @@ export default function WatermarkProcessor() {
     setPreviewError(true)
   }
 
+  useEffect(() => {
+    let intervalId: NodeJS.Timeout
+
+    if (isProcessing) {
+      // Reset progress when processing starts
+      setProgress(0)
+
+      intervalId = setInterval(() => {
+        setProgress((currentProgress) => {
+          // Slow down as we approach 90%
+          if (currentProgress >= 90) {
+            return currentProgress + 0.1
+          }
+          // Normal speed up to 90%
+          return currentProgress + (90 - currentProgress) * 0.015
+        })
+      }, 100)
+    } else {
+      // When processing is complete, quickly go to 100%
+      setProgress(100)
+      setTimeout(() => {
+        setIsLoading(false)
+      }, 500)
+    }
+
+    return () => {
+      if (intervalId) clearInterval(intervalId)
+    }
+  }, [isProcessing])
+
   return (
     <div className="flex w-full flex-col gap-2">
-      <div className="mb-2 flex w-full gap-4">
+      <div className="mb-2 flex w-full">
         <Button
           onClick={() => {
             setInputMethod('file')
             setImageUrl('')
             setError(null)
           }}
-          className="flex-1"
+          className={clsx(
+            'flex-1 rounded-md rounded-r-none',
+            inputMethod === 'file'
+              ? 'border border-blue-600 hover:border-blue-500'
+              : '',
+          )}
           color={inputMethod === 'file' ? 'blue' : 'slate'}
           variant={inputMethod === 'file' ? 'solid' : 'outline'}
         >
@@ -429,7 +526,12 @@ export default function WatermarkProcessor() {
             setFile(null)
             setError(null)
           }}
-          className="flex-1"
+          className={clsx(
+            'flex-1 rounded-md rounded-l-none',
+            inputMethod === 'url'
+              ? 'hover:border-blue-5 border border-blue-600'
+              : '',
+          )}
           color={inputMethod === 'url' ? 'blue' : 'slate'}
           variant={inputMethod === 'url' ? 'solid' : 'outline'}
         >
@@ -437,11 +539,12 @@ export default function WatermarkProcessor() {
         </Button>
       </div>
 
-      {!result ? (
+      {!result || isLoading ? (
         inputMethod === 'file' ? (
           <FileUploadTab
             file={file}
             isLoading={isLoading}
+            progress={progress}
             handleFileChange={handleFileChange}
             removeFile={() => {
               setFile(null)
@@ -453,6 +556,7 @@ export default function WatermarkProcessor() {
           <UrlUploadTab
             imageUrl={imageUrl}
             previewError={previewError}
+            progress={progress}
             isLoading={isLoading}
             handleUrl={handleUrl}
             handleImageError={handleImageError}
@@ -506,24 +610,19 @@ export default function WatermarkProcessor() {
       {((inputMethod === 'file' && file) ||
         (inputMethod === 'url' && imageUrl)) &&
         !result && (
-          <Button
-            onClick={processImage}
-            disabled={isLoading}
-            color="blue"
-            className="w-full bg-linear-to-r from-sky-500 to-indigo-500 py-4 !text-lg"
-          >
-            {isLoading ? (
-              <div className="flex items-center justify-center">
-                <div className="mr-2 h-5 w-5 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
-                {t('watermarkProcessor.processing')}
-              </div>
-            ) : (
-              t('watermarkProcessor.buttons.removeWatermark')
-            )}
-          </Button>
+          <>
+            <Button
+              onClick={processImage}
+              disabled={isLoading}
+              color="blue"
+              className="w-full bg-linear-to-r from-sky-500 to-indigo-500 py-4 !text-lg hover:from-indigo-500 hover:to-sky-500 disabled:pointer-events-none disabled:opacity-50"
+            >
+              {t('watermarkProcessor.buttons.removeWatermark')}
+            </Button>
+          </>
         )}
 
-      {result && (
+      {result && !isLoading && (
         <ResultDisplay
           result={result}
           setError={(error) => setError(error)}

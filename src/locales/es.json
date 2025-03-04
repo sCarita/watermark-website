@@ -469,7 +469,7 @@
     "termsAgreement": "Al subir una imagen o URL aceptas nuestros",
     "termsOfUse": "Términos de Uso",
     "privacyPolicy": "Política de Privacidad",
-    "processing": "Procesando...",
+    "processing": "Procesando imagen, por favor espere...",
     "removeFile": "Eliminar archivo",
     "removeImage": "Eliminar imagen",
     "buttons": {
@@ -477,7 +477,7 @@
       "imageUrl": "URL de Imagen",
       "submit": "Enviar",
       "download": "Descargar",
-      "processAnother": "Procesar otra imagen",
+      "processAnother": "Procesar otra",
       "removeWatermark": "Eliminar Marca de Agua"
     },
     "previewError": {
