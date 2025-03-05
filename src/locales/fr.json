@@ -504,7 +504,8 @@
       "submit": "Envoyer",
       "download": "Télécharger",
       "processAnother": "Traiter une autre",
-      "removeWatermark": "Supprimer le filigrane"
+      "removeWatermark": "Supprimer le filigrane",
+      "manualSelection": "Sélection manuelle"
     },
     "previewError": {
       "message": "Impossible de prévisualiser cette image. L'URL est invalide ou il se peut que des restrictions CORS s'appliquent. Nous essaierons quand même de la traiter.",
@@ -539,6 +540,11 @@
       "browse": "parcourir",
       "acceptedFileTypes": "image/*",
       "inputLabel": "fichier"
+    },
+    "imageMaskEditor": {
+      "title": "Sélection manuelle de la zone",
+      "brushRadius": "Rayon du pinceau",
+      "eraseAll": "Effacer tout"
     }
   },
   "accessibility": {

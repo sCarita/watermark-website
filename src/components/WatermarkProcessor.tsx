@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Button } from './Button'
 import FileDropUpload from './FileDropUpload'
 import Alert from './Alert'
@@ -10,6 +10,10 @@ import { useI18n } from '@/hooks/useI18n'
 import LoadingBar from './LoadingBar'
 import clsx from 'clsx'
 import LoadingImage from './LoadingImage'
+import CanvasDraw from 'react-canvas-draw'
+
+import '@/styles/rangeSlider.css'
+import ImageMaskEditor from './ImageMaskEditor'
 
 const FileUploadTab = ({
   file,
@@ -303,6 +307,8 @@ export default function WatermarkProcessor() {
   const [inputMethod, setInputMethod] = useState<'file' | 'url'>('file')
   const [previewError, setPreviewError] = useState<boolean>(false)
 
+  const [imageMaskOpen, setImageMaskOpen] = useState(false)
+
   const handleFileChange = (files: FileList | null) => {
     const file = files?.[0]
     if (file) {
@@ -501,141 +507,194 @@ export default function WatermarkProcessor() {
   }, [isProcessing])
 
   return (
-    <div className="flex w-full flex-col gap-2">
-      <div className="mb-2 flex w-full">
-        <Button
-          onClick={() => {
-            setInputMethod('file')
-            setImageUrl('')
-            setError(null)
-          }}
-          className={clsx(
-            'flex-1 rounded-md rounded-r-none',
-            inputMethod === 'file'
-              ? 'border border-blue-600 hover:border-blue-500'
-              : '',
-          )}
-          color={inputMethod === 'file' ? 'blue' : 'slate'}
-          variant={inputMethod === 'file' ? 'solid' : 'outline'}
-        >
-          {t('watermarkProcessor.buttons.uploadFile')}
-        </Button>
-        <Button
-          onClick={() => {
-            setInputMethod('url')
-            setFile(null)
-            setError(null)
-          }}
-          className={clsx(
-            'flex-1 rounded-md rounded-l-none',
-            inputMethod === 'url'
-              ? 'hover:border-blue-5 border border-blue-600'
-              : '',
-          )}
-          color={inputMethod === 'url' ? 'blue' : 'slate'}
-          variant={inputMethod === 'url' ? 'solid' : 'outline'}
-        >
-          {t('watermarkProcessor.buttons.imageUrl')}
-        </Button>
-      </div>
-
-      {!result || isLoading ? (
-        inputMethod === 'file' ? (
-          <FileUploadTab
-            file={file}
-            isLoading={isLoading}
-            progress={progress}
-            handleFileChange={handleFileChange}
-            removeFile={() => {
-              setFile(null)
-              setResult(null)
-              setError(null)
-            }}
-          />
-        ) : (
-          <UrlUploadTab
-            imageUrl={imageUrl}
-            previewError={previewError}
-            progress={progress}
-            isLoading={isLoading}
-            handleUrl={handleUrl}
-            handleImageError={handleImageError}
-            removeImageUrl={() => {
+    <>
+      <div className="flex w-full flex-col gap-2">
+        <div className="mb-2 flex w-full">
+          <Button
+            onClick={() => {
+              setInputMethod('file')
               setImageUrl('')
-              setResult(null)
               setError(null)
-              setPreviewError(false)
             }}
-          />
-        )
-      ) : (
-        ''
-      )}
-
-      {!file && !imageUrl && !result && (
-        <div>
-          <div className="flex flex-wrap gap-x-2 gap-y-1">
-            <span className="mt-1 shrink-0 text-xs text-slate-500">
-              {t('watermarkProcessor.supports')}:
-            </span>
-            <div className="flex flex-col">
-              <div className="flex flex-wrap gap-1">
-                <Badge>PNG</Badge>
-                <Badge>JPG</Badge>
-                <Badge>JPEG</Badge>
-                <Badge>GIF</Badge>
-                <Badge>BMP</Badge>
-                <Badge>TIFF</Badge>
-                <Badge>WebP</Badge>
-              </div>
-              <span className="mt-1 text-xs text-slate-400">
-                {t('watermarkProcessor.resolution')}
-              </span>
-            </div>
-          </div>
-
-          <p className="mt-2 text-xs text-slate-500">
-            {t('watermarkProcessor.termsAgreement')}{' '}
-            <a href="/terms" className="text-blue-600">
-              {t('watermarkProcessor.termsOfUse')}
-            </a>{' '}
-            {t('common.and')}{' '}
-            <a href="/privacy" className="text-blue-600">
-              {t('watermarkProcessor.privacyPolicy')}
-            </a>
-          </p>
+            className={clsx(
+              'flex-1 rounded-md rounded-r-none',
+              inputMethod === 'file'
+                ? 'border border-blue-600 hover:border-blue-500'
+                : '',
+            )}
+            color={inputMethod === 'file' ? 'blue' : 'slate'}
+            variant={inputMethod === 'file' ? 'solid' : 'outline'}
+          >
+            {t('watermarkProcessor.buttons.uploadFile')}
+          </Button>
+          <Button
+            onClick={() => {
+              setInputMethod('url')
+              setFile(null)
+              setError(null)
+            }}
+            className={clsx(
+              'flex-1 rounded-md rounded-l-none',
+              inputMethod === 'url'
+                ? 'hover:border-blue-5 border border-blue-600'
+                : '',
+            )}
+            color={inputMethod === 'url' ? 'blue' : 'slate'}
+            variant={inputMethod === 'url' ? 'solid' : 'outline'}
+          >
+            {t('watermarkProcessor.buttons.imageUrl')}
+          </Button>
         </div>
-      )}
 
-      {((inputMethod === 'file' && file) ||
-        (inputMethod === 'url' && imageUrl)) &&
-        !result && (
-          <>
-            <Button
-              onClick={processImage}
-              disabled={isLoading}
-              color="blue"
-              className="w-full bg-linear-to-r from-sky-500 to-indigo-500 py-4 !text-lg hover:from-indigo-500 hover:to-sky-500 disabled:pointer-events-none disabled:opacity-50"
-            >
-              {t('watermarkProcessor.buttons.removeWatermark')}
-            </Button>
-          </>
+        {!result || isLoading ? (
+          inputMethod === 'file' ? (
+            <FileUploadTab
+              file={file}
+              isLoading={isLoading}
+              progress={progress}
+              handleFileChange={handleFileChange}
+              removeFile={() => {
+                setFile(null)
+                setResult(null)
+                setError(null)
+              }}
+            />
+          ) : (
+            <UrlUploadTab
+              imageUrl={imageUrl}
+              previewError={previewError}
+              progress={progress}
+              isLoading={isLoading}
+              handleUrl={handleUrl}
+              handleImageError={handleImageError}
+              removeImageUrl={() => {
+                setImageUrl('')
+                setResult(null)
+                setError(null)
+                setPreviewError(false)
+              }}
+            />
+          )
+        ) : (
+          ''
         )}
 
-      {result && !isLoading && (
-        <ResultDisplay
-          result={result}
-          setError={(error) => setError(error)}
-          resetImage={() => {
-            setResult(null)
-            setError(null)
-            setFile(null)
-            setImageUrl('')
-          }}
-        />
-      )}
+        {!file && !imageUrl && !result && (
+          <div>
+            <div className="flex flex-wrap gap-x-2 gap-y-1">
+              <span className="mt-1 shrink-0 text-xs text-slate-500">
+                {t('watermarkProcessor.supports')}:
+              </span>
+              <div className="flex flex-col">
+                <div className="flex flex-wrap gap-1">
+                  <Badge>PNG</Badge>
+                  <Badge>JPG</Badge>
+                  <Badge>JPEG</Badge>
+                  <Badge>GIF</Badge>
+                  <Badge>BMP</Badge>
+                  <Badge>TIFF</Badge>
+                  <Badge>WebP</Badge>
+                </div>
+                <span className="mt-1 text-xs text-slate-400">
+                  {t('watermarkProcessor.resolution')}
+                </span>
+              </div>
+            </div>
 
-      {error && <Alert type="error" message={error} className="w-full" />}
-    </div>
+            <p className="mt-2 text-xs text-slate-500">
+              {t('watermarkProcessor.termsAgreement')}{' '}
+              <a href="/terms" className="text-blue-600">
+                {t('watermarkProcessor.termsOfUse')}
+              </a>{' '}
+              {t('common.and')}{' '}
+              <a href="/privacy" className="text-blue-600">
+                {t('watermarkProcessor.privacyPolicy')}
+              </a>
+            </p>
+          </div>
+        )}
+
+        {((inputMethod === 'file' && file) ||
+          (inputMethod === 'url' && imageUrl)) &&
+          !result && (
+            <div className="flex flex-col items-center gap-2 lg:flex-row-reverse">
+              <Button
+                onClick={processImage}
+                disabled={isLoading}
+                color="blue"
+                className="flex w-full items-center gap-1.5 bg-linear-to-r from-sky-500 to-indigo-500 py-4 !text-lg whitespace-nowrap hover:from-indigo-500 hover:to-sky-500 disabled:pointer-events-none disabled:opacity-50"
+              >
+                <svg
+                  className="rotate-90"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="none"
+                    stroke="#fff"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="m13.926 12.778l-2.149-2.149c-.292-.293-.439-.439-.597-.517a1.07 1.07 0 0 0-.954 0c-.158.078-.304.224-.597.517s-.439.44-.517.597c-.15.301-.15.654 0 .954c.078.158.224.305.517.598l2.149 2.148m2.148-2.149l6.445 6.446c.293.292.439.439.517.597c.15.3.15.653 0 .954c-.078.157-.224.304-.517.597s-.44.439-.597.517c-.301.15-.654.15-.954 0c-.158-.078-.305-.224-.598-.517l-6.445-6.445m2.149-2.149l-2.149 2.149M17 2l.295.797c.386 1.044.58 1.566.96 1.947c.382.381.904.575 1.948.961L21 6l-.797.295c-1.044.386-1.566.58-1.947.96c-.381.382-.575.904-.961 1.948L17 10l-.295-.797c-.386-1.044-.58-1.566-.96-1.947c-.382-.381-.904-.575-1.948-.961L13 6l.797-.295c1.044-.386 1.566-.58 1.947-.96c.381-.382.575-.904.961-1.948zM6 4l.221.597c.29.784.435 1.176.72 1.461c.286.286.678.431 1.462.72L9 7l-.597.221c-.784.29-1.176.435-1.461.72c-.286.286-.431.678-.72 1.462L6 10l-.221-.597c-.29-.784-.435-1.176-.72-1.461c-.286-.286-.678-.431-1.462-.72L3 7l.597-.221c.784-.29 1.176-.435 1.461-.72c.286-.286.431-.678.72-1.462z"
+                    color="#fff"
+                  />
+                </svg>
+                {t('watermarkProcessor.buttons.removeWatermark')}
+              </Button>
+              <div className="flex w-full flex-1 flex-col items-center gap-2 sm:flex-row">
+                <Button
+                  className="flex w-full flex-1 items-center gap-1.5 py-4 whitespace-nowrap"
+                  color="slate"
+                  onClick={() => setImageMaskOpen(true)}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width={24}
+                    height={24}
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="none"
+                      stroke="#fff"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M9.31 9.378C10.8 7.773 22.01 11.705 22 13.14c-.01 1.628-4.378 2.128-5.588 2.468c-.728.204-.923.414-1.09 1.177c-.761 3.457-1.143 5.176-2.012 5.215c-1.387.061-5.455-11.055-4-12.622m10.368-1.726q.184.441.322.903m-1.937-3.47a9.2 9.2 0 0 0-2.422-1.94m-2.92-1.02a9.4 9.4 0 0 0-3.35.053M6.084 3.545a9.2 9.2 0 0 0-2.545 2.549M2.175 9.386a9.4 9.4 0 0 0-.046 3.361m1.015 2.894c.5.9 1.146 1.708 1.906 2.391m2.614 1.651q.434.18.89.317"
+                      color="#fff"
+                    ></path>
+                  </svg>
+                  {t('watermarkProcessor.buttons.manualSelection')}
+                </Button>
+              </div>
+            </div>
+          )}
+
+        {result && !isLoading && (
+          <ResultDisplay
+            result={result}
+            setError={(error) => setError(error)}
+            resetImage={() => {
+              setResult(null)
+              setError(null)
+              setFile(null)
+              setImageUrl('')
+            }}
+          />
+        )}
+
+        {error && <Alert type="error" message={error} className="w-full" />}
+      </div>
+
+      {imageUrl ||
+        (file && (
+          <ImageMaskEditor
+            imageUrl={imageUrl || URL.createObjectURL(file)}
+            dialogOpen={imageMaskOpen}
+            toggleDialog={() => setImageMaskOpen(!imageMaskOpen)}
+          />
+        ))}
+    </>
   )
 }

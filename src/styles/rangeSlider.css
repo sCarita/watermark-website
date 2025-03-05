@@ -1,0 +1,25 @@
+.range-slider::-webkit-slider-thumb {
+  height: 1rem;
+  width: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 9999px;
+  background-color: #3b82f6;
+}
+
+.range-slider::-webkit-slider-thumb:hover {
+  background-color: #2563eb;
+}
+
+.range-slider::-moz-range-thumb {
+  height: 1rem;
+  width: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 9999px;
+  background-color: #3b82f6;
+}
+
+.range-slider::-moz-range-thumb:hover {
+  background-color: #2563eb;
+}

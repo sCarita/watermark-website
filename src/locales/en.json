@@ -504,7 +504,8 @@
       "submit": "Submit",
       "download": "Download",
       "processAnother": "Process another",
-      "removeWatermark": "Remove Watermark"
+      "removeWatermark": "Remove Watermark",
+      "manualSelection": "Manual Selection"
     },
     "previewError": {
       "message": "Cannot preview this image. The URL may be invalid or CORS restrictions may apply. We'll still attempt to process it if possible.",
@@ -539,6 +540,11 @@
       "browse": "browse",
       "acceptedFileTypes": "image/*",
       "inputLabel": "file"
+    },
+    "imageMaskEditor": {
+      "title": "Manual mask selection",
+      "brushRadius": "Brush radius",
+      "eraseAll": "Erase all"
     }
   },
   "accessibility": {

@@ -706,6 +706,13 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.14.tgz#1433419d73b2a7ebfc6918dcefd2ec0d5cd698f2"
   integrity sha512-gNMvNH49DJ7OJYv+KAKn0Xp45p8PLl6zo2YnvDIbTd4J6MER2BmWN49TG7n9LvkyihINxeKW8+3bfS2yDC9dzQ==
 
+"@types/react-canvas-draw@^1.2.4":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@types/react-canvas-draw/-/react-canvas-draw-1.2.4.tgz#95c800c03922da01132d2cc8890842dda9c4f820"
+  integrity sha512-Zs8e5y5y/E89S054n3o6wuZaTxAIEhS2ggfz+/scxHnMY0HiDX+iCEmFawtmBNgnlwNyk/x5n90vg8vU2OCOJw==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-dom@^18.2.18":
   version "18.3.5"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.3.5.tgz#45f9f87398c5dcea085b715c58ddcf1faf65f716"
@@ -1085,6 +1092,11 @@ caniuse-lite@^1.0.30001579:
   version "1.0.30001701"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001701.tgz#ad9c90301f7153cf6b3314d16cc30757285bf9e7"
   integrity sha512-faRs/AW3jA9nTwmJBSO1PQ6L/EOgsB5HMQQq4iCu5zhPgVVgO/pZRHlmatwijZKetFw8/Pr4q6dEN8sJuq8qTw==
+
+catenary-curve@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/catenary-curve/-/catenary-curve-1.0.1.tgz#57c3061992735bfd34b274c401a96806fe30a21f"
+  integrity sha512-vSHQtYFjItV4wxUH5OkicA3Kmln6thBBWlJLiw2f4apfvkKw4BVe8bTbG6lnbJe60CIr8PyHzjSX27blSJ07Ww==
 
 ccount@^2.0.0:
   version "2.0.1"
@@ -2509,6 +2521,11 @@ language-tags@^1.0.9:
   dependencies:
     language-subtag-registry "^0.3.20"
 
+lazy-brush@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/lazy-brush/-/lazy-brush-1.0.1.tgz#5bf099073237294d2f6fc9d6c5d1d705e891c5bf"
+  integrity sha512-xT/iSClTVi7vLoF8dCWTBhCuOWqsLXCMPa6ucVmVAk6hyNCM5JeS1NLhXqIrJktUg+caEYKlqSOUU4u3cpXzKg==
+
 levn@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/levn/-/levn-0.4.1.tgz#ae4562c007473b932a6200d403268dd2fffc6ade"
@@ -3528,7 +3545,7 @@ prettier@^3.3.2:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.5.2.tgz#d066c6053200da0234bf8fa1ef45168abed8b914"
   integrity sha512-lc6npv5PH7hVqozBR7lkBNOGXV9vMwROAPlumdBkX0wTbbzPu/U1hk5yL8p2pt4Xoc+2mkT8t/sow2YrV/M5qg==
 
-prop-types@^15.8.1:
+prop-types@^15.6.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -3551,6 +3568,16 @@ queue-microtask@^1.2.2:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
+
+react-canvas-draw@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-canvas-draw/-/react-canvas-draw-1.2.1.tgz#2e9183704866b0e9bbb9a93dbb37073a31b858ed"
+  integrity sha512-mCHE+Q91a26gUhyraHONedmbCI7dF/4BKdOxba7s4538QNfFWv/NfzLXWZrmjAQ4tO1vTvO+axX5YGIFjGc6uw==
+  dependencies:
+    catenary-curve "^1.0.1"
+    lazy-brush "^1.0.1"
+    prop-types "^15.6.2"
+    resize-observer-polyfill "^1.5.0"
 
 react-dom@^18.2.0:
   version "18.3.1"
@@ -3682,6 +3709,11 @@ remark-unwrap-images@^3.0.1:
     hast-util-whitespace "^2.0.0"
     unified "^10.0.0"
     unist-util-visit "^4.0.0"
+
+resize-observer-polyfill@^1.5.0:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
+  integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
 
 resolve-from@^4.0.0:
   version "4.0.0"

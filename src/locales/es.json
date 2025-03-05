@@ -478,7 +478,8 @@
       "submit": "Enviar",
       "download": "Descargar",
       "processAnother": "Procesar otra",
-      "removeWatermark": "Eliminar Marca de Agua"
+      "removeWatermark": "Eliminar Marca de Agua",
+      "manualSelection": "Selección manual"
     },
     "previewError": {
       "message": "No se puede previsualizar esta imagen. La URL es inválida o puede deberse a restricciones CORS. Aun así intentaremos procesarla.",
@@ -513,6 +514,11 @@
       "browse": "examina",
       "acceptedFileTypes": "imagen/*",
       "inputLabel": "archivo"
+    },
+    "imageMaskEditor": {
+      "title": "Selección manual de la zona",
+      "brushRadius": "Radio del pincel",
+      "eraseAll": "Borrar todo"
     }
   },
   "accessibility": {
