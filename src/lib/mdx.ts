@@ -7,13 +7,21 @@ async function loadEntries<T extends { date: string }>(
   locale: string = 'en',
 ): Promise<Array<MDXEntry<T>>> {
   locale = locale === 'en' ? '' : `/${locale}`
+  console.log('locale', locale)
+  console.log('path', `src/app${locale}/${directory}`)
   return (
     await Promise.all(
       (await glob('**/page.mdx', { cwd: `src/app${locale}/${directory}` })).map(
         async (filename) => {
+          console.log('filename', `src/app${locale}/${directory}/${filename}`)
           let metadata = (
             await import(`../app${locale}/${directory}/${filename}`)
           )[metaName] as T
+          console.log('metadata', metadata)
+          console.log(
+            'href',
+            `${locale}/${directory}/${filename.replace(/\/page\.mdx$/, '')}`,
+          )
           return {
             ...metadata,
             metadata,

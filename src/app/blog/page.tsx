@@ -25,6 +25,9 @@ export default async function Blog() {
 
   let articles = await loadArticles(locale)
 
+  console.log('locale', locale)
+  console.log('articles', articles)
+
   return (
     <>
       <Header />
