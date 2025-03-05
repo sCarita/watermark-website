@@ -17,6 +17,8 @@
     "success": "¡Éxito! Todo salió bien.",
     "info": "Para tu información.",
     "warning": "¡Advertencia! Revisa esto.",
+    "and": "y",
+    "or": "o",
     "navigation": {
       "features": "Características",
       "testimonials": "Testimonios",
