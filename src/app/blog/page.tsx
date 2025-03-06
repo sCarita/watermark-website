@@ -8,6 +8,7 @@ import { BlogContent } from '@/components/BlogContent'
 import { BlogIntro } from '@/components/BlogIntro'
 
 export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 export const metadata: Metadata = {
   title: 'Blog',
