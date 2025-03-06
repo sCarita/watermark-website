@@ -1,5 +1,4 @@
 import { type Metadata } from 'next'
-import { cookies } from 'next/headers'
 
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
@@ -14,8 +13,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Blog() {
-  const cookieStore = cookies()
-  const locale = cookieStore.get('i18nextLng')?.value || 'en'
+  const locale = 'en'
 
   let articles = await loadArticles(locale)
 
