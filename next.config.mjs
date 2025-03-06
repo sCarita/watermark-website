@@ -11,15 +11,9 @@ import remarkUnwrapImages from 'remark-unwrap-images'
 import shiki from 'shiki'
 import { unifiedConditional } from 'unified-conditional'
 
-const { i18n } = require('./next-i18next.config')
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
-  modules: {
-    i18n,
-  },
-  i18n,
 }
 
 function remarkMDXLayout(source, metaName) {
