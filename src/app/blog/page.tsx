@@ -12,6 +12,7 @@ import { loadArticles } from '@/lib/mdx'
 import { cookies } from 'next/headers'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { useI18n } from '@/hooks/useI18n'
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
 export default async function Blog() {
   const cookieStore = cookies()
   const locale = cookieStore.get('i18nextLng')?.value || 'en'
+  const { t } = useI18n()
 
   let articles = await loadArticles(locale)
 
@@ -32,11 +34,8 @@ export default async function Blog() {
     <>
       <Header />
 
-      <PageIntro eyebrow="Blog" title="The latest articles and news">
-        <p>
-          Stay up-to-date with the latest industry news as our marketing teams
-          finds new ways to re-purpose old CSS tricks articles.
-        </p>
+      <PageIntro eyebrow={t('blog.eyebrow')} title={t('blog.title')}>
+        <p>{t('blog.description')}</p>
       </PageIntro>
 
       <Container className="mt-24 mb-24 sm:mt-32 lg:mt-40">
@@ -51,13 +50,13 @@ export default async function Blog() {
                         <Link href={article.href}>{article.title}</Link>
                       </h2>
                       <dl className="lg:absolute lg:top-0 lg:left-0 lg:w-1/3 lg:px-4">
-                        <dt className="sr-only">Published</dt>
+                        <dt className="sr-only">{t('blog.published')}</dt>
                         <dd className="absolute top-0 left-0 text-sm text-neutral-950 lg:static">
                           <time dateTime={article.date}>
                             {formatDate(article.date)}
                           </time>
                         </dd>
-                        <dt className="sr-only">Author</dt>
+                        <dt className="sr-only">{t('blog.author')}</dt>
                         <dd className="mt-6 flex gap-x-4">
                           <div className="flex-none overflow-hidden rounded-xl bg-neutral-100">
                             <Image
@@ -79,10 +78,10 @@ export default async function Blog() {
                       </p>
                       <Button
                         href={article.href}
-                        aria-label={`Read more: ${article.title}`}
+                        aria-label={`${t('blog.readMore')}: ${article.title}`}
                         className="mt-8"
                       >
-                        Read more
+                        {t('blog.readMore')}
                       </Button>
                     </div>
                   </div>

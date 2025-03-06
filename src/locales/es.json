@@ -532,5 +532,14 @@
     "featuresForSimplifyingEverydayBusinessTasks": "Características para simplificar tu edición diaria",
     "whatOurCustomersAreSaying": "Lo que dicen nuestros clientes",
     "getPlanButtonLabel": "Comienza con el plan {{name}} por {{price}}"
+  },
+  "blog": {
+    "eyebrow": "Blog",
+    "title": "Los últimos artículos y noticias",
+    "description": "Mantente al día con las últimas noticias de la industria mientras nuestros equipos de marketing encuentran nuevas formas de reutilizar antiguos artículos de trucos CSS.",
+    "published": "Publicado",
+    "author": "Autor",
+    "readMore": "Leer más",
+    "by": "Por"
   }
 }

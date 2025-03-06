@@ -569,5 +569,14 @@
   "metadata": {
     "title": "clear.photo - Outil pour enlever un filigrane et nettoyer vos images",
     "description": "Découvrez comment supprimer un filigrane gratuitement ou traiter des images en masse. clear.photo utilise l'IA pour éliminer logos et textes rapidement."
+  },
+  "blog": {
+    "eyebrow": "Blog",
+    "title": "Les derniers articles et actualités",
+    "description": "Restez à jour avec les dernières actualités de l'industrie alors que nos équipes marketing trouvent de nouvelles façons de réutiliser d'anciens articles d'astuces CSS.",
+    "published": "Publié",
+    "author": "Auteur",
+    "readMore": "Lire la suite",
+    "by": "Par"
   }
 }
