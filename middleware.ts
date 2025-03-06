@@ -1,51 +1,42 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse, type NextRequest } from 'next/server'
 import acceptLanguage from 'accept-language'
-import { i18n } from './next-i18next.config'
+import { fallbackLng, languages, cookieName } from '@/app/i18/settings'
 
-acceptLanguage.languages(i18n.locales)
+acceptLanguage.languages(languages)
 
 export const config = {
   // matcher: '/:lng*'
-  matcher: ['/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js).*)']
+  matcher: [
+    '/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|site.webmanifest).*)',
+  ],
 }
 
-const cookieName = 'i18nextLng'
-
 export function middleware(req: NextRequest) {
-  // Check if there is a cookie with the user's preferred language
-  let lng: string = i18n.defaultLocale
-  
-  if (req.cookies.has(cookieName)) {
-    const cookieValue = req.cookies.get(cookieName)?.value
-    if (cookieValue && i18n.locales.includes(cookieValue)) {
-      lng = cookieValue
-    }
-  } else {
-    // If no cookie, try to get the preferred language from the Accept-Language header
-    const acceptLangHeader = req.headers.get('Accept-Language')
-    if (acceptLangHeader) {
-      const acceptLng = acceptLanguage.get(acceptLangHeader)
-      if (acceptLng) {
-        lng = acceptLng
-      }
-    }
-  }
+  let lng
+  if (req.cookies.has(cookieName))
+    lng = acceptLanguage.get(req.cookies.get(cookieName)?.value)
+  if (!lng) lng = acceptLanguage.get(req.headers.get('Accept-Language'))
+  if (!lng) lng = fallbackLng
 
-  // Skip if the request is for a static asset or API route
+  // Redirect if lng in path is not supported
   if (
-    req.nextUrl.pathname.startsWith('/_next') ||
-    req.nextUrl.pathname.startsWith('/api')
+    !languages.some((loc) => req.nextUrl.pathname.startsWith(`/${loc}`)) &&
+    !req.nextUrl.pathname.startsWith('/_next')
   ) {
-    return NextResponse.next()
+    return NextResponse.redirect(
+      new URL(`/${lng}${req.nextUrl.pathname}`, req.url),
+    )
   }
 
-  // Create a response object
-  const response = NextResponse.next()
-  
-  // Set the language cookie if it doesn't exist or is different
-  if (!req.cookies.has(cookieName) || req.cookies.get(cookieName)?.value !== lng) {
-    response.cookies.set(cookieName, lng)
+  if (req.headers.has('referer')) {
+    const refererUrl = new URL(req.headers.get('referer') || '')
+    const lngInReferer = languages.find((l) =>
+      refererUrl.pathname.startsWith(`/${l}`),
+    )
+    const response = NextResponse.next()
+    if (lngInReferer) response.cookies.set(cookieName, lngInReferer)
+    return response
   }
 
-  return response
-} 
+  return NextResponse.next()
+}

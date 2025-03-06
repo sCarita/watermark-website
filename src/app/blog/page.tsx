@@ -12,6 +12,7 @@ import { loadArticles } from '@/lib/mdx'
 import { cookies } from 'next/headers'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
+import { cookieName } from '../i18/settings'
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 
 export default async function Blog() {
   const cookieStore = cookies()
-  const locale = cookieStore.get('i18nextLng')?.value || 'en'
+  const locale = cookieStore.get(cookieName)?.value || 'en'
 
   let articles = await loadArticles(locale)
 
