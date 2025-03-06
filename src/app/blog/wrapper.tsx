@@ -9,6 +9,8 @@ import { type Article, type MDXEntry, loadArticles } from '@/lib/mdx'
 import { cookies } from 'next/headers'
 import { BlogArticleContent } from '@/components/BlogArticleContent'
 
+export const dynamic = 'force-dynamic'
+
 export default async function BlogArticleWrapper({
   article,
   children,
