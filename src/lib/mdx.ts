@@ -20,7 +20,7 @@ async function loadEntries<T extends { date: string }>(
         async (filename) => {
           console.log('filename', `src/app${locale}/${directory}/${filename}`)
           let metadata = (
-            await import(`/src/app${locale}/${directory}/${filename}`)
+            await import(`../app${locale}/${directory}/${filename}`)
           )[metaName] as T
           console.log('metadata', metadata)
           console.log(
