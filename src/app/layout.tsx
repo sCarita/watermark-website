@@ -5,7 +5,6 @@ import clsx from 'clsx'
 import ClientLayout from '@/components/ClientLayout'
 
 import '@/styles/tailwind.css'
-import { I18nProvider } from '@/components/I18nProvider'
 
 export const metadata: Metadata = {
   title: {
@@ -55,7 +54,7 @@ export default function RootLayout({
         />
       </head>
       <body className="flex h-full flex-col">
-        <I18nProvider>{children}</I18nProvider>
+        {children}
         <ClientLayout />
       </body>
     </html>
