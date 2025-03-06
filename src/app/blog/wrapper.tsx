@@ -4,7 +4,9 @@ import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { MDXComponents } from '@/components/MDXComponents'
 import { PageLinks } from '@/components/PageLinks'
+import { formatDate } from '@/lib/formatDate'
 import { type Article, type MDXEntry, loadArticles } from '@/lib/mdx'
+import { cookies } from 'next/headers'
 import { BlogArticleContent } from '@/components/BlogArticleContent'
 
 export default async function BlogArticleWrapper({
@@ -14,7 +16,8 @@ export default async function BlogArticleWrapper({
   article: MDXEntry<Article>
   children: React.ReactNode
 }) {
-  const locale = 'en'
+  const cookieStore = cookies()
+  const locale = cookieStore.get('i18nextLng')?.value || 'en'
 
   let allArticles = await loadArticles(locale)
   let moreArticles = allArticles
