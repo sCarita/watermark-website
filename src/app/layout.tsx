@@ -2,11 +2,6 @@ import { type Metadata } from 'next'
 import { Inter, Lexend } from 'next/font/google'
 import Script from 'next/script'
 import clsx from 'clsx'
-import { languages } from '@/app/i18/settings'
-
-export async function generateStaticParams() {
-  return languages.map((lng) => ({ lng }))
-}
 
 import '@/styles/tailwind.css'
 import { I18nProvider } from '@/components/I18nProvider'
@@ -34,14 +29,17 @@ const lexend = Lexend({
 
 export default function RootLayout({
   children,
-  params: { lng },
+  params,
 }: {
   children: React.ReactNode
-  params: { lng?: string }
+  params: { lang?: string }
 }) {
+  // Default language is English
+  const lang = params.lang || 'en'
+
   return (
     <html
-      lang={lng}
+      lang={lang}
       className={clsx(
         'h-full scroll-smooth bg-white antialiased',
         inter.variable,

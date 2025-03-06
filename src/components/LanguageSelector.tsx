@@ -141,7 +141,7 @@ export function LanguageSelector({
     changeLanguage(languageCode)
 
     // Set a cookie for the middleware
-    document.cookie = `i18next=${languageCode}; path=/; max-age=31536000`
+    document.cookie = `i18nextLng=${languageCode}; path=/; max-age=31536000`
 
     // Check if the current pathname is a locale root
     const isLocaleRoot = /^\/[a-z]{2}$/.test(pathname || '')

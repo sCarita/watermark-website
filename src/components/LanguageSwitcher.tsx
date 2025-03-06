@@ -21,7 +21,7 @@ export function LanguageSwitcher() {
       changeLanguage(newLocale)
 
       // Set a cookie for the middleware
-      document.cookie = `i18next=${newLocale}; path=/; max-age=31536000`
+      document.cookie = `i18nextLng=${newLocale}; path=/; max-age=31536000`
 
       // Check if the current pathname is a locale root
       const isLocaleRoot = /^\/[a-z]{2}$/.test(pathname || '')

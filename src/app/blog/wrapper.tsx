@@ -7,8 +7,6 @@ import { PageLinks } from '@/components/PageLinks'
 import { formatDate } from '@/lib/formatDate'
 import { type Article, type MDXEntry, loadArticles } from '@/lib/mdx'
 import { cookies } from 'next/headers'
-import { cookieName } from '../i18/settings'
-
 export default async function BlogArticleWrapper({
   article,
   children,
@@ -17,7 +15,7 @@ export default async function BlogArticleWrapper({
   children: React.ReactNode
 }) {
   const cookieStore = cookies()
-  const locale = cookieStore.get(cookieName)?.value || 'en'
+  const locale = cookieStore.get('i18nextLng')?.value || 'en'
 
   let allArticles = await loadArticles(locale)
   let moreArticles = allArticles
