@@ -14,7 +14,8 @@ export const metadata: Metadata = {
 }
 
 export default async function Blog() {
-  const locale = 'en'
+  const cookieStore = cookies()
+  const locale = cookieStore.get('i18nextLng')?.value || 'en'
 
   let articles = await loadArticles(locale)
 
