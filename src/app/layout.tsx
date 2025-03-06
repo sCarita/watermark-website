@@ -2,6 +2,7 @@ import { type Metadata } from 'next'
 import { Inter, Lexend } from 'next/font/google'
 import Script from 'next/script'
 import clsx from 'clsx'
+import ClientLayout from '@/components/ClientLayout'
 
 import '@/styles/tailwind.css'
 import { I18nProvider } from '@/components/I18nProvider'
@@ -55,6 +56,7 @@ export default function RootLayout({
       </head>
       <body className="flex h-full flex-col">
         <I18nProvider>{children}</I18nProvider>
+        <ClientLayout />
       </body>
     </html>
   )
