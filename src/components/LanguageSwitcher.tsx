@@ -19,13 +19,13 @@ export function LanguageSwitcher() {
     (newLocale: string) => {
       // First change the language in i18next
       changeLanguage(newLocale)
-      
+
       // Set a cookie for the middleware
-      document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`
-      
+      document.cookie = `i18nextLng=${newLocale}; path=/; max-age=31536000`
+
       // Check if the current pathname is a locale root
       const isLocaleRoot = /^\/[a-z]{2}$/.test(pathname || '')
-      
+
       // If we're at a locale root (like /fr or /es), just switch to the new locale root
       if (isLocaleRoot) {
         if (newLocale === 'en') {
@@ -35,10 +35,10 @@ export function LanguageSwitcher() {
         }
         return
       }
-      
+
       // For other paths, handle as before
       const currentLocale = locale || 'en'
-      
+
       // If we're on the homepage
       if (pathname === '/') {
         if (newLocale === 'en') {
@@ -48,7 +48,7 @@ export function LanguageSwitcher() {
         }
         return
       }
-      
+
       // For other pages, replace the locale segment
       if (pathname?.startsWith(`/${currentLocale}/`)) {
         const newPath = pathname.replace(`/${currentLocale}/`, `/${newLocale}/`)
@@ -62,7 +62,7 @@ export function LanguageSwitcher() {
         }
       }
     },
-    [locale, pathname, router, changeLanguage]
+    [locale, pathname, router, changeLanguage],
   )
 
   return (
@@ -71,10 +71,8 @@ export function LanguageSwitcher() {
         <button
           key={l.code}
           onClick={() => handleLocaleChange(l.code)}
-          className={`px-2 py-1 text-sm rounded ${
-            locale === l.code
-              ? 'bg-gray-200 font-medium'
-              : 'hover:bg-gray-100'
+          className={`rounded px-2 py-1 text-sm ${
+            locale === l.code ? 'bg-gray-200 font-medium' : 'hover:bg-gray-100'
           }`}
         >
           {l.name}
@@ -82,4 +80,4 @@ export function LanguageSwitcher() {
       ))}
     </div>
   )
-} 
+}

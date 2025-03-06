@@ -15,7 +15,7 @@ export default async function BlogArticleWrapper({
   children: React.ReactNode
 }) {
   const cookieStore = cookies()
-  const locale = cookieStore.get('NEXT_LOCALE')?.value || 'en'
+  const locale = cookieStore.get('i18nextLng')?.value || 'en'
 
   let allArticles = await loadArticles(locale)
   let moreArticles = allArticles
