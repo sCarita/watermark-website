@@ -42,6 +42,11 @@
       "es": "Español",
       "select": "Seleccionar idioma"
     },
+    "cookieConsent": {
+      "message": "Utilizamos cookies para analizar nuestro tráfico. Por favor, acepta para ayudarnos a mejorar nuestro sitio web.",
+      "accept": "Aceptar",
+      "decline": "Rechazar"
+    },
     "terms": {
       "title": "Términos de Servicio",
       "lastUpdated": "Última actualización: 01/03/2025",

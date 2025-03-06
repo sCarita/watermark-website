@@ -3,12 +3,15 @@
 import { Button } from '@/components/Button'
 import { cookieName } from '@/utils/coockiesConsent'
 import { useState, useEffect } from 'react'
+import { useI18n } from '@/hooks/useI18n'
 
 const CookieConsent = ({
   onConsent,
 }: {
   onConsent: (consent: boolean) => void
 }) => {
+  const { t } = useI18n()
+
   const [showConsent, setShowConsent] = useState(false)
 
   useEffect(() => {
@@ -40,8 +43,7 @@ const CookieConsent = ({
     <div className="fixed right-3 bottom-3 left-3 z-20 rounded-xl bg-slate-900 p-2 shadow-lg sm:p-3">
       <div className="flex flex-col items-center justify-between sm:flex-row">
         <p className="mb-3 text-center text-sm text-white sm:mb-0 sm:text-left">
-          We use cookies to analyze our traffic. Please accept to help us
-          improve our website.
+          {t('common.cookieConsent.message')}
         </p>
         <div className="flex space-x-2">
           <Button
@@ -49,13 +51,13 @@ const CookieConsent = ({
             className="px-0 py-0 leading-none text-white"
             color="blue"
           >
-            Accept
+            {t('common.cookieConsent.accept')}
           </Button>
           <Button
             onClick={declineCookies}
             className="px-0 py-0 leading-none text-white"
           >
-            Decline
+            {t('common.cookieConsent.decline')}
           </Button>
         </div>
       </div>

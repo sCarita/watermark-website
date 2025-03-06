@@ -43,6 +43,11 @@
       "fr": "Français",
       "select": "Select language"
     },
+    "cookieConsent": {
+      "message": "We use cookies to analyze our traffic. Please accept to help us improve our website.",
+      "accept": "Accept",
+      "decline": "Decline"
+    },
     "terms": {
       "title": "Terms of Service",
       "lastUpdated": "Last Updated: 01/03/2025",
