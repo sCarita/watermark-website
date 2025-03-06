@@ -93,7 +93,7 @@ export default function Terms() {
                   {t('common.terms.sections.description.responsibleUse.text')}
                 </p>
                 <ul className="list-disc pl-6 text-slate-700">
-                  {/* {(
+                  {(
                     t(
                       'common.terms.sections.description.responsibleUse.items',
                       { returnObjects: true },
@@ -102,7 +102,7 @@ export default function Terms() {
                     <li key={index}>
                       <strong>{item.title}</strong>: {item.text}
                     </li>
-                  ))} */}
+                  ))}
                 </ul>
 
                 <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
@@ -112,7 +112,7 @@ export default function Terms() {
                   {t('common.terms.sections.description.scientificUse.text')}
                 </p>
                 <ol className="list-decimal pl-6 text-slate-700">
-                  {/* {(
+                  {(
                     t('common.terms.sections.description.scientificUse.items', {
                       returnObjects: true,
                     }) as Array<{ title: string; text: string }>
@@ -120,7 +120,7 @@ export default function Terms() {
                     <li key={index}>
                       <strong>{item.title}</strong>: {item.text}
                     </li>
-                  ))} */}
+                  ))}
                 </ol>
                 <p className="mt-4 text-slate-700">
                   {t('common.terms.sections.description.scientificUse.note')}
@@ -156,14 +156,14 @@ export default function Terms() {
                   )}
                 </p>
                 <ul className="list-disc pl-6 text-slate-700">
-                  {/* {(
+                  {(
                     t(
                       'common.terms.sections.userResponsibilities.prohibitedContent.items',
                       { returnObjects: true },
                     ) as Array<string>
                   ).map((item, index) => (
                     <li key={index}>{item}</li>
-                  ))} */}
+                  ))}
                 </ul>
 
                 <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
