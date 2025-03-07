@@ -125,22 +125,6 @@ function MobileNavigation() {
               </MobileNavLink>
             </div>
           </div>
-
-          <div className="space-y-3 pt-4">
-            <Button
-              href={`${langPrefix}/login`}
-              variant="outline"
-              className="w-full justify-center text-sm"
-            >
-              {t('common.navigation.signIn')}
-            </Button>
-            <Button
-              href={`${langPrefix}/register`}
-              className="w-full justify-center text-sm"
-            >
-              {t('common.navigation.getStarted')}
-            </Button>
-          </div>
         </div>
       </PopoverPanel>
     </Popover>
@@ -185,11 +169,6 @@ export function Header() {
             </div>
           </div>
           <div className="flex items-center gap-x-3 md:gap-x-8">
-            <div className="hidden md:block">
-              <NavLink href={`${langPrefix}/login`}>
-                {t('common.navigation.signIn')}
-              </NavLink>
-            </div>
             <div className="hidden md:block">
               <LanguageSelector />
             </div>
