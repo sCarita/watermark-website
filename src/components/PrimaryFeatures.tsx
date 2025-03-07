@@ -7,10 +7,10 @@ import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background-features.jpg'
-import screenshotExpenses from '@/images/screenshots/expenses.png'
+import screenshotManualBrush from '@/images/screenshots/manual-brush.png'
+import screenshotManualObject from '@/images/screenshots/manual-object.png'
 import Demo0 from '@/images/screenshots/demo_0.png'
-import screenshotReporting from '@/images/screenshots/reporting.png'
-import screenshotVatReturns from '@/images/screenshots/vat-returns.png'
+import screenshotApiIntegration from '@/images/screenshots/api-integration.jpeg'
 import { useI18n } from '@/hooks/useI18n'
 
 export function PrimaryFeatures() {
@@ -44,17 +44,17 @@ export function PrimaryFeatures() {
     {
       title: t('primaryFeatures.features.1.title'),
       description: t('primaryFeatures.features.1.description'),
-      image: screenshotExpenses,
+      image: screenshotManualBrush,
     },
     {
       title: t('primaryFeatures.features.2.title'),
       description: t('primaryFeatures.features.2.description'),
-      image: screenshotVatReturns,
+      image: screenshotManualObject,
     },
     {
       title: t('primaryFeatures.features.3.title'),
       description: t('primaryFeatures.features.3.description'),
-      image: screenshotReporting,
+      image: screenshotApiIntegration,
     },
   ]
 
@@ -130,25 +130,55 @@ export function PrimaryFeatures() {
                 {features.map((feature) => (
                   <TabPanel key={feature.title} unmount={false}>
                     <div className="relative sm:px-6 lg:hidden">
-                      <div className="absolute -inset-x-4 top-[-6.5rem] bottom-[-4.25rem] ring-1 ring-white/10 ring-inset sm:inset-x-0 sm:rounded-t-xl" />
+                      <div className="absolute -inset-x-4 top-[-6.5rem] bottom-[-4.25rem] ring-white/10 ring-inset sm:inset-x-0 sm:rounded-t-xl md:ring-1" />
                       <p className="relative mx-auto max-w-2xl text-base text-white sm:text-center">
                         {feature.description}
                       </p>
                     </div>
-                    <div className="mx-auto mt-10 max-w-full overflow-hidden rounded-xl bg-transparent shadow-xl shadow-blue-900/20">
-                      <div className="relative flex h-full w-full items-center justify-center">
-                        <Image
-                          className="object-contain"
-                          src={feature.image}
-                          alt={feature.title}
-                          priority
-                          width={800}
-                          height={600}
-                          style={{
-                            maxWidth: '100%',
-                            height: 'auto',
-                          }}
-                        />
+                    <div className="mx-auto mt-10 max-w-full overflow-hidden rounded-xl bg-transparent">
+                      <div className="relative flex h-full w-full flex-col items-center justify-center">
+                        {feature.title !==
+                        t('primaryFeatures.features.3.title') ? (
+                          <Image
+                            className="object-contain"
+                            src={feature.image}
+                            alt={feature.title}
+                            priority
+                            width={800}
+                            height={600}
+                            style={{
+                              width: '100%',
+                              maxWidth: '100%',
+                              maxHeight: '600px',
+                              height: 'auto',
+                            }}
+                          />
+                        ) : (
+                          <div className="max-w-full p-6 text-white">
+                            <pre className="mb-6 overflow-x-auto rounded-lg bg-blue-900 p-4">
+                              <code className="text-sm">
+                                {`const response = await fetch('https://api.clear.photo/remove', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer YOUR_API_KEY',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    image_url: 'https://example.com/image.jpg',
+    remove_type: 'watermark'
+  })
+});
+
+const result = await response.json();
+const cleanImage = result.processed_url;`}
+                              </code>
+                            </pre>
+                            <div className="space-y-4">
+                              <p>✓ Simple REST API endpoints</p>
+                              <p>✓ Bulk processing support</p>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </TabPanel>
