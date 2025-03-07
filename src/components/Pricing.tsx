@@ -6,6 +6,7 @@ import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { useI18n } from '@/hooks/useI18n'
 import { LanguageSelector } from '@/components/LanguageSelector'
+import PricingSection from './PricingSection'
 
 function SwirlyDoodle(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -148,50 +149,7 @@ export function Pricing() {
             <LanguageSelector variant="dark" />
           </div>
         </div>
-        <div className="-mx-4 mt-16 grid max-w-2xl grid-cols-1 gap-y-10 sm:mx-auto lg:-mx-8 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:gap-x-8">
-          <Plan
-            name={t('pricing.plans.starter.name')}
-            price={t('pricing.plans.starter.price')}
-            description={t('pricing.plans.starter.description')}
-            href="mailto:contact@clear.photo"
-            features={[
-              t('pricing.plans.starter.features.0'),
-              t('pricing.plans.starter.features.1'),
-              t('pricing.plans.starter.features.2'),
-              t('pricing.plans.starter.features.3'),
-              t('pricing.plans.starter.features.4'),
-            ]}
-          />
-          <Plan
-            featured
-            name={t('pricing.plans.smallBusiness.name')}
-            price={t('pricing.plans.smallBusiness.price')}
-            description={t('pricing.plans.smallBusiness.description')}
-            href="mailto:contact@clear.photo"
-            features={[
-              t('pricing.plans.smallBusiness.features.0'),
-              t('pricing.plans.smallBusiness.features.1'),
-              t('pricing.plans.smallBusiness.features.2'),
-              t('pricing.plans.smallBusiness.features.3'),
-              t('pricing.plans.smallBusiness.features.4'),
-              t('pricing.plans.smallBusiness.features.5'),
-              t('pricing.plans.smallBusiness.features.6'),
-            ]}
-          />
-          <Plan
-            name={t('pricing.plans.enterprise.name')}
-            price={t('pricing.plans.enterprise.price')}
-            description={t('pricing.plans.enterprise.description')}
-            href="mailto:contact@clear.photo"
-            features={[
-              t('pricing.plans.enterprise.features.0'),
-              t('pricing.plans.enterprise.features.1'),
-              t('pricing.plans.enterprise.features.2'),
-              t('pricing.plans.enterprise.features.3'),
-              t('pricing.plans.enterprise.features.4'),
-            ]}
-          />
-        </div>
+        <PricingSection />
       </Container>
     </section>
   )

@@ -384,40 +384,70 @@
     "title": "Precios sencillos para todos",
     "subtitle": "Tanto si solo quieres borrar unas cuantas marcas de agua al mes como si necesitas procesamiento ilimitado, tenemos un plan para ti.",
     "plans": {
-      "starter": {
-        "name": "Inicial",
-        "price": "9€",
-        "description": "Para quienes necesitan quitar marcas de agua de forma ocasional.",
-        "features": [
-          "Hasta 50 eliminaciones al mes",
-          "IA básica de detección de marca de agua",
-          "Soporte por correo electrónico",
-          "Modo manual/guiado incluido"
-        ]
+      "freeDaily": {
+        "title": "Gratis Diario",
+        "description": "Comienza sin compromiso",
+        "credits": "10 créditos",
+        "perDay": "/día",
+        "features": {
+          "freeCredits": "10 créditos gratis cada día",
+          "allTools": "Acceso a todas las herramientas",
+          "noCard": "Sin tarjeta de crédito"
+        },
+        "button": "Comenzar"
       },
-      "smallBusiness": {
-        "name": "Pequeña empresa",
-        "price": "15€",
-        "description": "Ideal para creadores de contenido y equipos que trabajan con varias imágenes al día.",
-        "features": [
-          "Hasta 200 eliminaciones al mes",
-          "IA avanzada para textos y logos complejos",
-          "Prioridad en soporte",
-          "Procesamiento por lotes (hasta 20 imágenes)",
-          "Acceso a la API para flujos automatizados"
-        ]
+      "toolCredits": {
+        "title": "Créditos de Herramientas",
+        "description": "Paga por uso con créditos",
+        "auto": {
+          "credits": "5 créditos",
+          "perRemoval": "/eliminación",
+          "description": "Eliminación automática de marca de agua con IA"
+        },
+        "manual": {
+          "credits": "3 créditos",
+          "perRemoval": "/eliminación",
+          "description": "Eliminación manual de marca de agua con herramientas de precisión"
+        },
+        "features": {
+          "quality": "Resultados de alta calidad",
+          "unlimited": "Tamaños de imagen ilimitados",
+          "original": "Descarga en calidad original"
+        },
+        "button": "Comprar Créditos"
       },
-      "enterprise": {
-        "name": "Empresa",
-        "price": "39€",
-        "description": "Para grandes volúmenes de imágenes y necesidades de personalización.",
-        "features": [
-          "Eliminaciones ilimitadas",
-          "Algoritmos optimizados para cualquier tipo de marca de agua",
-          "Gestor de cuenta dedicado y soporte 24/7",
-          "Acceso completo a la API con endpoints personalizados",
-          "Procesamiento masivo sin restricciones"
-        ]
+      "bulkSavings": {
+        "title": "Ahorros por Volumen",
+        "description": "Calcula tus ahorros potenciales",
+        "creditAmount": {
+          "label": "Cantidad de Créditos",
+          "min": "mín",
+          "recommended": "recomendado",
+          "max": "máx"
+        },
+        "timePeriod": {
+          "label": "Período de Tiempo"
+        },
+        "savings": {
+          "currentDiscount": "Descuento Actual",
+          "regularPrice": "Precio Regular",
+          "youPay": "Tú Pagas",
+          "totalSavings": "Ahorro Total"
+        },
+        "processing": {
+          "title": "Poder de Procesamiento",
+          "autoRemove": "Eliminación Automática",
+          "manualRemove": "Eliminación Manual",
+          "withoutDiscount": "Sin Descuento",
+          "withDiscount": "Con Descuento",
+          "images": "imágenes",
+          "processMore": "Procesa {{count}} imágenes más"
+        },
+        "button": "Comenzar con Ahorros por Volumen"
+      },
+      "contact": {
+        "text": "¿Necesitas más créditos? Contacta con nuestro equipo de ventas para planes empresariales personalizados con beneficios adicionales y soporte prioritario.",
+        "button": "Contactar Ventas"
       }
     }
   },

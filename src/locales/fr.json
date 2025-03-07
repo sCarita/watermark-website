@@ -385,40 +385,70 @@
     "title": "Tarifs simples et adaptés à tous",
     "subtitle": "Que vous souhaitiez seulement enlever quelques filigranes par mois ou que vous ayez besoin d'une solution illimitée, nous avons un plan pour vous.",
     "plans": {
-      "starter": {
-        "name": "Débutant",
-        "price": "9 €",
-        "description": "Idéal pour les particuliers qui souhaitent apprendre comment supprimer un filigrane gratuitement et au-delà.",
-        "features": [
-          "Jusqu'à 50 images traitées par mois",
-          "IA de base pour filigranes standards",
-          "Support par e-mail",
-          "Mode manuel inclus"
-        ]
+      "freeDaily": {
+        "title": "Gratuit Quotidien",
+        "description": "Commencez sans engagement",
+        "credits": "10 crédits",
+        "perDay": "/jour",
+        "features": {
+          "freeCredits": "10 crédits gratuits chaque jour",
+          "allTools": "Accès à toutes les outils",
+          "noCard": "Sans carte de crédit"
+        },
+        "button": "Commencer"
       },
-      "smallBusiness": {
-        "name": "Petite entreprise",
-        "price": "15 €",
-        "description": "Parfait pour les créateurs, indépendants et PME traitant un volume modéré de visuels.",
-        "features": [
-          "Jusqu'à 200 images traitées par mois",
-          "IA avancée pour logos complexes",
-          "Support prioritaire par e-mail",
-          "Traitement par lots (jusqu'à 20 images)",
-          "Accès API pour automatiser vos tâches"
-        ]
+      "toolCredits": {
+        "title": "Crédits d'Outils",
+        "description": "Payez à l'utilisation avec des crédits",
+        "auto": {
+          "credits": "5 crédits",
+          "perRemoval": "/suppression",
+          "description": "Suppression automatique de filigrane avec IA"
+        },
+        "manual": {
+          "credits": "3 crédits",
+          "perRemoval": "/suppression",
+          "description": "Suppression manuelle de filigrane avec des outils de précision"
+        },
+        "features": {
+          "quality": "Résultats de haute qualité",
+          "unlimited": "Tailles d'image illimitées",
+          "original": "Téléchargement en qualité originale"
+        },
+        "button": "Acheter des Crédits"
       },
-      "enterprise": {
-        "name": "Entreprise",
-        "price": "39 €",
-        "description": "Pour un volume illimité et des besoins spécifiques en matière d'images.",
-        "features": [
-          "Traitement illimité de filigranes",
-          "Algorithmes spécialisés pour tout type de watermark",
-          "Gestionnaire de compte dédié, support 24/7",
-          "Accès complet à l'API avec options sur mesure",
-          "Traitement de gros volumes sans restrictions"
-        ]
+      "bulkSavings": {
+        "title": "Économies en Volume",
+        "description": "Calculez vos économies potentielles",
+        "creditAmount": {
+          "label": "Montant des Crédits",
+          "min": "min",
+          "recommended": "recommandé",
+          "max": "max"
+        },
+        "timePeriod": {
+          "label": "Période"
+        },
+        "savings": {
+          "currentDiscount": "Réduction Actuelle",
+          "regularPrice": "Prix Normal",
+          "youPay": "Vous Payez",
+          "totalSavings": "Économies Totales"
+        },
+        "processing": {
+          "title": "Puissance de Traitement",
+          "autoRemove": "Suppression Auto",
+          "manualRemove": "Suppression Manuelle",
+          "withoutDiscount": "Sans Réduction",
+          "withDiscount": "Avec Réduction",
+          "images": "images",
+          "processMore": "Traitez {{count}} images supplémentaires"
+        },
+        "button": "Commencer avec les Économies en Volume"
+      },
+      "contact": {
+        "text": "Besoin de plus de crédits ? Contactez notre équipe commerciale pour des plans d'entreprise personnalisés avec des avantages supplémentaires et un support prioritaire.",
+        "button": "Contacter les Ventes"
       }
     }
   },

@@ -385,40 +385,70 @@
     "title": "Simple pricing, for everyone.",
     "subtitle": "From casual users to enterprise-level clients, our watermark remover fits your needs and budget perfectly.",
     "plans": {
-      "starter": {
-        "name": "Starter",
-        "price": "$9",
-        "description": "Perfect for individuals who occasionally need to remove watermarks from photos.",
-        "features": [
-          "Remove up to 50 watermarks per month",
-          "Basic AI watermark detection",
-          "Email support",
-          "Access to manual/guided removal"
-        ]
+      "freeDaily": {
+        "title": "Free Daily",
+        "description": "Get started with no commitment",
+        "credits": "10 credits",
+        "perDay": "/day",
+        "features": {
+          "freeCredits": "10 free credits every day",
+          "allTools": "Access to all tools",
+          "noCard": "No credit card required"
+        },
+        "button": "Get Started"
       },
-      "smallBusiness": {
-        "name": "Small Business",
-        "price": "$15",
-        "description": "Ideal for creators, freelancers, or small teams handling moderate image cleanup tasks.",
-        "features": [
-          "Remove up to 200 watermarks per month",
-          "Full AI watermark detection with advanced object removal",
-          "Priority email support",
-          "Bulk processing (up to 20 images at once)",
-          "APIs for simple workflow integration"
-        ]
+      "toolCredits": {
+        "title": "Tool Credits",
+        "description": "Pay per use with credits",
+        "auto": {
+          "credits": "5 credits",
+          "perRemoval": "/removal",
+          "description": "Automatic watermark removal with AI"
+        },
+        "manual": {
+          "credits": "3 credits",
+          "perRemoval": "/removal",
+          "description": "Manual watermark removal with precision tools"
+        },
+        "features": {
+          "quality": "High-quality results",
+          "unlimited": "Unlimited image sizes",
+          "original": "Download in original quality"
+        },
+        "button": "Buy Credits"
       },
-      "enterprise": {
-        "name": "Enterprise",
-        "price": "$39",
-        "description": "Unlimited access for large organizations requiring high-volume watermark removal and custom solutions.",
-        "features": [
-          "Unlimited watermark removal",
-          "Advanced AI for complex logos and text",
-          "Dedicated account manager and 24/7 support",
-          "Full API access with custom endpoint solutions",
-          "Batch processing with no cap on images"
-        ]
+      "bulkSavings": {
+        "title": "Bulk Savings",
+        "description": "Calculate your potential savings",
+        "creditAmount": {
+          "label": "Credit Amount",
+          "min": "min",
+          "recommended": "recommended",
+          "max": "max"
+        },
+        "timePeriod": {
+          "label": "Time Period"
+        },
+        "savings": {
+          "currentDiscount": "Current Discount",
+          "regularPrice": "Regular Price",
+          "youPay": "You Pay",
+          "totalSavings": "Total Savings"
+        },
+        "processing": {
+          "title": "Processing Power",
+          "autoRemove": "Auto Remove",
+          "manualRemove": "Manual Remove",
+          "withoutDiscount": "Without Discount",
+          "withDiscount": "With Discount",
+          "images": "images",
+          "processMore": "Process {{count}} more images"
+        },
+        "button": "Get Started with Bulk Savings"
+      },
+      "contact": {
+        "text": "Need more credits? Contact our sales team for custom enterprise plans with additional benefits and priority support.",
+        "button": "Contact Sales"
       }
     }
   },

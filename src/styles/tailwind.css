@@ -2,6 +2,8 @@
 
 @plugin '@tailwindcss/forms';
 
+@plugin 'tailwindcss-animate';
+
 @theme {
   --text-*: initial;
   --text-xs: 0.75rem;
@@ -40,7 +42,8 @@
 }
 
 @keyframes waveMotion {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(0%) scaleX(1.05);
   }
   50% {
