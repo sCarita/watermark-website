@@ -137,57 +137,33 @@ export function LanguageSelector({
     languages.find((lang) => lang.code === i18n.language) || languages[0]
 
   const handleLanguageChange = (languageCode: string) => {
-    // First change the language in i18next
+    // Update language and set cookie
     changeLanguage(languageCode)
-
-    // Set a cookie for the middleware
     document.cookie = `i18nextLng=${languageCode}; path=/; max-age=31536000`
 
-    // Check if the current pathname is a locale root
-    const isLocaleRoot = /^\/[a-z]{2}$/.test(pathname || '')
+    // Helper to construct the new path
+    const getNewPath = () => {
+      const isRoot = pathname === '/' || /^\/[a-z]{2}$/.test(pathname || '')
+      const hasLocale = /^\/[a-z]{2}\//.test(pathname || '')
+      const isBlogArticle = /^\/[a-z]{2}\/blog\/[^/]+$/.test(pathname || '')
 
-    // If we're at a locale root (like /fr or /es), just switch to the new locale root
-    if (isLocaleRoot) {
-      if (languageCode === 'en') {
-        router.push('/')
-      } else {
-        router.push(`/${languageCode}`)
+      if (isRoot) {
+        return `/${languageCode}`
       }
-      return
+
+      if (isBlogArticle) {
+        // For blog articles, redirect to the blog page in the new language
+        return `/${languageCode}/blog`
+      }
+
+      if (hasLocale) {
+        return pathname?.replace(/^\/[a-z]{2}\//, `/${languageCode}/`)
+      }
+
+      return `/${languageCode}${pathname}`
     }
 
-    // For other paths, handle as before
-    const currentLocale = i18n.language || 'en'
-
-    // If we're on the homepage
-    if (pathname === '/') {
-      if (languageCode === 'en') {
-        router.push('/')
-      } else {
-        router.push(`/${languageCode}`)
-      }
-      return
-    }
-
-    // Check if the path already contains any locale
-    const hasLocale = /^\/[a-z]{2}\//.test(pathname || '')
-
-    // For other pages, replace or add locale segment as needed
-    if (hasLocale) {
-      // If path already has a locale, just replace it
-      const newPath = pathname?.replace(
-        /^\/[a-z]{2}\//,
-        languageCode === 'en' ? '/' : `/${languageCode}/`,
-      )
-      router.push(newPath)
-    } else if (pathname?.startsWith('/')) {
-      // If there's no locale in the path
-      if (languageCode === 'en') {
-        router.push(pathname)
-      } else {
-        router.push(`/${languageCode}${pathname}`)
-      }
-    }
+    router.push(getNewPath())
   }
 
   return (

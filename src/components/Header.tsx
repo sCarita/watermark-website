@@ -76,7 +76,7 @@ function MobileNavigation() {
     ? '/es'
     : pathname.startsWith('/fr')
       ? '/fr'
-      : ''
+      : 'en'
 
   // Create the base URL for navigation
   const baseUrl = isNotHomePage ? langPrefix || '/' : ''
@@ -117,6 +117,7 @@ function MobileNavigation() {
               >
                 {t('common.navigation.pricing')}
               </MobileNavLink>
+              <MobileNavLink href={`${langPrefix}/blog`}>Blog</MobileNavLink>
               <MobileNavLink href={`${langPrefix}/terms`}>
                 {t('common.navigation.terms')}
               </MobileNavLink>
@@ -144,7 +145,7 @@ export function Header() {
     ? '/es'
     : pathname.startsWith('/fr')
       ? '/fr'
-      : ''
+      : '/en'
 
   // Create the base URL for navigation
   const baseUrl = langPrefix || '/'
@@ -166,6 +167,7 @@ export function Header() {
               <NavLink href={isNotHomePage ? `${baseUrl}#pricing` : '#pricing'}>
                 {t('common.navigation.pricing')}
               </NavLink>
+              <NavLink href={`${langPrefix}/blog`}>Blog</NavLink>
             </div>
           </div>
           <div className="flex items-center gap-x-3 md:gap-x-8">
