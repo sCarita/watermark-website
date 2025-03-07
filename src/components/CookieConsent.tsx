@@ -41,10 +41,23 @@ const CookieConsent = ({
 
   return (
     <div className="fixed right-3 bottom-3 left-3 z-20 rounded-xl bg-slate-900 p-2 shadow-lg sm:p-3">
-      <div className="flex flex-col items-center justify-between sm:flex-row">
-        <p className="mb-3 text-center text-sm text-white sm:mb-0 sm:text-left">
-          {t('common.cookieConsent.message')}
-        </p>
+      <div className="flex flex-col items-center justify-between gap-1 sm:flex-row">
+        <div className="mb-3 flex items-center gap-1.5 sm:mb-0">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={30}
+            height={30}
+            viewBox="0 0 48 48"
+            className="shrink-0"
+          >
+            <circle cx={24} cy={24} r={21} fill="#155dfc"></circle>
+            <path fill="#fff" d="M22 22h4v11h-4z"></path>
+            <circle cx={24} cy={16.5} r={2.5} fill="#fff"></circle>
+          </svg>
+          <p className="text-sm text-white">
+            {t('common.cookieConsent.message')}
+          </p>
+        </div>
         <div className="flex space-x-2">
           <Button
             onClick={acceptCookies}
