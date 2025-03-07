@@ -89,10 +89,7 @@ function MobileNavigation() {
       >
         {({ open }) => <MobileNavIcon open={open} />}
       </PopoverButton>
-      <PopoverBackdrop
-        transition
-        className="fixed inset-0 bg-slate-300/50 duration-150 data-closed:opacity-0 data-enter:ease-out data-leave:ease-in"
-      />
+      <PopoverBackdrop className="fixed inset-0 z-10 bg-slate-300/50 opacity-100 backdrop-blur" />
       <PopoverPanel className="ui-closed:opacity-0 ui-closed:scale-95 absolute top-full right-0 z-20 mt-2 w-screen max-w-[320px] origin-top-right rounded-lg bg-white opacity-100 shadow-lg ring-1 ring-slate-900/5">
         <div className="p-4">
           <div className="border-b border-slate-200 pb-4">
@@ -101,7 +98,7 @@ function MobileNavigation() {
             </div>
           </div>
 
-          <div>
+          <div className="border-b border-slate-200 py-3">
             <div className="space-y-1">
               <MobileNavLink
                 href={isNotHomePage ? `${baseUrl}#features` : '#features'}
@@ -109,11 +106,17 @@ function MobileNavigation() {
                 {t('common.navigation.features')}
               </MobileNavLink>
               <MobileNavLink
+                href={
+                  isNotHomePage ? `${baseUrl}#testimonials` : '#testimonials'
+                }
+              >
+                {t('common.navigation.testimonials')}
+              </MobileNavLink>
+              <MobileNavLink
                 href={isNotHomePage ? `${baseUrl}#pricing` : '#pricing'}
               >
                 {t('common.navigation.pricing')}
               </MobileNavLink>
-              <MobileNavLink href={'/blog'}>Blog</MobileNavLink>
               <MobileNavLink href={`${langPrefix}/terms`}>
                 {t('common.navigation.terms')}
               </MobileNavLink>
@@ -123,7 +126,7 @@ function MobileNavigation() {
             </div>
           </div>
 
-          {/* <div className="space-y-3 pt-4">
+          <div className="space-y-3 pt-4">
             <Button
               href={`${langPrefix}/login`}
               variant="outline"
@@ -137,7 +140,7 @@ function MobileNavigation() {
             >
               {t('common.navigation.getStarted')}
             </Button>
-          </div> */}
+          </div>
         </div>
       </PopoverPanel>
     </Popover>
@@ -179,16 +182,22 @@ export function Header() {
               <NavLink href={isNotHomePage ? `${baseUrl}#pricing` : '#pricing'}>
                 {t('common.navigation.pricing')}
               </NavLink>
-              <NavLink href={`${langPrefix}/blog`}>Blog</NavLink>
             </div>
           </div>
-          <div className="flex items-center gap-x-3 md:gap-x-4 lg:gap-x-8">
+          <div className="flex items-center gap-x-3 md:gap-x-8">
+            <div className="hidden md:block">
+              <NavLink href={`${langPrefix}/login`}>
+                {t('common.navigation.signIn')}
+              </NavLink>
+            </div>
             <div className="hidden md:block">
               <LanguageSelector />
             </div>
             {/* <div className="hidden md:block">
               <Button href={`${langPrefix}/register`} color="blue">
-                <span>{t('common.navigation.getStartedToday')}</span>
+                <span>
+                  {t('common.navigation.getStartedToday')}
+                </span>
               </Button>
             </div> */}
             <div className="md:hidden">
