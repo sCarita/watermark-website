@@ -14,10 +14,10 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Badge } from '@/components/ui/badge'
 import { Slider } from '@/components/ui/slider'
-import { useTranslation } from 'next-i18next'
+import { useI18n } from '@/hooks/useI18n'
 
 export default function PricingSection() {
-  const { t } = useTranslation('')
+  const { t } = useI18n()
   const [creditAmount, setCreditAmount] = useState(100)
   const [selectedTool, setSelectedTool] = useState('auto')
 
