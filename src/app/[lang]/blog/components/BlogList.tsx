@@ -7,6 +7,7 @@ interface Post {
   excerpt: string
   date: string
   readingTime: string
+  image: string
 }
 
 interface BlogListProps {

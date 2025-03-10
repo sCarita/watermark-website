@@ -8,6 +8,7 @@ const BLOG_DIR = path.join(process.cwd(), 'src/content/blog')
 interface Post {
   slug: string
   title: string
+  image: string
   excerpt: string
   date: string
   readingTime: string
@@ -34,6 +35,7 @@ export async function getBlogPosts(lang: string): Promise<Post[]> {
         return {
           slug,
           title: data.title,
+          image: data.image,
           excerpt: data.excerpt,
           date: data.date,
           readingTime: data.readingTime,
@@ -63,6 +65,7 @@ export async function getBlogPost(
   return {
     slug,
     title: data.title,
+    image: data.image,
     excerpt: data.excerpt,
     date: data.date,
     readingTime: data.readingTime,

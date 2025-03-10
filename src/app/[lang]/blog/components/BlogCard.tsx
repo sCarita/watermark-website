@@ -1,9 +1,12 @@
+import Image from 'next/image'
+
 interface Post {
   slug: string
   title: string
   excerpt: string
   date: string
   readingTime: string
+  image: string
 }
 
 interface BlogCardProps {
@@ -13,6 +16,13 @@ interface BlogCardProps {
 export default function BlogCard({ post }: BlogCardProps) {
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-lg border border-slate-200 p-6 hover:border-slate-300">
+      <Image
+        src={post.image}
+        alt={post.title}
+        width={300}
+        height={200}
+        className="h-48 w-full rounded-lg object-cover object-left object-top"
+      />
       <h2 className="font-display text-xl font-medium tracking-tight text-slate-900 group-hover:text-blue-600">
         {post.title}
       </h2>
