@@ -34,7 +34,8 @@ export function middleware(req: NextRequest) {
   // Skip if the request is for a static asset or API route
   if (
     req.nextUrl.pathname.startsWith('/_next') ||
-    req.nextUrl.pathname.startsWith('/api')
+    req.nextUrl.pathname.startsWith('/api') ||
+    req.nextUrl.pathname.startsWith('/sitemap.xml')
   ) {
     return NextResponse.next()
   }
