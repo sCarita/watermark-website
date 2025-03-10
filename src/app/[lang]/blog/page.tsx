@@ -5,6 +5,17 @@ import { Footer } from '@/components/Footer'
 import { BlogList } from './components/BlogList'
 import { getBlogPosts } from '@/utils/blog'
 import { BlogHeader } from './components/BlogHeader'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s - clear.photo',
+    default: 'clear.photo - Remove watermarks from your images',
+  },
+  description:
+    'Free online watermark remover tool. Easily remove watermarks, logos, and text from photos and images. Our AI-powered technology helps you get rid of watermarks from Getty Images, Shutterstock, and more. Clean up your pictures with the best free watermark remover available online.',
+}
+
 export default async function BlogPage({
   params: { lang },
 }: {

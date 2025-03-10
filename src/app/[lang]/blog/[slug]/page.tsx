@@ -8,6 +8,16 @@ import { notFound } from 'next/navigation'
 import { ImgHTMLAttributes } from 'react'
 import { DetailedHTMLProps } from 'react'
 import Image, { ImageProps } from 'next/image'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: {
+    template: '%s - clear.photo',
+    default: 'clear.photo - Remove watermarks from your images',
+  },
+  description:
+    'Free online watermark remover tool. Easily remove watermarks, logos, and text from photos and images. Our AI-powered technology helps you get rid of watermarks from Getty Images, Shutterstock, and more. Clean up your pictures with the best free watermark remover available online.',
+}
 
 const components = {
   h1: (props: any) => (
