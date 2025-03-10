@@ -6,9 +6,9 @@ import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/react'
 import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
-import screenshotContacts from '@/images/screenshots/contacts.png'
-import screenshotInventory from '@/images/screenshots/inventory.png'
-import screenshotProfitLoss from '@/images/screenshots/profit-loss.png'
+import screenshotContacts from '@/images/screenshots/devices.png'
+import screenshotInventory from '@/images/screenshots/bulk.png'
+import screenshotProfitLoss from '@/images/screenshots/clarity.png'
 import { useI18n } from '@/hooks/useI18n'
 
 interface Feature {
@@ -61,7 +61,7 @@ function Feature({
 
 function FeaturesMobile() {
   const { t } = useI18n()
-  
+
   const features: Array<Feature> = [
     {
       name: t('secondaryFeatures.features.0.name'),
@@ -144,7 +144,7 @@ function FeaturesMobile() {
       },
     },
   ]
-  
+
   return (
     <div className="-mx-4 mt-20 flex flex-col gap-y-10 overflow-hidden px-4 sm:-mx-6 sm:px-6 lg:hidden">
       {features.map((feature) => (
@@ -152,7 +152,7 @@ function FeaturesMobile() {
           <Feature feature={feature} className="mx-auto max-w-2xl" isActive />
           <div className="relative mt-10 pb-10">
             <div className="absolute -inset-x-4 top-8 bottom-0 bg-slate-200 sm:-inset-x-6" />
-            <div className="relative mx-auto w-[52.75rem] overflow-hidden rounded-xl bg-white ring-1 shadow-lg shadow-slate-900/5 ring-slate-500/10">
+            <div className="relative mx-auto w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg ring-1 shadow-slate-900/5 ring-slate-500/10">
               <Image
                 className="w-full"
                 src={feature.image}
@@ -169,7 +169,7 @@ function FeaturesMobile() {
 
 function FeaturesDesktop() {
   const { t } = useI18n()
-  
+
   const features: Array<Feature> = [
     {
       name: t('secondaryFeatures.features.0.name'),
@@ -252,7 +252,7 @@ function FeaturesDesktop() {
       },
     },
   ]
-  
+
   return (
     <TabGroup className="hidden lg:mt-20 lg:block">
       {({ selectedIndex }) => (
@@ -288,7 +288,7 @@ function FeaturesDesktop() {
                   style={{ transform: `translateX(-${selectedIndex * 100}%)` }}
                   aria-hidden={featureIndex !== selectedIndex}
                 >
-                  <div className="w-[52.75rem] overflow-hidden rounded-xl bg-white ring-1 shadow-lg shadow-slate-900/5 ring-slate-500/10">
+                  <div className="w-[52.75rem] overflow-hidden rounded-xl bg-white shadow-lg ring-1 shadow-slate-900/5 ring-slate-500/10">
                     <Image
                       className="w-full"
                       src={feature.image}
@@ -309,12 +309,14 @@ function FeaturesDesktop() {
 
 export function SecondaryFeatures() {
   const { t } = useI18n()
-  
+
   return (
     <section
       id="secondary-features"
-      aria-label={t('accessibility.featuresForSimplifyingEverydayBusinessTasks')}
-      className="pb-14 pt-20 sm:pb-20 sm:pt-32 lg:pb-32"
+      aria-label={t(
+        'accessibility.featuresForSimplifyingEverydayBusinessTasks',
+      )}
+      className="pt-20 pb-14 sm:pt-32 sm:pb-20 lg:pb-32"
     >
       <Container>
         <div className="mx-auto max-w-2xl md:text-center">
