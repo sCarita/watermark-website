@@ -149,7 +149,9 @@ export function Pricing() {
             <LanguageSelector variant="dark" />
           </div>
         </div>
-        <PricingSection />
+        <div className="mt-10">
+          <PricingSection />
+        </div>
       </Container>
     </section>
   )
