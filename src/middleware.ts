@@ -49,6 +49,7 @@ export function middleware(request: NextRequest) {
       `/${locale}${pathname.startsWith('/') ? pathname : `/${pathname}`}`,
       request.url,
     ),
+    301,
   )
 }
 
