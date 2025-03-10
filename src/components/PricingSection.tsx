@@ -6,6 +6,7 @@ import { Slider } from '@/components/ui/slider'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
+import { useI18n } from '@/hooks/useI18n'
 
 // Define package types
 type Package = {
@@ -17,6 +18,8 @@ type Package = {
 }
 
 export default function PricingSection() {
+  const { t } = useI18n()
+
   // Define available packages
   const packages: Package[] = [
     { id: 'p1', credits: 100, price: 14.99, discount: 0 },
@@ -78,23 +81,31 @@ export default function PricingSection() {
       {/* Free plan */}
       <div className="flex h-fit flex-col overflow-hidden rounded-xl border border-slate-700 bg-slate-800/50">
         <div className="border-b border-slate-700 bg-gradient-to-r from-blue-500/10 to-blue-500/10 p-6">
-          <h3 className="mb-1 text-2xl font-bold">Free Plan</h3>
-          <p className="text-sm text-slate-400">Perfect for occasional use</p>
+          <h3 className="mb-1 text-2xl font-bold">
+            {t('pricing.plans.freeDaily.title')}
+          </h3>
+          <p className="text-sm text-slate-400">
+            {t('pricing.plans.freeDaily.description')}
+          </p>
         </div>
 
         <div className="flex-grow p-6">
           <div className="mb-6 flex items-baseline">
             <span className="text-4xl font-bold">$0</span>
-            <span className="ml-2 text-slate-400">forever</span>
+            <span className="ml-2 text-slate-400">
+              {t('pricing.plans.freeDaily.perDay')}
+            </span>
           </div>
 
           <div className="mb-6 rounded-lg border border-sky-500/20 bg-sky-500/10 p-4">
             <div className="flex items-center">
               <Zap className="mr-3 h-5 w-5 text-sky-400" />
               <div>
-                <div className="font-medium">5 free credits daily</div>
+                <div className="font-medium">
+                  {t('pricing.plans.freeDaily.features.freeCredits')}
+                </div>
                 <div className="text-sm text-slate-400">
-                  Credits don't stack - use them or lose them
+                  {t('pricing.plans.freeDaily.features.noCard')}
                 </div>
               </div>
             </div>
@@ -130,7 +141,7 @@ export default function PricingSection() {
 
         <div className="mt-auto border-t border-slate-700 p-6">
           <Button className="w-full bg-slate-700 hover:bg-slate-600">
-            Get Started Free
+            {t('pricing.plans.freeDaily.button')}
           </Button>
         </div>
       </div>
@@ -139,7 +150,9 @@ export default function PricingSection() {
       <div className="rounded-xl border border-slate-700 bg-slate-800/50 p-4">
         {/* Credit Packages */}
         <div className="mb-6">
-          <h3 className="mb-3 font-bold">Credit Packages</h3>
+          <h3 className="mb-3 font-bold">
+            {t('pricing.plans.toolCredits.title')}
+          </h3>
           <div className="grid grid-cols-3 gap-2">
             {packages.slice(0, 6).map((pkg) => (
               <div
@@ -169,9 +182,11 @@ export default function PricingSection() {
         {/* Calculator */}
         <div className="mb-4">
           <div className="mb-2 flex justify-between">
-            <span className="text-sm text-slate-400">Credit Amount</span>
+            <span className="text-sm text-slate-400">
+              {t('pricing.calculator.creditAmount')}
+            </span>
             <span className="font-bold text-blue-400">
-              {creditAmount.toLocaleString()} credits
+              {creditAmount.toLocaleString()} {t('pricing.calculator.credits')}
             </span>
           </div>
           <Slider
@@ -188,16 +203,21 @@ export default function PricingSection() {
           </div>
         </div>
 
+        {/* Pricing display */}
         <div className="mb-4 rounded-lg border border-slate-700 bg-slate-800 p-2">
           <div className="mb-2 grid grid-cols-2 gap-4">
             <div>
-              <div className="mb-1 text-xs text-slate-400">Regular Price</div>
+              <div className="mb-1 text-xs text-slate-400">
+                {t('pricing.calculator.regularPrice')}
+              </div>
               <div className="text-lg font-bold text-slate-500 line-through">
                 ${regularPrice.toFixed(2)}
               </div>
             </div>
             <div>
-              <div className="mb-1 text-xs text-slate-400">You Pay</div>
+              <div className="mb-1 text-xs text-slate-400">
+                {t('pricing.calculator.youPay')}
+              </div>
               <div className="text-lg font-bold text-white">
                 ${discountedPrice.toFixed(2)}
               </div>
@@ -206,7 +226,9 @@ export default function PricingSection() {
 
           <div className="rounded-lg border border-sky-500/20 bg-sky-500/10 px-2">
             <div className="flex items-center justify-between">
-              <div className="text-xs text-slate-300">Total Savings</div>
+              <div className="text-xs text-slate-300">
+                {t('pricing.calculator.totalSavings')}
+              </div>
               <div className="text-lg font-bold text-green-400">
                 ${savings.toFixed(2)}
               </div>
@@ -214,14 +236,56 @@ export default function PricingSection() {
           </div>
         </div>
 
-        {/* What you can do with credits */}
+        {/* Feature costs */}
+        <div className="mb-4">
+          <div className="grid grid-cols-2 gap-2 text-xs">
+            <div className="flex items-center justify-between rounded-lg border border-slate-700 bg-slate-800 p-2">
+              <div className="flex items-center">
+                <MousePointer className="mr-1.5 h-3 w-3 text-blue-400" />
+                <span>{t('pricing.features.auto.title')}</span>
+              </div>
+              <span className="font-bold text-blue-400">
+                {t('pricing.features.auto.credits')}
+              </span>
+            </div>
+            <div className="flex items-center justify-between rounded-lg border border-slate-700 bg-slate-800 p-2">
+              <div className="flex items-center">
+                <Layers className="mr-1.5 h-3 w-3 text-blue-400" />
+                <span>{t('pricing.features.manual.title')}</span>
+              </div>
+              <span className="font-bold text-blue-400">
+                {t('pricing.features.manual.credits')}
+              </span>
+            </div>
+            <div className="flex items-center justify-between rounded-lg border border-slate-700 bg-slate-800 p-2">
+              <div className="flex items-center">
+                <Type className="mr-1.5 h-3 w-3 text-blue-400" />
+                <span>{t('pricing.features.text.title')}</span>
+              </div>
+              <span className="font-bold text-blue-400">
+                {t('pricing.features.text.credits')}
+              </span>
+            </div>
+            <div className="flex items-center justify-between rounded-lg border border-slate-700 bg-slate-800 p-2">
+              <div className="flex items-center">
+                <ImageIcon className="mr-1.5 h-3 w-3 text-blue-400" />
+                <span>{t('pricing.features.background.title')}</span>
+              </div>
+              <span className="font-bold text-blue-400">
+                {t('pricing.features.background.credits')}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Benefits */}
         <div className="mb-4 space-y-2">
           <div className="flex items-center">
             <div className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-500/20">
               <Check className="h-3 w-3 text-blue-400" />
             </div>
             <span className="ml-2 text-xs text-slate-300">
-              Auto watermark removal (5 credits/image)
+              {t('pricing.benefits.autoRemoval')}
             </span>
           </div>
           <div className="flex items-center">
@@ -229,7 +293,7 @@ export default function PricingSection() {
               <Check className="h-3 w-3 text-blue-400" />
             </div>
             <span className="ml-2 text-xs text-slate-300">
-              High-quality results
+              {t('pricing.benefits.quality')}
             </span>
           </div>
           <div className="flex items-center">
@@ -237,42 +301,8 @@ export default function PricingSection() {
               <Check className="h-3 w-3 text-blue-400" />
             </div>
             <span className="ml-2 text-xs text-slate-300">
-              Credits never expire
+              {t('pricing.benefits.neverExpire')}
             </span>
-          </div>
-        </div>
-
-        {/* Added Feature Costs */}
-        <div className="mb-4">
-          <div className="grid grid-cols-2 gap-2 text-xs">
-            <div className="flex items-center justify-between rounded-lg border border-slate-700 bg-slate-800 p-2">
-              <div className="flex items-center">
-                <MousePointer className="mr-1.5 h-3 w-3 text-blue-400" />
-                <span>Auto</span>
-              </div>
-              <span className="font-bold text-blue-400">5 credits</span>
-            </div>
-            <div className="flex items-center justify-between rounded-lg border border-slate-700 bg-slate-800 p-2">
-              <div className="flex items-center">
-                <Layers className="mr-1.5 h-3 w-3 text-blue-400" />
-                <span>Manual</span>
-              </div>
-              <span className="font-bold text-blue-400">3 credits</span>
-            </div>
-            <div className="flex items-center justify-between rounded-lg border border-slate-700 bg-slate-800 p-2">
-              <div className="flex items-center">
-                <Type className="mr-1.5 h-3 w-3 text-blue-400" />
-                <span>Text</span>
-              </div>
-              <span className="font-bold text-blue-400">2 credits</span>
-            </div>
-            <div className="flex items-center justify-between rounded-lg border border-slate-700 bg-slate-800 p-2">
-              <div className="flex items-center">
-                <ImageIcon className="mr-1.5 h-3 w-3 text-blue-400" />
-                <span>Background</span>
-              </div>
-              <span className="font-bold text-blue-400">8 credits</span>
-            </div>
           </div>
         </div>
 
@@ -281,8 +311,10 @@ export default function PricingSection() {
           disabled={!selectedPackage && creditAmount < 100}
         >
           {selectedPackage
-            ? `Buy ${selectedPackage.credits.toLocaleString()} Credits`
-            : 'Get Started'}
+            ? t('pricing.plans.toolCredits.button', {
+                credits: selectedPackage.credits.toLocaleString(),
+              })
+            : t('common.getStarted')}
         </Button>
       </div>
     </div>

@@ -383,72 +383,35 @@
   "pricing": {
     "title": "Precios sencillos para todos",
     "subtitle": "Tanto si solo quieres borrar unas cuantas marcas de agua al mes como si necesitas procesamiento ilimitado, tenemos un plan para ti.",
-    "plans": {
-      "freeDaily": {
-        "title": "Gratis Diario",
-        "description": "Comienza sin compromiso",
-        "credits": "10 créditos",
-        "perDay": "/día",
-        "features": {
-          "freeCredits": "10 créditos gratis cada día",
-          "allTools": "Acceso a todas las herramientas",
-          "noCard": "Sin tarjeta de crédito"
-        },
-        "button": "Comenzar"
+    "calculator": {
+      "creditAmount": "Cantidad de Créditos",
+      "regularPrice": "Precio Regular",
+      "youPay": "Tú Pagas",
+      "totalSavings": "Ahorro Total",
+      "credits": "créditos"
+    },
+    "features": {
+      "auto": {
+        "title": "Auto",
+        "credits": "5 créditos"
       },
-      "toolCredits": {
-        "title": "Créditos de Herramientas",
-        "description": "Paga por uso con créditos",
-        "auto": {
-          "credits": "5 créditos",
-          "perRemoval": "/eliminación",
-          "description": "Eliminación automática de marca de agua con IA"
-        },
-        "manual": {
-          "credits": "3 créditos",
-          "perRemoval": "/eliminación",
-          "description": "Eliminación manual de marca de agua con herramientas de precisión"
-        },
-        "features": {
-          "quality": "Resultados de alta calidad",
-          "unlimited": "Tamaños de imagen ilimitados",
-          "original": "Descarga en calidad original"
-        },
-        "button": "Comprar Créditos"
+      "manual": {
+        "title": "Manual",
+        "credits": "3 créditos"
       },
-      "bulkSavings": {
-        "title": "Ahorros por Volumen",
-        "description": "Calcula tus ahorros potenciales",
-        "creditAmount": {
-          "label": "Cantidad de Créditos",
-          "min": "mín",
-          "recommended": "recomendado",
-          "max": "máx"
-        },
-        "timePeriod": {
-          "label": "Período de Tiempo"
-        },
-        "savings": {
-          "currentDiscount": "Descuento Actual",
-          "regularPrice": "Precio Regular",
-          "youPay": "Tú Pagas",
-          "totalSavings": "Ahorro Total"
-        },
-        "processing": {
-          "title": "Poder de Procesamiento",
-          "autoRemove": "Eliminación Automática",
-          "manualRemove": "Eliminación Manual",
-          "withoutDiscount": "Sin Descuento",
-          "withDiscount": "Con Descuento",
-          "images": "imágenes",
-          "processMore": "Procesa {{count}} imágenes más"
-        },
-        "button": "Comenzar con Ahorros por Volumen"
+      "text": {
+        "title": "Texto",
+        "credits": "2 créditos"
       },
-      "contact": {
-        "text": "¿Necesitas más créditos? Contacta con nuestro equipo de ventas para planes empresariales personalizados con beneficios adicionales y soporte prioritario.",
-        "button": "Contactar Ventas"
+      "background": {
+        "title": "Fondo",
+        "credits": "8 créditos"
       }
+    },
+    "benefits": {
+      "autoRemoval": "Eliminación automática de marca de agua (5 créditos/imagen)",
+      "quality": "Resultados de alta calidad",
+      "neverExpire": "Los créditos nunca caducan"
     }
   },
   "faqs": {

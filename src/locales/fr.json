@@ -384,72 +384,35 @@
   "pricing": {
     "title": "Tarifs simples et adaptés à tous",
     "subtitle": "Que vous souhaitiez seulement enlever quelques filigranes par mois ou que vous ayez besoin d'une solution illimitée, nous avons un plan pour vous.",
-    "plans": {
-      "freeDaily": {
-        "title": "Gratuit Quotidien",
-        "description": "Commencez sans engagement",
-        "credits": "10 crédits",
-        "perDay": "/jour",
-        "features": {
-          "freeCredits": "10 crédits gratuits chaque jour",
-          "allTools": "Accès à toutes les outils",
-          "noCard": "Sans carte de crédit"
-        },
-        "button": "Commencer"
+    "calculator": {
+      "creditAmount": "Montant des Crédits",
+      "regularPrice": "Prix Normal",
+      "youPay": "Vous Payez",
+      "totalSavings": "Économies Totales",
+      "credits": "crédits"
+    },
+    "features": {
+      "auto": {
+        "title": "Auto",
+        "credits": "5 crédits"
       },
-      "toolCredits": {
-        "title": "Crédits d'Outils",
-        "description": "Payez à l'utilisation avec des crédits",
-        "auto": {
-          "credits": "5 crédits",
-          "perRemoval": "/suppression",
-          "description": "Suppression automatique de filigrane avec IA"
-        },
-        "manual": {
-          "credits": "3 crédits",
-          "perRemoval": "/suppression",
-          "description": "Suppression manuelle de filigrane avec des outils de précision"
-        },
-        "features": {
-          "quality": "Résultats de haute qualité",
-          "unlimited": "Tailles d'image illimitées",
-          "original": "Téléchargement en qualité originale"
-        },
-        "button": "Acheter des Crédits"
+      "manual": {
+        "title": "Manuel",
+        "credits": "3 crédits"
       },
-      "bulkSavings": {
-        "title": "Économies en Volume",
-        "description": "Calculez vos économies potentielles",
-        "creditAmount": {
-          "label": "Montant des Crédits",
-          "min": "min",
-          "recommended": "recommandé",
-          "max": "max"
-        },
-        "timePeriod": {
-          "label": "Période"
-        },
-        "savings": {
-          "currentDiscount": "Réduction Actuelle",
-          "regularPrice": "Prix Normal",
-          "youPay": "Vous Payez",
-          "totalSavings": "Économies Totales"
-        },
-        "processing": {
-          "title": "Puissance de Traitement",
-          "autoRemove": "Suppression Auto",
-          "manualRemove": "Suppression Manuelle",
-          "withoutDiscount": "Sans Réduction",
-          "withDiscount": "Avec Réduction",
-          "images": "images",
-          "processMore": "Traitez {{count}} images supplémentaires"
-        },
-        "button": "Commencer avec les Économies en Volume"
+      "text": {
+        "title": "Texte",
+        "credits": "2 crédits"
       },
-      "contact": {
-        "text": "Besoin de plus de crédits ? Contactez notre équipe commerciale pour des plans d'entreprise personnalisés avec des avantages supplémentaires et un support prioritaire.",
-        "button": "Contacter les Ventes"
+      "background": {
+        "title": "Arrière-plan",
+        "credits": "8 crédits"
       }
+    },
+    "benefits": {
+      "autoRemoval": "Suppression automatique de filigrane (5 crédits/image)",
+      "quality": "Résultats de haute qualité",
+      "neverExpire": "Les crédits n'expirent jamais"
     }
   },
   "faqs": {

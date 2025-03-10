@@ -384,72 +384,35 @@
   "pricing": {
     "title": "Simple pricing, for everyone.",
     "subtitle": "From casual users to enterprise-level clients, our watermark remover fits your needs and budget perfectly.",
-    "plans": {
-      "freeDaily": {
-        "title": "Free Daily",
-        "description": "Get started with no commitment",
-        "credits": "10 credits",
-        "perDay": "/day",
-        "features": {
-          "freeCredits": "10 free credits every day",
-          "allTools": "Access to all tools",
-          "noCard": "No credit card required"
-        },
-        "button": "Get Started"
+    "calculator": {
+      "creditAmount": "Credit Amount",
+      "regularPrice": "Regular Price",
+      "youPay": "You Pay",
+      "totalSavings": "Total Savings",
+      "credits": "credits"
+    },
+    "features": {
+      "auto": {
+        "title": "Auto",
+        "credits": "5 credits"
       },
-      "toolCredits": {
-        "title": "Tool Credits",
-        "description": "Pay per use with credits",
-        "auto": {
-          "credits": "5 credits",
-          "perRemoval": "/removal",
-          "description": "Automatic watermark removal with AI"
-        },
-        "manual": {
-          "credits": "3 credits",
-          "perRemoval": "/removal",
-          "description": "Manual watermark removal with precision tools"
-        },
-        "features": {
-          "quality": "High-quality results",
-          "unlimited": "Unlimited image sizes",
-          "original": "Download in original quality"
-        },
-        "button": "Buy Credits"
+      "manual": {
+        "title": "Manual",
+        "credits": "3 credits"
       },
-      "bulkSavings": {
-        "title": "Bulk Savings",
-        "description": "Calculate your potential savings",
-        "creditAmount": {
-          "label": "Credit Amount",
-          "min": "min",
-          "recommended": "recommended",
-          "max": "max"
-        },
-        "timePeriod": {
-          "label": "Time Period"
-        },
-        "savings": {
-          "currentDiscount": "Current Discount",
-          "regularPrice": "Regular Price",
-          "youPay": "You Pay",
-          "totalSavings": "Total Savings"
-        },
-        "processing": {
-          "title": "Processing Power",
-          "autoRemove": "Auto Remove",
-          "manualRemove": "Manual Remove",
-          "withoutDiscount": "Without Discount",
-          "withDiscount": "With Discount",
-          "images": "images",
-          "processMore": "Process {{count}} more images"
-        },
-        "button": "Get Started with Bulk Savings"
+      "text": {
+        "title": "Text",
+        "credits": "2 credits"
       },
-      "contact": {
-        "text": "Need more credits? Contact our sales team for custom enterprise plans with additional benefits and priority support.",
-        "button": "Contact Sales"
+      "background": {
+        "title": "Background",
+        "credits": "8 credits"
       }
+    },
+    "benefits": {
+      "autoRemoval": "Auto watermark removal (5 credits/image)",
+      "quality": "High-quality results",
+      "neverExpire": "Credits never expire"
     }
   },
   "faqs": {
