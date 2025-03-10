@@ -6,44 +6,40 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Static routes with language alternates
   const staticRoutes = [
     {
-      url: 'https://clear.photo',
+      url: 'https://clear.photo/en',
       lastModified: new Date(),
       alternates: {
         languages: {
-          en: 'https://clear.photo/en',
           es: 'https://clear.photo/es',
           fr: 'https://clear.photo/fr',
         },
       },
     },
     {
-      url: 'https://clear.photo/blog',
+      url: 'https://clear.photo/en/blog',
       lastModified: new Date(),
       alternates: {
         languages: {
-          en: 'https://clear.photo/en/blog',
           es: 'https://clear.photo/es/blog',
           fr: 'https://clear.photo/fr/blog',
         },
       },
     },
     {
-      url: 'https://clear.photo/privacy',
+      url: 'https://clear.photo/en/privacy',
       lastModified: new Date(),
       alternates: {
         languages: {
-          en: 'https://clear.photo/en/privacy',
           es: 'https://clear.photo/es/privacy',
           fr: 'https://clear.photo/fr/privacy',
         },
       },
     },
     {
-      url: 'https://clear.photo/terms',
+      url: 'https://clear.photo/en/terms',
       lastModified: new Date(),
       alternates: {
         languages: {
-          en: 'https://clear.photo/en/terms',
           es: 'https://clear.photo/es/terms',
           fr: 'https://clear.photo/fr/terms',
         },
