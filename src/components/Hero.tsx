@@ -51,9 +51,9 @@ export function Hero() {
           <h1 className="mx-auto font-display text-4xl font-medium tracking-tight text-slate-900 max-sm:leading-tight sm:text-5xl sm:text-7xl">
             {getHighlightedContent()}
           </h1>
-          <p className="mt-6 text-lg tracking-tight text-slate-700">
+          <h2 className="mt-6 text-lg tracking-tight text-slate-700">
             {t('hero.subtitle')}
-          </p>
+          </h2>
         </div>
         <div className="flex w-full flex-col justify-center md:w-5/12">
           <WatermarkProcessor />

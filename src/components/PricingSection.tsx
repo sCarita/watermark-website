@@ -78,7 +78,7 @@ export default function PricingSection() {
       {/* Free plan */}
       <div className="flex h-fit flex-col overflow-hidden rounded-xl border border-slate-700 bg-slate-800/50">
         <div className="border-b border-slate-700 bg-gradient-to-r from-blue-500/10 to-blue-500/10 p-6">
-          <h2 className="mb-1 text-2xl font-bold">Free Plan</h2>
+          <h3 className="mb-1 text-2xl font-bold">Free Plan</h3>
           <p className="text-sm text-slate-400">Perfect for occasional use</p>
         </div>
 
@@ -139,7 +139,7 @@ export default function PricingSection() {
       <div className="rounded-xl border border-slate-700 bg-slate-800/50 p-4">
         {/* Credit Packages */}
         <div className="mb-6">
-          <h2 className="mb-3 font-bold">Credit Packages</h2>
+          <h3 className="mb-3 font-bold">Credit Packages</h3>
           <div className="grid grid-cols-3 gap-2">
             {packages.slice(0, 6).map((pkg) => (
               <div
