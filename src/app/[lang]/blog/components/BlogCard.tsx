@@ -21,7 +21,7 @@ export default function BlogCard({ post }: BlogCardProps) {
         alt={post.title}
         width={300}
         height={200}
-        className="h-48 w-full rounded-lg object-cover object-left object-top"
+        className="mb-2 h-48 w-full rounded-lg border border-slate-200 object-cover object-left object-top"
       />
       <h2 className="font-display text-xl font-medium tracking-tight text-slate-900 group-hover:text-blue-600">
         {post.title}
