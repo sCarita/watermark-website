@@ -35,7 +35,8 @@ export function middleware(req: NextRequest) {
   if (
     req.nextUrl.pathname.startsWith('/_next') ||
     req.nextUrl.pathname.startsWith('/api') ||
-    req.nextUrl.pathname.startsWith('/sitemap.xml')
+    req.nextUrl.pathname.startsWith('/sitemap.xml') ||
+    req.nextUrl.pathname.startsWith('/robots.txt')
   ) {
     return NextResponse.next()
   }
