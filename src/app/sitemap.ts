@@ -74,7 +74,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   })
 
-  console.log(blogPosts)
-
   return [...staticRoutes, ...blogPosts]
 }

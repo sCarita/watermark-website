@@ -15,10 +15,7 @@ const FileDropUpload = ({ onSelectFile, className }: FileDropUploadProps) => {
     (e: React.DragEvent<HTMLDivElement>) => {
       e.preventDefault() // Ensure default behavior is prevented
       setIsDragging(false)
-      console.log('Drop event:', e) // Log the event to inspect it
-      console.log('Files:', e.dataTransfer.files) // Log the files to see if they are captured
       if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-        console.log('Files2:', e.dataTransfer.files) // Log the files to see if they are captured
         onSelectFile(e.dataTransfer.files)
         e.dataTransfer.clearData()
       }
@@ -92,7 +89,10 @@ const FileDropUpload = ({ onSelectFile, className }: FileDropUploadProps) => {
           </span>
           <span className="text-base text-gray-400">
             {t('watermarkProcessor.fileDropUpload.dragAndDrop')}
-            <span className="text-blue-600 underline"> {t('watermarkProcessor.fileDropUpload.browse')} </span>
+            <span className="text-blue-600 underline">
+              {' '}
+              {t('watermarkProcessor.fileDropUpload.browse')}{' '}
+            </span>
           </span>
         </div>
       </label>
