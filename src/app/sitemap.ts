@@ -1,52 +1,29 @@
-import type { MetadataRoute } from 'next'
-import fs from 'fs'
 import path from 'path'
+import fs from 'fs'
+import { MetadataRoute } from 'next'
+import { routing } from '@/i18n/routing'
+import { getPathname } from '@/i18n/navigation'
+import { Locale } from '../../i18n.config'
+
+type Href = Parameters<typeof getPathname>[0]['href']
+
+function getEntries(href: Href) {
+  return routing.locales.map((locale) => ({
+    url: getUrl(href, locale),
+    alternates: {
+      languages: Object.fromEntries(
+        routing.locales.map((cur) => [cur, getUrl(href, cur)]),
+      ),
+    },
+  }))
+}
+
+function getUrl(href: Href, locale: Locale) {
+  const pathname = getPathname({ locale, href })
+  return 'https://clear.photo' + pathname
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Static routes with language alternates
-  const staticRoutes = [
-    {
-      url: 'https://clear.photo/en',
-      lastModified: new Date(),
-      alternates: {
-        languages: {
-          es: 'https://clear.photo/es',
-          fr: 'https://clear.photo/fr',
-        },
-      },
-    },
-    {
-      url: 'https://clear.photo/en/blog',
-      lastModified: new Date(),
-      alternates: {
-        languages: {
-          es: 'https://clear.photo/es/blog',
-          fr: 'https://clear.photo/fr/blog',
-        },
-      },
-    },
-    {
-      url: 'https://clear.photo/en/privacy',
-      lastModified: new Date(),
-      alternates: {
-        languages: {
-          es: 'https://clear.photo/es/privacy',
-          fr: 'https://clear.photo/fr/privacy',
-        },
-      },
-    },
-    {
-      url: 'https://clear.photo/en/terms',
-      lastModified: new Date(),
-      alternates: {
-        languages: {
-          es: 'https://clear.photo/es/terms',
-          fr: 'https://clear.photo/fr/terms',
-        },
-      },
-    },
-  ]
-
   // Get blog posts from filesystem
   const blogDir = path.join(process.cwd(), 'src/content/blog')
   const languages = ['en', 'es', 'fr']
@@ -70,5 +47,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   })
 
-  return [...staticRoutes, ...blogPosts]
+  return [
+    ...getEntries('/'),
+    ...getEntries('/blog'),
+    ...getEntries('/privacy'),
+    ...getEntries('/terms'),
+    ...blogPosts,
+  ]
 }
