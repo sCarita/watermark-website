@@ -4,11 +4,11 @@ import Image from 'next/image'
 
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background-faqs.jpg'
-import { useI18n } from '@/hooks/useI18n'
+import { useTranslations } from 'next-intl'
 
 export function Faqs() {
-  const { t } = useI18n()
-  
+  const t = useTranslations()
+
   const faqs = [
     [
       {
@@ -53,7 +53,7 @@ export function Faqs() {
       },
     ],
   ]
-  
+
   return (
     <section
       id="faq"

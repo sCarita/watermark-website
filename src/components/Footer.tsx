@@ -1,38 +1,24 @@
 'use client'
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import { Logo } from '@/components/Logo'
 import { NavLink } from '@/components/NavLink'
-import { useI18n } from '@/hooks/useI18n'
+import { useTranslations } from 'next-intl'
 import { LanguageSelector } from '@/components/LanguageSelector'
 
 export function Footer() {
-  const { t } = useI18n()
+  const t = useTranslations()
   const pathname = usePathname()
-
-  // Determine if we're on a non-homepage page
-  const isNotHomePage =
-    pathname !== '/' && pathname !== '/es' && pathname !== '/fr'
-
-  // Get the language prefix from the pathname
-  const langPrefix = pathname.startsWith('/es')
-    ? '/es'
-    : pathname.startsWith('/fr')
-      ? '/fr'
-      : ''
-
-  // Create the base URL for navigation
-  const baseUrl = langPrefix || '/'
 
   return (
     <footer className="bg-slate-50">
       <Container>
         <div className="py-12 md:py-16">
-          <Link href={baseUrl} className="flex justify-center">
+          <Link href="/" className="flex justify-center">
             <Logo className="mx-auto h-10 w-auto" />
           </Link>
 
@@ -42,19 +28,15 @@ export function Footer() {
             aria-label="quick links"
           >
             <div className="-my-1 flex justify-center gap-x-6">
-              <NavLink
-                href={isNotHomePage ? `${baseUrl}#features` : '#features'}
-              >
+              <NavLink href={`/#features`}>
                 {t('common.navigation.features')}
               </NavLink>
-              <NavLink href={isNotHomePage ? `${baseUrl}#pricing` : '#pricing'}>
+              <NavLink href={`/#pricing`}>
                 {t('common.navigation.pricing')}
               </NavLink>
               <NavLink href={'/blog'}>Blog</NavLink>
-              <NavLink href={`${langPrefix}/terms`}>
-                {t('common.navigation.terms')}
-              </NavLink>
-              <NavLink href={`${langPrefix}/privacy`}>
+              <NavLink href={`/terms`}>{t('common.navigation.terms')}</NavLink>
+              <NavLink href={`/privacy`}>
                 {t('common.navigation.privacy')}
               </NavLink>
             </div>
@@ -67,25 +49,19 @@ export function Footer() {
           >
             <div className="flex flex-col space-y-4">
               <div className="flex justify-center gap-x-5">
-                <NavLink
-                  href={
-                    isNotHomePage ? `${baseUrl}#testimonials` : '#testimonials'
-                  }
-                >
+                <NavLink href={`/#testimonials`}>
                   {t('common.navigation.testimonials')}
                 </NavLink>
-                <NavLink
-                  href={isNotHomePage ? `${baseUrl}#pricing` : '#pricing'}
-                >
+                <NavLink href={`/#pricing`}>
                   {t('common.navigation.pricing')}
                 </NavLink>
                 <NavLink href={'/blog'}>Blog</NavLink>
               </div>
               <div className="flex justify-center gap-x-5">
-                <NavLink href={`${langPrefix}/terms`}>
+                <NavLink href={`/terms`}>
                   {t('common.navigation.terms')}
                 </NavLink>
-                <NavLink href={`${langPrefix}/privacy`}>
+                <NavLink href={`/privacy`}>
                   {t('common.navigation.privacy')}
                 </NavLink>
               </div>

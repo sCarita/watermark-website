@@ -6,7 +6,7 @@ import FileDropUpload from './FileDropUpload'
 import Alert from './Alert'
 import Badge from './Badge'
 import Input from './Input'
-import { useI18n } from '@/hooks/useI18n'
+import { useTranslations } from 'next-intl'
 import LoadingBar from './LoadingBar'
 import clsx from 'clsx'
 import LoadingImage from './LoadingImage'
@@ -14,6 +14,7 @@ import CanvasDraw from 'react-canvas-draw'
 
 import '@/styles/rangeSlider.css'
 import ImageMaskEditor from './ImageMaskEditor'
+import { Link } from '@/i18n/navigation'
 
 const UploadImage = ({
   file,
@@ -36,7 +37,7 @@ const UploadImage = ({
   removeImage: () => void
   handleImageError: () => void
 }) => {
-  const { t } = useI18n()
+  const t = useTranslations()
   const [url, setUrl] = useState(imageUrl)
 
   return (
@@ -163,7 +164,7 @@ const ResultDisplay = ({
   setError: (error: string) => void
   resetImage: () => void
 }) => {
-  const { t } = useI18n()
+  const t = useTranslations()
 
   const handleDownload = async () => {
     try {
@@ -310,7 +311,7 @@ interface ProcessResult {
 }
 
 export default function WatermarkProcessor() {
-  const { t } = useI18n()
+  const t = useTranslations()
 
   const [file, setFile] = useState<File | null>(null)
   const [imageUrl, setImageUrl] = useState<string>('')
@@ -570,13 +571,13 @@ export default function WatermarkProcessor() {
 
             <p className="mt-2 text-xs text-slate-500">
               {t('watermarkProcessor.termsAgreement')}{' '}
-              <a href="/terms" className="text-blue-600">
+              <Link href="/terms" className="text-blue-600">
                 {t('watermarkProcessor.termsOfUse')}
-              </a>{' '}
+              </Link>{' '}
               {t('common.and')}{' '}
-              <a href="/privacy" className="text-blue-600">
+              <Link href="/privacy" className="text-blue-600">
                 {t('watermarkProcessor.privacyPolicy')}
-              </a>
+              </Link>
             </p>
           </div>
         )}

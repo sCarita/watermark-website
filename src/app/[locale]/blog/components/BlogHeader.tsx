@@ -1,9 +1,11 @@
 'use client'
 
-import { useI18n } from '@/hooks/useI18n'
+// import { useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl'
 
 export function BlogHeader() {
-  const { t } = useI18n()
+  //  const t = useTranslations()
+  const t = useTranslations()
 
   return (
     <div>

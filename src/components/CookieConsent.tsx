@@ -3,14 +3,14 @@
 import { Button } from '@/components/Button'
 import { cookieName } from '@/utils/coockiesConsent'
 import { useState, useEffect } from 'react'
-import { useI18n } from '@/hooks/useI18n'
+import { useTranslations } from 'next-intl'
 
 const CookieConsent = ({
   onConsent,
 }: {
   onConsent: (consent: boolean) => void
 }) => {
-  const { t } = useI18n()
+  const t = useTranslations()
 
   const [showConsent, setShowConsent] = useState(false)
 

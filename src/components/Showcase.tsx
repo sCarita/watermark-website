@@ -3,14 +3,14 @@
 import { Container } from './Container'
 import { FadeIn } from './FadeIn'
 import ImageComparisonSlider from './ImageComparisonSlider'
-import { useI18n } from '@/hooks/useI18n'
+import { useTranslations } from 'next-intl'
 // Import your local images
 import originalImage from '@/images/screenshots/original.png'
 import processedImage from '@/images/screenshots/processed.jpg'
 
 const Showcase = () => {
-  const { t } = useI18n()
-  
+  const t = useTranslations()
+
   return (
     <section
       id="showcase"

@@ -6,7 +6,7 @@ import { Slider } from '@/components/ui/slider'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { useI18n } from '@/hooks/useI18n'
+import { useTranslations } from 'next-intl'
 
 // Define package types
 type Package = {
@@ -18,7 +18,7 @@ type Package = {
 }
 
 export default function PricingSection() {
-  const { t } = useI18n()
+  const t = useTranslations()
 
   // Define available packages
   const packages: Package[] = [

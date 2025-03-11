@@ -4,7 +4,7 @@ import clsx from 'clsx'
 
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
-import { useI18n } from '@/hooks/useI18n'
+import { useTranslations } from 'next-intl'
 import { LanguageSelector } from '@/components/LanguageSelector'
 import PricingSection from './PricingSection'
 
@@ -75,7 +75,7 @@ function Plan({
   features: Array<string>
   featured?: boolean
 }) {
-  const { t } = useI18n()
+  const t = useTranslations()
 
   return (
     <section
@@ -126,7 +126,7 @@ function Plan({
 }
 
 export function Pricing() {
-  const { t } = useI18n()
+  const t = useTranslations()
 
   return (
     <section

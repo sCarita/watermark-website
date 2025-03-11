@@ -1,6 +1,6 @@
 'use client'
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { usePathname } from 'next/navigation'
 import {
   Popover,
@@ -10,11 +10,10 @@ import {
 } from '@headlessui/react'
 import clsx from 'clsx'
 
-import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { Logo } from '@/components/Logo'
 import { NavLink } from '@/components/NavLink'
-import { useI18n } from '@/hooks/useI18n'
+import { useTranslations } from 'next-intl'
 import { LanguageSelector } from '@/components/LanguageSelector'
 
 function MobileNavLink({
@@ -64,22 +63,8 @@ function MobileNavIcon({ open }: { open: boolean }) {
 }
 
 function MobileNavigation() {
-  const { t } = useI18n()
+  const t = useTranslations()
   const pathname = usePathname()
-
-  // Determine if we're on a non-homepage page
-  const isNotHomePage =
-    pathname !== '/' && pathname !== '/es' && pathname !== '/fr'
-
-  // Get the language prefix from the pathname
-  const langPrefix = pathname.startsWith('/es')
-    ? '/es'
-    : pathname.startsWith('/fr')
-      ? '/fr'
-      : 'en'
-
-  // Create the base URL for navigation
-  const baseUrl = isNotHomePage ? langPrefix || '/' : ''
 
   return (
     <Popover>
@@ -100,28 +85,20 @@ function MobileNavigation() {
 
           <div className="border-b border-slate-200 py-3">
             <div className="space-y-1">
-              <MobileNavLink
-                href={isNotHomePage ? `${baseUrl}#features` : '#features'}
-              >
+              <MobileNavLink href={`/#features`}>
                 {t('common.navigation.features')}
               </MobileNavLink>
-              <MobileNavLink
-                href={
-                  isNotHomePage ? `${baseUrl}#testimonials` : '#testimonials'
-                }
-              >
+              <MobileNavLink href={`/#testimonials`}>
                 {t('common.navigation.testimonials')}
               </MobileNavLink>
-              <MobileNavLink
-                href={isNotHomePage ? `${baseUrl}#pricing` : '#pricing'}
-              >
+              <MobileNavLink href={`/#pricing`}>
                 {t('common.navigation.pricing')}
               </MobileNavLink>
-              <MobileNavLink href={`${langPrefix}/blog`}>Blog</MobileNavLink>
-              <MobileNavLink href={`${langPrefix}/terms`}>
+              <MobileNavLink href="/blog">Blog</MobileNavLink>
+              <MobileNavLink href="/terms">
                 {t('common.navigation.terms')}
               </MobileNavLink>
-              <MobileNavLink href={`${langPrefix}/privacy`}>
+              <MobileNavLink href="/privacy">
                 {t('common.navigation.privacy')}
               </MobileNavLink>
             </div>
@@ -133,41 +110,25 @@ function MobileNavigation() {
 }
 
 export function Header() {
-  const { t } = useI18n()
+  const t = useTranslations()
   const pathname = usePathname()
-
-  // Determine if we're on a non-homepage page
-  const isNotHomePage =
-    pathname !== '/' && pathname !== '/es' && pathname !== '/fr'
-
-  // Get the language prefix from the pathname
-  const langPrefix = pathname.startsWith('/es')
-    ? '/es'
-    : pathname.startsWith('/fr')
-      ? '/fr'
-      : '/en'
-
-  // Create the base URL for navigation
-  const baseUrl = langPrefix || '/'
 
   return (
     <header className="py-4 md:py-10">
       <Container>
         <nav className="relative z-50 flex items-center justify-between gap-1">
           <div className="flex items-center md:gap-x-6 lg:gap-x-12">
-            <Link href={baseUrl} aria-label={t('accessibility.home')}>
+            <Link href="/" aria-label={t('accessibility.home')}>
               <Logo className="h-10 w-auto" />
             </Link>
             <div className="hidden md:flex md:gap-x-6">
-              <NavLink
-                href={isNotHomePage ? `${baseUrl}#features` : '#features'}
-              >
+              <NavLink href={`/#features`}>
                 {t('common.navigation.features')}
               </NavLink>
-              <NavLink href={isNotHomePage ? `${baseUrl}#pricing` : '#pricing'}>
+              <NavLink href={`/#pricing`}>
                 {t('common.navigation.pricing')}
               </NavLink>
-              <NavLink href={`${langPrefix}/blog`}>Blog</NavLink>
+              <NavLink href="/blog">Blog</NavLink>
             </div>
           </div>
           <div className="flex items-center gap-x-3 md:gap-x-8">

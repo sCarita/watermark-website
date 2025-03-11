@@ -4,8 +4,9 @@ import { Fragment } from 'react'
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import clsx from 'clsx'
-import { useI18n } from '@/hooks/useI18n'
+import { useTranslations } from 'next-intl'
 import { usePathname, useRouter } from 'next/navigation'
+import { localeCookieName } from '../../i18n.config'
 
 interface LanguageSelectorProps {
   variant?: 'light' | 'dark'
@@ -123,44 +124,35 @@ export function LanguageSelector({
   variant = 'light',
   direction,
 }: LanguageSelectorProps) {
-  const { t, i18n, changeLanguage } = useI18n()
+  const t = useTranslations('common')
   const router = useRouter()
   const pathname = usePathname()
 
   const languages = [
-    { code: 'en', name: t('common.language.en'), flag: EnglishFlag },
-    { code: 'es', name: t('common.language.es'), flag: SpainFlag },
-    { code: 'fr', name: t('common.language.fr'), flag: FranceFlag },
+    { code: 'en', name: t('language.en'), flag: EnglishFlag },
+    { code: 'es', name: t('language.es'), flag: SpainFlag },
+    { code: 'fr', name: t('language.fr'), flag: FranceFlag },
   ]
 
+  // Get current language from pathname
+  const currentLocale = pathname.split('/')[1]
   const currentLanguage =
-    languages.find((lang) => lang.code === i18n.language) || languages[0]
+    languages.find((lang) => lang.code === currentLocale) || languages[0]
 
   const handleLanguageChange = (languageCode: string) => {
-    // Update language and set cookie
-    changeLanguage(languageCode)
-    document.cookie = `i18nextLng=${languageCode}; path=/; max-age=31536000`
+    // Set the locale cookie
+    document.cookie = `${localeCookieName}=${languageCode};path=/`
 
     // Helper to construct the new path
     const getNewPath = () => {
-      const isRoot = pathname === '/' || /^\/[a-z]{2}$/.test(pathname || '')
-      const hasLocale = /^\/[a-z]{2}\//.test(pathname || '')
+      const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}/, '')
       const isBlogArticle = /^\/[a-z]{2}\/blog\/[^/]+$/.test(pathname || '')
 
-      if (isRoot) {
-        return `/${languageCode}`
-      }
-
       if (isBlogArticle) {
-        // For blog articles, redirect to the blog page in the new language
         return `/${languageCode}/blog`
       }
 
-      if (hasLocale) {
-        return pathname?.replace(/^\/[a-z]{2}\//, `/${languageCode}/`)
-      }
-
-      return `/${languageCode}${pathname}`
+      return `/${languageCode}${pathWithoutLocale}`
     }
 
     router.push(getNewPath())
@@ -191,7 +183,7 @@ export function LanguageSelector({
         transition
         anchor={direction}
         className={clsx(
-          'ring-opacity-5 absolute right-0 z-10 mt-2 w-40 origin-top origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black transition duration-200 ease-out focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0',
+          'ring-opacity-5 absolute right-0 z-10 mt-2 w-40 origin-top origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black transition duration-200 ease-out data-[closed]:scale-95 data-[closed]:opacity-0',
           direction?.includes('top') && '-mt-4',
           direction?.includes('bottom') && 'mt-2',
         )}

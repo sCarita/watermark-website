@@ -4,10 +4,11 @@ import { Container } from '@/components/Container'
 import { FadeIn } from './FadeIn'
 import WatermarkProcessor from './WatermarkProcessor'
 import Badge from './Badge'
-import { useI18n } from '@/hooks/useI18n'
+import { useLocale, useTranslations } from 'next-intl'
 
 export function Hero() {
-  const { t, locale } = useI18n()
+  const t = useTranslations()
+  const locale = useLocale()
 
   // Define the highlighted term based on the current language
   const getHighlightedContent = () => {

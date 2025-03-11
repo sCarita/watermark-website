@@ -4,13 +4,13 @@ import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
-import { useI18n } from '@/hooks/useI18n'
+import { useTranslations } from 'next-intl'
 
 // Metadata is exported from a separate file since this is a client component
 // See src/app/terms/metadata.ts
 
 export default function Terms() {
-  const { t } = useI18n()
+  const t = useTranslations()
 
   return (
     <>
@@ -93,16 +93,20 @@ export default function Terms() {
                   {t('common.terms.sections.description.responsibleUse.text')}
                 </p>
                 <ul className="list-disc pl-6 text-slate-700">
-                  {(
-                    t(
+                  {t
+                    .raw(
                       'common.terms.sections.description.responsibleUse.items',
-                      { returnObjects: true },
-                    ) as Array<{ title: string; text: string }>
-                  ).map((item, index) => (
-                    <li key={index}>
-                      <strong>{item.title}</strong>: {item.text}
-                    </li>
-                  ))}
+                    )
+                    .map(
+                      (
+                        item: { title: string; text: string },
+                        index: number,
+                      ) => (
+                        <li key={index}>
+                          <strong>{item.title}</strong>: {item.text}
+                        </li>
+                      ),
+                    )}
                 </ul>
 
                 <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">
@@ -112,15 +116,20 @@ export default function Terms() {
                   {t('common.terms.sections.description.scientificUse.text')}
                 </p>
                 <ol className="list-decimal pl-6 text-slate-700">
-                  {(
-                    t('common.terms.sections.description.scientificUse.items', {
-                      returnObjects: true,
-                    }) as Array<{ title: string; text: string }>
-                  ).map((item, index) => (
-                    <li key={index}>
-                      <strong>{item.title}</strong>: {item.text}
-                    </li>
-                  ))}
+                  {t
+                    .raw(
+                      'common.terms.sections.description.scientificUse.items',
+                    )
+                    .map(
+                      (
+                        item: { title: string; text: string },
+                        index: number,
+                      ) => (
+                        <li key={index}>
+                          <strong>{item.title}</strong>: {item.text}
+                        </li>
+                      ),
+                    )}
                 </ol>
                 <p className="mt-4 text-slate-700">
                   {t('common.terms.sections.description.scientificUse.note')}
@@ -156,14 +165,13 @@ export default function Terms() {
                   )}
                 </p>
                 <ul className="list-disc pl-6 text-slate-700">
-                  {(
-                    t(
+                  {t
+                    .raw(
                       'common.terms.sections.userResponsibilities.prohibitedContent.items',
-                      { returnObjects: true },
-                    ) as Array<string>
-                  ).map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))}
+                    )
+                    .map((item: string, index: number) => (
+                      <li key={index}>{item}</li>
+                    ))}
                 </ul>
 
                 <h3 className="mt-6 font-display text-xl font-medium tracking-tight text-slate-900">

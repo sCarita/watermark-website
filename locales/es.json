@@ -36,10 +36,11 @@
       "get6MonthsFree": "Obtén 6 meses gratis",
       "submit": "Enviar"
     },
-    "copyright": "Copyright © {{year}} clear.photo. Todos los derechos reservados.",
+    "copyright": "Copyright © {year} clear.photo. Todos los derechos reservados.",
     "language": {
       "en": "English",
       "es": "Español",
+      "fr": "Français",
       "select": "Seleccionar idioma"
     },
     "cookieConsent": {
@@ -441,7 +442,7 @@
           "withoutDiscount": "Sin Descuento",
           "withDiscount": "Con Descuento",
           "images": "imágenes",
-          "processMore": "Procesa {{count}} imágenes más"
+          "processMore": "Procesa {count} imágenes más"
         },
         "button": "Comenzar con Ahorros por Volumen"
       },
@@ -596,7 +597,7 @@
     "featuresForRunningYourBooks": "Características para eliminar marcas de agua",
     "featuresForSimplifyingEverydayBusinessTasks": "Características para simplificar tu edición diaria",
     "whatOurCustomersAreSaying": "Lo que dicen nuestros clientes",
-    "getPlanButtonLabel": "Comienza con el plan {{name}} por {{price}}"
+    "getPlanButtonLabel": "Comienza con el plan {name} por {price}"
   },
   "blog": {
     "eyebrow": "Blog",
@@ -606,5 +607,12 @@
     "author": "Autor",
     "readMore": "Leer más",
     "by": "Por"
+  },
+  "errors": {
+    "notFound": {
+      "code": "404",
+      "title": "Página no encontrada",
+      "message": "Lo sentimos, no pudimos encontrar la página que estás buscando."
+    }
   }
 }

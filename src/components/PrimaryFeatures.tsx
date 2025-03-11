@@ -11,10 +11,10 @@ import screenshotManualBrush from '@/images/screenshots/manual-brush.png'
 import screenshotManualObject from '@/images/screenshots/manual-object.png'
 import Demo0 from '@/images/screenshots/demo_0.png'
 import screenshotApiIntegration from '@/images/screenshots/api-integration.jpeg'
-import { useI18n } from '@/hooks/useI18n'
+import { useTranslations } from 'next-intl'
 
 export function PrimaryFeatures() {
-  const { t } = useI18n()
+  const t = useTranslations()
   let [tabOrientation, setTabOrientation] = useState<'horizontal' | 'vertical'>(
     'horizontal',
   )

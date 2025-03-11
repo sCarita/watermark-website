@@ -5,12 +5,12 @@ import Image from 'next/image'
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background-call-to-action.jpg'
-import { useI18n } from '@/hooks/useI18n'
+import { useTranslations } from 'next-intl'
 import { LanguageSelector } from '@/components/LanguageSelector'
 
 export function CallToAction() {
-  const { t } = useI18n()
-  
+  const t = useTranslations()
+
   return (
     <section
       id="get-started-today"

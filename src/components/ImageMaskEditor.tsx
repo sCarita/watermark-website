@@ -4,8 +4,7 @@ import { useEffect, useState } from 'react'
 import { useRef } from 'react'
 import { DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { Dialog } from '@headlessui/react'
-import { useTranslation } from 'react-i18next'
-
+import { useTranslations } from 'next-intl'
 const ImageMaskEditor = ({
   imageUrl,
   dialogOpen,
@@ -15,7 +14,7 @@ const ImageMaskEditor = ({
   dialogOpen: boolean
   toggleDialog: () => void
 }) => {
-  const { t } = useTranslation()
+  const t = useTranslations()
 
   const canvasContainerRef = useRef<HTMLDivElement | null>(null)
   const canvasRef = useRef<CanvasDraw | null>(null)

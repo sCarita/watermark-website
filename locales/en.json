@@ -36,7 +36,7 @@
       "get6MonthsFree": "Get 6 months free",
       "submit": "Submit"
     },
-    "copyright": "Copyright © {{year}} clear.photo. All rights reserved.",
+    "copyright": "Copyright © {year} clear.photo. All rights reserved.",
     "language": {
       "en": "English",
       "es": "Español",
@@ -442,7 +442,7 @@
           "withoutDiscount": "Without Discount",
           "withDiscount": "With Discount",
           "images": "images",
-          "processMore": "Process {{count}} more images"
+          "processMore": "Process {count} more images"
         },
         "button": "Get Started with Bulk Savings"
       },
@@ -616,12 +616,13 @@
   },
   "accessibility": {
     "toggleNavigation": "Toggle Navigation",
+    "home": "Home",
     "taxPalOnX": "clear.photo on X",
     "taxPalOnGitHub": "clear.photo on GitHub",
     "featuresForRunningYourBooks": "Features for removing watermarks",
     "featuresForSimplifyingEverydayBusinessTasks": "Features for simplifying watermark removal tasks",
     "whatOurCustomersAreSaying": "What our customers are saying",
-    "getPlanButtonLabel": "Get started with the {{name}} plan for {{price}}"
+    "getPlanButtonLabel": "Get started with the {name} plan for {price}"
   },
   "errors": {
     "notFound": {
@@ -635,6 +636,7 @@
     "description": "Looking to remove watermarks from a photo or get rid of a logo? clear.photo uses advanced AI to handle watermark removal seamlessly. Try our free app and see the difference."
   },
   "blog": {
+    "eyebrow": "Blog",
     "title": "AI Watermark Removal Insights & Tutorials",
     "description": "Stay updated with the latest AI watermark removal techniques, tutorials, and industry insights. Learn how to effectively remove watermarks from your images using advanced AI technology.",
     "published": "Published",

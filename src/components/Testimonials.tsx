@@ -8,7 +8,7 @@ import avatarImage2 from '@/images/avatars/avatar-2.png'
 import avatarImage3 from '@/images/avatars/avatar-3.png'
 import avatarImage4 from '@/images/avatars/avatar-4.png'
 import avatarImage5 from '@/images/avatars/avatar-5.png'
-import { useI18n } from '@/hooks/useI18n'
+import { useTranslations } from 'next-intl'
 
 function QuoteIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -19,8 +19,8 @@ function QuoteIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 }
 
 export function Testimonials() {
-  const { t } = useI18n()
-  
+  const t = useTranslations()
+
   const testimonials = [
     [
       {
@@ -77,7 +77,7 @@ export function Testimonials() {
       },
     ],
   ]
-  
+
   return (
     <section
       id="testimonials"

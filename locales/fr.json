@@ -36,7 +36,7 @@
       "get6MonthsFree": "Obtenez 6 mois gratuits",
       "submit": "Envoyer"
     },
-    "copyright": "Copyright © {{year}} clear.photo. Tous droits réservés.",
+    "copyright": "Copyright © {year} clear.photo. Tous droits réservés.",
     "language": {
       "en": "English",
       "es": "Español",
@@ -442,7 +442,7 @@
           "withoutDiscount": "Sans Réduction",
           "withDiscount": "Avec Réduction",
           "images": "images",
-          "processMore": "Traitez {{count}} images supplémentaires"
+          "processMore": "Traitez {count} images supplémentaires"
         },
         "button": "Commencer avec les Économies en Volume"
       },
@@ -622,7 +622,7 @@
     "featuresForRunningYourBooks": "Fonctionnalités pour supprimer les filigranes",
     "featuresForSimplifyingEverydayBusinessTasks": "Fonctionnalités pour simplifier l'édition d'images au quotidien",
     "whatOurCustomersAreSaying": "Ce que disent nos clients",
-    "getPlanButtonLabel": "Commencez avec le plan {{name}} pour {{price}}"
+    "getPlanButtonLabel": "Commencez avec le plan {name} pour {price}"
   },
   "errors": {
     "notFound": {

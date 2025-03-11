@@ -9,7 +9,7 @@ import { Container } from '@/components/Container'
 import screenshotContacts from '@/images/screenshots/devices.png'
 import screenshotInventory from '@/images/screenshots/bulk.png'
 import screenshotProfitLoss from '@/images/screenshots/clarity.png'
-import { useI18n } from '@/hooks/useI18n'
+import { useTranslations } from 'next-intl'
 
 interface Feature {
   name: React.ReactNode
@@ -60,7 +60,7 @@ function Feature({
 }
 
 function FeaturesMobile() {
-  const { t } = useI18n()
+  const t = useTranslations()
 
   const features: Array<Feature> = [
     {
@@ -168,7 +168,7 @@ function FeaturesMobile() {
 }
 
 function FeaturesDesktop() {
-  const { t } = useI18n()
+  const t = useTranslations()
 
   const features: Array<Feature> = [
     {
@@ -308,7 +308,7 @@ function FeaturesDesktop() {
 }
 
 export function SecondaryFeatures() {
-  const { t } = useI18n()
+  const t = useTranslations()
 
   return (
     <section
