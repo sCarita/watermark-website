@@ -17,12 +17,12 @@ export const metadata: Metadata = {
 }
 
 export default async function BlogPage({
-  params: { lang },
+  params: { locale },
 }: {
-  params: { lang: string }
+  params: { locale: string }
 }) {
   // If no language is specified, default to English
-  const language = lang || 'en'
+  const language = locale || 'en'
   const posts = await getBlogPosts(language)
 
   return (

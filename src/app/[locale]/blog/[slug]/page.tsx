@@ -105,12 +105,12 @@ const components = {
 }
 
 export default async function BlogPost({
-  params: { lang, slug },
+  params: { locale, slug },
 }: {
-  params: { lang?: string; slug: string }
+  params: { locale?: string; slug: string }
 }) {
   // If no language is specified, default to English
-  const language = lang || 'en'
+  const language = locale || 'en'
   const post = await getBlogPost(language, slug)
 
   if (!post) {
