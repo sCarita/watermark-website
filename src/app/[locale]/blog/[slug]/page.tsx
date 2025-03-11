@@ -9,14 +9,9 @@ import { ImgHTMLAttributes } from 'react'
 import { DetailedHTMLProps } from 'react'
 import Image, { ImageProps } from 'next/image'
 import { Metadata } from 'next'
-import { routing } from '@/i18n/routing'
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>
-}
-
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
