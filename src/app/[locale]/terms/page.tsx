@@ -1,16 +1,34 @@
-'use client'
-
-import { Header } from '@/components/Header'
-import { Footer } from '@/components/Footer'
 import { Container } from '@/components/Container'
+import { Footer } from '@/components/Footer'
 import { FadeIn } from '@/components/FadeIn'
-import { useTranslations } from 'next-intl'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { Header } from '@/components/Header'
+import { routing } from '@/i18n/routing'
 
-// Metadata is exported from a separate file since this is a client component
-// See src/app/terms/metadata.ts
+type Props = {
+  params: Promise<{ locale: string }>
+}
 
-export default function Terms() {
-  const t = useTranslations()
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'metadata.terms' })
+
+  return {
+    title: t('title'),
+    description: t('description'),
+  }
+}
+
+export default async function Terms({ params }: Props) {
+  const { locale } = await params
+  const t = await getTranslations({ locale })
+
+  // Enable static rendering
+  setRequestLocale(locale)
 
   return (
     <>

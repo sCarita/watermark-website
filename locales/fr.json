@@ -632,8 +632,20 @@
     }
   },
   "metadata": {
-    "title": "clear.photo - Outil pour enlever un filigrane et nettoyer vos images",
-    "description": "Découvrez comment supprimer un filigrane gratuitement ou traiter des images en masse. clear.photo utilise l'IA pour éliminer logos et textes rapidement."
+    "title": "clear.photo – Suppression de Filigranes et de Logos pour vos Images",
+    "description": "Besoin de supprimer des filigranes d'une photo ou d'effacer un logo ? clear.photo utilise l'IA avancée pour éliminer les filigranes facilement. Essayez notre application gratuite et constatez la différence.",
+    "blog": {
+      "title": "clear.photo Blog - Guides et Technologies de Suppression de Filigranes",
+      "description": "Découvrez comment la technologie IA supprime les filigranes des images, suivez nos guides étape par étape et profitez de conseils d'experts. Explorez les dernières avancées en matière d'édition photo par IA."
+    },
+    "terms": {
+      "title": "Conditions d'Utilisation - clear.photo",
+      "description": "Consultez nos Conditions d'Utilisation pour comprendre vos droits et responsabilités lors de l'utilisation de l'outil de suppression de filigranes par IA de clear.photo. Informez-vous sur les conditions d'utilisation, la gestion des données et les exigences légales."
+    },
+    "privacy": {
+      "title": "Politique de Confidentialité - clear.photo",
+      "description": "Notre Politique de Confidentialité explique comment clear.photo gère vos données, protège votre vie privée et respecte les réglementations de protection des données lors de l'utilisation de notre service de suppression de filigranes."
+    }
   },
   "blog": {
     "eyebrow": "Blog",

@@ -5,22 +5,31 @@ import { Footer } from '@/components/Footer'
 import { BlogList } from './components/BlogList'
 import { getBlogPosts } from '@/utils/blog'
 import { BlogHeader } from './components/BlogHeader'
-import { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
+import { routing } from '@/i18n/routing'
 
-export const metadata: Metadata = {
-  title: {
-    template: '%s - clear.photo',
-    default: 'clear.photo - Remove watermarks from your images',
-  },
-  description:
-    'Free online watermark remover tool. Easily remove watermarks, logos, and text from photos and images. Our AI-powered technology helps you get rid of watermarks from Getty Images, Shutterstock, and more. Clean up your pictures with the best free watermark remover available online.',
+type Props = {
+  params: Promise<{ locale: string }>
 }
 
-export default async function BlogPage({
-  params: { locale },
-}: {
-  params: { locale: string }
-}) {
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export async function generateMetadata(props: Omit<Props, 'children'>) {
+  const { locale } = await props.params
+
+  const t = await getTranslations({ locale, namespace: 'metadata.blog' })
+
+  return {
+    title: t('title'),
+    description: t('description'),
+  }
+}
+
+export default async function BlogPage({ params }: Props) {
+  const { locale } = await params
+
   // If no language is specified, default to English
   const language = locale || 'en'
   const posts = await getBlogPosts(language)

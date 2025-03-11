@@ -9,14 +9,45 @@ import { ImgHTMLAttributes } from 'react'
 import { DetailedHTMLProps } from 'react'
 import Image, { ImageProps } from 'next/image'
 import { Metadata } from 'next'
+import { routing } from '@/i18n/routing'
 
-export const metadata: Metadata = {
-  title: {
-    template: '%s - clear.photo',
-    default: 'clear.photo - Remove watermarks from your images',
-  },
-  description:
-    'Free online watermark remover tool. Easily remove watermarks, logos, and text from photos and images. Our AI-powered technology helps you get rid of watermarks from Getty Images, Shutterstock, and more. Clean up your pictures with the best free watermark remover available online.',
+type Props = {
+  params: Promise<{ locale: string; slug: string }>
+}
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale, slug } = await params
+
+  const language = locale || 'en'
+  const post = await getBlogPost(language, slug)
+
+  if (!post) {
+    return {
+      title: 'Not Found',
+      description: 'The page you are looking for does not exist.',
+    }
+  }
+
+  return {
+    title: {
+      template: '%s - clear.photo Blog',
+      default: `${post.title} - clear.photo Blog`,
+    },
+    description:
+      post.excerpt ||
+      'Learn about AI-powered watermark removal technology and techniques. Discover how to effectively remove watermarks from your images using advanced AI solutions.',
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image],
+      type: 'article',
+      publishedTime: post.date,
+    },
+  }
 }
 
 const components = {
@@ -104,11 +135,9 @@ const components = {
   },
 }
 
-export default async function BlogPost({
-  params: { locale, slug },
-}: {
-  params: { locale?: string; slug: string }
-}) {
+export default async function BlogPost({ params }: Props) {
+  const { locale, slug } = await params
+
   // If no language is specified, default to English
   const language = locale || 'en'
   const post = await getBlogPost(language, slug)

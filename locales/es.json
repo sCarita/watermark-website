@@ -614,5 +614,21 @@
       "title": "Página no encontrada",
       "message": "Lo sentimos, no pudimos encontrar la página que estás buscando."
     }
+  },
+  "metadata": {
+    "title": "clear.photo – Eliminador de Marcas de Agua y Logos para tus Imágenes",
+    "description": "¿Buscas eliminar marcas de agua de una foto o quitar un logo? clear.photo usa IA avanzada para eliminar marcas de agua sin esfuerzo. Prueba nuestra app gratuita y nota la diferencia.",
+    "blog": {
+      "title": "Blog de clear.photo - Guías y Tecnología de Eliminación de Marcas de Agua",
+      "description": "Aprende cómo la tecnología de IA elimina marcas de agua de imágenes, sigue guías paso a paso y descubre consejos de expertos. Explora lo último en edición de fotos con IA."
+    },
+    "terms": {
+      "title": "Términos de Servicio - clear.photo",
+      "description": "Lee nuestros Términos de Servicio para entender tus derechos y responsabilidades al usar la herramienta de eliminación de marcas de agua con IA de clear.photo. Aprende sobre términos de uso, manejo de datos y requisitos legales."
+    },
+    "privacy": {
+      "title": "Política de Privacidad - clear.photo",
+      "description": "Nuestra Política de Privacidad explica cómo clear.photo maneja tus datos, protege tu privacidad y cumple con las regulaciones de protección de datos al usar nuestro servicio de eliminación de marcas de agua."
+    }
   }
 }

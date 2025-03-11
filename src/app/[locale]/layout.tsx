@@ -8,15 +8,16 @@ import ClientLayout from '@/components/ClientLayout'
 import '@/styles/tailwind.css'
 import { routing } from '@/i18n/routing'
 import { notFound } from 'next/navigation'
-import { getMessages } from 'next-intl/server'
+import {
+  getMessages,
+  getTranslations,
+  setRequestLocale,
+} from 'next-intl/server'
+import { ReactNode } from 'react'
 
-export const metadata: Metadata = {
-  title: {
-    template: '%s - clear.photo',
-    default: 'clear.photo - Remove watermarks from your images',
-  },
-  description:
-    'Free online watermark remover tool. Easily remove watermarks, logos, and text from photos and images. Our AI-powered technology helps you get rid of watermarks from Getty Images, Shutterstock, and more. Clean up your pictures with the best free watermark remover available online.',
+type Props = {
+  children: ReactNode
+  params: Promise<{ locale: string }>
 }
 
 const inter = Inter({
@@ -31,18 +32,30 @@ const lexend = Lexend({
   variable: '--font-lexend',
 })
 
-export default async function LocaleLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode
-  params: Promise<{ locale: string }>
-}) {
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export async function generateMetadata(props: Omit<Props, 'children'>) {
+  const { locale } = await props.params
+
+  const t = await getTranslations({ locale, namespace: 'metadata' })
+
+  return {
+    title: t('title'),
+    description: t('description'),
+  }
+}
+
+export default async function LocaleLayout({ children, params }: Props) {
   // Ensure that the incoming `locale` is valid
   const { locale } = await params
   if (!routing.locales.includes(locale as any)) {
     notFound()
   }
+
+  // Enable static rendering
+  setRequestLocale(locale)
 
   // Providing all messages to the client
   // side is the easiest way to get started

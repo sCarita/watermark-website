@@ -632,8 +632,20 @@
     }
   },
   "metadata": {
-    "title": "clear.photo – Watermark Remover & Logo Eraser for Your Images",
-    "description": "Looking to remove watermarks from a photo or get rid of a logo? clear.photo uses advanced AI to handle watermark removal seamlessly. Try our free app and see the difference."
+    "title": "clear.photo - Remove watermarks from your images",
+    "description": "Free online watermark remover tool. Easily remove watermarks, logos, and text from photos and images. Our AI-powered technology helps you get rid of watermarks from Getty Images, Shutterstock, and more. Clean up your pictures with the best free watermark remover available online.",
+    "blog": {
+      "title": "clear.photo Blog - Watermark Removal Guides & Technology",
+      "description": "Learn how AI technology removes watermarks from images, step-by-step guides, and expert tips for watermark removal. Discover the latest in AI-powered photo editing."
+    },
+    "terms": {
+      "title": "Terms of Service - clear.photo",
+      "description": "Read our Terms of Service to understand your rights and responsibilities when using clear.photo's AI-powered watermark removal tool. Learn about usage terms, data handling, and legal requirements."
+    },
+    "privacy": {
+      "title": "Privacy Policy - clear.photo",
+      "description": "Our Privacy Policy explains how clear.photo handles your data, protects your privacy, and complies with data protection regulations when using our watermark removal service."
+    }
   },
   "blog": {
     "eyebrow": "Blog",

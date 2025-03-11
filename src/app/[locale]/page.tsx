@@ -1,3 +1,4 @@
+import { setRequestLocale } from 'next-intl/server'
 import { CallToAction } from '@/components/CallToAction'
 import { Faqs } from '@/components/Faqs'
 import { Footer } from '@/components/Footer'
@@ -9,7 +10,16 @@ import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import Showcase from '@/components/Showcase'
 import { Testimonials } from '@/components/Testimonials'
 
-export default function Home() {
+type Props = {
+  params: Promise<{ locale: string }>
+}
+
+export default async function Home({ params }: Props) {
+  const { locale } = await params
+
+  // Enable static rendering
+  setRequestLocale(locale)
+
   return (
     <>
       <Header />

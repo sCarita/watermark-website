@@ -1,16 +1,34 @@
-'use client'
-
-import { Header } from '@/components/Header'
-import { Footer } from '@/components/Footer'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
-import { useTranslations } from 'next-intl'
+import { Footer } from '@/components/Footer'
+import { Header } from '@/components/Header'
+import { routing } from '@/i18n/routing'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 
-// Metadata is exported from a separate file since this is a client component
-// src/app/privacy/metadata.ts would be the ideal place for this
+type Props = {
+  params: Promise<{ locale: string }>
+}
 
-export default function Privacy() {
-  const t = useTranslations()
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'metadata.privacy' })
+
+  return {
+    title: t('title'),
+    description: t('description'),
+  }
+}
+
+export default async function Privacy({ params }: Props) {
+  const { locale } = await params
+  const t = await getTranslations({ locale })
+
+  // Enable static rendering
+  setRequestLocale(locale)
 
   return (
     <>
