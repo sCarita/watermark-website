@@ -9,7 +9,7 @@ import { ImgHTMLAttributes } from 'react'
 import { DetailedHTMLProps } from 'react'
 import Image, { ImageProps } from 'next/image'
 import { Metadata } from 'next'
-import { getPathname } from '@/i18n/navigation'
+import { getPathname, Link } from '@/i18n/navigation'
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>
@@ -76,7 +76,9 @@ const components = {
     />
   ),
   p: (props: any) => <p className="mt-4 text-slate-600" {...props} />,
-  a: (props: any) => <a className="text-blue-600 hover:underline" {...props} />,
+  a: (props: any) => (
+    <Link className="text-blue-600 hover:underline" {...props} />
+  ),
   strong: (props: any) => (
     <strong className="font-semibold text-slate-900" {...props} />
   ),

@@ -4,7 +4,7 @@ import { FadeIn } from '@/components/FadeIn'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Header } from '@/components/Header'
 import { routing } from '@/i18n/routing'
-import { getPathname } from '@/i18n/navigation'
+import { getPathname, Link } from '@/i18n/navigation'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -281,12 +281,12 @@ export default async function Terms({ params }: Props) {
                 Your use of the Tool may involve the provision of personal data.
                 Any personal data collected, used, or shared by us is subject to
                 our{' '}
-                <a
+                <Link
                   href="/privacy"
                   className="text-blue-600 hover:text-blue-800"
                 >
                   Privacy Policy
-                </a>
+                </Link>
                 , which complies with the General Data Protection Regulation
                 (GDPR) and other applicable data protection laws in Portugal.
               </p>
