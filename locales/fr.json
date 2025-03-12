@@ -275,7 +275,9 @@
           }
         }
       }
-    }
+    },
+    "tryFree": "Essayez maintenant, c'est gratuit !",
+    "learnMore": "En savoir plus sur notre outil de suppression de filigranes"
   },
   "hero": {
     "title": "Supprimez les filigranes de vos images grâce à l'IA",
@@ -398,7 +400,7 @@
         "button": "Commencer"
       },
       "toolCredits": {
-        "title": "Crédits d'Outils",
+        "title": "Paquets de crédits",
         "description": "Payez à l'utilisation avec des crédits",
         "auto": {
           "credits": "5 crédits",

@@ -275,7 +275,9 @@
           }
         }
       }
-    }
+    },
+    "tryFree": "¡Pruébalo ahora, es gratis!",
+    "learnMore": "Más información sobre nuestra herramienta de eliminación de filigranes"
   },
   "hero": {
     "title": "Quita marcas de agua de tus imágenes de forma sencilla",
@@ -398,7 +400,7 @@
         "button": "Comenzar"
       },
       "toolCredits": {
-        "title": "Créditos de Herramientas",
+        "title": "Paquetes de créditos",
         "description": "Paga por uso con créditos",
         "auto": {
           "credits": "5 créditos",

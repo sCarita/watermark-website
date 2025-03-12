@@ -275,7 +275,9 @@
           }
         }
       }
-    }
+    },
+    "tryFree": "Try it now, it's free!",
+    "learnMore": "Learn more about our watermark removal tool"
   },
   "hero": {
     "title": "Remove watermarks from your images automatically with AI.",
@@ -398,7 +400,7 @@
         "button": "Get Started"
       },
       "toolCredits": {
-        "title": "Tool Credits",
+        "title": "Credit packages",
         "description": "Pay per use with credits",
         "auto": {
           "credits": "5 credits",

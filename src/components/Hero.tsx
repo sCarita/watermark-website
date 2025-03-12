@@ -62,16 +62,16 @@ export function Hero() {
         <div className="flex w-full flex-col justify-center md:w-5/12">
           <label htmlFor="file" className="self-center">
             <Badge className="animate-subtle-pulse-blue mb-4 cursor-pointer self-center bg-gradient-to-r from-blue-500 to-purple-500 !text-sm !text-white">
-              Try it now, it's free!
+              {t('common.tryFree')}
             </Badge>
           </label>
           <WatermarkProcessor />
         </div>
       </FadeIn>
       <Link href="#showcase" className="animate-bounce-hover self-center">
-        <Badge variant="outline">
+        <Badge variant="outline" className="py-1">
           <ChevronDownIcon className="h-4 w-4" />
-          Learn more about our watermark removal tool
+          {t('common.learnMore')}
           <ChevronDownIcon className="h-4 w-4" />
         </Badge>
       </Link>
