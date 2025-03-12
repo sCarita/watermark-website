@@ -3,8 +3,11 @@
 import { Container } from '@/components/Container'
 import { FadeIn } from './FadeIn'
 import WatermarkProcessor from './WatermarkProcessor'
-import Badge from './Badge'
+import { Badge } from '@/components/ui/badge'
 import { useLocale, useTranslations } from 'next-intl'
+import { Button } from './ui/button'
+import Link from 'next/link'
+import { ArrowDown, ChevronDownIcon } from 'lucide-react'
 
 export function Hero() {
   const t = useTranslations()
@@ -46,7 +49,7 @@ export function Hero() {
   }
 
   return (
-    <Container className="flex min-h-[calc(100vh-78.5px)] py-5 md:min-h-[calc(100vh-126px)]">
+    <Container className="flex min-h-[calc(100vh-78.5px)] flex-col py-5 md:min-h-[calc(100vh-126px)]">
       <FadeIn className="flex flex-1 flex-col gap-8 md:flex-row">
         <div className="flex w-full flex-col justify-center md:w-7/12">
           <h1 className="mx-auto font-display text-4xl font-medium tracking-tight text-slate-900 max-sm:leading-tight sm:text-5xl sm:text-7xl">
@@ -57,9 +60,21 @@ export function Hero() {
           </h2>
         </div>
         <div className="flex w-full flex-col justify-center md:w-5/12">
+          <label htmlFor="file" className="self-center">
+            <Badge className="animate-subtle-pulse-blue mb-4 cursor-pointer self-center bg-gradient-to-r from-blue-500 to-purple-500 !text-sm !text-white">
+              Try it now, it's free!
+            </Badge>
+          </label>
           <WatermarkProcessor />
         </div>
       </FadeIn>
+      <Link href="#showcase" className="animate-bounce-hover self-center">
+        <Badge variant="outline">
+          <ChevronDownIcon className="h-4 w-4" />
+          Learn more about our watermark removal tool
+          <ChevronDownIcon className="h-4 w-4" />
+        </Badge>
+      </Link>
     </Container>
   )
 }
