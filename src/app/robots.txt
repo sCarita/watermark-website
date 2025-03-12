@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Main sitemap
-Sitemap: https://clear.photo/sitemap.xml
+Sitemap: https://www.clear.photo/sitemap.xml
 
 # Specific search engine directives
 User-agent: Googlebot

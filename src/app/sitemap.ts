@@ -20,7 +20,7 @@ function getEntries(href: Href) {
 
 function getUrl(href: Href, locale: Locale) {
   const pathname = getPathname({ locale, href })
-  return 'https://clear.photo' + pathname
+  return 'https://www.clear.photo' + pathname
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -37,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         if (file.endsWith('.mdx')) {
           const slug = file.replace('.mdx', '')
           blogPosts.push({
-            url: `https://clear.photo/${lang}/blog/${slug}`,
+            url: `https://www.clear.photo/${lang}/blog/${slug}`,
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.7,
