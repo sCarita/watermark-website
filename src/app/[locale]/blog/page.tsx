@@ -5,7 +5,7 @@ import { Footer } from '@/components/Footer'
 import { BlogList } from './components/BlogList'
 import { getBlogPosts } from '@/utils/blog'
 import { BlogHeader } from './components/BlogHeader'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 import { getPathname } from '@/i18n/navigation'
 type Props = {
@@ -41,6 +41,9 @@ export default async function BlogPage({ params }: Props) {
 
   // If no language is specified, default to English
   const language = locale || 'en'
+
+  // Enable static rendering
+  setRequestLocale(locale)
   const posts = await getBlogPosts(language)
 
   return (
