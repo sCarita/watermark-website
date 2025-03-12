@@ -126,7 +126,7 @@ const ImageComparisonSlider: React.FC<ImageComparisonSliderProps> = ({
       {/* Images */}
       <Image
         src={originalImage}
-        alt="Original"
+        alt="Original watermarked image"
         className="absolute top-0 left-0 h-full w-full object-cover"
         draggable="false"
         width={1300}
@@ -134,7 +134,7 @@ const ImageComparisonSlider: React.FC<ImageComparisonSliderProps> = ({
       />
       <Image
         src={processedImage}
-        alt="Processed"
+        alt="Processed watermarked image"
         className="absolute top-0 left-0 h-full w-full object-cover"
         style={{
           clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,

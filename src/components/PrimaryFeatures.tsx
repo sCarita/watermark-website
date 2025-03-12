@@ -67,7 +67,7 @@ export function PrimaryFeatures() {
       <Image
         className="absolute top-1/2 left-1/2 max-w-none translate-x-[-44%] translate-y-[-42%] opacity-20"
         src={backgroundImage}
-        alt=""
+        alt={t('primaryFeatures.title')}
         width={2245}
         height={1636}
         unoptimized
