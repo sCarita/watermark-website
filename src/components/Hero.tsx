@@ -68,7 +68,10 @@ export function Hero() {
           <WatermarkProcessor />
         </div>
       </FadeIn>
-      <Link href="#showcase" className="animate-bounce-hover self-center">
+      <Link
+        href="#showcase"
+        className="animate-bounce-hover hidden self-center md:block"
+      >
         <Badge variant="outline" className="py-1">
           <ChevronDownIcon className="h-4 w-4" />
           {t('common.learnMore')}
