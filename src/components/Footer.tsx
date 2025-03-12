@@ -28,15 +28,15 @@ export function Footer() {
             aria-label="quick links"
           >
             <div className="-my-1 flex justify-center gap-x-6">
-              <NavLink href={`/#features`}>
+              <NavLink href="/#features">
                 {t('common.navigation.features')}
               </NavLink>
-              <NavLink href={`/#pricing`}>
+              <NavLink href="/#pricing">
                 {t('common.navigation.pricing')}
               </NavLink>
               <NavLink href={'/blog'}>Blog</NavLink>
-              <NavLink href={`/terms`}>{t('common.navigation.terms')}</NavLink>
-              <NavLink href={`/privacy`}>
+              <NavLink href="/terms">{t('common.navigation.terms')}</NavLink>
+              <NavLink href="/privacy">
                 {t('common.navigation.privacy')}
               </NavLink>
             </div>
@@ -49,19 +49,17 @@ export function Footer() {
           >
             <div className="flex flex-col space-y-4">
               <div className="flex justify-center gap-x-5">
-                <NavLink href={`/#testimonials`}>
+                <NavLink href="/#testimonials">
                   {t('common.navigation.testimonials')}
                 </NavLink>
-                <NavLink href={`/#pricing`}>
+                <NavLink href="/#pricing">
                   {t('common.navigation.pricing')}
                 </NavLink>
                 <NavLink href={'/blog'}>Blog</NavLink>
               </div>
               <div className="flex justify-center gap-x-5">
-                <NavLink href={`/terms`}>
-                  {t('common.navigation.terms')}
-                </NavLink>
-                <NavLink href={`/privacy`}>
+                <NavLink href="/terms">{t('common.navigation.terms')}</NavLink>
+                <NavLink href="/privacy">
                   {t('common.navigation.privacy')}
                 </NavLink>
               </div>

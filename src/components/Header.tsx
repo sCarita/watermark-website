@@ -85,13 +85,13 @@ function MobileNavigation() {
 
           <div className="border-b border-slate-200 py-3">
             <div className="space-y-1">
-              <MobileNavLink href={`/#features`}>
+              <MobileNavLink href="/#features">
                 {t('common.navigation.features')}
               </MobileNavLink>
-              <MobileNavLink href={`/#testimonials`}>
+              <MobileNavLink href="/#testimonials">
                 {t('common.navigation.testimonials')}
               </MobileNavLink>
-              <MobileNavLink href={`/#pricing`}>
+              <MobileNavLink href="/#pricing">
                 {t('common.navigation.pricing')}
               </MobileNavLink>
               <MobileNavLink href="/blog">Blog</MobileNavLink>
@@ -122,10 +122,10 @@ export function Header() {
               <Logo className="h-10 w-auto" />
             </Link>
             <div className="hidden md:flex md:gap-x-6">
-              <NavLink href={`/#features`}>
+              <NavLink href="/#features">
                 {t('common.navigation.features')}
               </NavLink>
-              <NavLink href={`/#pricing`}>
+              <NavLink href="/#pricing">
                 {t('common.navigation.pricing')}
               </NavLink>
               <NavLink href="/blog">Blog</NavLink>
@@ -136,7 +136,7 @@ export function Header() {
               <LanguageSelector />
             </div>
             {/* <div className="hidden md:block">
-              <Button href={`${langPrefix}/register`} color="blue">
+              <Button href="${langPrefix}/register`} color="blu">
                 <span>
                   {t('common.navigation.getStartedToday')}
                 </span>
