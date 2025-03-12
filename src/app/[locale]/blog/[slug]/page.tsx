@@ -42,6 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: post.excerpt,
       images: [post.image],
       type: 'article',
+      url: `https://www.clear.photo${pathname}`,
       publishedTime: post.date,
     },
     alternates: {

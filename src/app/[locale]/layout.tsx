@@ -46,6 +46,20 @@ export async function generateMetadata(props: Omit<Props, 'children'>) {
   return {
     title: t('title'),
     description: t('description'),
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      images: [
+        {
+          url: '/images/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: t('title'),
+        },
+      ],
+      type: 'website',
+      url: `https://www.clear.photo${pathname}`,
+    },
     alternates: {
       canonical: `https://www.clear.photo${pathname}`,
       languages: Object.fromEntries(
