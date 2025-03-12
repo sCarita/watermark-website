@@ -2,6 +2,7 @@ import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
+import { getPathname } from '@/i18n/navigation'
 import { routing } from '@/i18n/routing'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 
@@ -16,10 +17,20 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'metadata.privacy' })
+  const pathname = getPathname({ locale, href: '/privacy' })
 
   return {
     title: t('title'),
     description: t('description'),
+    alternates: {
+      canonical: `https://www.clear.photo${pathname}`,
+      languages: Object.fromEntries(
+        routing.locales.map((cur) => [
+          cur,
+          `https://www.clear.photo${getPathname({ locale: cur, href: '/privacy' })}`,
+        ]),
+      ),
+    },
   }
 }
 

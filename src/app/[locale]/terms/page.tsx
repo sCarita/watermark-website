@@ -4,6 +4,7 @@ import { FadeIn } from '@/components/FadeIn'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Header } from '@/components/Header'
 import { routing } from '@/i18n/routing'
+import { getPathname } from '@/i18n/navigation'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -16,13 +17,22 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params
   const t = await getTranslations({ locale, namespace: 'metadata.terms' })
+  const pathname = getPathname({ locale, href: '/terms' })
 
   return {
     title: t('title'),
     description: t('description'),
+    alternates: {
+      canonical: `https://www.clear.photo${pathname}`,
+      languages: Object.fromEntries(
+        routing.locales.map((cur) => [
+          cur,
+          `https://www.clear.photo${getPathname({ locale: cur, href: '/terms' })}`,
+        ]),
+      ),
+    },
   }
 }
-
 export default async function Terms({ params }: Props) {
   const { locale } = await params
   const t = await getTranslations({ locale })

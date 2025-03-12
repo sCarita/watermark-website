@@ -9,6 +9,7 @@ import { ImgHTMLAttributes } from 'react'
 import { DetailedHTMLProps } from 'react'
 import Image, { ImageProps } from 'next/image'
 import { Metadata } from 'next'
+import { getPathname } from '@/i18n/navigation'
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>
@@ -16,6 +17,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params
+  const pathname = getPathname({ locale, href: `/blog/${slug}` })
 
   const language = locale || 'en'
   const post = await getBlogPost(language, slug)
@@ -41,6 +43,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [post.image],
       type: 'article',
       publishedTime: post.date,
+    },
+    alternates: {
+      canonical: `https://www.clear.photo${pathname}`,
     },
   }
 }

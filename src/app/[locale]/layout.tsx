@@ -4,6 +4,7 @@ import Script from 'next/script'
 import clsx from 'clsx'
 import { NextIntlClientProvider } from 'next-intl'
 import ClientLayout from '@/components/ClientLayout'
+import { getPathname } from '@/i18n/navigation'
 
 import '@/styles/tailwind.css'
 import { routing } from '@/i18n/routing'
@@ -40,10 +41,20 @@ export async function generateMetadata(props: Omit<Props, 'children'>) {
   const { locale } = await props.params
 
   const t = await getTranslations({ locale, namespace: 'metadata' })
+  const pathname = getPathname({ locale, href: '/' })
 
   return {
     title: t('title'),
     description: t('description'),
+    alternates: {
+      canonical: `https://www.clear.photo${pathname}`,
+      languages: Object.fromEntries(
+        routing.locales.map((cur) => [
+          cur,
+          `https://www.clear.photo${getPathname({ locale: cur, href: '/' })}`,
+        ]),
+      ),
+    },
   }
 }
 

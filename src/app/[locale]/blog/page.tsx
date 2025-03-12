@@ -7,7 +7,7 @@ import { getBlogPosts } from '@/utils/blog'
 import { BlogHeader } from './components/BlogHeader'
 import { getTranslations } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
-
+import { getPathname } from '@/i18n/navigation'
 type Props = {
   params: Promise<{ locale: string }>
 }
@@ -20,13 +20,22 @@ export async function generateMetadata(props: Omit<Props, 'children'>) {
   const { locale } = await props.params
 
   const t = await getTranslations({ locale, namespace: 'metadata.blog' })
+  const pathname = getPathname({ locale, href: '/blog' })
 
   return {
     title: t('title'),
     description: t('description'),
+    alternates: {
+      canonical: `https://www.clear.photo${pathname}`,
+      languages: Object.fromEntries(
+        routing.locales.map((cur) => [
+          cur,
+          `https://www.clear.photo${getPathname({ locale: cur, href: '/blog' })}`,
+        ]),
+      ),
+    },
   }
 }
-
 export default async function BlogPage({ params }: Props) {
   const { locale } = await params
 
