@@ -90,6 +90,10 @@ const ImageMaskEditor = ({
     originalCanvas.width = originalDimensions.width
     originalCanvas.height = originalDimensions.height
 
+    // Fill with black background
+    originalCtx.fillStyle = 'black'
+    originalCtx.fillRect(0, 0, originalCanvas.width, originalCanvas.height)
+
     // Get the current drawing canvas
     const drawingCanvas = canvasRef.current.canvas.drawing
     const drawingCtx = drawingCanvas.getContext('2d')
@@ -103,7 +107,40 @@ const ImageMaskEditor = ({
       originalCanvas.width,
       originalCanvas.height,
     )
+
+    // Get the image data to transform red to white
+    const imageData = originalCtx.getImageData(
+      0,
+      0,
+      originalCanvas.width,
+      originalCanvas.height,
+    )
+    const data = imageData.data
+
+    // Transform any non-black pixel to white
+    // for (let i = 0; i < data.length; i += 4) {
+    //   if (data[i + 3] > 0) {
+    //     // If pixel has any opacity
+    //     data[i] = 255 // R
+    //     data[i + 1] = 255 // G
+    //     data[i + 2] = 255 // B
+    //     data[i + 3] = 255 // A
+    //   }
+    // }
+
+    // Put the modified image data back
+    originalCtx.putImageData(imageData, 0, 0)
+
     const dataUrl = originalCanvas.toDataURL('image/png')
+
+    // Create a temporary image element to preview the mask
+    // const tempImg = document.createElement('img')
+    // tempImg.src = dataUrl
+    // tempImg.style.position = 'fixed'
+    // tempImg.style.top = '10px'
+    // tempImg.style.right = '10px'
+    // tempImg.style.zIndex = '9999'
+    // document.body.appendChild(tempImg)
 
     processImage(dataUrl)
   }
@@ -350,7 +387,7 @@ const ImageMaskEditor = ({
                   <CanvasDraw
                     ref={canvasRef}
                     className="m-auto max-w-full"
-                    brushColor="rgba(155,12,60,0.3)"
+                    brushColor="rgba(255,255,255,1)"
                     imgSrc={imageUrl}
                     onChange={checkForDrawing}
                     brushRadius={brushRadius}
