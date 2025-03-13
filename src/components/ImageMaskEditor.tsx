@@ -48,6 +48,11 @@ const ImageMaskEditor = ({
   const [result, setResult] = useState<ProcessResult | null>(null)
   const [error, setError] = useState<string | null>(null)
 
+  const [originalDimensions, setOriginalDimensions] = useState<{
+    width: number
+    height: number
+  } | null>(null)
+
   const closeDialog = () => {
     setIsOpen(false)
     toggleDialog()
@@ -74,10 +79,31 @@ const ImageMaskEditor = ({
   }
 
   const handleDrawingUrl = () => {
-    if (!canvasRef.current || !hasDrawing) return null
+    if (!canvasRef.current || !hasDrawing || !originalDimensions) return null
 
-    const canvas = canvasRef.current.canvas.drawing
-    const dataUrl = canvas.toDataURL('image/png')
+    // Create a new canvas at original image dimensions
+    const originalCanvas = document.createElement('canvas')
+    const originalCtx = originalCanvas.getContext('2d')
+    if (!originalCtx) return null
+
+    // Set canvas to original image dimensions
+    originalCanvas.width = originalDimensions.width
+    originalCanvas.height = originalDimensions.height
+
+    // Get the current drawing canvas
+    const drawingCanvas = canvasRef.current.canvas.drawing
+    const drawingCtx = drawingCanvas.getContext('2d')
+    if (!drawingCtx) return null
+
+    // Scale the drawing to match original dimensions
+    originalCtx.drawImage(
+      drawingCanvas,
+      0,
+      0,
+      originalCanvas.width,
+      originalCanvas.height,
+    )
+    const dataUrl = originalCanvas.toDataURL('image/png')
 
     processImage(dataUrl)
   }
@@ -94,8 +120,7 @@ const ImageMaskEditor = ({
 
       let imageBase64: string
       try {
-        const result = await fetchImageAsBase64(imageUrl)
-        imageBase64 = result.base64
+        imageBase64 = await getBase64FromUrl(imageUrl)
       } catch (err) {
         console.error('URL processing error:', err)
         throw new Error(
@@ -105,7 +130,7 @@ const ImageMaskEditor = ({
 
       // Call the API
       const response = await fetch(
-        'https://processautomaskwatermark-k677kyuleq-uc.a.run.app',
+        'https://processmanualmaskwatermark-k677kyuleq-uc.a.run.app/',
         {
           method: 'POST',
           headers: {
@@ -149,48 +174,23 @@ const ImageMaskEditor = ({
     }
   }
 
-  const fetchImageAsBase64 = async (
-    url: string,
-  ): Promise<{ base64: string; contentType: string }> => {
-    try {
-      // Check if the URL is already a data URL
-      if (url.startsWith('data:')) {
-        const parts = url.split(',')
-        const contentType = parts[0].split(':')[1].split(';')[0]
-        const base64 = parts[1]
-        return { base64, contentType }
+  const getBase64FromUrl = async (objectUrl: string): Promise<string> => {
+    // Fetch the blob from the object URL
+    const response = await fetch(objectUrl)
+    const blob = await response.blob()
+
+    // Convert blob to base64
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onload = () => {
+        const base64String = reader.result as string
+        // Remove the data:image/jpeg;base64, prefix
+        const base64 = base64String.split(',')[1]
+        resolve(base64)
       }
-
-      // For external URLs, use a CORS proxy
-      const corsProxyUrl = `https://corsproxy.io/?${encodeURIComponent(url)}`
-
-      const response = await fetch(corsProxyUrl)
-      if (!response.ok) {
-        throw new Error(
-          `${t('watermarkProcessor.errors.fetchFailed')}: ${response.status}`,
-        )
-      }
-
-      const blob = await response.blob()
-      const contentType = blob.type || 'image/jpeg'
-
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader()
-        reader.readAsDataURL(blob)
-        reader.onload = () => {
-          const base64String = reader.result as string
-          // Remove the data:image/jpeg;base64, prefix
-          const base64 = base64String.split(',')[1]
-          resolve({ base64, contentType })
-        }
-        reader.onerror = (error) => reject(error)
-      })
-    } catch (error) {
-      console.error('Error fetching image:', error)
-      throw new Error(
-        `${t('watermarkProcessor.errors.fetchingImage')}: ${error instanceof Error ? error.message : t('watermarkProcessor.errors.unknown')}`,
-      )
-    }
+      reader.onerror = reject
+      reader.readAsDataURL(blob)
+    })
   }
 
   useEffect(() => {
@@ -200,6 +200,12 @@ const ImageMaskEditor = ({
     img.src = imageUrl
     img.onload = () => {
       if (!canvasContainerRef.current) return
+
+      // Store the original dimensions
+      setOriginalDimensions({
+        width: img.naturalWidth,
+        height: img.naturalHeight,
+      })
 
       const containerWidth = canvasContainerRef.current.clientWidth
       const aspectRatio = img.height / img.width
@@ -309,7 +315,8 @@ const ImageMaskEditor = ({
                       max="100"
                       value={brushRadius}
                       onChange={(e) => setBrushRadius(Number(e.target.value))}
-                      className="range-slider h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 accent-blue-500 hover:accent-blue-600"
+                      className="range-slider h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 accent-blue-500 hover:accent-blue-600 disabled:pointer-events-none"
+                      disabled={isLoading}
                     />
                   </div>
                   <Button
@@ -318,7 +325,7 @@ const ImageMaskEditor = ({
                       setHasDrawing(false)
                     }}
                     className="flex items-center gap-1.5 disabled:pointer-events-none disabled:opacity-50"
-                    disabled={!hasDrawing}
+                    disabled={!hasDrawing || isLoading}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -351,12 +358,21 @@ const ImageMaskEditor = ({
                     canvasWidth={imageDimensions?.width}
                     canvasHeight={imageDimensions?.height}
                   />
+                  {isLoading && (
+                    <div className="absolute top-0 left-0 flex h-full w-full flex-col items-center justify-center bg-black/50 text-white">
+                      <div className="flex items-center gap-2">
+                        <LoadingImage />
+                        {t('watermarkProcessor.processing')}
+                      </div>
+                      <LoadingBar className="mt-2" progress={progress} />
+                    </div>
+                  )}
                 </div>
                 <div className="flex items-center gap-4">
                   <Button
                     onClick={handleDrawingUrl}
                     color="blue"
-                    disabled={!hasDrawing}
+                    disabled={!hasDrawing || isLoading}
                     className="flex w-full items-center gap-1.5 bg-linear-to-r from-sky-500 to-indigo-500 py-4 !text-lg hover:from-indigo-500 hover:to-sky-500 disabled:pointer-events-none disabled:opacity-50"
                   >
                     <svg
@@ -379,15 +395,6 @@ const ImageMaskEditor = ({
                     {t('watermarkProcessor.buttons.removeWatermark')}
                   </Button>
                 </div>
-                {isLoading && (
-                  <div className="absolute top-0 left-0 flex h-full w-full flex-col items-center justify-center bg-black/50 text-white">
-                    <div className="flex items-center gap-2">
-                      <LoadingImage />
-                      {t('watermarkProcessor.processing')}
-                    </div>
-                    <LoadingBar className="mt-2" progress={progress} />
-                  </div>
-                )}
               </div>
             )}
 
