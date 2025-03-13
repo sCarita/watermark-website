@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import { NextIntlClientProvider } from 'next-intl'
 import ClientLayout from '@/components/ClientLayout'
 import { getPathname } from '@/i18n/navigation'
+import { AuthProvider } from '@/contexts/AuthContext'
 
 import '@/styles/tailwind.css'
 import { routing } from '@/i18n/routing'
@@ -103,8 +104,10 @@ export default async function LocaleLayout({ children, params }: Props) {
       </head>
       <body className="flex h-full flex-col">
         <NextIntlClientProvider messages={messages} locale={locale}>
-          {children}
-          <ClientLayout />
+          <AuthProvider>
+            {children}
+            <ClientLayout />
+          </AuthProvider>
         </NextIntlClientProvider>
       </body>
     </html>

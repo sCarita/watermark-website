@@ -15,6 +15,9 @@ import { Logo } from '@/components/Logo'
 import { NavLink } from '@/components/NavLink'
 import { useTranslations } from 'next-intl'
 import { LanguageSelector } from '@/components/LanguageSelector'
+import { Button } from './ui/button'
+import { useAuth } from '@/contexts/AuthContext'
+import { useAuthOperations } from '@/hooks/useAuthOperations'
 
 function MobileNavLink({
   href,
@@ -101,6 +104,16 @@ function MobileNavigation() {
               <MobileNavLink href="/privacy">
                 {t('common.navigation.privacy')}
               </MobileNavLink>
+              <div className="mt-4 flex flex-col items-center gap-y-2">
+                <Button asChild variant="outline" color="slate">
+                  <Link href="/login">{t('common.signIn')}</Link>
+                </Button>
+                <Button asChild color="blue">
+                  <Link href="/register">
+                    {t('common.navigation.getStartedToday')}
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -112,6 +125,8 @@ function MobileNavigation() {
 export function Header() {
   const t = useTranslations()
   const pathname = usePathname()
+  const { user } = useAuth()
+  const { signOut } = useAuthOperations()
 
   return (
     <header className="py-4 md:py-10">
@@ -135,13 +150,27 @@ export function Header() {
             <div className="hidden md:block">
               <LanguageSelector />
             </div>
-            {/* <div className="hidden md:block">
-              <Button href="${langPrefix}/register`} color="blu">
-                <span>
-                  {t('common.navigation.getStartedToday')}
-                </span>
-              </Button>
-            </div> */}
+            <div className="hidden md:block">
+              {user ? (
+                <div className="flex items-center gap-x-4">
+                  <span className="text-sm text-slate-700">{user.email}</span>
+                  <Button onClick={signOut} variant="outline" color="slate">
+                    {t('common.signOut')}
+                  </Button>
+                </div>
+              ) : (
+                <div className="flex items-center gap-x-2">
+                  <Button asChild variant="outline" color="slate">
+                    <Link href="/login">{t('common.signIn')}</Link>
+                  </Button>
+                  <Button asChild color="blue">
+                    <Link href="/register">
+                      {t('common.navigation.getStartedToday')}
+                    </Link>
+                  </Button>
+                </div>
+              )}
+            </div>
             <div className="md:hidden">
               <div className="flex items-center gap-x-3">
                 <LanguageSelector />
