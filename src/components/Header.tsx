@@ -19,6 +19,36 @@ import { Button } from './ui/button'
 import { useAuth } from '@/contexts/AuthContext'
 import { useAuthOperations } from '@/hooks/useAuthOperations'
 
+function UserMenu() {
+  const t = useTranslations()
+  const { user } = useAuth()
+  const { signOut } = useAuthOperations()
+
+  return (
+    <>
+      {user ? (
+        <div className="flex items-center gap-x-4">
+          <span className="text-sm text-slate-700">{user.email}</span>
+          <Button onClick={signOut} variant="outline" color="slate">
+            {t('common.signOut')}
+          </Button>
+        </div>
+      ) : (
+        <div className="flex items-center gap-x-2">
+          <Button asChild variant="outline" color="slate">
+            <Link href="/login">{t('common.signIn')}</Link>
+          </Button>
+          <Button asChild color="blue">
+            <Link href="/register">
+              {t('common.navigation.getStartedToday')}
+            </Link>
+          </Button>
+        </div>
+      )}
+    </>
+  )
+}
+
 function MobileNavLink({
   href,
   children,
@@ -67,7 +97,6 @@ function MobileNavIcon({ open }: { open: boolean }) {
 
 function MobileNavigation() {
   const t = useTranslations()
-  const pathname = usePathname()
 
   return (
     <Popover>
@@ -105,14 +134,7 @@ function MobileNavigation() {
                 {t('common.navigation.privacy')}
               </MobileNavLink>
               <div className="mt-4 flex flex-col items-center gap-y-2">
-                <Button asChild variant="outline" color="slate">
-                  <Link href="/login">{t('common.signIn')}</Link>
-                </Button>
-                <Button asChild color="blue">
-                  <Link href="/register">
-                    {t('common.navigation.getStartedToday')}
-                  </Link>
-                </Button>
+                <UserMenu />
               </div>
             </div>
           </div>
@@ -124,9 +146,6 @@ function MobileNavigation() {
 
 export function Header() {
   const t = useTranslations()
-  const pathname = usePathname()
-  const { user } = useAuth()
-  const { signOut } = useAuthOperations()
 
   return (
     <header className="py-4 md:py-10">
@@ -151,25 +170,7 @@ export function Header() {
               <LanguageSelector />
             </div>
             <div className="hidden md:block">
-              {user ? (
-                <div className="flex items-center gap-x-4">
-                  <span className="text-sm text-slate-700">{user.email}</span>
-                  <Button onClick={signOut} variant="outline" color="slate">
-                    {t('common.signOut')}
-                  </Button>
-                </div>
-              ) : (
-                <div className="flex items-center gap-x-2">
-                  <Button asChild variant="outline" color="slate">
-                    <Link href="/login">{t('common.signIn')}</Link>
-                  </Button>
-                  <Button asChild color="blue">
-                    <Link href="/register">
-                      {t('common.navigation.getStartedToday')}
-                    </Link>
-                  </Button>
-                </div>
-              )}
+              <UserMenu />
             </div>
             <div className="md:hidden">
               <div className="flex items-center gap-x-3">
