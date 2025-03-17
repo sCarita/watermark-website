@@ -89,8 +89,7 @@ export function ImageEditor({ mode }: ImageEditorProps) {
               ))}
             </div>
             <Button
-              variant="outline"
-              className="border-slate-700"
+              variant="outline-blue"
               onClick={() => {
                 /* Trigger file upload */
               }}
