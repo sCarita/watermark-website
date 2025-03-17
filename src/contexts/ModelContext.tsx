@@ -2,6 +2,10 @@
 
 import { createContext, useContext, useState, useEffect } from 'react'
 import { DocumentReference } from 'firebase/firestore'
+import {
+  processautomaskwatermark,
+  processmanualmaskwatermark,
+} from '@/lib/firebase/client'
 
 type InputField = {
   name: string
@@ -38,7 +42,7 @@ export type Model = {
   details: Record<string, any>
   createdAt: string
   updatedAt: string
-  version: number
+  version: string
 }
 
 interface ModelContextType {
@@ -46,11 +50,19 @@ interface ModelContextType {
   loading: boolean
   error: Error | null
   submitModelValues: (params: {
-    modelId: string
-    mode: 'auto' | 'manual' | 'boosted'
-    values: Record<string, any>
+    version: string
+    imageBase64: string
+    maskBase64?: string
   }) => Promise<any>
   isSubmitting: boolean
+  selectedMode: 'auto' | 'manual' | 'boosted'
+  setSelectedMode: (mode: 'auto' | 'manual' | 'boosted') => void
+  selectedModel: 'watermark' | 'text' | 'background'
+  setSelectedModel: (model: 'watermark' | 'text' | 'background') => void
+  brushSize: number
+  setBrushSize: (size: number) => void
+  processedImage: string | null
+  setProcessedImage: (image: string | null) => void
 }
 
 const ModelContext = createContext<ModelContextType>({
@@ -59,6 +71,14 @@ const ModelContext = createContext<ModelContextType>({
   error: null,
   submitModelValues: async () => {},
   isSubmitting: false,
+  selectedMode: 'auto',
+  setSelectedMode: () => {},
+  selectedModel: 'watermark',
+  setSelectedModel: () => {},
+  brushSize: 10,
+  setBrushSize: () => {},
+  processedImage: null,
+  setProcessedImage: () => {},
 })
 
 // Dummy data for development
@@ -148,7 +168,7 @@ const DUMMY_MODELS: Record<string, Model> = {
     details: {},
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    version: 1,
+    version: '1.0',
   },
   text: {
     id: 'text-1',
@@ -197,7 +217,7 @@ const DUMMY_MODELS: Record<string, Model> = {
     details: {},
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    version: 1,
+    version: '1.0',
   },
   background: {
     id: 'background-1',
@@ -231,15 +251,28 @@ const DUMMY_MODELS: Record<string, Model> = {
     details: {},
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    version: 1,
+    version: '1.0',
   },
 }
 
 export function ModelProvider({ children }: { children: React.ReactNode }) {
   const [models, setModels] = useState<Record<string, Model>>({})
+
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<Error | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const [selectedMode, setSelectedMode] = useState<
+    'auto' | 'manual' | 'boosted'
+  >('auto')
+
+  const [selectedModel, setSelectedModel] = useState<
+    'watermark' | 'text' | 'background'
+  >('watermark')
+  const [brushSize, setBrushSize] = useState(10)
+
+  // Add new state for processed image
+  const [processedImage, setProcessedImage] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchModels = async () => {
@@ -258,36 +291,42 @@ export function ModelProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   const submitModelValues = async ({
-    modelId,
-    mode,
-    values,
+    version,
+    imageBase64,
+    maskBase64,
   }: {
-    modelId: string
-    mode: 'auto' | 'manual' | 'boosted'
-    values: Record<string, any>
+    version: string
+    imageBase64: string
+    maskBase64?: string
   }) => {
     try {
       setIsSubmitting(true)
-      console.log({ modelId, mode, values })
+      setProcessedImage(null) // Reset processed image
 
-      const response = await fetch('/api/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ modelId, mode, values }),
-      })
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+      let response
+      if (selectedMode === 'auto') {
+        response = await processautomaskwatermark({
+          version,
+          imageBase64,
+        })
+      } else {
+        response = await processmanualmaskwatermark({
+          version,
+          imageBase64,
+          maskBase64,
+        })
       }
 
-      const result = await response.json()
+      if (!response.data.success) {
+        throw new Error('Failed to process image')
+      }
 
-      // You could update local state here if needed
-      // For example, add the result to a history list
+      // Assuming the response contains a base64 image
+      if (response.data.inpaintedImageUrl) {
+        setProcessedImage(response.data.inpaintedImageUrl)
+      }
 
-      return result
+      return response
     } catch (error) {
       console.error('Error submitting model values:', error)
       throw error
@@ -304,6 +343,14 @@ export function ModelProvider({ children }: { children: React.ReactNode }) {
         error,
         submitModelValues,
         isSubmitting,
+        selectedMode,
+        setSelectedMode,
+        selectedModel,
+        setSelectedModel,
+        brushSize,
+        setBrushSize,
+        processedImage,
+        setProcessedImage,
       }}
     >
       {children}

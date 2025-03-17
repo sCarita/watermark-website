@@ -1,33 +1,33 @@
 'use client'
 
-import { useState } from 'react'
-import Image from 'next/image'
+import { useEffect, useRef, useState } from 'react'
+import NextImage from 'next/image'
 import { Button } from '@/components/ui/button'
-import {
-  Brush,
-  Eraser,
-  Undo,
-  Redo,
-  ZoomIn,
-  ZoomOut,
-  RotateCcw,
-} from 'lucide-react'
+import { Undo, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react'
+import demmoImage1 from '@/images/watermark-example-1.png'
+import demmoImage2 from '@/images/watermark-example-2.png'
+import FileDropUpload from '@/components/FileDropUpload'
+import { useModels } from '@/contexts/ModelContext'
+import { CanvasEditor } from './CanvasEditor'
 
-interface ImageEditorProps {
-  mode: 'watermark' | 'text' | 'background'
-}
-
-export function ImageEditor({ mode }: ImageEditorProps) {
+export function ImageEditor() {
+  const {
+    selectedModel,
+    selectedMode,
+    brushSize,
+    isSubmitting,
+    submitModelValues,
+    processedImage,
+  } = useModels()
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
-  const [isProcessing, setIsProcessing] = useState(false)
-  const [currentTool, setCurrentTool] = useState<'brush' | 'eraser'>('brush')
   const [zoomLevel, setZoomLevel] = useState(100)
 
-  // For demo purposes, we'll use placeholder images
-  const demoImages = [
-    'https://placehold.co/300x200',
-    'https://placehold.co/300x200',
-  ]
+  const [maskBase64, setMaskBase64] = useState<string | undefined>(undefined)
+  const [hasDrawing, setHasDrawing] = useState(false)
+
+  const demoImages = [demmoImage1, demmoImage2]
+
+  const canvasEditorRef = useRef<{ reset: () => void } | null>(null)
 
   const handleZoomIn = () => {
     setZoomLevel((prev) => Math.min(prev + 10, 200))
@@ -42,7 +42,7 @@ export function ImageEditor({ mode }: ImageEditorProps) {
   }
 
   const getModeTitle = () => {
-    switch (mode) {
+    switch (selectedModel) {
       case 'watermark':
         return 'Watermark Removal'
       case 'text':
@@ -54,65 +54,115 @@ export function ImageEditor({ mode }: ImageEditorProps) {
     }
   }
 
+  const processImage = async () => {
+    let imageBase64: string
+    try {
+      imageBase64 = await getBase64FromUrl(selectedImage!)
+    } catch (err) {
+      console.error('URL processing error:', err)
+      throw new Error(`error: ${err instanceof Error ? err.message : ''} error`)
+    }
+
+    submitModelValues({
+      version: '1.0',
+      imageBase64,
+      maskBase64: maskBase64 || undefined,
+    })
+  }
+
+  const getBase64FromUrl = async (objectUrl: string): Promise<string> => {
+    // Fetch the blob from the object URL
+    const response = await fetch(objectUrl)
+    const blob = await response.blob()
+
+    // Convert blob to base64
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onload = () => {
+        const base64String = reader.result as string
+        // Remove the data:image/jpeg;base64, prefix
+        const base64 = base64String.split(',')[1]
+        resolve(base64)
+      }
+      reader.onerror = reject
+      reader.readAsDataURL(blob)
+    })
+  }
+
+  useEffect(() => {
+    if (processedImage) {
+      setSelectedImage(null)
+    }
+  }, [processedImage])
+
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="relative flex max-h-[calc(100vh-6rem)] flex-1 flex-col">
       <div className="relative flex flex-1 items-center justify-center overflow-hidden bg-slate-950">
         {!selectedImage ? (
           <div className="max-w-md p-8 text-center">
-            <h3 className="mb-4 text-xl font-medium">{getModeTitle()}</h3>
-            <p className="mb-6 text-slate-400">
+            <h3 className="mb-1 text-xl font-medium">{getModeTitle()}</h3>
+            <p className="mb-4 text-slate-400">
               Upload an image or select one of the examples below to start
               removing{' '}
-              {mode === 'watermark'
+              {selectedModel === 'watermark'
                 ? 'watermarks'
-                : mode === 'text'
+                : selectedModel === 'text'
                   ? 'text'
                   : 'background'}
               .
             </p>
             <div className="mb-6 grid grid-cols-2 gap-4">
-              {demoImages.map((src, index) => (
+              {demoImages.map((img, index) => (
                 <div
                   key={index}
                   className="cursor-pointer overflow-hidden rounded-md border border-slate-700 transition-colors hover:border-blue-500"
-                  onClick={() => setSelectedImage(src)}
+                  onClick={() => setSelectedImage(img.src)}
                 >
-                  <Image
-                    src={src || '/placeholder.svg'}
+                  <NextImage
+                    src={img.src || '/placeholder.svg'}
                     alt={`Example ${index + 1}`}
                     width={200}
                     height={100}
-                    unoptimized={true}
-                    className="h-auto w-full"
+                    className="h-28 w-full object-cover"
                   />
                 </div>
               ))}
             </div>
-            <Button
-              variant="outline-blue"
-              onClick={() => {
-                /* Trigger file upload */
+            <FileDropUpload
+              onSelectFile={(files) => {
+                if (files && files.length > 0) {
+                  setSelectedImage(URL.createObjectURL(files[0]))
+                }
               }}
-            >
-              Upload Your Image
-            </Button>
+            />
           </div>
         ) : (
           <>
             <div
-              className="relative transition-transform"
+              className="transition-transforml relative w-full"
               style={{
                 transform: `scale(${zoomLevel / 100})`,
               }}
             >
-              <Image
-                src={selectedImage || '/placeholder.svg'}
-                alt="Editing image"
-                width={800}
-                height={600}
-                className="max-h-[calc(100vh-200px)] max-w-full"
-              />
-              {isProcessing && (
+              {selectedMode === 'auto' && (
+                <NextImage
+                  src={selectedImage}
+                  alt="Editing image"
+                  width={800}
+                  height={600}
+                  className="h-full w-full"
+                />
+              )}
+              {selectedMode !== 'auto' && (
+                <CanvasEditor
+                  ref={canvasEditorRef}
+                  selectedImage={selectedImage}
+                  brushSize={brushSize}
+                  hasDrawing={setHasDrawing}
+                  onDrawingChange={(maskBase64) => setMaskBase64(maskBase64)}
+                />
+              )}
+              {isSubmitting && (
                 <div className="absolute inset-0 flex items-center justify-center bg-black/50">
                   <div className="text-center">
                     <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
@@ -127,7 +177,7 @@ export function ImageEditor({ mode }: ImageEditorProps) {
                 variant="ghost"
                 size="icon"
                 onClick={handleZoomOut}
-                disabled={zoomLevel <= 50}
+                disabled={zoomLevel <= 50 || isSubmitting}
                 className="hover:bg-slate-700"
               >
                 <ZoomOut className="h-4 w-4" />
@@ -137,7 +187,7 @@ export function ImageEditor({ mode }: ImageEditorProps) {
                 variant="ghost"
                 size="icon"
                 onClick={handleZoomIn}
-                disabled={zoomLevel >= 200}
+                disabled={zoomLevel >= 200 || isSubmitting}
                 className="hover:bg-slate-700"
               >
                 <ZoomIn className="h-4 w-4" />
@@ -146,52 +196,27 @@ export function ImageEditor({ mode }: ImageEditorProps) {
                 variant="ghost"
                 size="icon"
                 onClick={handleReset}
+                disabled={isSubmitting}
                 className="hover:bg-slate-700"
               >
                 <RotateCcw className="h-4 w-4" />
               </Button>
             </div>
 
-            {mode !== 'background' && (
-              <div className="absolute top-4 left-4 flex items-center gap-2 rounded-md border border-slate-700 bg-slate-800 p-2">
-                <Button
-                  variant={currentTool === 'brush' ? 'default' : 'ghost'}
-                  size="icon"
-                  onClick={() => setCurrentTool('brush')}
-                  className={
-                    currentTool === 'brush'
-                      ? 'bg-blue-500 hover:bg-blue-600'
-                      : 'hover:bg-slate-700'
-                  }
-                >
-                  <Brush className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant={currentTool === 'eraser' ? 'default' : 'ghost'}
-                  size="icon"
-                  onClick={() => setCurrentTool('eraser')}
-                  className={
-                    currentTool === 'eraser'
-                      ? 'bg-blue-500 hover:bg-blue-600'
-                      : 'hover:bg-slate-700'
-                  }
-                >
-                  <Eraser className="h-4 w-4" />
-                </Button>
+            {selectedModel !== 'background' && selectedMode !== 'auto' && (
+              <div className="absolute top-4 left-4 flex items-center gap-1.5 rounded-md border border-slate-700 bg-slate-800 p-1.5">
+                <span className="text-xs">Reset</span>
                 <div className="mx-1 h-6 w-px bg-slate-700"></div>
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="hover:bg-slate-700"
+                  className="h-7 w-7 hover:bg-slate-700 hover:text-white"
+                  onClick={() => {
+                    canvasEditorRef.current?.reset()
+                  }}
+                  disabled={isSubmitting || !hasDrawing}
                 >
                   <Undo className="h-4 w-4" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="hover:bg-slate-700"
-                >
-                  <Redo className="h-4 w-4" />
                 </Button>
               </div>
             )}
@@ -205,32 +230,21 @@ export function ImageEditor({ mode }: ImageEditorProps) {
             variant="ghost"
             onClick={() => setSelectedImage(null)}
             className="hover:bg-slate-800"
+            disabled={isSubmitting}
           >
             Cancel
           </Button>
           <div className="flex gap-2">
             <Button
-              variant="outline"
-              className="border-slate-700"
-              onClick={() => {
-                /* Save current state */
-              }}
-            >
-              Save as Draft
-            </Button>
-            <Button
-              onClick={() => {
-                setIsProcessing(true)
-                // Simulate processing
-                setTimeout(() => {
-                  setIsProcessing(false)
-                }, 2000)
-              }}
+              onClick={processImage}
+              disabled={
+                (selectedMode !== 'auto' && !hasDrawing) || isSubmitting
+              }
               className="bg-blue-500 hover:bg-blue-600"
             >
-              {mode === 'watermark'
+              {selectedModel === 'watermark'
                 ? 'Remove Watermark'
-                : mode === 'text'
+                : selectedModel === 'text'
                   ? 'Remove Text'
                   : 'Remove Background'}
             </Button>

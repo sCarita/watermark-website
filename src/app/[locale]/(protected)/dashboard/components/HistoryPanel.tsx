@@ -1,11 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Clock, Download, Trash2 } from 'lucide-react'
+import { useModels } from '@/contexts/ModelContext'
 
 export function HistoryPanel() {
+  const { processedImage, selectedModel } = useModels()
+
   // Sample history data
   const [historyItems, setHistoryItems] = useState([
     {
@@ -31,6 +34,20 @@ export function HistoryPanel() {
   const deleteHistoryItem = (id: number) => {
     setHistoryItems(historyItems.filter((item) => item.id !== id))
   }
+
+  useEffect(() => {
+    if (processedImage) {
+      setHistoryItems([
+        {
+          id: 1,
+          src: processedImage,
+          date: new Date().toLocaleString(),
+          type: selectedModel,
+        },
+        ...historyItems,
+      ])
+    }
+  }, [processedImage])
 
   return (
     <div className="flex w-[280px] flex-col border-l border-slate-800 bg-slate-800/30">

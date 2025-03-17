@@ -1,8 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Upload, Settings } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { Slider } from '@/components/ui/slider'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
@@ -42,16 +40,25 @@ type InputFields = {
   fields: InputFieldType[]
 }
 
-export function ToolSidebar({ selectedTab }: ToolSidebarProps) {
-  const { models, loading, error, submitModelValues, isSubmitting } =
-    useModels()
-  const [mode, setMode] = useState<'auto' | 'manual' | 'boosted'>('auto')
+export function ToolSidebar() {
+  const {
+    models,
+    loading,
+    error,
+    isSubmitting,
+    selectedMode,
+    setSelectedMode,
+    selectedModel,
+    setBrushSize,
+  } = useModels()
+
+  // Remove local state
   const [formValues, setFormValues] = useState<Record<string, any>>({})
 
-  // Reset form values when tab or mode changes
+  // Update useEffect to use selectedModel and selectedMode from context
   useEffect(() => {
-    if (models[selectedTab]) {
-      const currentFields = models[selectedTab].inputField[mode]
+    if (models[selectedModel]) {
+      const currentFields = models[selectedModel].inputField[selectedMode]
       const defaultValues: Record<string, any> = {}
 
       currentFields.forEach((section) => {
@@ -64,7 +71,11 @@ export function ToolSidebar({ selectedTab }: ToolSidebarProps) {
 
       setFormValues(defaultValues)
     }
-  }, [selectedTab, mode, models])
+  }, [selectedModel, selectedMode, models])
+
+  useEffect(() => {
+    setBrushSize(formValues['brushSize'])
+  }, [formValues['brushSize']])
 
   if (loading) {
     return <div className="p-4">Loading...</div>
@@ -74,29 +85,13 @@ export function ToolSidebar({ selectedTab }: ToolSidebarProps) {
     return <div className="p-4 text-red-500">Error loading models</div>
   }
 
-  const currentModel = models[selectedTab]
+  const currentModel = models[selectedModel]
   if (!currentModel) {
     return <div className="p-4">No model configuration found</div>
   }
 
   const handleInputChange = (name: string, value: any) => {
     setFormValues((prev) => ({ ...prev, [name]: value }))
-  }
-
-  const handleSubmit = async () => {
-    try {
-      const result = await submitModelValues({
-        modelId: currentModel.id,
-        mode,
-        values: formValues,
-      })
-
-      // Handle successful submission
-      console.log('Submission successful:', result)
-    } catch (error) {
-      // Handle error
-      console.error('Submission failed:', error)
-    }
   }
 
   const renderField = (field: InputFieldType) => {
@@ -118,6 +113,7 @@ export function ToolSidebar({ selectedTab }: ToolSidebarProps) {
               step={1}
               onValueChange={(value) => handleInputChange(field.name, value[0])}
               className="py-2"
+              disabled={isSubmitting}
             />
           </div>
         )
@@ -132,6 +128,7 @@ export function ToolSidebar({ selectedTab }: ToolSidebarProps) {
               handleInputChange(field.name, e.target.value)
             }
             className="bg-slate-800"
+            disabled={isSubmitting}
           />
         )
 
@@ -145,6 +142,7 @@ export function ToolSidebar({ selectedTab }: ToolSidebarProps) {
               onCheckedChange={(checked: boolean) =>
                 handleInputChange(field.name, checked)
               }
+              disabled={isSubmitting}
             />
           </div>
         )
@@ -156,6 +154,7 @@ export function ToolSidebar({ selectedTab }: ToolSidebarProps) {
             onValueChange={(value: string) =>
               handleInputChange(field.name, value)
             }
+            disabled={isSubmitting}
           >
             <SelectTrigger className="bg-slate-800">
               <SelectValue placeholder={field.placeholder?.en} />
@@ -180,32 +179,20 @@ export function ToolSidebar({ selectedTab }: ToolSidebarProps) {
     <div className="flex max-h-[calc(100vh-6rem)] w-[320px] flex-col overflow-y-auto border-r border-slate-800 bg-slate-800/50">
       <div className="space-y-6 p-4">
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h3 className="text-sm font-medium">Upload Image</h3>
-            <Button variant="outline-blue" size="sm">
-              <Upload className="h-4 w-4" />
-              <span>Upload</span>
-            </Button>
-          </div>
-          <div className="text-xs text-slate-400">
-            JPG / PNG files up to 10MB with minimum dimensions of 300px
-          </div>
-        </div>
-
-        <div className="space-y-4">
           <h3 className="text-sm font-medium">Mode</h3>
           <RadioGroup
-            value={mode}
+            value={selectedMode}
             onValueChange={(value: 'auto' | 'manual' | 'boosted') =>
-              setMode(value)
+              setSelectedMode(value)
             }
             className="grid grid-cols-3 gap-2"
+            disabled={isSubmitting}
           >
             {['auto', 'manual', 'boosted'].map((modeOption) => (
               <label
                 key={modeOption}
                 htmlFor={modeOption}
-                className="flex cursor-pointer items-center space-x-2 rounded-md border border-slate-700 bg-slate-800 p-3"
+                className="flex cursor-pointer items-center space-x-1 rounded-md border border-slate-700 bg-slate-800 p-2"
               >
                 <RadioGroupItem
                   value={modeOption}
@@ -224,7 +211,7 @@ export function ToolSidebar({ selectedTab }: ToolSidebarProps) {
         </div>
 
         {/* Dynamic Input Fields */}
-        {currentModel.inputField[mode].map((section, index) => (
+        {currentModel.inputField[selectedMode].map((section, index) => (
           <div key={index} className="space-y-4">
             <h3 className="text-sm font-medium">{section.label}</h3>
             {section.fields.map((field) => (
@@ -239,30 +226,6 @@ export function ToolSidebar({ selectedTab }: ToolSidebarProps) {
             ))}
           </div>
         ))}
-
-        <div className="pt-4">
-          <Button
-            className="w-full bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500"
-            onClick={handleSubmit}
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? (
-              <div className="flex items-center gap-2">
-                <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                <span>Processing...</span>
-              </div>
-            ) : (
-              'Process Image'
-            )}
-          </Button>
-        </div>
-      </div>
-
-      <div className="mt-auto border-t border-slate-700 p-4">
-        <div className="flex items-center gap-2 text-sm text-slate-400">
-          <Settings className="h-4 w-4" />
-          <span>Settings</span>
-        </div>
       </div>
     </div>
   )

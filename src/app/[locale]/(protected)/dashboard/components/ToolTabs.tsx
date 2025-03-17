@@ -1,32 +1,26 @@
 'use client'
 
-import { useState, ReactNode } from 'react'
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { HistoryPanel } from './HistoryPanel'
 import { ToolSidebar } from './ToolSidebar'
+import { ImageEditor } from './ImageEditor'
+import { useModels } from '@/contexts/ModelContext'
 
 interface ToolTabsProps {
-  children: ReactNode
   defaultTab?: 'watermark' | 'text' | 'background'
   onTabChange?: (tab: 'watermark' | 'text' | 'background') => void
 }
 
-const ToolTabs = ({
-  children,
-  defaultTab = 'watermark',
-  onTabChange,
-}: ToolTabsProps) => {
-  const [selectedTab, setSelectedTab] = useState<
-    'watermark' | 'text' | 'background'
-  >(defaultTab)
+const ToolTabs = ({ defaultTab = 'watermark', onTabChange }: ToolTabsProps) => {
+  const { selectedModel, setSelectedModel, isSubmitting } = useModels()
 
   return (
     <Tabs
       defaultValue={defaultTab}
-      className="flex flex-1 flex-col"
+      className="flex flex-1 flex-col gap-0"
       onValueChange={(value) => {
-        setSelectedTab(value as typeof selectedTab)
-        onTabChange?.(value as typeof selectedTab)
+        setSelectedModel(value as typeof selectedModel)
+        onTabChange?.(value as typeof selectedModel)
       }}
     >
       <div className="border-b border-slate-800">
@@ -35,18 +29,21 @@ const ToolTabs = ({
             <TabsTrigger
               value="watermark"
               className="rounded-none !bg-transparent px-6 py-1.5 data-[state=active]:border-b-2 data-[state=active]:border-blue-500"
+              disabled={isSubmitting}
             >
               Watermark Removal
             </TabsTrigger>
             <TabsTrigger
               value="text"
               className="rounded-none !bg-transparent px-6 py-1.5 data-[state=active]:border-b-2 data-[state=active]:border-blue-500"
+              disabled={isSubmitting}
             >
               Text Removal
             </TabsTrigger>
             <TabsTrigger
               value="background"
               className="rounded-none !bg-transparent px-6 py-1.5 data-[state=active]:border-b-2 data-[state=active]:border-blue-500"
+              disabled={isSubmitting}
             >
               Background Removal
             </TabsTrigger>
@@ -55,8 +52,24 @@ const ToolTabs = ({
       </div>
 
       <div className="flex flex-1 overflow-hidden">
-        <ToolSidebar selectedTab={selectedTab} />
-        <div className="flex flex-1 flex-col overflow-hidden">{children}</div>
+        <ToolSidebar />
+        <div className="flex flex-1 flex-col overflow-hidden">
+          <TabsContent
+            value="watermark"
+            className="m-0 flex flex-1 flex-col p-0"
+          >
+            <ImageEditor />
+          </TabsContent>
+          <TabsContent value="text" className="m-0 flex flex-1 flex-col p-0">
+            <ImageEditor />
+          </TabsContent>
+          <TabsContent
+            value="background"
+            className="m-0 flex flex-1 flex-col p-0"
+          >
+            <ImageEditor />
+          </TabsContent>
+        </div>
         <HistoryPanel />
       </div>
     </Tabs>
