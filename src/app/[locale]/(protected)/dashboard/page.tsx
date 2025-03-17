@@ -5,7 +5,7 @@ import ToolTabs from './components/ToolTabs'
 
 export default function Dashboard() {
   return (
-    <div className="flex h-screen flex-col bg-slate-900 text-slate-100">
+    <div className="flex h-screen flex-col overflow-hidden bg-slate-900 text-slate-100">
       <TopNavbar />
       <ToolTabs>
         <TabsContent value="watermark" className="m-0 flex flex-1 flex-col p-0">

@@ -39,7 +39,7 @@ export function HistoryPanel() {
         <h3 className="font-medium">Recent Images</h3>
       </div>
 
-      <div className="flex-1 overflow-y-auto">
+      <div className="max-h-[calc(100vh-10rem)] flex-1 overflow-y-auto">
         {historyItems.length > 0 ? (
           <div className="divide-y divide-slate-800">
             {historyItems.map((item) => (

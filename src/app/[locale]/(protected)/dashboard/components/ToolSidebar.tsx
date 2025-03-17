@@ -177,7 +177,7 @@ export function ToolSidebar({ selectedTab }: ToolSidebarProps) {
   }
 
   return (
-    <div className="flex w-[320px] flex-col overflow-y-auto border-r border-slate-800 bg-slate-800/50">
+    <div className="flex max-h-[calc(100vh-6rem)] w-[320px] flex-col overflow-y-auto border-r border-slate-800 bg-slate-800/50">
       <div className="space-y-6 p-4">
         <div className="space-y-4">
           <div className="flex items-center justify-between">
