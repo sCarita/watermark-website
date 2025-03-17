@@ -293,7 +293,7 @@ export default function WatermarkProcessor() {
 
       // Call the API
       const response = await fetch(
-        'https://processautomaskwatermark-k677kyuleq-uc.a.run.app',
+        'https://publicprocessautomaskwatermark-k677kyuleq-uc.a.run.app',
         {
           method: 'POST',
           headers: {
@@ -301,6 +301,7 @@ export default function WatermarkProcessor() {
           },
           body: JSON.stringify({
             data: {
+              version: '1.0',
               imageBase64: base64,
             },
           }),

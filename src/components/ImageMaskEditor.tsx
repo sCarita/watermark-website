@@ -168,7 +168,7 @@ const ImageMaskEditor = ({
 
       // Call the API
       const response = await fetch(
-        'https://processmanualmaskwatermark-k677kyuleq-uc.a.run.app/',
+        'https://publicprocessmanualmaskwatermark-k677kyuleq-uc.a.run.app/',
         {
           method: 'POST',
           headers: {
@@ -176,6 +176,7 @@ const ImageMaskEditor = ({
           },
           body: JSON.stringify({
             data: {
+              version: '1.0',
               imageBase64,
               maskBase64,
             },
