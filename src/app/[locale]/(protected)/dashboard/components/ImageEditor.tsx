@@ -183,7 +183,7 @@ export function ImageEditor() {
                 transform: `scale(${zoomLevel / 100})`,
               }}
             >
-              {selectedMode === 'auto' && (
+              {(selectedMode === 'auto' || processedImage) && (
                 <NextImage
                   src={processedImage || selectedImage}
                   alt="Editing image"
@@ -192,10 +192,10 @@ export function ImageEditor() {
                   className="h-full w-full"
                 />
               )}
-              {selectedMode !== 'auto' && (
+              {selectedMode !== 'auto' && !processedImage && (
                 <CanvasEditor
                   ref={canvasEditorRef}
-                  selectedImage={processedImage || selectedImage}
+                  selectedImage={selectedImage}
                   brushSize={brushSize}
                   hasDrawing={setHasDrawing}
                   onDrawingChange={(maskBase64) => setMaskBase64(maskBase64)}

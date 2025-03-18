@@ -658,5 +658,11 @@
     "author": "Auteur",
     "readMore": "Lire la suite",
     "by": "Par"
+  },
+  "imageEditor": {
+    "auto": "Auto",
+    "manual": "Manuel",
+    "boosted": "Boosté",
+    "brushSize": "Taille du pinceau"
   }
 }

@@ -658,5 +658,11 @@
     "author": "Author",
     "readMore": "Read more",
     "by": "By"
+  },
+  "imageEditor": {
+    "auto": "Auto",
+    "manual": "Manual",
+    "boosted": "Boosted",
+    "brushSize": "Brush size"
   }
 }

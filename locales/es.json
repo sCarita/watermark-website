@@ -633,5 +633,11 @@
       "title": "Política de Privacidad - clear.photo",
       "description": "Nuestra Política de Privacidad explica cómo clear.photo maneja tus datos, protege tu privacidad y cumple con las regulaciones de protección de datos al usar nuestro servicio de eliminación de marcas de agua."
     }
+  },
+  "imageEditor": {
+    "auto": "Auto",
+    "manual": "Manual",
+    "boosted": "Mejorado",
+    "brushSize": "Tamaño del pincel"
   }
 }

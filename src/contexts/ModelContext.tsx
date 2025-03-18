@@ -1,49 +1,23 @@
 'use client'
 
 import { createContext, useContext, useState, useEffect } from 'react'
-import { DocumentReference } from 'firebase/firestore'
 import {
+  collection,
+  doc,
+  DocumentReference,
+  getDocs,
+  limit,
+  onSnapshot,
+  orderBy,
+  query,
+  where,
+} from 'firebase/firestore'
+import {
+  db,
   processautomaskwatermark,
   processmanualmaskwatermark,
 } from '@/lib/firebase/client'
-
-type InputField = {
-  name: string
-  type: 'slider' | 'text' | 'file' | 'number' | 'options' | 'boolean'
-  label: string
-  description?: Record<string, string>
-  placeholder?: Record<string, string>
-  defaultValue?: any
-  options?: {
-    min?: string
-    max?: string
-    maxSize?: string
-    formats?: string[]
-    values?: string[]
-  }
-}
-
-type InputFields = {
-  label: string
-  fields: InputField[]
-}
-
-type AvailableProcedure = any // Define your procedure type
-
-export type Model = {
-  id: string
-  name: string
-  procedureRef: DocumentReference<AvailableProcedure>
-  inputField: {
-    auto?: InputFields[]
-    manual?: InputFields[]
-    boosted?: InputFields[]
-  }
-  details: Record<string, any>
-  createdAt: string
-  updatedAt: string
-  version: string
-}
+import { Model, RunHistoryDoc } from '@/types/firebase'
 
 interface ModelContextType {
   models: Record<string, Model>
@@ -83,72 +57,6 @@ const ModelContext = createContext<ModelContextType>({
   setProcessedImage: () => {},
 })
 
-// Dummy data for development
-const DUMMY_MODELS: Record<string, Model> = {
-  watermark: {
-    id: 'watermark-1',
-    name: 'Watermark Removal',
-    procedureRef: {} as any,
-    inputField: {
-      auto: [
-        {
-          label: 'imageEditor.watermark.label',
-          fields: [],
-        },
-      ],
-      manual: [
-        {
-          label: 'imageEditor.watermark.brush',
-          fields: [
-            {
-              name: 'brushSize',
-              type: 'slider',
-              label: 'imageEditor.watermark.brushSize',
-              defaultValue: 20,
-              options: {
-                min: '1',
-                max: '100',
-              },
-            },
-          ],
-        },
-      ],
-    },
-    details: {},
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-    version: '1.0',
-  },
-  text: {
-    id: 'text-1',
-    name: 'Text Removal',
-    procedureRef: {} as any,
-    inputField: {
-      auto: [],
-      manual: [],
-      boosted: [],
-    },
-    details: {},
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-    version: '1.0',
-  },
-  background: {
-    id: 'background-1',
-    name: 'Background Removal',
-    procedureRef: {} as any,
-    inputField: {
-      auto: [],
-      manual: [],
-      boosted: [],
-    },
-    details: {},
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-    version: '1.0',
-  },
-}
-
 export function ModelProvider({ children }: { children: React.ReactNode }) {
   const [models, setModels] = useState<Record<string, Model>>({})
 
@@ -167,20 +75,45 @@ export function ModelProvider({ children }: { children: React.ReactNode }) {
   const [brushSize, setBrushSize] = useState(10)
 
   useEffect(() => {
-    const fetchModels = async () => {
+    setLoading(true)
+
+    const fetchModel = async () => {
       try {
-        // Simulating API delay
-        await new Promise((resolve) => setTimeout(resolve, 1000))
-        setModels(DUMMY_MODELS)
-        setLoading(false)
+        const modelQuery = query(
+          collection(db, 'models'),
+          where('version', '==', '1.1'),
+          where('product', '==', 'watermark'),
+          limit(1),
+        )
+
+        const snapshot = await getDocs(modelQuery)
+
+        if (!snapshot.empty) {
+          const data = snapshot.docs[0].data()
+          setModels({
+            watermark: {
+              ...data,
+              id: snapshot.docs[0].id,
+            } as Model,
+          })
+          console.log('data', data)
+        } else {
+          console.log('No models found with version 1.1')
+        }
       } catch (err) {
+        console.error('Error fetching model:', err)
         setError(err as Error)
+      } finally {
         setLoading(false)
       }
     }
 
-    fetchModels()
+    fetchModel()
   }, [])
+
+  useEffect(() => {
+    console.log('models', models)
+  }, [models])
 
   const submitModelValues = async ({
     version,
@@ -191,6 +124,10 @@ export function ModelProvider({ children }: { children: React.ReactNode }) {
     imageBase64: string
     maskBase64?: string
   }) => {
+    console.log('selectedMode', selectedMode)
+    console.log('imageBase64', imageBase64)
+    console.log('maskBase64', maskBase64)
+    console.log('version', version)
     try {
       setIsSubmitting(true)
       setProcessedImage(null)

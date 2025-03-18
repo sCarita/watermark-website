@@ -1,3 +1,5 @@
+import { DocumentReference } from 'firebase/firestore'
+
 // Document Types
 export type RunHistoryDoc = {
   id: string
@@ -6,7 +8,7 @@ export type RunHistoryDoc = {
     ipAddress: string
     isPublic: boolean
     mode: string
-    modelRef: string // Firebase reference path
+    modelRef: string
   }
   outputData: {
     inpaintedImageUrl: string
@@ -16,8 +18,47 @@ export type RunHistoryDoc = {
   runType: string
   status: string
   timestamp: string
-  userRef: string // Firebase reference path
+  userRef: string
 }
+
+export type Model = {
+  id: string
+  name: string
+  procedureRef: DocumentReference<AvailableProcedure>
+  inputFields: {
+    auto?: InputFields
+    manual?: InputFields
+    boosted?: InputFields
+  }
+  details: Record<string, any>
+  createdAt: string
+  updatedAt: string
+  version: string
+}
+
+export type InputField = {
+  name: string
+  type: 'slider' | 'text' | 'file' | 'number' | 'options' | 'boolean'
+  label: string
+  description?: string
+  placeholder?: string
+  defaultValue?: any
+  options?: {
+    min?: string
+    max?: string
+    maxSize?: string
+    formats?: string[]
+    values?: string[]
+  }
+}
+
+export type InputFields = {
+  label: string
+  name: string
+  fields?: InputField[]
+}
+
+type AvailableProcedure = any
 
 // Function Input/Output Types
 export type ManualMaskWatermarkInput = {

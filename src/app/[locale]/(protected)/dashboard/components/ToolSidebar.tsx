@@ -14,59 +14,34 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { useModels } from '@/contexts/ModelContext'
-
-interface ToolSidebarProps {
-  selectedTab: 'watermark' | 'text' | 'background'
-}
-
-type InputFieldType = {
-  name: string
-  type: 'slider' | 'text' | 'file' | 'number' | 'options' | 'boolean'
-  label: string
-  description?: Record<string, string>
-  placeholder?: Record<string, string>
-  defaultValue?: any
-  options?: {
-    min?: string
-    max?: string
-    maxSize?: string
-    formats?: string[]
-    values?: string[]
-  }
-}
-
-type InputFields = {
-  label: string
-  fields: InputFieldType[]
-}
+import { Loader } from 'lucide-react'
+import { InputField, InputFields } from '@/types/firebase'
+import { useTranslations } from 'next-intl'
 
 export function ToolSidebar() {
+  const t = useTranslations()
   const {
     models,
     loading,
     error,
     isSubmitting,
     selectedMode,
-    setSelectedMode,
     selectedModel,
+    setSelectedMode,
     setBrushSize,
   } = useModels()
 
-  // Remove local state
   const [formValues, setFormValues] = useState<Record<string, any>>({})
 
-  // Update useEffect to use selectedModel and selectedMode from context
   useEffect(() => {
     if (models[selectedModel]) {
-      const currentFields = models[selectedModel].inputField[selectedMode]
+      const currentFields = models[selectedModel].inputFields[selectedMode]
       const defaultValues: Record<string, any> = {}
 
-      currentFields?.forEach((section) => {
-        section.fields.forEach((field) => {
-          if ('defaultValue' in field) {
-            defaultValues[field.name] = field.defaultValue
-          }
-        })
+      currentFields?.fields?.forEach((field) => {
+        if ('defaultValue' in field) {
+          defaultValues[field.name] = field.defaultValue
+        }
       })
 
       setFormValues(defaultValues)
@@ -78,7 +53,11 @@ export function ToolSidebar() {
   }, [formValues['brushSize']])
 
   if (loading) {
-    return <div className="p-4">Loading...</div>
+    return (
+      <div className="flex h-full w-full items-center justify-center">
+        <Loader className="h-4 w-4 animate-spin" />
+      </div>
+    )
   }
 
   if (error) {
@@ -94,20 +73,21 @@ export function ToolSidebar() {
     setFormValues((prev) => ({ ...prev, [name]: value }))
   }
 
-  const renderField = (field: InputFieldType) => {
+  const renderField = (field: InputField) => {
+    console.log('field !!!!!', field)
     switch (field.type) {
       case 'slider':
         return (
           <div className="space-y-4">
             <div className="flex justify-between">
-              <h3 className="text-sm font-medium">{field.label}</h3>
+              <h3 className="text-sm font-medium">{t(field.label)}</h3>
               <span className="text-xs text-slate-400">
-                {formValues[field.name] ?? field.defaultValue}
+                {formValues[field.name] || field.defaultValue || 0}
                 {field.options?.max?.includes('%') ? '%' : 'px'}
               </span>
             </div>
             <Slider
-              value={[formValues[field.name] ?? field.defaultValue]}
+              value={[formValues[field.name] || field.defaultValue || 0]}
               min={Number(field.options?.min)}
               max={Number(field.options?.max)}
               step={1}
@@ -122,7 +102,7 @@ export function ToolSidebar() {
         return (
           <Input
             type="text"
-            placeholder={field.placeholder?.en}
+            placeholder={t(field.placeholder)}
             value={formValues[field.name] ?? field.defaultValue}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               handleInputChange(field.name, e.target.value)
@@ -135,7 +115,7 @@ export function ToolSidebar() {
       case 'boolean':
         return (
           <div className="flex items-center justify-between">
-            <Label htmlFor={field.name}>{field.label}</Label>
+            <Label htmlFor={field.name}>{t(field.label)}</Label>
             <Switch
               id={field.name}
               checked={formValues[field.name] ?? field.defaultValue}
@@ -157,7 +137,7 @@ export function ToolSidebar() {
             disabled={isSubmitting}
           >
             <SelectTrigger className="bg-slate-800">
-              <SelectValue placeholder={field.placeholder?.en} />
+              <SelectValue placeholder={t(field.placeholder)} />
             </SelectTrigger>
             <SelectContent>
               {field.options?.values?.map((value) => (
@@ -169,11 +149,16 @@ export function ToolSidebar() {
           </Select>
         )
 
-      // Add other field types as needed
       default:
         return null
     }
   }
+
+  console.log('models--->', models)
+  console.log('currentModel', currentModel)
+  console.log('selectedModel', selectedModel)
+  console.log('formValues', formValues)
+  console.log('selectedMode___', selectedMode)
 
   return (
     <div className="flex max-h-[calc(100vh-6rem)] w-[320px] flex-col overflow-y-auto border-r border-slate-800 bg-slate-800/50">
@@ -188,44 +173,48 @@ export function ToolSidebar() {
             className="grid grid-cols-3 gap-2"
             disabled={isSubmitting}
           >
-            {['auto', 'manual', 'boosted'].map((modeOption) => (
-              <label
-                key={modeOption}
-                htmlFor={modeOption}
-                className="flex cursor-pointer items-center space-x-1 rounded-md border border-slate-700 bg-slate-800 p-2"
-              >
-                <RadioGroupItem
-                  value={modeOption}
-                  id={modeOption}
-                  className="text-blue-500"
-                />
-                <Label
-                  htmlFor={modeOption}
-                  className="cursor-pointer capitalize"
+            {Object.keys(currentModel?.inputFields).map((key, index) => {
+              const modeOption =
+                currentModel.inputFields[
+                  key as keyof typeof currentModel.inputFields
+                ]
+
+              if (!modeOption) return null
+
+              return (
+                <label
+                  key={index}
+                  htmlFor={key}
+                  className="flex cursor-pointer items-center space-x-1 rounded-md border border-slate-700 bg-slate-800 p-2"
                 >
-                  {modeOption}
-                </Label>
-              </label>
-            ))}
+                  <RadioGroupItem
+                    value={key}
+                    id={key}
+                    className="text-blue-500"
+                  />
+                  <Label htmlFor={key} className="cursor-pointer capitalize">
+                    {t(modeOption.label)}
+                  </Label>
+                </label>
+              )
+            })}
           </RadioGroup>
         </div>
 
-        {/* Dynamic Input Fields */}
-        {currentModel.inputField[selectedMode]?.map((section, index) => (
-          <div key={index} className="space-y-4">
-            <h3 className="text-sm font-medium">{section.label}</h3>
-            {section.fields.map((field) => (
+        {/* Input Fields */}
+        {currentModel?.inputFields?.[selectedMode]?.fields &&
+          currentModel.inputFields[selectedMode].fields.map((field, index) => (
+            <div key={index} className="space-y-4">
               <div key={field.name} className="space-y-2">
                 {renderField(field)}
                 {field.description && (
                   <p className="text-xs text-slate-400">
-                    {field.description.en}
+                    {t(field.description)}
                   </p>
                 )}
               </div>
-            ))}
-          </div>
-        ))}
+            </div>
+          ))}
       </div>
     </div>
   )
