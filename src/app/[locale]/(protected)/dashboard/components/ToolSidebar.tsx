@@ -22,7 +22,7 @@ interface ToolSidebarProps {
 type InputFieldType = {
   name: string
   type: 'slider' | 'text' | 'file' | 'number' | 'options' | 'boolean'
-  label: Record<string, string>
+  label: string
   description?: Record<string, string>
   placeholder?: Record<string, string>
   defaultValue?: any
@@ -61,7 +61,7 @@ export function ToolSidebar() {
       const currentFields = models[selectedModel].inputField[selectedMode]
       const defaultValues: Record<string, any> = {}
 
-      currentFields.forEach((section) => {
+      currentFields?.forEach((section) => {
         section.fields.forEach((field) => {
           if ('defaultValue' in field) {
             defaultValues[field.name] = field.defaultValue
@@ -100,7 +100,7 @@ export function ToolSidebar() {
         return (
           <div className="space-y-4">
             <div className="flex justify-between">
-              <h3 className="text-sm font-medium">{field.label.en}</h3>
+              <h3 className="text-sm font-medium">{field.label}</h3>
               <span className="text-xs text-slate-400">
                 {formValues[field.name] ?? field.defaultValue}
                 {field.options?.max?.includes('%') ? '%' : 'px'}
@@ -135,7 +135,7 @@ export function ToolSidebar() {
       case 'boolean':
         return (
           <div className="flex items-center justify-between">
-            <Label htmlFor={field.name}>{field.label.en}</Label>
+            <Label htmlFor={field.name}>{field.label}</Label>
             <Switch
               id={field.name}
               checked={formValues[field.name] ?? field.defaultValue}
@@ -211,7 +211,7 @@ export function ToolSidebar() {
         </div>
 
         {/* Dynamic Input Fields */}
-        {currentModel.inputField[selectedMode].map((section, index) => (
+        {currentModel.inputField[selectedMode]?.map((section, index) => (
           <div key={index} className="space-y-4">
             <h3 className="text-sm font-medium">{section.label}</h3>
             {section.fields.map((field) => (

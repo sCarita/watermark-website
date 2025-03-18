@@ -10,7 +10,7 @@ import {
 type InputField = {
   name: string
   type: 'slider' | 'text' | 'file' | 'number' | 'options' | 'boolean'
-  label: Record<string, string>
+  label: string
   description?: Record<string, string>
   placeholder?: Record<string, string>
   defaultValue?: any
@@ -35,9 +35,9 @@ export type Model = {
   name: string
   procedureRef: DocumentReference<AvailableProcedure>
   inputField: {
-    auto: InputFields[]
-    manual: InputFields[]
-    boosted: InputFields[]
+    auto?: InputFields[]
+    manual?: InputFields[]
+    boosted?: InputFields[]
   }
   details: Record<string, any>
   createdAt: string
@@ -92,75 +92,22 @@ const DUMMY_MODELS: Record<string, Model> = {
     inputField: {
       auto: [
         {
-          label: 'dashboard.watermark.detection',
-          fields: [
-            {
-              name: 'sensitivity',
-              type: 'slider',
-              label: {
-                en: 'Detection Sensitivity',
-                fr: 'Sensibilité de détection',
-                es: 'Sensibilidad de detección',
-              },
-              defaultValue: 50,
-              options: {
-                min: '0',
-                max: '100',
-              },
-            },
-          ],
+          label: 'imageEditor.watermark.label',
+          fields: [],
         },
       ],
       manual: [
         {
-          label: 'dashboard.watermark.brush',
+          label: 'imageEditor.watermark.brush',
           fields: [
             {
               name: 'brushSize',
               type: 'slider',
-              label: {
-                en: 'Brush Size',
-                fr: 'Taille du pinceau',
-                es: 'Tamaño del pincel',
-              },
+              label: 'imageEditor.watermark.brushSize',
               defaultValue: 20,
               options: {
                 min: '1',
                 max: '100',
-              },
-            },
-            {
-              name: 'hardness',
-              type: 'slider',
-              label: {
-                en: 'Brush Hardness',
-                fr: 'Dureté du pinceau',
-                es: 'Dureza del pincel',
-              },
-              defaultValue: 50,
-              options: {
-                min: '0',
-                max: '100',
-              },
-            },
-          ],
-        },
-      ],
-      boosted: [
-        {
-          label: 'dashboard.watermark.advanced',
-          fields: [
-            {
-              name: 'quality',
-              type: 'options',
-              label: {
-                en: 'Output Quality',
-                fr: 'Qualité de sortie',
-                es: 'Calidad de salida',
-              },
-              defaultValue: 'high',
-              options: {
-                values: ['low', 'medium', 'high', 'ultra'],
               },
             },
           ],
@@ -177,43 +124,8 @@ const DUMMY_MODELS: Record<string, Model> = {
     name: 'Text Removal',
     procedureRef: {} as any,
     inputField: {
-      auto: [
-        {
-          label: 'dashboard.text.detection',
-          fields: [
-            {
-              name: 'textDetection',
-              type: 'boolean',
-              label: {
-                en: 'Auto Text Detection',
-                fr: 'Détection automatique du texte',
-                es: 'Detección automática de texto',
-              },
-              defaultValue: true,
-            },
-          ],
-        },
-      ],
-      manual: [
-        {
-          label: 'dashboard.text.selection',
-          fields: [
-            {
-              name: 'selectionType',
-              type: 'options',
-              label: {
-                en: 'Selection Type',
-                fr: 'Type de sélection',
-                es: 'Tipo de selección',
-              },
-              defaultValue: 'rectangle',
-              options: {
-                values: ['rectangle', 'lasso', 'magic'],
-              },
-            },
-          ],
-        },
-      ],
+      auto: [],
+      manual: [],
       boosted: [],
     },
     details: {},
@@ -226,27 +138,7 @@ const DUMMY_MODELS: Record<string, Model> = {
     name: 'Background Removal',
     procedureRef: {} as any,
     inputField: {
-      auto: [
-        {
-          label: 'dashboard.background.detection',
-          fields: [
-            {
-              name: 'precision',
-              type: 'slider',
-              label: {
-                en: 'Edge Precision',
-                fr: 'Précision des bords',
-                es: 'Precisión de bordes',
-              },
-              defaultValue: 80,
-              options: {
-                min: '0',
-                max: '100',
-              },
-            },
-          ],
-        },
-      ],
+      auto: [],
       manual: [],
       boosted: [],
     },

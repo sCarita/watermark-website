@@ -1,5 +1,3 @@
-import { Button } from '@/components/ui/button'
-import { NotificationsDropdown } from './NotificationsDropdown'
 import { UserDropdown } from './UserDropdown'
 
 export function TopNavbar() {
@@ -15,9 +13,9 @@ export function TopNavbar() {
             <span className="text-sm">131</span>
             <span className="text-xs">credits</span>
           </div>
-          <Button variant="outline-blue" size="sm">
+          {/* <Button variant="outline-blue" size="sm">
             Upgrade Plan
-          </Button>
+          </Button> */}
 
           <UserDropdown />
         </div>
