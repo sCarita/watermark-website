@@ -180,6 +180,7 @@ export function HistoryPanel() {
                                   itemToDelete &&
                                   deleteHistoryItem(itemToDelete)
                                 }
+                                className="bg-red-700 hover:bg-red-800"
                               >
                                 Delete
                               </Button>

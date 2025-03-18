@@ -8,9 +8,6 @@ export function TopNavbar() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <h1 className="text-xl font-semibold">Image Editor</h1>
-          <div className="flex items-center rounded-md border border-slate-700 bg-slate-800">
-            <span className="px-3 py-1 text-sm">1.0</span>
-          </div>
         </div>
 
         <div className="flex items-center gap-4">
@@ -21,15 +18,7 @@ export function TopNavbar() {
           <Button variant="outline-blue" size="sm">
             Upgrade Plan
           </Button>
-          <Button
-            variant="default"
-            size="sm"
-            className="bg-blue-500 text-sm hover:bg-blue-600"
-          >
-            API Calls
-          </Button>
 
-          <NotificationsDropdown />
           <UserDropdown />
         </div>
       </div>
