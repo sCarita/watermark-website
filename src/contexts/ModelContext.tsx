@@ -49,6 +49,7 @@ interface ModelContextType {
   models: Record<string, Model>
   loading: boolean
   error: Error | null
+  setError: (error: Error | null) => void
   submitModelValues: (params: {
     version: string
     imageBase64: string
@@ -69,6 +70,7 @@ const ModelContext = createContext<ModelContextType>({
   models: {},
   loading: true,
   error: null,
+  setError: () => {},
   submitModelValues: async () => {},
   isSubmitting: false,
   selectedMode: 'auto',
@@ -301,7 +303,8 @@ export function ModelProvider({ children }: { children: React.ReactNode }) {
   }) => {
     try {
       setIsSubmitting(true)
-      setProcessedImage(null) // Reset processed image
+      setProcessedImage(null)
+      setError(null) // Reset error state
 
       let response
       if (selectedMode === 'auto') {
@@ -318,10 +321,10 @@ export function ModelProvider({ children }: { children: React.ReactNode }) {
       }
 
       if (!response.data.success) {
+        setError(new Error('Failed to process image'))
         throw new Error('Failed to process image')
       }
 
-      // Assuming the response contains a base64 image
       if (response.data.inpaintedImageUrl) {
         setProcessedImage(response.data.inpaintedImageUrl)
       }
@@ -329,6 +332,7 @@ export function ModelProvider({ children }: { children: React.ReactNode }) {
       return response
     } catch (error) {
       console.error('Error submitting model values:', error)
+      setError(error as Error)
       throw error
     } finally {
       setIsSubmitting(false)
@@ -341,6 +345,7 @@ export function ModelProvider({ children }: { children: React.ReactNode }) {
         models,
         loading,
         error,
+        setError,
         submitModelValues,
         isSubmitting,
         selectedMode,

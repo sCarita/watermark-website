@@ -1,6 +1,12 @@
 import { initializeApp, getApps, getApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 import { getFunctions, httpsCallable } from 'firebase/functions'
+import { getFirestore } from 'firebase/firestore'
+import {
+  ManualMaskWatermarkInput,
+  AutoMaskWatermarkInput,
+  WatermarkProcessOutput,
+} from '@/types/firebase'
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -21,28 +27,16 @@ console.log('Firebase Config:', {
 const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig)
 const auth = getAuth(app)
 const functions = getFunctions(app, 'us-central1')
+const db = getFirestore(app)
 
 const processmanualmaskwatermark = httpsCallable<
-  {
-    version: string
-    imageBase64: string
-    maskBase64?: string
-  },
-  {
-    success: boolean
-    inpaintedImageUrl?: string
-  }
+  ManualMaskWatermarkInput,
+  WatermarkProcessOutput
 >(functions, 'ProcessManualMaskWatermark')
 
 const processautomaskwatermark = httpsCallable<
-  {
-    version: string
-    imageBase64: string
-  },
-  {
-    success: boolean
-    inpaintedImageUrl?: string
-  }
+  AutoMaskWatermarkInput,
+  WatermarkProcessOutput
 >(functions, 'ProcessAutoMaskWatermark')
 
-export { app, auth, processmanualmaskwatermark, processautomaskwatermark }
+export { app, auth, processmanualmaskwatermark, processautomaskwatermark, db }

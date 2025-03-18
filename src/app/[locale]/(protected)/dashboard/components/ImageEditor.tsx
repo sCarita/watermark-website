@@ -9,6 +9,8 @@ import demmoImage2 from '@/images/watermark-example-2.png'
 import FileDropUpload from '@/components/FileDropUpload'
 import { useModels } from '@/contexts/ModelContext'
 import { CanvasEditor } from './CanvasEditor'
+import { toast } from 'sonner'
+import { ProcessedImageResult } from '@/components/ProcessedImageResult'
 
 export function ImageEditor() {
   const {
@@ -18,7 +20,9 @@ export function ImageEditor() {
     isSubmitting,
     submitModelValues,
     processedImage,
+    error,
   } = useModels()
+
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [zoomLevel, setZoomLevel] = useState(100)
 
@@ -92,8 +96,15 @@ export function ImageEditor() {
   useEffect(() => {
     if (processedImage) {
       setSelectedImage(null)
+      toast.success('Image processed successfully')
     }
   }, [processedImage])
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error.message)
+    }
+  }, [error])
 
   return (
     <div className="relative flex max-h-[calc(100vh-6rem)] flex-1 flex-col">

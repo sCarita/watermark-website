@@ -4,50 +4,45 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Clock, Download, Trash2 } from 'lucide-react'
-import { useModels } from '@/contexts/ModelContext'
+import {
+  collection,
+  query,
+  where,
+  orderBy,
+  onSnapshot,
+} from 'firebase/firestore'
+import { db } from '@/lib/firebase/client'
+import { useAuth } from '@/contexts/AuthContext'
+import { RunHistoryDoc } from '@/types/firebase'
 
 export function HistoryPanel() {
-  const { processedImage, selectedModel } = useModels()
-
-  // Sample history data
-  const [historyItems, setHistoryItems] = useState([
-    {
-      id: 1,
-      src: 'https://placehold.co/400x400',
-      date: 'Today, 9:45 AM',
-      type: 'Watermark Removal',
-    },
-    {
-      id: 2,
-      src: 'https://placehold.co/400x400',
-      date: 'Today, 9:30 AM',
-      type: 'Text Removal',
-    },
-    {
-      id: 3,
-      src: 'https://placehold.co/400x400',
-      date: 'Yesterday, 2:15 PM',
-      type: 'Background Removal',
-    },
-  ])
-
-  const deleteHistoryItem = (id: number) => {
-    setHistoryItems(historyItems.filter((item) => item.id !== id))
-  }
+  const { user } = useAuth()
+  const [historyItems, setHistoryItems] = useState<RunHistoryDoc[]>([])
 
   useEffect(() => {
-    if (processedImage) {
-      setHistoryItems([
-        {
-          id: 1,
-          src: processedImage,
-          date: new Date().toLocaleString(),
-          type: selectedModel,
-        },
-        ...historyItems,
-      ])
-    }
-  }, [processedImage])
+    if (!user) return
+
+    const historyRef = collection(db, 'runHistory')
+    const q = query(
+      historyRef,
+      where('userRef', '==', `/users/${user.uid}`),
+      orderBy('timestamp', 'desc'),
+    )
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const history = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      })) as RunHistoryDoc[]
+      setHistoryItems(history)
+    })
+
+    return () => unsubscribe()
+  }, [user])
+
+  const deleteHistoryItem = (id: string) => {
+    setHistoryItems(historyItems.filter((item) => item.id !== id))
+  }
 
   return (
     <div className="flex w-[280px] flex-col border-l border-slate-800 bg-slate-800/30">
@@ -66,7 +61,7 @@ export function HistoryPanel() {
               >
                 <div className="relative mb-2 aspect-square overflow-hidden rounded-md border border-slate-700">
                   <Image
-                    src={item.src || '/placeholder.svg'}
+                    src={item.inputData.imageBase64 || '/placeholder.svg'}
                     alt={`History item ${item.id}`}
                     fill
                     unoptimized={true}
@@ -75,8 +70,8 @@ export function HistoryPanel() {
                 </div>
                 <div className="flex items-start justify-between">
                   <div>
-                    <p className="text-sm font-medium">{item.type}</p>
-                    <p className="text-xs text-slate-400">{item.date}</p>
+                    <p className="text-sm font-medium">{item.inputData.mode}</p>
+                    <p className="text-xs text-slate-400">{item.timestamp}</p>
                   </div>
                   <div className="flex gap-1">
                     <Button
