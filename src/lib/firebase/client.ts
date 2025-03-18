@@ -39,4 +39,22 @@ const processautomaskwatermark = httpsCallable<
   WatermarkProcessOutput
 >(functions, 'ProcessAutoMaskWatermark')
 
-export { app, auth, processmanualmaskwatermark, processautomaskwatermark, db }
+const publicprocessmanualmaskwatermark = httpsCallable<
+  ManualMaskWatermarkInput,
+  WatermarkProcessOutput
+>(functions, 'PublicProcessManualMaskWatermark')
+
+const publicprocessautomaskwatermark = httpsCallable<
+  AutoMaskWatermarkInput,
+  WatermarkProcessOutput
+>(functions, 'PublicProcessAutoMaskWatermark')
+
+export {
+  app,
+  auth,
+  db,
+  processmanualmaskwatermark,
+  processautomaskwatermark,
+  publicprocessmanualmaskwatermark,
+  publicprocessautomaskwatermark,
+}

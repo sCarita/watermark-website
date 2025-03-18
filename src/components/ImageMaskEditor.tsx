@@ -9,6 +9,7 @@ import { ProcessedImageResult } from './ProcessedImageResult'
 import LoadingImage from './LoadingImage'
 import LoadingBar from './LoadingBar'
 import Alert from './Alert'
+import { publicprocessmanualmaskwatermark } from '@/lib/firebase/client'
 
 interface ProcessResult {
   originalImage: string
@@ -166,37 +167,25 @@ const ImageMaskEditor = ({
         )
       }
 
-      // Call the API
-      const response = await fetch(
-        'https://publicprocessmanualmaskwatermark-k677kyuleq-uc.a.run.app/',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            data: {
-              version: '1.0',
-              imageBase64,
-              maskBase64,
-            },
-          }),
-        },
-      )
+      const response = await publicprocessmanualmaskwatermark({
+        version: '1.0',
+        imageBase64,
+        maskBase64,
+      })
 
-      if (!response.ok) {
+      if (!response.data.success) {
         throw new Error(
-          `${t('watermarkProcessor.errors.apiError')}: ${response.status}`,
+          `${t('watermarkProcessor.errors.apiError')}: Failed to process image`,
         )
       }
 
-      const data = await response.json()
+      const data = response.data
 
       // Handle the specific response format
-      if (data.result && data.result.success) {
+      if (data.success && data.inpaintedImageUrl) {
         setResult({
           originalImage: imageUrl,
-          processedImage: data.result.inpaintedImageUrl,
+          processedImage: data.inpaintedImageUrl,
         })
       } else {
         throw new Error(t('watermarkProcessor.errors.processingFailed'))

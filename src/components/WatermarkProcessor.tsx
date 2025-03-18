@@ -16,6 +16,7 @@ import '@/styles/rangeSlider.css'
 import ImageMaskEditor from './ImageMaskEditor'
 import { Link } from '@/i18n/navigation'
 import { ProcessedImageResult } from './ProcessedImageResult'
+import { publicprocessautomaskwatermark } from '@/lib/firebase/client'
 
 const UploadImage = ({
   file,
@@ -291,42 +292,44 @@ export default function WatermarkProcessor() {
         throw new Error(t('watermarkProcessor.errors.noImage'))
       }
 
-      // Call the API
-      const response = await fetch(
-        'https://publicprocessautomaskwatermark-k677kyuleq-uc.a.run.app',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            data: {
-              version: '1.0',
-              imageBase64: base64,
-            },
-          }),
-        },
-      )
+      const response = await publicprocessautomaskwatermark({
+        version: '1.0',
+        imageBase64: base64,
+      })
 
-      if (!response.ok) {
+      // // Call the API
+      // const response = await fetch(
+      //   'https://publicprocessautomaskwatermark-k677kyuleq-uc.a.run.app',
+      //   {
+      //     method: 'POST',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //     body: JSON.stringify({
+      //       data: {
+      //         version: '1.0',
+      //         imageBase64: base64,
+      //       },
+      //     }),
+      //   },
+      // )
+
+      if (!response.data.success) {
         throw new Error(
-          `${t('watermarkProcessor.errors.apiError')}: ${response.status}`,
+          `${t('watermarkProcessor.errors.apiError')}: Failed to process image`,
         )
       }
 
-      const data = await response.json()
+      const data = response.data
 
       // Handle the specific response format
-      if (data.result && data.result.success) {
+      if (data.success && data.inpaintedImageUrl) {
         setResult({
           originalImage: file
             ? `data:${contentType};base64,${base64}`
             : imageUrl,
-          processedImage: data.result.inpaintedImageUrl,
-          // Still store the mask image in case we need it later, but don't display it
-          maskImage: data.result.maskBase64
-            ? `data:image/png;base64,${data.result.maskBase64}`
-            : undefined,
+          processedImage: data.inpaintedImageUrl,
+          maskImage: undefined,
         })
       } else {
         throw new Error(t('watermarkProcessor.errors.processingFailed'))
