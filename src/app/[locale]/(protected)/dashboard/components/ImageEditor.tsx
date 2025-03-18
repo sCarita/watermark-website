@@ -18,9 +18,10 @@ export function ImageEditor() {
     selectedMode,
     brushSize,
     isSubmitting,
-    submitModelValues,
     processedImage,
     error,
+    submitModelValues,
+    setProcessedImage,
   } = useModels()
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
@@ -55,6 +56,29 @@ export function ImageEditor() {
         return 'Background Removal'
       default:
         return 'Image Editor'
+    }
+  }
+
+  const resetImage = () => {
+    setSelectedImage(null)
+    setProcessedImage(null)
+  }
+
+  const downloadImage = async () => {
+    try {
+      const response = await fetch(processedImage!)
+      const blob = await response.blob()
+      const url = window.URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = 'processed-image.png'
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      window.URL.revokeObjectURL(url)
+    } catch (error) {
+      console.error('Download error:', error)
+      toast.error('Download failed')
     }
   }
 
@@ -94,17 +118,21 @@ export function ImageEditor() {
   }
 
   useEffect(() => {
-    if (processedImage) {
-      setSelectedImage(null)
+    if (processedImage && selectedImage)
       toast.success('Image processed successfully')
-    }
-  }, [processedImage])
+  }, [processedImage, selectedImage])
 
   useEffect(() => {
     if (error) {
       toast.error(error.message)
     }
   }, [error])
+
+  useEffect(() => {
+    return () => {
+      resetImage()
+    }
+  }, [])
 
   return (
     <div className="relative flex max-h-[calc(100vh-6rem)] flex-1 flex-col">
@@ -157,7 +185,7 @@ export function ImageEditor() {
             >
               {selectedMode === 'auto' && (
                 <NextImage
-                  src={selectedImage}
+                  src={processedImage || selectedImage}
                   alt="Editing image"
                   width={800}
                   height={600}
@@ -167,7 +195,7 @@ export function ImageEditor() {
               {selectedMode !== 'auto' && (
                 <CanvasEditor
                   ref={canvasEditorRef}
-                  selectedImage={selectedImage}
+                  selectedImage={processedImage || selectedImage}
                   brushSize={brushSize}
                   hasDrawing={setHasDrawing}
                   onDrawingChange={(maskBase64) => setMaskBase64(maskBase64)}
@@ -235,11 +263,11 @@ export function ImageEditor() {
         )}
       </div>
 
-      {selectedImage && (
+      {selectedImage && !processedImage && (
         <div className="flex items-center justify-between border-t border-slate-800 p-4">
           <Button
             variant="ghost"
-            onClick={() => setSelectedImage(null)}
+            onClick={resetImage}
             className="hover:bg-slate-800"
             disabled={isSubmitting}
           >
@@ -258,6 +286,26 @@ export function ImageEditor() {
                 : selectedModel === 'text'
                   ? 'Remove Text'
                   : 'Remove Background'}
+            </Button>
+          </div>
+        </div>
+      )}
+
+      {processedImage && (
+        <div className="flex items-center justify-between border-t border-slate-800 p-4">
+          <Button
+            variant="ghost"
+            onClick={resetImage}
+            className="hover:bg-slate-800"
+          >
+            Process another
+          </Button>
+          <div className="flex gap-2">
+            <Button
+              onClick={downloadImage}
+              className="bg-blue-500 hover:bg-blue-600"
+            >
+              Download
             </Button>
           </div>
         </div>

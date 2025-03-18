@@ -27,7 +27,7 @@ export const ProcessedImageResult = ({
       const url = window.URL.createObjectURL(blob)
       const link = document.createElement('a')
       link.href = url
-      link.download = 'processed-image.jpg'
+      link.download = 'processed-image.png'
       document.body.appendChild(link)
       link.click()
       document.body.removeChild(link)

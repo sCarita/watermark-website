@@ -262,6 +262,7 @@ export function ModelProvider({ children }: { children: React.ReactNode }) {
 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<Error | null>(null)
+  const [processedImage, setProcessedImage] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const [selectedMode, setSelectedMode] = useState<
@@ -272,9 +273,6 @@ export function ModelProvider({ children }: { children: React.ReactNode }) {
     'watermark' | 'text' | 'background'
   >('watermark')
   const [brushSize, setBrushSize] = useState(10)
-
-  // Add new state for processed image
-  const [processedImage, setProcessedImage] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchModels = async () => {
