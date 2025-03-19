@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { useModels } from '@/contexts/ModelContext'
+import { useImageEditor } from '@/contexts/ImageEditorContext'
 import { Loader2 } from 'lucide-react'
 import { InputField, InputFields } from '@/types/firebase'
 import { useTranslations } from 'next-intl'
@@ -31,7 +31,7 @@ export function ToolSidebar() {
     setError,
     setSelectedMode,
     setBrushSize,
-  } = useModels()
+  } = useImageEditor()
 
   const [formValues, setFormValues] = useState<Record<string, any>>({})
 
@@ -95,7 +95,6 @@ export function ToolSidebar() {
   }
 
   const renderField = (field: InputField) => {
-    console.log('field !!!!!', field)
     switch (field.type) {
       case 'slider':
         return (
@@ -174,12 +173,6 @@ export function ToolSidebar() {
         return null
     }
   }
-
-  console.log('models--->', models)
-  console.log('currentModel', currentModel)
-  console.log('selectedModel', selectedModel)
-  console.log('formValues', formValues)
-  console.log('selectedMode___', selectedMode)
 
   return (
     <div className="flex max-h-[calc(100vh-6rem)] w-[320px] flex-col overflow-y-auto border-r border-slate-800 bg-slate-800/50">

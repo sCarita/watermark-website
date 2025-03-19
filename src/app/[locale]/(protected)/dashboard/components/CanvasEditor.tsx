@@ -28,7 +28,6 @@ export const CanvasEditor = React.forwardRef<
   } | null>(null)
 
   const checkForDrawing = () => {
-    console.log('checkForDrawing', canvasRef.current)
     if (!canvasRef.current) return
 
     const canvas = canvasRef.current.canvas.drawing
@@ -101,8 +100,6 @@ export const CanvasEditor = React.forwardRef<
 
     const dataUrl = originalCanvas.toDataURL('image/png')
     const maskBase64 = dataUrl ? dataUrl.split(',')[1] : undefined
-
-    console.log('maskBase64', maskBase64)
 
     onDrawingChange(maskBase64)
 

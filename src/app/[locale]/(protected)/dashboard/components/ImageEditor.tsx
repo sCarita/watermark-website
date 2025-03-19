@@ -7,7 +7,7 @@ import { Undo, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react'
 import demmoImage1 from '@/images/watermark-example-1.png'
 import demmoImage2 from '@/images/watermark-example-2.png'
 import FileDropUpload from '@/components/FileDropUpload'
-import { useModels } from '@/contexts/ModelContext'
+import { useImageEditor } from '@/contexts/ImageEditorContext'
 import { CanvasEditor } from './CanvasEditor'
 import { toast } from 'sonner'
 import { ProcessedImageResult } from '@/components/ProcessedImageResult'
@@ -23,7 +23,7 @@ export function ImageEditor() {
     error,
     submitModelValues,
     setProcessedImage,
-  } = useModels()
+  } = useImageEditor()
 
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [zoomLevel, setZoomLevel] = useState(100)

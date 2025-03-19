@@ -1,63 +1,58 @@
 'use client'
 
 import { createContext, useContext, useState, useEffect } from 'react'
-import {
-  collection,
-  doc,
-  DocumentReference,
-  getDocs,
-  limit,
-  onSnapshot,
-  orderBy,
-  query,
-  where,
-} from 'firebase/firestore'
+import { collection, getDocs, limit, query, where } from 'firebase/firestore'
 import {
   db,
   processautomaskwatermark,
   processmanualmaskwatermark,
 } from '@/lib/firebase/client'
-import { Model, RunHistoryDoc } from '@/types/firebase'
+import { Model } from '@/types/firebase'
 
-interface ModelContextType {
+interface ImageEditorContextType {
   models: Record<string, Model>
   loading: boolean
   error: Error | null
+  isSubmitting: boolean
+  selectedMode: 'auto' | 'manual' | 'boosted'
+  selectedModel: 'watermark' | 'text' | 'background'
+  brushSize: number
+  processedImage: string | null
+  setBrushSize: (size: number) => void
+  setSelectedModel: (model: 'watermark' | 'text' | 'background') => void
+  setSelectedMode: (mode: 'auto' | 'manual' | 'boosted') => void
+  setProcessedImage: (image: string | null) => void
   setError: (error: Error | null) => void
   submitModelValues: (params: {
     version: string
     imageBase64: string
     maskBase64?: string
   }) => Promise<any>
-  isSubmitting: boolean
-  selectedMode: 'auto' | 'manual' | 'boosted'
-  setSelectedMode: (mode: 'auto' | 'manual' | 'boosted') => void
-  selectedModel: 'watermark' | 'text' | 'background'
-  setSelectedModel: (model: 'watermark' | 'text' | 'background') => void
-  brushSize: number
-  setBrushSize: (size: number) => void
-  processedImage: string | null
-  setProcessedImage: (image: string | null) => void
 }
 
-const ModelContext = createContext<ModelContextType>({
+const ImageEditorContext = createContext<ImageEditorContextType>({
   models: {},
   loading: true,
   error: null,
-  setError: () => {},
-  submitModelValues: async () => {},
+
   isSubmitting: false,
   selectedMode: 'auto',
-  setSelectedMode: () => {},
   selectedModel: 'watermark',
-  setSelectedModel: () => {},
   brushSize: 10,
-  setBrushSize: () => {},
   processedImage: null,
+  setError: () => {},
+  setSelectedMode: () => {},
+  setSelectedModel: () => {},
+  setBrushSize: () => {},
+  submitModelValues: async () => {},
   setProcessedImage: () => {},
 })
 
-export function ModelProvider({ children }: { children: React.ReactNode }) {
+export function ImageEditorProvider({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   const [models, setModels] = useState<Record<string, Model>>({})
 
   const [loading, setLoading] = useState(true)
@@ -96,9 +91,8 @@ export function ModelProvider({ children }: { children: React.ReactNode }) {
               id: snapshot.docs[0].id,
             } as Model,
           })
-          console.log('data', data)
         } else {
-          console.log('No models found with version 1.1')
+          console.warn('No models found with version 1.1')
         }
       } catch (err) {
         console.error('Error fetching model:', err)
@@ -111,10 +105,6 @@ export function ModelProvider({ children }: { children: React.ReactNode }) {
     fetchModel()
   }, [])
 
-  useEffect(() => {
-    console.log('models', models)
-  }, [models])
-
   const submitModelValues = async ({
     version,
     imageBase64,
@@ -124,10 +114,6 @@ export function ModelProvider({ children }: { children: React.ReactNode }) {
     imageBase64: string
     maskBase64?: string
   }) => {
-    console.log('selectedMode', selectedMode)
-    console.log('imageBase64', imageBase64)
-    console.log('maskBase64', maskBase64)
-    console.log('version', version)
     try {
       setIsSubmitting(true)
       setProcessedImage(null)
@@ -167,27 +153,27 @@ export function ModelProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <ModelContext.Provider
+    <ImageEditorContext.Provider
       value={{
         models,
         loading,
         error,
-        setError,
-        submitModelValues,
         isSubmitting,
         selectedMode,
-        setSelectedMode,
         selectedModel,
-        setSelectedModel,
         brushSize,
-        setBrushSize,
         processedImage,
+        setError,
+        setBrushSize,
+        setSelectedMode,
+        setSelectedModel,
+        submitModelValues,
         setProcessedImage,
       }}
     >
       {children}
-    </ModelContext.Provider>
+    </ImageEditorContext.Provider>
   )
 }
 
-export const useModels = () => useContext(ModelContext)
+export const useImageEditor = () => useContext(ImageEditorContext)

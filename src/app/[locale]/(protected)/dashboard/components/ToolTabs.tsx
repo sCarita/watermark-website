@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { HistoryPanel } from './HistoryPanel'
 import { ToolSidebar } from './ToolSidebar'
 import { ImageEditor } from './ImageEditor'
-import { useModels } from '@/contexts/ModelContext'
+import { useImageEditor } from '@/contexts/ImageEditorContext'
 import { Badge } from '@/components/ui/badge'
 
 interface ToolTabsProps {
@@ -13,7 +13,7 @@ interface ToolTabsProps {
 }
 
 const ToolTabs = ({ defaultTab = 'watermark', onTabChange }: ToolTabsProps) => {
-  const { selectedModel, setSelectedModel, isSubmitting } = useModels()
+  const { selectedModel, setSelectedModel, isSubmitting } = useImageEditor()
 
   return (
     <Tabs
