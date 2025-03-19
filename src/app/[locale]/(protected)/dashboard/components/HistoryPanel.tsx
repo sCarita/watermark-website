@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Clock, Download, Trash2 } from 'lucide-react'
@@ -34,6 +34,7 @@ export function HistoryPanel() {
 
   const [historyItems, setHistoryItems] = useState<RunHistoryDoc[]>([])
   const [itemToDelete, setItemToDelete] = useState<string | null>(null)
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false)
 
   const downloadImage = async (imageUrl: string) => {
     try {
@@ -88,6 +89,7 @@ export function HistoryPanel() {
 
   const handleDeleteClick = (id: string) => {
     setItemToDelete(id)
+    setIsDeleteDialogOpen(true)
   }
 
   const deleteHistoryItem = async (id: string) => {
@@ -150,44 +152,14 @@ export function HistoryPanel() {
                           >
                             <Download className="h-3.5 w-3.5" />
                           </Button>
-                          <AlertDialog>
-                            <AlertDialogTrigger asChild>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                className="h-7 w-7 hover:bg-slate-700"
-                                onClick={() => handleDeleteClick(item.id)}
-                              >
-                                <Trash2 className="h-3.5 w-3.5" />
-                              </Button>
-                            </AlertDialogTrigger>
-                            <AlertDialogContent>
-                              <AlertDialogHeader>
-                                <AlertDialogTitle>
-                                  Confirm Deletion
-                                </AlertDialogTitle>
-                                <AlertDialogDescription>
-                                  Are you sure you want to delete this image?
-                                  This action cannot be undone.
-                                </AlertDialogDescription>
-                              </AlertDialogHeader>
-                              <AlertDialogFooter>
-                                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                <AlertDialogAction asChild>
-                                  <Button
-                                    variant="destructive"
-                                    onClick={() =>
-                                      itemToDelete &&
-                                      deleteHistoryItem(itemToDelete)
-                                    }
-                                    className="bg-red-700 hover:bg-red-800"
-                                  >
-                                    Delete
-                                  </Button>
-                                </AlertDialogAction>
-                              </AlertDialogFooter>
-                            </AlertDialogContent>
-                          </AlertDialog>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-7 w-7 hover:bg-slate-700"
+                            onClick={() => handleDeleteClick(item.id)}
+                          >
+                            <Trash2 className="h-3.5 w-3.5" />
+                          </Button>
                         </div>
                       </div>
                     </div>
@@ -201,6 +173,30 @@ export function HistoryPanel() {
           )}
         </div>
       </div>
+
+      <AlertDialog
+        open={isDeleteDialogOpen}
+        onOpenChange={setIsDeleteDialogOpen}
+      >
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Confirm Deletion</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to delete this image? This action cannot be
+              undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              variant="destructive"
+              onClick={() => itemToDelete && deleteHistoryItem(itemToDelete)}
+            >
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </>
   )
 }
