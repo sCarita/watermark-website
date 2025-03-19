@@ -173,31 +173,38 @@ export function ToolSidebar() {
             className="grid grid-cols-3 gap-2"
             disabled={isSubmitting}
           >
-            {Object.keys(currentModel?.inputFields).map((key, index) => {
-              const modeOption =
-                currentModel.inputFields[
-                  key as keyof typeof currentModel.inputFields
-                ]
-
-              if (!modeOption) return null
-
-              return (
-                <label
-                  key={index}
-                  htmlFor={key}
-                  className="flex cursor-pointer items-center space-x-1 rounded-md border border-slate-700 bg-slate-800 p-2"
-                >
-                  <RadioGroupItem
-                    value={key}
-                    id={key}
-                    className="text-blue-500"
-                  />
-                  <Label htmlFor={key} className="cursor-pointer capitalize">
-                    {t(modeOption.label)}
-                  </Label>
-                </label>
+            {['auto', 'manual', 'boosted']
+              .filter(
+                (key) =>
+                  currentModel?.inputFields[
+                    key as keyof typeof currentModel.inputFields
+                  ],
               )
-            })}
+              .map((key) => {
+                const modeOption =
+                  currentModel.inputFields[
+                    key as keyof typeof currentModel.inputFields
+                  ]
+
+                if (!modeOption) return null
+
+                return (
+                  <label
+                    key={key}
+                    htmlFor={key}
+                    className="flex cursor-pointer items-center space-x-1 rounded-md border border-slate-700 bg-slate-800 p-2"
+                  >
+                    <RadioGroupItem
+                      value={key}
+                      id={key}
+                      className="text-blue-500"
+                    />
+                    <Label htmlFor={key} className="cursor-pointer capitalize">
+                      {t(modeOption.label)}
+                    </Label>
+                  </label>
+                )
+              })}
           </RadioGroup>
         </div>
 
