@@ -17,6 +17,7 @@ import { useModels } from '@/contexts/ModelContext'
 import { Loader } from 'lucide-react'
 import { InputField, InputFields } from '@/types/firebase'
 import { useTranslations } from 'next-intl'
+import { toast } from 'sonner'
 
 export function ToolSidebar() {
   const t = useTranslations()
@@ -27,6 +28,7 @@ export function ToolSidebar() {
     isSubmitting,
     selectedMode,
     selectedModel,
+    setError,
     setSelectedMode,
     setBrushSize,
   } = useModels()
@@ -52,21 +54,40 @@ export function ToolSidebar() {
     setBrushSize(formValues['brushSize'])
   }, [formValues['brushSize']])
 
+  useEffect(() => {
+    const toastId = 'watermarkSubmitError'
+    if (error) {
+      const errorMessage =
+        error.message && error.message !== 'INTERNAL'
+          ? error.message
+          : 'Something went wrong'
+
+      toast.error(errorMessage, {
+        id: toastId,
+      })
+    }
+
+    return () => {
+      toast.dismiss(toastId)
+      setError(null)
+    }
+  }, [error])
+
   if (loading) {
     return (
-      <div className="flex h-full w-full items-center justify-center">
+      <div className="flex h-full w-[320px] items-center justify-center">
         <Loader className="h-4 w-4 animate-spin" />
       </div>
     )
   }
 
-  if (error) {
-    return <div className="p-4 text-red-500">Error loading models</div>
-  }
-
   const currentModel = models[selectedModel]
   if (!currentModel) {
-    return <div className="p-4">No model configuration found</div>
+    return (
+      <div className="flex h-full w-[320px] items-center justify-center">
+        <div>No model configuration found</div>
+      </div>
+    )
   }
 
   const handleInputChange = (name: string, value: any) => {
