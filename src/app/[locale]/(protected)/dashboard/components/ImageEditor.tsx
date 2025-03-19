@@ -14,6 +14,7 @@ import { ProcessedImageResult } from '@/components/ProcessedImageResult'
 
 export function ImageEditor() {
   const {
+    models,
     selectedModel,
     selectedMode,
     brushSize,
@@ -92,7 +93,7 @@ export function ImageEditor() {
     }
 
     submitModelValues({
-      version: '1.0',
+      version: models[selectedModel].version,
       imageBase64,
       maskBase64: maskBase64 || undefined,
     })
