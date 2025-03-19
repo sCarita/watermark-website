@@ -639,5 +639,30 @@
     "manual": "Manual",
     "boosted": "Mejorado",
     "brushSize": "Tamaño del pincel"
+  },
+  "dashboard": {
+    "profile": {
+      "title": "Perfil de Usuario",
+      "changeAvatar": "Cambiar Avatar",
+      "personalInfo": "Información Personal",
+      "fullName": "Nombre Completo",
+      "email": "Correo Electrónico",
+      "saveChanges": "Guardar Cambios"
+    },
+    "settings": {
+      "title": "Configuración de la Cuenta",
+      "preferences": "Preferencias",
+      "language": "Idioma",
+      "languageDescription": "Selecciona tu idioma preferido",
+      "notifications": "Notificaciones",
+      "notificationsDescription": "Recibir notificaciones por correo electrónico",
+      "security": "Seguridad",
+      "changePassword": "Cambiar Contraseña",
+      "twoFactor": "Autenticación de Dos Factores",
+      "twoFactorDescription": "Añade una capa adicional de seguridad",
+      "dangerZone": "Zona de Peligro",
+      "deleteAccount": "Eliminar Cuenta",
+      "deleteWarning": "Esta acción no se puede deshacer. Todos tus datos se eliminarán permanentemente."
+    }
   }
 }

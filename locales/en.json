@@ -664,5 +664,30 @@
     "manual": "Manual",
     "boosted": "Boosted",
     "brushSize": "Brush size"
+  },
+  "dashboard": {
+    "profile": {
+      "title": "User Profile",
+      "changeAvatar": "Change Avatar",
+      "personalInfo": "Personal Information",
+      "fullName": "Full Name",
+      "email": "Email",
+      "saveChanges": "Save Changes"
+    },
+    "settings": {
+      "title": "Account Settings",
+      "preferences": "Preferences",
+      "language": "Language",
+      "languageDescription": "Select your preferred language",
+      "notifications": "Notifications",
+      "notificationsDescription": "Receive email notifications",
+      "security": "Security",
+      "changePassword": "Change Password",
+      "twoFactor": "Two-Factor Authentication",
+      "twoFactorDescription": "Add an extra layer of security",
+      "dangerZone": "Danger Zone",
+      "deleteAccount": "Delete Account",
+      "deleteWarning": "This action cannot be undone. All your data will be permanently deleted."
+    }
   }
 }

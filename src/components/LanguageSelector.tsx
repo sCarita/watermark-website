@@ -10,6 +10,7 @@ import { localeCookieName } from '../../i18n.config'
 
 interface LanguageSelectorProps {
   variant?: 'light' | 'dark'
+  size?: 'sm' | 'md'
   direction?: 'top end' | 'top start' | 'bottom end' | 'bottom start'
 }
 
@@ -122,6 +123,7 @@ const FranceFlag = () => (
 
 export function LanguageSelector({
   variant = 'light',
+  size = 'md',
   direction,
 }: LanguageSelectorProps) {
   const t = useTranslations('common')
@@ -162,10 +164,11 @@ export function LanguageSelector({
     <Menu as="div" className="relative inline-block text-left">
       <MenuButton
         className={clsx(
-          'inline-flex w-full items-center justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset',
+          'inline-flex w-full cursor-pointer items-center justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold shadow-sm ring-1 ring-inset',
           variant === 'light'
             ? 'bg-white text-gray-900 ring-gray-300 hover:bg-gray-50'
             : 'bg-slate-800 text-white ring-slate-700 hover:bg-slate-700',
+          size === 'sm' && 'px-2 py-1 text-xs',
         )}
       >
         <currentLanguage.flag />
@@ -174,6 +177,7 @@ export function LanguageSelector({
           className={clsx(
             '-mr-1 h-5 w-5',
             variant === 'light' ? 'text-gray-400' : 'text-slate-400',
+            size === 'sm' && '-mr-0.5 !h-4 !w-4',
           )}
           aria-hidden="true"
         />

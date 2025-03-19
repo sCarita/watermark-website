@@ -664,5 +664,30 @@
     "manual": "Manuel",
     "boosted": "Boosté",
     "brushSize": "Taille du pinceau"
+  },
+  "dashboard": {
+    "profile": {
+      "title": "Profil Utilisateur",
+      "changeAvatar": "Changer d'Avatar",
+      "personalInfo": "Informations Personnelles",
+      "fullName": "Nom Complet",
+      "email": "E-mail",
+      "saveChanges": "Enregistrer les Modifications"
+    },
+    "settings": {
+      "title": "Paramètres du Compte",
+      "preferences": "Préférences",
+      "language": "Langue",
+      "languageDescription": "Sélectionnez votre langue préférée",
+      "notifications": "Notifications",
+      "notificationsDescription": "Recevoir des notifications par e-mail",
+      "security": "Sécurité",
+      "changePassword": "Changer le Mot de Passe",
+      "twoFactor": "Authentification à Deux Facteurs",
+      "twoFactorDescription": "Ajoutez une couche de sécurité supplémentaire",
+      "dangerZone": "Zone Dangereuse",
+      "deleteAccount": "Supprimer le Compte",
+      "deleteWarning": "Cette action ne peut pas être annulée. Toutes vos données seront définitivement supprimées."
+    }
   }
 }
