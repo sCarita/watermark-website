@@ -1,6 +1,10 @@
 import React from 'react'
 
-export function Logo(props: React.ComponentPropsWithoutRef<'svg'>) {
+type LogoProps = React.ComponentPropsWithoutRef<'svg'> & {
+  light?: boolean
+}
+
+export function Logo({ light, ...props }: LogoProps) {
   return (
     <div className="inline-flex items-center">
       <svg
@@ -17,7 +21,7 @@ export function Logo(props: React.ComponentPropsWithoutRef<'svg'>) {
         />
       </svg>
       <div className="ml-1.5 text-xl font-bold">
-        <span className="text-slate-900">clear.</span>
+        <span className={light ? 'text-white' : 'text-slate-900'}>clear.</span>
         <span className="text-blue-600">photo</span>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import { Link } from '@/i18n/navigation'
 import { UserDropdown } from './UserDropdown'
+import { Logo } from '@/components/Logo'
 
 export function TopNavbar() {
   return (
@@ -7,7 +8,7 @@ export function TopNavbar() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           <Link href="/dashboard" className="text-xl font-semibold">
-            Image Editor
+            <Logo className="h-5 w-auto" light />
           </Link>
         </div>
 
