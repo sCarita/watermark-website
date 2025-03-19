@@ -7,6 +7,9 @@ import {
   signInWithPopup,
   signOut as signOutFirebase,
   updateProfile,
+  updatePassword,
+  EmailAuthProvider,
+  reauthenticateWithCredential,
 } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
 
@@ -85,12 +88,58 @@ export function useAuthOperations() {
     }
   }
 
+  const changePassword = async (
+    currentPassword: string,
+    newPassword: string,
+  ) => {
+    try {
+      setError(null)
+      setLoading(true)
+
+      const user = auth.currentUser
+      if (!user || !user.email) {
+        throw new Error('No authenticated user found')
+      }
+
+      // Create credential with current password
+      const credential = EmailAuthProvider.credential(
+        user.email,
+        currentPassword,
+      )
+
+      // Reauthenticate user before changing password
+      await reauthenticateWithCredential(user, credential)
+
+      // Update password
+      await updatePassword(user, newPassword)
+
+      return { success: true }
+    } catch (err: any) {
+      // Handle specific Firebase auth errors
+      if (err.code === 'auth/wrong-password') {
+        setError('Current password is incorrect')
+      } else if (err.code === 'auth/weak-password') {
+        setError('New password is too weak')
+      } else if (err.code === 'auth/requires-recent-login') {
+        setError(
+          'This operation requires recent authentication. Please log in again.',
+        )
+      } else {
+        setError(err.message)
+      }
+      return { success: false, error: err.code }
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return {
     signIn,
     signUp,
     signInWithGoogle,
     signOut,
     updateUser,
+    changePassword,
     setError,
     error,
     loading,

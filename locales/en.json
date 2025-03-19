@@ -687,7 +687,17 @@
       "twoFactorDescription": "Add an extra layer of security",
       "dangerZone": "Danger Zone",
       "deleteAccount": "Delete Account",
-      "deleteWarning": "This action cannot be undone. All your data will be permanently deleted."
+      "deleteWarning": "This action cannot be undone. All your data will be permanently deleted.",
+      "changePasswordDescription": "Update your password to keep your account secure",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "passwordsDoNotMatch": "Passwords do not match",
+      "passwordUpdated": "Password successfully updated",
+      "incorrectPassword": "Current password is incorrect",
+      "cancel": "Cancel",
+      "updating": "Updating...",
+      "update": "Update"
     },
     "toolSidebar": {
       "mode": "Mode",

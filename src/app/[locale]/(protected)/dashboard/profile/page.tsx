@@ -41,8 +41,6 @@ export default function ProfilePage() {
     }
   }
 
-  console.log(user)
-
   return (
     <div className="container mx-auto py-8">
       <div className="rounded-lg bg-slate-900 p-6">

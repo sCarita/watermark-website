@@ -687,7 +687,17 @@
       "twoFactorDescription": "Ajoutez une couche de sécurité supplémentaire",
       "dangerZone": "Zone Dangereuse",
       "deleteAccount": "Supprimer le Compte",
-      "deleteWarning": "Cette action ne peut pas être annulée. Toutes vos données seront définitivement supprimées."
+      "deleteWarning": "Cette action ne peut pas être annulée. Toutes vos données seront définitivement supprimées.",
+      "changePasswordDescription": "Mettez à jour votre mot de passe pour sécuriser votre compte",
+      "currentPassword": "Mot de passe actuel",
+      "newPassword": "Nouveau mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "passwordsDoNotMatch": "Les mots de passe ne correspondent pas",
+      "passwordUpdated": "Mot de passe mis à jour avec succès",
+      "incorrectPassword": "Le mot de passe actuel est incorrect",
+      "cancel": "Annuler",
+      "updating": "Mise à jour...",
+      "update": "Mettre à jour"
     },
     "toolSidebar": {
       "mode": "Mode",
