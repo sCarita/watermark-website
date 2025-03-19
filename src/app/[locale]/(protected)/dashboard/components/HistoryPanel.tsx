@@ -162,7 +162,7 @@ export function HistoryPanel() {
                             {item.inputData.mode}
                           </p>
                           <p className="text-xs text-slate-400">
-                            {item.timestamp}
+                            {new Date(item.timestamp).toLocaleString()}
                           </p>
                         </div>
                         <div className="flex gap-1">
