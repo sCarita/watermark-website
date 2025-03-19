@@ -688,6 +688,13 @@
       "dangerZone": "Zone Dangereuse",
       "deleteAccount": "Supprimer le Compte",
       "deleteWarning": "Cette action ne peut pas être annulée. Toutes vos données seront définitivement supprimées."
+    },
+    "toolSidebar": {
+      "mode": "Mode",
+      "autoModeDescription": "En mode automatique, le modèle supprimera automatiquement le filigrane de l'image.",
+      "manualModeDescription": "En mode manuel, vous pouvez dessiner un masque sur l'image.",
+      "autoModeHint": "Vous n'avez qu'à télécharger l'image et le modèle fera le reste.",
+      "manualModeHint": "Cela sera utilisé pour masquer l'image avant que le filigrane ne soit supprimé."
     }
   }
 }

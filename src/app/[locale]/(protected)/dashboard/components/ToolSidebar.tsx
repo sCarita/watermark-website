@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/select'
 import { useImageEditor } from '@/contexts/ImageEditorContext'
 import { Loader2 } from 'lucide-react'
-import { InputField, InputFields } from '@/types/firebase'
+import { InputField } from '@/types/firebase'
 import { useTranslations } from 'next-intl'
 import { toast } from 'sonner'
 
@@ -176,9 +176,11 @@ export function ToolSidebar() {
 
   return (
     <div className="flex max-h-[calc(100vh-6rem)] w-[320px] flex-col overflow-y-auto border-r border-slate-800 bg-slate-800/50">
-      <div className="space-y-6 p-4">
+      <div className="space-y-4 p-4">
         <div className="space-y-4">
-          <h3 className="text-sm font-medium">Mode</h3>
+          <h3 className="text-sm font-medium">
+            {t('dashboard.toolSidebar.mode')}
+          </h3>
           <RadioGroup
             value={selectedMode}
             onValueChange={(value: 'auto' | 'manual' | 'boosted') =>
@@ -220,6 +222,23 @@ export function ToolSidebar() {
                 )
               })}
           </RadioGroup>
+        </div>
+
+        <div>
+          <>
+            <h4 className="mb-1 text-sm font-medium">
+              {selectedMode === 'auto' &&
+                t('dashboard.toolSidebar.autoModeDescription')}
+              {selectedMode === 'manual' &&
+                t('dashboard.toolSidebar.manualModeDescription')}
+            </h4>
+            <p className="text-xs text-slate-400">
+              {selectedMode === 'auto' &&
+                t('dashboard.toolSidebar.autoModeHint')}
+              {selectedMode === 'manual' &&
+                t('dashboard.toolSidebar.manualModeHint')}
+            </p>
+          </>
         </div>
 
         {/* Input Fields */}

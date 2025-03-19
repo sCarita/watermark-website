@@ -688,6 +688,13 @@
       "dangerZone": "Danger Zone",
       "deleteAccount": "Delete Account",
       "deleteWarning": "This action cannot be undone. All your data will be permanently deleted."
+    },
+    "toolSidebar": {
+      "mode": "Mode",
+      "autoModeDescription": "In auto mode, the model will automatically remove the watermark from the image.",
+      "manualModeDescription": "In manual mode, you can draw a mask on the image.",
+      "autoModeHint": "You just need to upload the image and the model will do the rest.",
+      "manualModeHint": "This will be used to mask the image before the watermark is removed."
     }
   }
 }

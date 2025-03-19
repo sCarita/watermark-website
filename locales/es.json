@@ -663,6 +663,13 @@
       "dangerZone": "Zona de Peligro",
       "deleteAccount": "Eliminar Cuenta",
       "deleteWarning": "Esta acción no se puede deshacer. Todos tus datos se eliminarán permanentemente."
+    },
+    "toolSidebar": {
+      "mode": "Modo",
+      "autoModeDescription": "En modo automático, el modelo eliminará automáticamente la marca de agua de la imagen.",
+      "manualModeDescription": "En modo manual, puedes dibujar una máscara sobre la imagen.",
+      "autoModeHint": "Solo necesitas subir la imagen y el modelo hará el resto.",
+      "manualModeHint": "Esto se utilizará para enmascarar la imagen antes de eliminar la marca de agua."
     }
   }
 }
