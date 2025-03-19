@@ -14,7 +14,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { useModels } from '@/contexts/ModelContext'
-import { Loader } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
 import { InputField, InputFields } from '@/types/firebase'
 import { useTranslations } from 'next-intl'
 import { toast } from 'sonner'
@@ -76,7 +76,7 @@ export function ToolSidebar() {
   if (loading) {
     return (
       <div className="flex h-full w-[320px] items-center justify-center">
-        <Loader className="h-4 w-4 animate-spin" />
+        <Loader2 className="h-4 w-4 animate-spin" />
       </div>
     )
   }
