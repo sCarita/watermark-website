@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { Clock, Download, Trash2 } from 'lucide-react'
+import { Clock, Download, Loader2, Trash2 } from 'lucide-react'
 import {
   collection,
   query,
@@ -35,15 +35,33 @@ export function HistoryPanel() {
   const [historyItems, setHistoryItems] = useState<RunHistoryDoc[]>([])
   const [itemToDelete, setItemToDelete] = useState<string | null>(null)
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false)
+  const [isDownloading, setIsDownloading] = useState<string | null>(null)
 
   const downloadImage = async (imageUrl: string) => {
     try {
-      const response = await fetch(imageUrl)
+      setIsDownloading(imageUrl)
+      // Instead of fetching directly, use a proxy API route
+      const response = await fetch('/api/proxy-image', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ imageUrl }),
+      })
+
+      if (!response.ok) {
+        throw new Error(`Failed to download: ${response.status}`)
+      }
+
       const blob = await response.blob()
       const url = window.URL.createObjectURL(blob)
+
+      // Extract a better filename from the original URL
+      const filename = 'image.png'
+
       const link = document.createElement('a')
       link.href = url
-      link.download = 'processed-image.png'
+      link.download = filename
       document.body.appendChild(link)
       link.click()
       document.body.removeChild(link)
@@ -51,6 +69,8 @@ export function HistoryPanel() {
     } catch (error) {
       console.error('Download error:', error)
       toast.error('Download failed')
+    } finally {
+      setIsDownloading(null)
     }
   }
 
@@ -129,6 +149,12 @@ export function HistoryPanel() {
                           unoptimized={true}
                           className="object-cover"
                         />
+                        {isDownloading ===
+                          item.outputData?.inpaintedImageUrl && (
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <Loader2 className="h-5 w-5 animate-spin" />
+                          </div>
+                        )}
                       </div>
                       <div className="flex items-start justify-between">
                         <div>
@@ -149,6 +175,10 @@ export function HistoryPanel() {
                                 item.outputData?.inpaintedImageUrl || '',
                               )
                             }
+                            disabled={
+                              isDownloading ===
+                              item.outputData?.inpaintedImageUrl
+                            }
                           >
                             <Download className="h-3.5 w-3.5" />
                           </Button>
@@ -157,6 +187,10 @@ export function HistoryPanel() {
                             size="icon"
                             className="h-7 w-7 hover:bg-slate-700"
                             onClick={() => handleDeleteClick(item.id)}
+                            disabled={
+                              isDownloading ===
+                              item.outputData?.inpaintedImageUrl
+                            }
                           >
                             <Trash2 className="h-3.5 w-3.5" />
                           </Button>
