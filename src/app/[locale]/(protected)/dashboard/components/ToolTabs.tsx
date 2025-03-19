@@ -5,6 +5,7 @@ import { HistoryPanel } from './HistoryPanel'
 import { ToolSidebar } from './ToolSidebar'
 import { ImageEditor } from './ImageEditor'
 import { useModels } from '@/contexts/ModelContext'
+import { Badge } from '@/components/ui/badge'
 
 interface ToolTabsProps {
   defaultTab?: 'watermark' | 'text' | 'background'
@@ -35,17 +36,29 @@ const ToolTabs = ({ defaultTab = 'watermark', onTabChange }: ToolTabsProps) => {
             </TabsTrigger>
             <TabsTrigger
               value="text"
-              className="rounded-none !bg-transparent px-6 py-1.5 data-[state=active]:border-b-2 data-[state=active]:border-blue-500"
-              disabled={isSubmitting}
+              className="relative rounded-none !bg-transparent px-6 py-1.5 data-[state=active]:border-b-2 data-[state=active]:border-blue-500"
+              disabled
             >
               Text Removal
+              <Badge
+                variant="secondary"
+                className="absolute -top-1.5 -right-2 px-1 text-[10px] leading-none"
+              >
+                Coming Soon
+              </Badge>
             </TabsTrigger>
             <TabsTrigger
               value="background"
-              className="rounded-none !bg-transparent px-6 py-1.5 data-[state=active]:border-b-2 data-[state=active]:border-blue-500"
-              disabled={isSubmitting}
+              className="relative rounded-none !bg-transparent px-6 py-1.5 data-[state=active]:border-b-2 data-[state=active]:border-blue-500"
+              disabled
             >
               Background Removal
+              <Badge
+                variant="secondary"
+                className="absolute -top-1.5 -right-2 px-1 text-[10px] leading-none"
+              >
+                Coming Soon
+              </Badge>
             </TabsTrigger>
           </TabsList>
         </div>
