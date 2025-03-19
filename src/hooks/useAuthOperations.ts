@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { auth } from '@/lib/firebase/client'
+import { auth, updateUserProfile } from '@/lib/firebase/client'
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
   signOut as signOutFirebase,
+  updateProfile,
 } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
 
@@ -67,11 +68,30 @@ export function useAuthOperations() {
     }
   }
 
+  const updateUser = async (displayName: string) => {
+    try {
+      setError(null)
+      setLoading(true)
+      if (auth.currentUser) {
+        await updateProfile(auth.currentUser, { displayName })
+        await updateUserProfile({ displayName })
+      } else {
+        throw new Error('No user is signed in')
+      }
+    } catch (err: any) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return {
     signIn,
     signUp,
     signInWithGoogle,
     signOut,
+    updateUser,
+    setError,
     error,
     loading,
   }

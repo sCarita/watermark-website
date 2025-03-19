@@ -76,3 +76,11 @@ export type WatermarkProcessOutput = {
   success: boolean
   inpaintedImageUrl?: string
 }
+
+export type UpdateUserProfileInput = {
+  displayName: string
+}
+
+export type UpdateUserProfileOutput = {
+  success: boolean
+}

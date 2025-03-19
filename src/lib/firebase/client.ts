@@ -6,6 +6,8 @@ import {
   ManualMaskWatermarkInput,
   AutoMaskWatermarkInput,
   WatermarkProcessOutput,
+  UpdateUserProfileOutput,
+  UpdateUserProfileInput,
 } from '@/types/firebase'
 
 const firebaseConfig = {
@@ -43,6 +45,11 @@ const publicprocessautomaskwatermark = httpsCallable<
   WatermarkProcessOutput
 >(functions, 'PublicProcessAutoMaskWatermark')
 
+const updateUserProfile = httpsCallable<
+  UpdateUserProfileInput,
+  UpdateUserProfileOutput
+>(functions, 'updateUserProfile')
+
 export {
   app,
   auth,
@@ -51,4 +58,5 @@ export {
   processautomaskwatermark,
   publicprocessmanualmaskwatermark,
   publicprocessautomaskwatermark,
+  updateUserProfile,
 }
