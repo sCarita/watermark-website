@@ -105,7 +105,7 @@ export function HistoryPanel() {
 
   return (
     <>
-      <div className="flex w-[280px] flex-col border-l border-slate-800 bg-slate-800/30">
+      <div className="flex w-[200px] flex-col border-l border-slate-800 bg-slate-800/30 xl:w-[280px]">
         <div className="flex items-center border-b border-slate-800 p-4">
           <Clock className="mr-2 h-4 w-4 text-slate-400" />
           <h3 className="font-medium">Recent Images</h3>

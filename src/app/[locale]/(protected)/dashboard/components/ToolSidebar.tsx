@@ -75,7 +75,7 @@ export function ToolSidebar() {
 
   if (loading) {
     return (
-      <div className="flex h-full w-[320px] items-center justify-center">
+      <div className="flex h-full w-[250px] items-center justify-center xl:w-[320px]">
         <Loader2 className="h-4 w-4 animate-spin" />
       </div>
     )
@@ -84,7 +84,7 @@ export function ToolSidebar() {
   const currentModel = models[selectedModel]
   if (!currentModel) {
     return (
-      <div className="flex h-full w-[320px] items-center justify-center">
+      <div className="flex h-full w-[250px] items-center justify-center xl:w-[320px]">
         <div>No model configuration found</div>
       </div>
     )
@@ -175,7 +175,7 @@ export function ToolSidebar() {
   }
 
   return (
-    <div className="flex max-h-[calc(100vh-6rem)] w-[320px] flex-col overflow-y-auto border-r border-slate-800 bg-slate-800/50">
+    <div className="flex max-h-[calc(100vh-6rem)] w-[250px] flex-col overflow-y-auto border-r border-slate-800 bg-slate-800/50 xl:w-[320px]">
       <div className="space-y-4 p-4">
         <div className="space-y-4">
           <h3 className="text-sm font-medium">
@@ -186,7 +186,7 @@ export function ToolSidebar() {
             onValueChange={(value: 'auto' | 'manual' | 'boosted') =>
               setSelectedMode(value)
             }
-            className="grid grid-cols-3 gap-2"
+            className="flex flex-wrap gap-2"
             disabled={isSubmitting}
           >
             {['auto', 'manual', 'boosted']
@@ -208,7 +208,7 @@ export function ToolSidebar() {
                   <label
                     key={key}
                     htmlFor={key}
-                    className="flex cursor-pointer items-center space-x-1 rounded-md border border-slate-700 bg-slate-800 p-2"
+                    className="flex flex-1 cursor-pointer items-center space-x-1 rounded-md border border-slate-700 bg-slate-800 p-2"
                   >
                     <RadioGroupItem
                       value={key}
