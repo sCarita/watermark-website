@@ -28,22 +28,22 @@ const db = getFirestore(app)
 const processmanualmaskwatermark = httpsCallable<
   ManualMaskWatermarkInput,
   WatermarkProcessOutput
->(functions, 'ProcessManualMaskWatermark')
+>(functions, 'processManualMaskWatermark')
 
 const processautomaskwatermark = httpsCallable<
   AutoMaskWatermarkInput,
   WatermarkProcessOutput
->(functions, 'ProcessAutoMaskWatermark')
+>(functions, 'processAutoMaskWatermark')
 
 const publicprocessmanualmaskwatermark = httpsCallable<
   ManualMaskWatermarkInput,
   WatermarkProcessOutput
->(functions, 'PublicProcessManualMaskWatermark')
+>(functions, 'publicProcessManualMaskWatermark')
 
 const publicprocessautomaskwatermark = httpsCallable<
   AutoMaskWatermarkInput,
   WatermarkProcessOutput
->(functions, 'PublicProcessAutoMaskWatermark')
+>(functions, 'publicProcessAutoMaskWatermark')
 
 const updateUserProfile = httpsCallable<
   UpdateUserProfileInput,
