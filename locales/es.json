@@ -527,6 +527,42 @@
       }
     ]
   },
+  "auth": {
+    "login": {
+      "title": "Inicia sesión en clear.photo",
+      "subtitle": "¿No tienes una cuenta? Regístrate para una prueba gratuita y elimina marcas de agua hoy mismo.",
+      "emailLabel": "Dirección de correo electrónico",
+      "passwordLabel": "Contraseña",
+      "submitButton": "Iniciar sesión"
+    },
+    "register": {
+      "title": "Comienza gratis",
+      "subtitle": "¿Ya tienes una cuenta? Inicia sesión en tu cuenta ahora.",
+      "firstNameLabel": "Nombre",
+      "lastNameLabel": "Apellido",
+      "emailLabel": "Dirección de correo electrónico",
+      "passwordLabel": "Contraseña",
+      "referralLabel": "¿Cómo nos conociste?",
+      "referralOptions": [
+        "Google search",
+        "Friend or colleague",
+        "Social media advertisement",
+        "Podcast mention"
+      ],
+      "submitButton": "Regístrate"
+    },
+    "errors": {
+      "invalidCredential": "Correo electrónico o contraseña inválidos. Por favor, inténtalo de nuevo.",
+      "userNotFound": "No se encontró ninguna cuenta con este correo electrónico.",
+      "wrongPassword": "Contraseña incorrecta. Por favor, inténtalo de nuevo.",
+      "emailInUse": "Este correo electrónico ya está en uso.",
+      "weakPassword": "La contraseña es demasiado débil. Por favor, usa una contraseña más fuerte.",
+      "tooManyRequests": "Demasiados intentos fallidos. Por favor, inténtalo más tarde.",
+      "userDisabled": "Esta cuenta ha sido deshabilitada. Por favor, contacta con soporte.",
+      "networkFailed": "Error de red. Por favor, comprueba tu conexión a internet.",
+      "default": "Ha ocurrido un error. Por favor, inténtalo de nuevo."
+    }
+  },
   "watermarkProcessor": {
     "fileAlt": "Archivo",
     "previewAlt": "Vista previa",

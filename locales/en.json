@@ -550,6 +550,17 @@
         "Podcast mention"
       ],
       "submitButton": "Sign up"
+    },
+    "errors": {
+      "invalidCredential": "Invalid email or password. Please try again.",
+      "userNotFound": "No account found with this email address.",
+      "wrongPassword": "Incorrect password. Please try again.",
+      "emailInUse": "This email address is already in use.",
+      "weakPassword": "Password is too weak. Please use a stronger password.",
+      "tooManyRequests": "Too many unsuccessful attempts. Please try again later.",
+      "userDisabled": "This account has been disabled. Please contact support.",
+      "networkFailed": "Network error. Please check your internet connection.",
+      "default": "An error occurred. Please try again."
     }
   },
   "watermarkProcessor": {

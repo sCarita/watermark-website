@@ -13,14 +13,12 @@ import { useAuthOperations } from '@/hooks/useAuthOperations'
 export default function Register() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [referralSource, setReferralSource] = useState('')
+  const [name, setName] = useState('')
   const { signUp, signInWithGoogle, error, loading } = useAuthOperations()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    await signUp(email, password)
+    await signUp(email, password, { name })
   }
 
   return (
@@ -48,22 +46,14 @@ export default function Register() {
         className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2"
       >
         <TextField
-          label="First name"
-          name="first_name"
+          className="col-span-full"
+          label="Name"
+          name="name"
           type="text"
           autoComplete="given-name"
           required
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-        <TextField
-          label="Last name"
-          name="last_name"
-          type="text"
-          autoComplete="family-name"
-          required
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
         <TextField
           className="col-span-full"
@@ -85,19 +75,6 @@ export default function Register() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <SelectField
-          className="col-span-full"
-          label="How did you hear about us?"
-          name="referral_source"
-          value={referralSource}
-          onChange={(e) => setReferralSource(e.target.value)}
-        >
-          <option value="">Select an option</option>
-          <option value="search">Search engine</option>
-          <option value="social">Social media</option>
-          <option value="friend">Friend referral</option>
-          <option value="other">Other</option>
-        </SelectField>
         {error && (
           <div className="col-span-full text-sm text-red-600">{error}</div>
         )}

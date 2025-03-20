@@ -12,11 +12,36 @@ import {
   reauthenticateWithCredential,
 } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 export function useAuthOperations() {
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
   const router = useRouter()
+  const t = useTranslations('auth.errors')
+
+  const getAuthErrorMessage = (errorCode: string) => {
+    switch (errorCode) {
+      case 'auth/invalid-credential':
+        return t('invalidCredential')
+      case 'auth/user-not-found':
+        return t('userNotFound')
+      case 'auth/wrong-password':
+        return t('wrongPassword')
+      case 'auth/email-already-in-use':
+        return t('emailInUse')
+      case 'auth/weak-password':
+        return t('weakPassword')
+      case 'auth/too-many-requests':
+        return t('tooManyRequests')
+      case 'auth/user-disabled':
+        return t('userDisabled')
+      case 'auth/network-request-failed':
+        return t('networkFailed')
+      default:
+        return t('default')
+    }
+  }
 
   const signIn = async (email: string, password: string) => {
     try {
@@ -25,20 +50,36 @@ export function useAuthOperations() {
       await signInWithEmailAndPassword(auth, email, password)
       router.push('/')
     } catch (err: any) {
-      setError(err.message)
+      setError(getAuthErrorMessage(err.code))
     } finally {
       setLoading(false)
     }
   }
 
-  const signUp = async (email: string, password: string) => {
+  const signUp = async (
+    email: string,
+    password: string,
+    userData: { name: string },
+  ) => {
     try {
       setError(null)
       setLoading(true)
-      await createUserWithEmailAndPassword(auth, email, password)
+
+      // Create the user
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      )
+
+      // Update the user's profile
+      await updateProfile(userCredential.user, {
+        displayName: userData.name,
+      })
+
       router.push('/')
     } catch (err: any) {
-      setError(err.message)
+      setError(getAuthErrorMessage(err.code))
     } finally {
       setLoading(false)
     }
@@ -52,7 +93,7 @@ export function useAuthOperations() {
       await signInWithPopup(auth, provider)
       router.push('/')
     } catch (err: any) {
-      setError(err.message)
+      setError(getAuthErrorMessage(err.code))
     } finally {
       setLoading(false)
     }
@@ -65,7 +106,7 @@ export function useAuthOperations() {
       await signOutFirebase(auth)
       router.push('/login')
     } catch (err: any) {
-      setError(err.message)
+      setError(getAuthErrorMessage(err.code))
     } finally {
       setLoading(false)
     }
@@ -82,7 +123,7 @@ export function useAuthOperations() {
         throw new Error('No user is signed in')
       }
     } catch (err: any) {
-      setError(err.message)
+      setError(getAuthErrorMessage(err.code))
     } finally {
       setLoading(false)
     }
@@ -125,7 +166,7 @@ export function useAuthOperations() {
           'This operation requires recent authentication. Please log in again.',
         )
       } else {
-        setError(err.message)
+        setError(getAuthErrorMessage(err.code))
       }
       return { success: false, error: err.code }
     } finally {
@@ -169,7 +210,7 @@ export function useAuthOperations() {
           'This operation requires recent authentication. Please log in again.',
         )
       } else {
-        setError(err.message)
+        setError(getAuthErrorMessage(err.code))
       }
       return { success: false, error: err.code }
     } finally {

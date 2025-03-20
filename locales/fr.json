@@ -550,6 +550,17 @@
         "Podcast"
       ],
       "submitButton": "S'inscrire"
+    },
+    "errors": {
+      "invalidCredential": "Adresse e-mail ou mot de passe invalide. Veuillez réessayer.",
+      "userNotFound": "Aucun compte trouvé avec cette adresse e-mail.",
+      "wrongPassword": "Mot de passe incorrect. Veuillez réessayer.",
+      "emailInUse": "Cette adresse e-mail est déjà utilisée.",
+      "weakPassword": "Le mot de passe est trop faible. Veuillez utiliser un mot de passe plus fort.",
+      "tooManyRequests": "Trop de tentatives de connexion. Veuillez réessayer plus tard.",
+      "userDisabled": "Ce compte a été désactivé. Veuillez contacter le support.",
+      "networkFailed": "Erreur de réseau. Veuillez vérifier votre connexion internet.",
+      "default": "Une erreur est survenue. Veuillez réessayer."
     }
   },
   "watermarkProcessor": {
