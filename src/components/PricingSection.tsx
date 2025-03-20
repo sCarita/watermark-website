@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
 import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 
 // Define package types
 type Package = {
@@ -140,8 +141,8 @@ export default function PricingSection() {
         </div>
 
         <div className="mt-auto border-t border-slate-700 p-6">
-          <Button className="w-full bg-slate-700 hover:bg-slate-600">
-            {t('pricing.plans.freeDaily.button')}
+          <Button className="w-full bg-slate-700 hover:bg-slate-600" asChild>
+            <Link href="/register">{t('pricing.plans.freeDaily.button')}</Link>
           </Button>
         </div>
       </div>

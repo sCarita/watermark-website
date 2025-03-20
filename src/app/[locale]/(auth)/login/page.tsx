@@ -1,24 +1,34 @@
 'use client'
 
-import { type Metadata } from 'next'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 import { Button } from '@/components/Button'
 import { TextField } from '@/components/Fields'
 import { Logo } from '@/components/Logo'
 import { SlimLayout } from '@/components/SlimLayout'
 import { useAuthOperations } from '@/hooks/useAuthOperations'
+import { useAuth } from '@/contexts/AuthContext'
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { signIn, signInWithGoogle, error, loading } = useAuthOperations()
+  const { user, loading: authLoading } = useAuth()
+  const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     await signIn(email, password)
   }
+
+  useEffect(() => {
+    // Redirect to dashboard if user is already logged in
+    if (user && !authLoading) {
+      router.push('/dashboard')
+    }
+  }, [user, authLoading, router])
 
   return (
     <SlimLayout>
