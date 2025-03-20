@@ -1,7 +1,6 @@
 'use client'
 
 import { Link } from '@/i18n/navigation'
-import { usePathname } from 'next/navigation'
 import {
   Popover,
   PopoverButton,
@@ -17,21 +16,17 @@ import { useTranslations } from 'next-intl'
 import { LanguageSelector } from '@/components/LanguageSelector'
 import { Button } from './ui/button'
 import { useAuth } from '@/contexts/AuthContext'
-import { useAuthOperations } from '@/hooks/useAuthOperations'
+import { UserDropdown } from '@/components/UserDropdown'
 
 function UserMenu() {
   const t = useTranslations()
   const { user } = useAuth()
-  const { signOut } = useAuthOperations()
 
   return (
     <>
       {user ? (
         <div className="flex items-center gap-x-4">
-          <span className="text-sm text-slate-700">{user.email}</span>
-          <Button onClick={signOut} variant="outline" color="slate">
-            {t('common.signOut')}
-          </Button>
+          <UserDropdown />
         </div>
       ) : (
         <div className="flex items-center gap-x-2">

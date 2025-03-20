@@ -48,7 +48,7 @@ export function useAuthOperations() {
       setError(null)
       setLoading(true)
       await signInWithEmailAndPassword(auth, email, password)
-      router.push('/')
+      router.push('/dashboard')
     } catch (err: any) {
       setError(getAuthErrorMessage(err.code))
     } finally {
@@ -77,7 +77,7 @@ export function useAuthOperations() {
         displayName: userData.name,
       })
 
-      router.push('/')
+      router.push('/dashboard')
     } catch (err: any) {
       setError(getAuthErrorMessage(err.code))
     } finally {
@@ -91,7 +91,7 @@ export function useAuthOperations() {
       setLoading(true)
       const provider = new GoogleAuthProvider()
       await signInWithPopup(auth, provider)
-      router.push('/')
+      router.push('/dashboard')
     } catch (err: any) {
       setError(getAuthErrorMessage(err.code))
     } finally {

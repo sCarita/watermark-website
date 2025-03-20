@@ -1,5 +1,5 @@
 import { Link } from '@/i18n/navigation'
-import { UserDropdown } from './UserDropdown'
+import { UserDropdown } from '../../../../../components/UserDropdown'
 import { Logo } from '@/components/Logo'
 
 export function TopNavbar() {
