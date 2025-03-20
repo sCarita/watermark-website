@@ -39,14 +39,9 @@ export const UserDropdown = () => {
             </DropdownMenuItem>
           </Link>
         )}
-        <Link href="/dashboard/profile">
+        <Link href="/dashboard/account">
           <DropdownMenuItem className="cursor-pointer rounded px-2 py-1.5 text-sm text-white outline-none hover:bg-slate-800">
-            Profile
-          </DropdownMenuItem>
-        </Link>
-        <Link href="/dashboard/settings">
-          <DropdownMenuItem className="cursor-pointer rounded px-2 py-1.5 text-sm text-white outline-none hover:bg-slate-800">
-            Settings
+            Account
           </DropdownMenuItem>
         </Link>
         <Link href="/dashboard/credits">
