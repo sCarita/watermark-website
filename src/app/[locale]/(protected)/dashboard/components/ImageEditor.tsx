@@ -10,9 +10,17 @@ import FileDropUpload from '@/components/FileDropUpload'
 import { useImageEditor } from '@/contexts/ImageEditorContext'
 import { CanvasEditor } from './CanvasEditor'
 import { toast } from 'sonner'
-import { ProcessedImageResult } from '@/components/ProcessedImageResult'
-
+import { useAuth } from '@/contexts/AuthContext'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
+import { useTranslations } from 'next-intl'
 export function ImageEditor() {
+  const t = useTranslations()
+
   const {
     models,
     selectedModel,
@@ -34,6 +42,8 @@ export function ImageEditor() {
   const demoImages = [demmoImage1, demmoImage2]
 
   const canvasEditorRef = useRef<{ reset: () => void } | null>(null)
+
+  const { credits } = useAuth()
 
   const handleZoomIn = () => {
     setZoomLevel((prev) => Math.min(prev + 10, 200))
@@ -275,19 +285,33 @@ export function ImageEditor() {
             Cancel
           </Button>
           <div className="flex gap-2">
-            <Button
-              onClick={processImage}
-              disabled={
-                (selectedMode !== 'auto' && !hasDrawing) || isSubmitting
-              }
-              className="bg-blue-500 hover:bg-blue-600"
-            >
-              {selectedModel === 'watermark'
-                ? 'Remove Watermark'
-                : selectedModel === 'text'
-                  ? 'Remove Text'
-                  : 'Remove Background'}
-            </Button>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Button
+                    as="span"
+                    onClick={processImage}
+                    disabled={
+                      (selectedMode !== 'auto' && !hasDrawing) ||
+                      isSubmitting ||
+                      credits < models[selectedModel].basePrice
+                    }
+                    className="bg-blue-500 hover:bg-blue-600"
+                  >
+                    {selectedModel === 'watermark'
+                      ? 'Remove Watermark'
+                      : selectedModel === 'text'
+                        ? 'Remove Text'
+                        : 'Remove Background'}
+                  </Button>
+                </TooltipTrigger>
+                {credits < models[selectedModel].basePrice && (
+                  <TooltipContent>
+                    <p>{t('dashboard.credits.insufficientCredits')}</p>
+                  </TooltipContent>
+                )}
+              </Tooltip>
+            </TooltipProvider>
           </div>
         </div>
       )}

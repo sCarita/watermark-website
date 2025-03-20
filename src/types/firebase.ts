@@ -25,6 +25,7 @@ export type Model = {
   id: string
   name: string
   procedureRef: DocumentReference<AvailableProcedure>
+  basePrice: number
   inputFields: {
     auto?: InputFields
     manual?: InputFields
@@ -59,6 +60,13 @@ export type InputFields = {
 }
 
 type AvailableProcedure = any
+
+export type Transaction = {
+  createdAt: string
+  tokenAmount: number
+  type: string
+  userRef: string
+}
 
 // Function Input/Output Types
 export type ManualMaskWatermarkInput = {

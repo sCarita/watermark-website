@@ -42,7 +42,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="container mx-auto py-8">
+    <div className="container mx-auto max-w-screen-lg py-8">
       <div className="rounded-lg bg-slate-900 p-6">
         <h1 className="mb-6 text-2xl font-bold text-white">{t('title')}</h1>
 

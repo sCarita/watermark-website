@@ -418,7 +418,7 @@
           "unlimited": "Unlimited image sizes",
           "original": "Download in original quality"
         },
-        "button": "Buy Credits"
+        "button": "Purchase"
       },
       "bulkSavings": {
         "title": "Bulk Savings",
@@ -674,7 +674,11 @@
     "auto": "Auto",
     "manual": "Manual",
     "boosted": "Boosted",
-    "brushSize": "Brush size"
+    "brushSize": "Brush size",
+    "removeWatermark": "Remove Watermark",
+    "removeText": "Remove Text",
+    "removeBackground": "Remove Background",
+    "insufficientCredits": "Insufficient credits."
   },
   "dashboard": {
     "profile": {
@@ -717,6 +721,18 @@
       "manualModeDescription": "In manual mode, you can draw a mask on the image.",
       "autoModeHint": "You just need to upload the image and the model will do the rest.",
       "manualModeHint": "This will be used to mask the image before the watermark is removed."
+    },
+    "credits": {
+      "title": "Credits",
+      "currentCredits": "Current Credits",
+      "recentTransactions": "Recent Transactions",
+      "date": "Date",
+      "type": "Type",
+      "amount": "Amount",
+      "status": "Status",
+      "noTransactions": "No transactions yet",
+      "insufficientCredits": "Insufficient credits"
     }
-  }
+  },
+  "processImages": "Process {count} images"
 }

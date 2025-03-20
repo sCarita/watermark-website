@@ -418,7 +418,7 @@
           "unlimited": "Tailles d'image illimitées",
           "original": "Téléchargement en qualité originale"
         },
-        "button": "Acheter des Crédits"
+        "button": "Acheter"
       },
       "bulkSavings": {
         "title": "Économies en Volume",
@@ -674,7 +674,11 @@
     "auto": "Auto",
     "manual": "Manuel",
     "boosted": "Boosté",
-    "brushSize": "Taille du pinceau"
+    "brushSize": "Taille du pinceau",
+    "removeWatermark": "Supprimer le Filigrane",
+    "removeText": "Supprimer le Texte",
+    "removeBackground": "Supprimer l'Arrière-plan",
+    "insufficientCredits": "Crédits insuffisants."
   },
   "dashboard": {
     "profile": {
@@ -717,6 +721,18 @@
       "manualModeDescription": "En mode manuel, vous pouvez dessiner un masque sur l'image.",
       "autoModeHint": "Vous n'avez qu'à télécharger l'image et le modèle fera le reste.",
       "manualModeHint": "Cela sera utilisé pour masquer l'image avant que le filigrane ne soit supprimé."
+    },
+    "credits": {
+      "title": "Crédits",
+      "currentCredits": "Crédits Actuels",
+      "recentTransactions": "Transactions Récentes",
+      "date": "Date",
+      "type": "Type",
+      "amount": "Montant",
+      "status": "Statut",
+      "noTransactions": "Aucune transaction encore",
+      "insufficientCredits": "Crédits insuffisants"
     }
-  }
+  },
+  "processImages": "Traiter {count} images"
 }

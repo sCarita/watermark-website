@@ -22,7 +22,12 @@ export const UserDropdown = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <Button variant="ghost" size="icon" className="hover:bg-slate-800">
+        <Button
+          as="span"
+          variant="ghost"
+          size="icon"
+          className="hover:bg-slate-800"
+        >
           <UserCircle className="h-5 w-5 text-slate-400" />
         </Button>
       </DropdownMenuTrigger>
@@ -30,7 +35,7 @@ export const UserDropdown = () => {
         {!isDashboard && (
           <Link href="/dashboard">
             <DropdownMenuItem className="cursor-pointer rounded px-2 py-1.5 text-sm text-white outline-none hover:bg-slate-800">
-              Image Editor
+              Image Editxor
             </DropdownMenuItem>
           </Link>
         )}
@@ -42,6 +47,11 @@ export const UserDropdown = () => {
         <Link href="/dashboard/settings">
           <DropdownMenuItem className="cursor-pointer rounded px-2 py-1.5 text-sm text-white outline-none hover:bg-slate-800">
             Settings
+          </DropdownMenuItem>
+        </Link>
+        <Link href="/dashboard/credits">
+          <DropdownMenuItem className="cursor-pointer rounded px-2 py-1.5 text-sm text-white outline-none hover:bg-slate-800">
+            Credits
           </DropdownMenuItem>
         </Link>
         <DropdownMenuSeparator className="my-1 h-px bg-slate-800" />

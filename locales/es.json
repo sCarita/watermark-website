@@ -418,7 +418,7 @@
           "unlimited": "Tamaños de imagen ilimitados",
           "original": "Descarga en calidad original"
         },
-        "button": "Comprar Créditos"
+        "button": "Comprar"
       },
       "bulkSavings": {
         "title": "Ahorros por Volumen",
@@ -674,7 +674,11 @@
     "auto": "Auto",
     "manual": "Manual",
     "boosted": "Mejorado",
-    "brushSize": "Tamaño del pincel"
+    "brushSize": "Tamaño del pincel",
+    "removeWatermark": "Eliminar Marca de Agua",
+    "removeText": "Eliminar Texto",
+    "removeBackground": "Eliminar Fondo",
+    "insufficientCredits": "Créditos insuficientes."
   },
   "dashboard": {
     "profile": {
@@ -717,6 +721,18 @@
       "manualModeDescription": "En modo manual, puedes dibujar una máscara sobre la imagen.",
       "autoModeHint": "Solo necesitas subir la imagen y el modelo hará el resto.",
       "manualModeHint": "Esto se utilizará para enmascarar la imagen antes de eliminar la marca de agua."
+    },
+    "credits": {
+      "title": "Créditos",
+      "currentCredits": "Créditos actuales",
+      "recentTransactions": "Transacciones recientes",
+      "date": "Fecha",
+      "type": "Tipo",
+      "amount": "Cantidad",
+      "status": "Estado",
+      "noTransactions": "No hay transacciones aún",
+      "insufficientCredits": "Créditos insuficientes"
     }
-  }
+  },
+  "processImages": "Procesar {count} imágenes"
 }
