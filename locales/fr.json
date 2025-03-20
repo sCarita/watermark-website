@@ -697,7 +697,8 @@
       "incorrectPassword": "Le mot de passe actuel est incorrect",
       "cancel": "Annuler",
       "updating": "Mise à jour...",
-      "update": "Mettre à jour"
+      "update": "Mettre à jour",
+      "confirmDelete": "Confirmer la suppression"
     },
     "toolSidebar": {
       "mode": "Mode",

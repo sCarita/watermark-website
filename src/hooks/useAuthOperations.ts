@@ -133,6 +133,50 @@ export function useAuthOperations() {
     }
   }
 
+  const deleteAccount = async (password?: string) => {
+    try {
+      setError(null)
+      setLoading(true)
+
+      const user = auth.currentUser
+      if (!user) {
+        throw new Error('No authenticated user found')
+      }
+
+      // Re-authenticate user if they have password-based authentication
+      if (user.providerData?.[0]?.providerId === 'password') {
+        if (!password || !user.email) {
+          throw new Error('Password is required to delete account')
+        }
+
+        // Create credential with current password
+        const credential = EmailAuthProvider.credential(user.email, password)
+
+        // Reauthenticate user
+        await reauthenticateWithCredential(user, credential)
+      }
+
+      // Delete the user
+      await user.delete()
+      router.push('/login')
+
+      return { success: true }
+    } catch (err: any) {
+      if (err.code === 'auth/wrong-password') {
+        setError('Current password is incorrect')
+      } else if (err.code === 'auth/requires-recent-login') {
+        setError(
+          'This operation requires recent authentication. Please log in again.',
+        )
+      } else {
+        setError(err.message)
+      }
+      return { success: false, error: err.code }
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return {
     signIn,
     signUp,
@@ -140,6 +184,7 @@ export function useAuthOperations() {
     signOut,
     updateUser,
     changePassword,
+    deleteAccount,
     setError,
     error,
     loading,

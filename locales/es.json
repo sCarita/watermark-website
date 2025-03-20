@@ -672,7 +672,8 @@
       "twoFactorDescription": "Añade una capa adicional de seguridad",
       "dangerZone": "Zona de Peligro",
       "deleteAccount": "Eliminar Cuenta",
-      "deleteWarning": "Esta acción no se puede deshacer. Todos tus datos se eliminarán permanentemente."
+      "deleteWarning": "Esta acción no se puede deshacer. Todos tus datos se eliminarán permanentemente.",
+      "confirmDelete": "Confirmar Eliminación"
     },
     "toolSidebar": {
       "mode": "Modo",

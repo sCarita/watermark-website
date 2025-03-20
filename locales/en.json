@@ -697,7 +697,8 @@
       "incorrectPassword": "Current password is incorrect",
       "cancel": "Cancel",
       "updating": "Updating...",
-      "update": "Update"
+      "update": "Update",
+      "confirmDelete": "Confirm Delete"
     },
     "toolSidebar": {
       "mode": "Mode",
