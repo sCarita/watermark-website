@@ -23,13 +23,8 @@ export const UserDropdown = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
-        <Button
-          as="span"
-          variant="ghost"
-          size="icon"
-          className="hover:bg-slate-800"
-        >
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" size="icon" className="hover:bg-slate-800">
           <UserCircle className="size-5 text-slate-400" />
         </Button>
       </DropdownMenuTrigger>

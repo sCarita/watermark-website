@@ -322,9 +322,8 @@ export function ImageEditor() {
             </span>
             <TooltipProvider>
               <Tooltip>
-                <TooltipTrigger>
+                <TooltipTrigger asChild>
                   <Button
-                    as="span"
                     onClick={processImage}
                     disabled={
                       (selectedMode !== 'auto' && !hasDrawing) ||
