@@ -236,7 +236,7 @@ export default function CreditsPage() {
                     {transactions.map((transaction, index) => (
                       <tr key={index} className="hover:bg-slate-800/50">
                         <td className="p-3 text-sm text-slate-300">
-                          {new Date(transaction.createdAt).toLocaleDateString()}
+                          {new Date(transaction.createdAt).toLocaleString()}
                         </td>
                         <td className="p-3 text-sm text-slate-300">
                           {transaction.type === 'spend' ||
