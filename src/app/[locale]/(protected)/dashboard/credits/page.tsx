@@ -18,7 +18,11 @@ import getStripe from '@/utils/get-stripe'
 import { createCheckoutSession } from '@/lib/firebase/client'
 import { useSearchParams } from 'next/navigation'
 import { Transaction } from '@/types/firebase'
-import { Loader2 } from 'lucide-react'
+import { InfoIcon, Loader2 } from 'lucide-react'
+import { TooltipTrigger } from '@/components/ui/tooltip'
+import { TooltipContent } from '@/components/ui/tooltip'
+import { Tooltip } from '@/components/ui/tooltip'
+import { TooltipProvider } from '@/components/ui/tooltip'
 
 export default function CreditsPage() {
   const t = useTranslations()
@@ -192,8 +196,18 @@ export default function CreditsPage() {
 
         {/* Transactions Table */}
         <div className="mt-12">
-          <h2 className="mb-4 text-xl font-semibold text-white">
+          <h2 className="mb-4 flex items-center text-xl font-semibold text-white">
             {t('dashboard.credits.recentTransactions')}
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <InfoIcon className="ml-2 h-3.5 w-3.5 text-slate-400" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{t('dashboard.credits.recentTransactionsDescription')}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </h2>
 
           {transactions.length > 0 ? (
@@ -209,6 +223,9 @@ export default function CreditsPage() {
                     </th>
                     <th className="p-3 text-left text-sm font-medium text-slate-300">
                       {t('dashboard.credits.type')}
+                    </th>
+                    <th className="p-3 text-left text-sm font-medium text-slate-300">
+                      {t('dashboard.credits.status')}
                     </th>
                   </tr>
                 </thead>
@@ -245,6 +262,45 @@ export default function CreditsPage() {
                         >
                           {transaction.type}
                         </span>
+                      </td>
+                      <td className="p-3 text-sm text-slate-300">
+                        {transaction.status === 'completed' ? (
+                          <span className="text-green-500">
+                            {t('dashboard.credits.completed')}
+                          </span>
+                        ) : transaction.status === 'pending' ? (
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger>
+                                <span className="text-yellow-500">
+                                  {t('dashboard.credits.pending')}
+                                </span>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>
+                                  {t('dashboard.credits.pendingDescription')}
+                                </p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        ) : transaction.status === 'failed' ? (
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger>
+                                <span className="text-red-500">
+                                  {t('dashboard.credits.failed')}
+                                </span>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>
+                                  {t('dashboard.credits.failedDescription')}
+                                </p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        ) : (
+                          <span className="text-gray-500">-</span>
+                        )}
                       </td>
                     </tr>
                   ))}

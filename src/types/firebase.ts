@@ -66,9 +66,11 @@ export type Transaction = {
   tokenAmount: number
   type: TransactionType
   userRef: string
+  status: TransactionStatus
 }
 
 type TransactionType = 'airdrop' | 'buy' | 'restitution' | 'penalty' | 'spend'
+type TransactionStatus = 'pending' | 'completed' | 'failed'
 
 // Function Input/Output Types
 export type ManualMaskWatermarkInput = {
