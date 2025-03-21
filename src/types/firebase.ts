@@ -64,9 +64,11 @@ type AvailableProcedure = any
 export type Transaction = {
   createdAt: string
   tokenAmount: number
-  type: string
+  type: TransactionType
   userRef: string
 }
+
+type TransactionType = 'airdrop' | 'buy' | 'restitution' | 'penalty' | 'spend'
 
 // Function Input/Output Types
 export type ManualMaskWatermarkInput = {

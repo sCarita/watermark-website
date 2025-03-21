@@ -170,24 +170,28 @@ export default function CreditsPage() {
                         {new Date(transaction.createdAt).toLocaleDateString()}
                       </td>
                       <td className="p-3 text-sm text-slate-300">
-                        {transaction.tokenAmount > 0 ? (
-                          <span className="text-green-500">
-                            +{transaction.tokenAmount}
+                        {transaction.type === 'spend' ||
+                        transaction.type === 'penalty' ? (
+                          <span className="text-red-500">
+                            -{transaction.tokenAmount}
                           </span>
                         ) : (
-                          <span className="text-red-500">
-                            {transaction.tokenAmount}
+                          <span className="text-green-500">
+                            +{transaction.tokenAmount}
                           </span>
                         )}
                       </td>
                       <td className="p-3 text-sm text-slate-300">
                         <span
                           className={`inline-flex rounded-full px-2 py-1 text-xs font-medium ${
-                            transaction.type === 'spend'
-                              ? 'bg-green-500/20 text-green-400'
-                              : transaction.type === 'pending'
-                                ? 'bg-yellow-500/20 text-yellow-400'
-                                : 'bg-red-500/20 text-red-400'
+                            transaction.type === 'spend' ||
+                            transaction.type === 'penalty'
+                              ? 'bg-red-500/20 text-red-400'
+                              : transaction.type === 'buy' ||
+                                  transaction.type === 'airdrop' ||
+                                  transaction.type === 'restitution'
+                                ? 'bg-blue-500/20 text-blue-400'
+                                : 'bg-green-500/20 text-green-400'
                           }`}
                         >
                           {transaction.type}
