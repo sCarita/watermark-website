@@ -733,7 +733,20 @@
       "noTransactions": "No transactions yet",
       "insufficientCredits": "Insufficient credits",
       "loadingPackages": "Loading packages...",
-      "noPackagesAvailable": "No packages available"
+      "noPackagesAvailable": "No packages available",
+      "paymentSuccess": {
+        "title": "Payment Successful!",
+        "description": "Your credit purchase has been completed successfully. Your account has been updated with the new credits.",
+        "currentBalance": "Your current credit balance:",
+        "backToCredits": "Back to Credits",
+        "goToDashboard": "Go to Dashboard"
+      },
+      "paymentCanceled": {
+        "title": "Payment Canceled",
+        "description": "Your credit purchase was canceled. No payment has been processed.",
+        "tryAgain": "Try Again",
+        "goToDashboard": "Go to Dashboard"
+      }
     }
   },
   "processImages": "Process {count} images"

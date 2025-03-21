@@ -94,3 +94,14 @@ export type UpdateUserProfileInput = {
 export type UpdateUserProfileOutput = {
   success: boolean
 }
+
+export type CreateCheckoutSessionInput = {
+  priceId: string
+  quantity: number
+  successUrl: string
+  cancelUrl: string
+}
+
+export type CreateCheckoutSessionOutput = {
+  sessionId: string
+}

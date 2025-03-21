@@ -731,7 +731,22 @@
       "amount": "Montant",
       "status": "Statut",
       "noTransactions": "Aucune transaction encore",
-      "insufficientCredits": "Crédits insuffisants"
+      "insufficientCredits": "Crédits insuffisants",
+      "loadingPackages": "Chargement des packages...",
+      "noPackagesAvailable": "Aucun package disponible",
+      "paymentSuccess": {
+        "title": "Paiement réussi",
+        "description": "Votre achat de crédits a été effectué avec succès. Votre compte a été mis à jour avec les nouveaux crédits.",
+        "currentBalance": "Votre solde de crédits actuel:",
+        "backToCredits": "Retour aux Crédits",
+        "goToDashboard": "Aller au Dashboard"
+      },
+      "paymentCanceled": {
+        "title": "Paiement annulé",
+        "description": "Votre achat de crédits a été annulé. Aucun paiement n'a été traité.",
+        "tryAgain": "Réessayer",
+        "goToDashboard": "Aller au Dashboard"
+      }
     }
   },
   "processImages": "Traiter {count} images"

@@ -8,6 +8,8 @@ import {
   WatermarkProcessOutput,
   UpdateUserProfileOutput,
   UpdateUserProfileInput,
+  CreateCheckoutSessionInput,
+  CreateCheckoutSessionOutput,
 } from '@/types/firebase'
 
 const firebaseConfig = {
@@ -51,8 +53,8 @@ const updateUserProfile = httpsCallable<
 >(functions, 'updateUserProfile')
 
 const createCheckoutSession = httpsCallable<
-  { priceId: string; quantity: number },
-  { sessionId: string }
+  CreateCheckoutSessionInput,
+  CreateCheckoutSessionOutput
 >(functions, 'createCheckoutSession')
 
 export {

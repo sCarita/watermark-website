@@ -116,6 +116,8 @@ export default function CreditsPage() {
       const checkoutResult = await createCheckoutSession({
         priceId,
         quantity: 1,
+        successUrl: `${window.location.origin}/dashboard/credits/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancelUrl: `${window.location.origin}/dashboard/credits/canceled?canceled=true`,
       })
 
       if (!checkoutResult.data?.sessionId) {

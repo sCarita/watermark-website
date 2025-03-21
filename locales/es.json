@@ -731,7 +731,22 @@
       "amount": "Cantidad",
       "status": "Estado",
       "noTransactions": "No hay transacciones aún",
-      "insufficientCredits": "Créditos insuficientes"
+      "insufficientCredits": "Créditos insuficientes",
+      "loadingPackages": "Cargando paquetes...",
+      "noPackagesAvailable": "No hay paquetes disponibles",
+      "paymentSuccess": {
+        "title": "Pago exitoso",
+        "description": "Tu compra de créditos ha sido completada exitosamente. Tu cuenta ha sido actualizada con los nuevos créditos.",
+        "currentBalance": "Tu saldo actual de créditos:",
+        "backToCredits": "Volver a Créditos",
+        "goToDashboard": "Ir al Dashboard"
+      },
+      "paymentCanceled": {
+        "title": "Pago cancelado",
+        "description": "Tu compra de créditos fue cancelada. No se ha procesado ningún pago.",
+        "tryAgain": "Intentar de nuevo",
+        "goToDashboard": "Ir al Dashboard"
+      }
     }
   },
   "processImages": "Procesar {count} imágenes"
