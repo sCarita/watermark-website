@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
+import { CreditPackage } from '@/types/api'
 
 export async function GET() {
   try {
@@ -14,14 +15,17 @@ export async function GET() {
     })
 
     // Filter to only credit packages and format the response
-    const creditPackages = products.data
+    const creditPackages: CreditPackage[] = products.data
       .filter((product) => product.metadata.type === 'credit_package')
       .map((product) => {
         const price = product.default_price as Stripe.Price
         return {
-          id: price.id, // Use price ID for checkout
+          id: product.id,
           name: product.name,
-          price: price.unit_amount,
+          price: (price.unit_amount || 0) / 100, // Convert from cents
+          priceId: price.id,
+          currency: price.currency,
+          quantity: parseInt(product.metadata.quantity || '0'),
           credits: parseInt(product.metadata.credits || '0'),
         }
       })

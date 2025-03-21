@@ -23,6 +23,7 @@ import { TooltipTrigger } from '@/components/ui/tooltip'
 import { TooltipContent } from '@/components/ui/tooltip'
 import { Tooltip } from '@/components/ui/tooltip'
 import { TooltipProvider } from '@/components/ui/tooltip'
+import { CreditPackage } from '@/types/api'
 
 export default function CreditsPage() {
   const t = useTranslations()
@@ -35,14 +36,7 @@ export default function CreditsPage() {
   const canceled = searchParams.get('canceled')
 
   // Replace the hardcoded array with a state
-  const [creditPackages, setCreditPackages] = useState<
-    Array<{
-      id: string
-      name: string
-      price: number
-      credits: number
-    }>
-  >([])
+  const [creditPackages, setCreditPackages] = useState<Array<CreditPackage>>([])
   const [loadingPackages, setLoadingPackages] = useState(true)
 
   // Add useEffect to fetch packages from Stripe
@@ -54,11 +48,14 @@ export default function CreditsPage() {
 
         if (data.products) {
           setCreditPackages(
-            data.products.map((product: any) => ({
+            data.products.map((product: CreditPackage) => ({
               id: product.id,
               name: product.name,
-              price: product.price / 100, // Convert from cents to dollars
-              credits: product.credits ? parseInt(product.credits) : 0,
+              priceId: product.priceId,
+              price: product.price,
+              currency: product.currency,
+              quantity: product.quantity,
+              credits: product.credits,
             })),
           )
         }
@@ -112,14 +109,14 @@ export default function CreditsPage() {
     }
   }, [user])
 
-  const handlePurchase = async (priceId: string) => {
+  const handlePurchase = async (productId: string, priceId: string) => {
     if (!user) return
 
     setLoading(true)
     try {
       const checkoutResult = await createCheckoutSession({
         priceId,
-        quantity: 1,
+        productId: priceId,
         successUrl: `${window.location.origin}/dashboard/credits/success?session_id={CHECKOUT_SESSION_ID}`,
         cancelUrl: `${window.location.origin}/dashboard/credits/canceled?canceled=true`,
       })
@@ -173,11 +170,11 @@ export default function CreditsPage() {
                     {t('processImages', { count: pkg.credits })}
                   </p>
                   <p className="mt-4 text-2xl font-bold text-white">
-                    ${pkg.price}
+                    {pkg.currency === 'eur' ? '€' : '$'} {pkg.price}
                   </p>
                 </div>
                 <Button
-                  onClick={() => handlePurchase(pkg.id)}
+                  onClick={() => handlePurchase(pkg.id, pkg.priceId)}
                   className="mt-4 w-full bg-blue-500 hover:bg-blue-600"
                   disabled={loading}
                 >

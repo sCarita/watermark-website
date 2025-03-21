@@ -98,8 +98,8 @@ export type UpdateUserProfileOutput = {
 }
 
 export type CreateCheckoutSessionInput = {
+  productId: string
   priceId: string
-  quantity: number
   successUrl: string
   cancelUrl: string
 }
