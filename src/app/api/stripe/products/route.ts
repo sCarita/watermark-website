@@ -25,6 +25,7 @@ export async function GET() {
           credits: parseInt(product.metadata.credits || '0'),
         }
       })
+      .sort((a, b) => a.credits - b.credits) // Sort by credits (ascending)
 
     return NextResponse.json({ products: creditPackages })
   } catch (error) {
