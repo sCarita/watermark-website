@@ -63,7 +63,8 @@ type AvailableProcedure = any
 
 export type Transaction = {
   createdAt: string
-  tokenAmount: number
+  freeAmount: number
+  paidAmount: number
   type: TransactionType
   userRef: string
   status: TransactionStatus

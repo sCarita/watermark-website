@@ -759,5 +759,6 @@
       }
     }
   },
-  "processImages": "Traiter {count} images"
+  "processImages": "Traiter {count} images",
+  "buyCreditsAmmount": "Recevoir {count} crédits"
 }

@@ -52,10 +52,10 @@ const updateUserProfile = httpsCallable<
   UpdateUserProfileOutput
 >(functions, 'updateUserProfile')
 
-const createCheckoutSession = httpsCallable<
+const createTokenPurchaseCheckout = httpsCallable<
   CreateCheckoutSessionInput,
   CreateCheckoutSessionOutput
->(functions, 'createCheckoutSession')
+>(functions, 'createTokenPurchaseCheckout')
 
 export {
   app,
@@ -66,5 +66,5 @@ export {
   publicprocessmanualmaskwatermark,
   publicprocessautomaskwatermark,
   updateUserProfile,
-  createCheckoutSession,
+  createTokenPurchaseCheckout,
 }

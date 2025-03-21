@@ -763,5 +763,6 @@
       }
     }
   },
-  "processImages": "Process {count} images"
+  "processImages": "Process {count} images",
+  "buyCreditsAmmount": "Receive {count} credits"
 }

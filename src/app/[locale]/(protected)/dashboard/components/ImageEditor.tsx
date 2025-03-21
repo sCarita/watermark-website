@@ -12,6 +12,7 @@ import {
   Download,
   Stars,
   Loader2,
+  Coins,
 } from 'lucide-react'
 import demmoImage1 from '@/images/watermark-example-1.png'
 import demmoImage2 from '@/images/watermark-example-2.png'
@@ -123,6 +124,8 @@ export function ImageEditor() {
   }
 
   const processImage = async () => {
+    if (credits < models[selectedModel].basePrice) return
+
     let imageBase64: string
     try {
       imageBase64 = await getBase64FromUrl(selectedImage!)
@@ -312,10 +315,10 @@ export function ImageEditor() {
           >
             {t('common.cancel')}
           </Button>
-          <div className="flex items-center gap-2">
-            <span className="text-xs text-slate-400">
+          <div className="flex items-center gap-4">
+            <span className="flex items-center gap-0.5 text-xs text-slate-400">
               {t('common.cost')}: {models[selectedModel].basePrice}{' '}
-              {t('common.credits')}
+              <Coins className="h-4 w-4" />
             </span>
             <TooltipProvider>
               <Tooltip>
