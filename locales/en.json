@@ -20,6 +20,11 @@
     "warning": "Warning! Check this out.",
     "and": "and",
     "or": "or",
+    "cancel": "Cancel",
+    "reset": "Reset",
+    "imageEditor": "Image Editor",
+    "account": "Account",
+    "credits": "Credits",
     "navigation": {
       "features": "Features",
       "testimonials": "Testimonials",
@@ -678,7 +683,9 @@
     "removeWatermark": "Remove Watermark",
     "removeText": "Remove Text",
     "removeBackground": "Remove Background",
-    "insufficientCredits": "Insufficient credits."
+    "insufficientCredits": "Insufficient credits.",
+    "uploadImageDescription": "Upload an image or select one of the examples below to start removing",
+    "clearMask": "Clear Mask"
   },
   "dashboard": {
     "profile": {

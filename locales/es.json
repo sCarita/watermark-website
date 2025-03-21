@@ -20,6 +20,8 @@
     "warning": "¡Advertencia! Revisa esto.",
     "and": "y",
     "or": "o",
+    "cancel": "Cancelar",
+    "reset": "Reiniciar",
     "navigation": {
       "features": "Características",
       "testimonials": "Testimonios",
@@ -678,7 +680,8 @@
     "removeWatermark": "Eliminar Marca de Agua",
     "removeText": "Eliminar Texto",
     "removeBackground": "Eliminar Fondo",
-    "insufficientCredits": "Créditos insuficientes."
+    "insufficientCredits": "Créditos insuficientes.",
+    "clearMask": "Limpiar Máscara"
   },
   "dashboard": {
     "profile": {

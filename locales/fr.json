@@ -20,6 +20,8 @@
     "warning": "Attention ! Vérifiez ceci.",
     "and": "et",
     "or": "ou",
+    "cancel": "Annuler",
+    "reset": "Réinitialiser",
     "navigation": {
       "features": "Fonctionnalités",
       "testimonials": "Témoignages",
@@ -678,7 +680,8 @@
     "removeWatermark": "Supprimer le Filigrane",
     "removeText": "Supprimer le Texte",
     "removeBackground": "Supprimer l'Arrière-plan",
-    "insufficientCredits": "Crédits insuffisants."
+    "insufficientCredits": "Crédits insuffisants.",
+    "clearMask": "Effacer le Masque"
   },
   "dashboard": {
     "profile": {

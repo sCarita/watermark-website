@@ -17,10 +17,15 @@ import { LanguageSelector } from '@/components/LanguageSelector'
 import { Button } from './ui/button'
 import { useAuth } from '@/contexts/AuthContext'
 import { UserDropdown } from '@/components/UserDropdown'
+import { Loader2 } from 'lucide-react'
 
 function UserMenu() {
   const t = useTranslations()
-  const { user } = useAuth()
+  const { user, loading } = useAuth()
+
+  if (loading) {
+    return
+  }
 
   return (
     <>

@@ -3,7 +3,16 @@
 import { useEffect, useRef, useState } from 'react'
 import NextImage from 'next/image'
 import { Button } from '@/components/ui/button'
-import { Undo, ZoomIn, ZoomOut, RotateCcw } from 'lucide-react'
+import {
+  Undo,
+  ZoomIn,
+  ZoomOut,
+  RotateCcw,
+  Wand2,
+  Download,
+  Stars,
+  Loader2,
+} from 'lucide-react'
 import demmoImage1 from '@/images/watermark-example-1.png'
 import demmoImage2 from '@/images/watermark-example-2.png'
 import FileDropUpload from '@/components/FileDropUpload'
@@ -38,6 +47,7 @@ export function ImageEditor() {
 
   const [maskBase64, setMaskBase64] = useState<string | undefined>(undefined)
   const [hasDrawing, setHasDrawing] = useState(false)
+  const [isDownloading, setIsDownloading] = useState(false)
 
   const demoImages = [demmoImage1, demmoImage2]
 
@@ -77,12 +87,29 @@ export function ImageEditor() {
 
   const downloadImage = async () => {
     try {
-      const response = await fetch(processedImage!)
+      setIsDownloading(true)
+      // Instead of fetching directly, use a proxy API route
+      const response = await fetch('/api/proxy-image', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ imageUrl: processedImage }),
+      })
+
+      if (!response.ok) {
+        throw new Error(`Failed to download: ${response.status}`)
+      }
+
       const blob = await response.blob()
       const url = window.URL.createObjectURL(blob)
+
+      // Extract a better filename from the original URL
+      const filename = 'image.png'
+
       const link = document.createElement('a')
       link.href = url
-      link.download = 'processed-image.png'
+      link.download = filename
       document.body.appendChild(link)
       link.click()
       document.body.removeChild(link)
@@ -90,6 +117,8 @@ export function ImageEditor() {
     } catch (error) {
       console.error('Download error:', error)
       toast.error('Download failed')
+    } finally {
+      setIsDownloading(false)
     }
   }
 
@@ -152,8 +181,7 @@ export function ImageEditor() {
           <div className="max-w-md p-8 text-center">
             <h3 className="mb-1 text-xl font-medium">{getModeTitle()}</h3>
             <p className="mb-4 text-slate-400">
-              Upload an image or select one of the examples below to start
-              removing{' '}
+              {t('imageEditor.uploadImageDescription')}
               {selectedModel === 'watermark'
                 ? 'watermarks'
                 : selectedModel === 'text'
@@ -216,7 +244,7 @@ export function ImageEditor() {
                 <div className="absolute inset-0 flex items-center justify-center bg-black/50">
                   <div className="text-center">
                     <div className="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
-                    <p>Processing image...</p>
+                    <p>{t('watermarkProcessor.processing')}</p>
                   </div>
                 </div>
               )}
@@ -255,7 +283,7 @@ export function ImageEditor() {
 
             {selectedModel !== 'background' && selectedMode !== 'auto' && (
               <div className="absolute top-4 left-4 flex items-center gap-1.5 rounded-md border border-slate-700 bg-slate-800 p-1.5">
-                <span className="text-xs">Reset</span>
+                <span className="text-xs">{t('common.reset')}</span>
                 <div className="mx-1 h-6 w-px bg-slate-700"></div>
                 <Button
                   variant="ghost"
@@ -282,7 +310,7 @@ export function ImageEditor() {
             className="hover:bg-slate-800"
             disabled={isSubmitting}
           >
-            Cancel
+            {t('common.cancel')}
           </Button>
           <div className="flex gap-2">
             <TooltipProvider>
@@ -298,11 +326,12 @@ export function ImageEditor() {
                     }
                     className="bg-blue-500 hover:bg-blue-600"
                   >
+                    <Wand2 className="h-4 w-4" />
                     {selectedModel === 'watermark'
-                      ? 'Remove Watermark'
+                      ? t('imageEditor.removeWatermark')
                       : selectedModel === 'text'
-                        ? 'Remove Text'
-                        : 'Remove Background'}
+                        ? t('imageEditor.removeText')
+                        : t('imageEditor.removeBackground')}
                   </Button>
                 </TooltipTrigger>
                 {credits < models[selectedModel].basePrice && (
@@ -323,14 +352,21 @@ export function ImageEditor() {
             onClick={resetImage}
             className="hover:bg-slate-800"
           >
-            Process another
+            <Stars className="h-4 w-4" />
+            {t('watermarkProcessor.buttons.processAnother')}
           </Button>
           <div className="flex gap-2">
             <Button
               onClick={downloadImage}
               className="bg-blue-500 hover:bg-blue-600"
+              disabled={isDownloading}
             >
-              Download
+              {isDownloading ? (
+                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+              ) : (
+                <Download className="h-3.5 w-3.5" />
+              )}
+              {t('watermarkProcessor.buttons.download')}
             </Button>
           </div>
         </div>
