@@ -50,7 +50,6 @@ const updateUserProfile = httpsCallable<
   UpdateUserProfileOutput
 >(functions, 'updateUserProfile')
 
-// Add new function for creating checkout sessions
 const createCheckoutSession = httpsCallable<
   { priceId: string; quantity: number },
   { sessionId: string }

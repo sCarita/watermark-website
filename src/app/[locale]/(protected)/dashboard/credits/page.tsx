@@ -18,11 +18,7 @@ import getStripe from '@/utils/get-stripe'
 import { createCheckoutSession } from '@/lib/firebase/client'
 import { useSearchParams } from 'next/navigation'
 import { Transaction } from '@/types/firebase'
-const creditPackages = [
-  { id: 'credits-50', name: '50 Credits', price: 4.99, credits: 50 },
-  { id: 'credits-100', name: '100 Credits', price: 8.99, credits: 100 },
-  { id: 'credits-500', name: '500 Credits', price: 39.99, credits: 500 },
-]
+import { Loader2 } from 'lucide-react'
 
 export default function CreditsPage() {
   const t = useTranslations()
@@ -33,6 +29,45 @@ export default function CreditsPage() {
   const searchParams = useSearchParams()
   const success = searchParams.get('success')
   const canceled = searchParams.get('canceled')
+
+  // Replace the hardcoded array with a state
+  const [creditPackages, setCreditPackages] = useState<
+    Array<{
+      id: string
+      name: string
+      price: number
+      credits: number
+    }>
+  >([])
+  const [loadingPackages, setLoadingPackages] = useState(true)
+
+  // Add useEffect to fetch packages from Stripe
+  useEffect(() => {
+    const fetchStripeProducts = async () => {
+      try {
+        const response = await fetch('/api/stripe/products')
+        const data = await response.json()
+
+        if (data.products) {
+          setCreditPackages(
+            data.products.map((product: any) => ({
+              id: product.id,
+              name: product.name,
+              price: product.price / 100, // Convert from cents to dollars
+              credits: product.credits ? parseInt(product.credits) : 0,
+            })),
+          )
+        }
+      } catch (error) {
+        console.error('Error fetching Stripe products:', error)
+        toast.error('Failed to load credit packages')
+      } finally {
+        setLoadingPackages(false)
+      }
+    }
+
+    fetchStripeProducts()
+  }, [])
 
   useEffect(() => {
     if (success) {
@@ -116,29 +151,41 @@ export default function CreditsPage() {
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {creditPackages.map((pkg) => (
-            <div
-              key={pkg.id}
-              className="flex flex-col justify-between rounded-lg border border-slate-800 bg-slate-800/50 p-4 transition-colors hover:border-blue-500"
-            >
-              <div>
-                <h3 className="text-lg font-medium text-white">{pkg.name}</h3>
-                <p className="mt-1 text-sm text-slate-400">
-                  {t('processImages', { count: pkg.credits })}
-                </p>
-                <p className="mt-4 text-2xl font-bold text-white">
-                  ${pkg.price}
-                </p>
-              </div>
-              <Button
-                onClick={() => handlePurchase(pkg.id)}
-                className="mt-4 w-full bg-blue-500 hover:bg-blue-600"
-                disabled={loading}
-              >
-                {t('pricing.plans.toolCredits.button')}
-              </Button>
+          {loadingPackages ? (
+            <div className="col-span-3 flex items-center justify-center p-8">
+              <Loader2 className="h-10 w-10 animate-spin" />
             </div>
-          ))}
+          ) : creditPackages.length > 0 ? (
+            creditPackages.map((pkg) => (
+              <div
+                key={pkg.id}
+                className="flex flex-col justify-between rounded-lg border border-slate-800 bg-slate-800/50 p-4 transition-colors hover:border-blue-500"
+              >
+                <div>
+                  <h3 className="text-lg font-medium text-white">{pkg.name}</h3>
+                  <p className="mt-1 text-sm text-slate-400">
+                    {t('processImages', { count: pkg.credits })}
+                  </p>
+                  <p className="mt-4 text-2xl font-bold text-white">
+                    ${pkg.price}
+                  </p>
+                </div>
+                <Button
+                  onClick={() => handlePurchase(pkg.id)}
+                  className="mt-4 w-full bg-blue-500 hover:bg-blue-600"
+                  disabled={loading}
+                >
+                  {t('pricing.plans.toolCredits.button')}
+                </Button>
+              </div>
+            ))
+          ) : (
+            <div className="col-span-3 p-8 text-center">
+              <p className="text-slate-400">
+                {t('dashboard.credits.noPackagesAvailable')}
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Transactions Table */}
