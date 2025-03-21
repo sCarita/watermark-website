@@ -146,6 +146,7 @@ export function HistoryPanel() {
                           src={item.outputData?.inpaintedImageUrl || ''}
                           alt={`History item ${item.id}`}
                           fill
+                          sizes="200px"
                           className="object-cover"
                         />
                         {isDownloading ===
