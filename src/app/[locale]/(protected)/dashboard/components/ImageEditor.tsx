@@ -312,7 +312,11 @@ export function ImageEditor() {
           >
             {t('common.cancel')}
           </Button>
-          <div className="flex gap-2">
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-slate-400">
+              {t('common.cost')}: {models[selectedModel].basePrice}{' '}
+              {t('common.credits')}
+            </span>
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
