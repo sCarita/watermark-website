@@ -260,11 +260,9 @@ export default function CreditsPage() {
                               transaction.type === 'spend' ||
                               transaction.type === 'penalty'
                                 ? 'bg-red-500/20 text-red-400'
-                                : transaction.type === 'buy' ||
-                                    transaction.type === 'airdrop' ||
-                                    transaction.type === 'restitution'
-                                  ? 'bg-blue-500/20 text-blue-400'
-                                  : 'bg-green-500/20 text-green-400'
+                                : transaction.type === 'buy'
+                                  ? 'bg-green-500/20 text-green-400'
+                                  : 'bg-blue-500/20 text-blue-400'
                             }`}
                           >
                             {transaction.type}
