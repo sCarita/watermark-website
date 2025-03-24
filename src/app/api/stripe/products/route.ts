@@ -26,7 +26,7 @@ export async function GET() {
           priceId: price.id,
           currency: price.currency,
           quantity: parseInt(product.metadata.quantity || '0'),
-          credits: parseInt(product.metadata.credits || '0'),
+          credits: parseInt(price.metadata.credits || '0'),
         }
       })
       .sort((a, b) => a.credits - b.credits) // Sort by credits (ascending)

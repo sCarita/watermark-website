@@ -116,7 +116,6 @@ export default function CreditsPage() {
     try {
       const checkoutResult = await createTokenPurchaseCheckout({
         priceId,
-        productId,
         successUrl: `${window.location.origin}/dashboard/credits/success`,
         cancelUrl: `${window.location.origin}/dashboard/credits/canceled?canceled=true`,
       })
