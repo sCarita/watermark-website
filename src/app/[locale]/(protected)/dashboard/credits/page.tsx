@@ -29,17 +29,18 @@ export default function CreditsPage() {
   const t = useTranslations()
 
   const { user, credits } = useAuth()
-  const [loading, setLoading] = useState(false)
-  const [transactions, setTransactions] = useState<Transaction[]>([])
   const searchParams = useSearchParams()
   const success = searchParams.get('success')
   const canceled = searchParams.get('canceled')
 
-  // Replace the hardcoded array with a state
+  const [loadingPurchase, setLoadingPurchase] = useState(false)
+
+  const [transactions, setTransactions] = useState<Transaction[]>([])
+  const [loadingTransactions, setLoadingTransactions] = useState(false)
+
   const [creditPackages, setCreditPackages] = useState<Array<CreditPackage>>([])
   const [loadingPackages, setLoadingPackages] = useState(true)
 
-  // Add useEffect to fetch packages from Stripe
   useEffect(() => {
     const fetchStripeProducts = async () => {
       try {
@@ -84,7 +85,9 @@ export default function CreditsPage() {
     if (!user?.uid) return
 
     const fetchTransactions = async () => {
+      setLoadingTransactions(true)
       const userRef = await doc(db, 'users', user.uid)
+      setLoadingTransactions(false)
 
       const transactionsQuery = query(
         collection(db, 'transactionHistory'),
@@ -109,10 +112,10 @@ export default function CreditsPage() {
     }
   }, [user])
 
-  const handlePurchase = async (productId: string, priceId: string) => {
+  const handlePurchase = async (priceId: string) => {
     if (!user) return
 
-    setLoading(true)
+    setLoadingPurchase(true)
     try {
       const checkoutResult = await createTokenPurchaseCheckout({
         priceId,
@@ -136,7 +139,7 @@ export default function CreditsPage() {
       console.error('Purchase error:', error)
       toast.error('Failed to initiate purchase')
     } finally {
-      setLoading(false)
+      setLoadingPurchase(false)
     }
   }
 
@@ -176,9 +179,9 @@ export default function CreditsPage() {
                     </p>
                   </div>
                   <Button
-                    onClick={() => handlePurchase(pkg.id, pkg.priceId)}
+                    onClick={() => handlePurchase(pkg.priceId)}
                     className="mt-4 w-full bg-blue-500 hover:bg-blue-600"
-                    disabled={loading}
+                    disabled={loadingPurchase}
                   >
                     <Coins className="h-4 w-4" />
                     {t('pricing.plans.toolCredits.button')}
@@ -310,6 +313,13 @@ export default function CreditsPage() {
                         </td>
                       </tr>
                     ))}
+                    {loadingTransactions && (
+                      <tr>
+                        <td colSpan={4} className="p-3 text-center">
+                          <Loader2 className="mx-auto h-6 w-6 animate-spin" />
+                        </td>
+                      </tr>
+                    )}
                   </tbody>
                 </table>
               </div>
