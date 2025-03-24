@@ -204,8 +204,10 @@ export default function CreditsPage() {
                     <InfoIcon className="ml-2 h-3.5 w-3.5 text-slate-400" />
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>
+                    <p className="text-center">
                       {t('dashboard.credits.recentTransactionsDescription')}
+                      <br />
+                      support@clear.photo
                     </p>
                   </TooltipContent>
                 </Tooltip>
