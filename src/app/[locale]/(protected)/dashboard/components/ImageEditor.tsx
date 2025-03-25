@@ -124,7 +124,7 @@ export function ImageEditor() {
   }
 
   const processImage = async () => {
-    if (credits < models[selectedModel].basePrice) return
+    if (credits < models[selectedModel].price[selectedMode].basePrice) return
 
     let imageBase64: string
     try {
@@ -317,7 +317,8 @@ export function ImageEditor() {
           </Button>
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-0.5 text-xs text-slate-400">
-              {t('common.cost')}: {models[selectedModel].basePrice}{' '}
+              {t('common.cost')}:{' '}
+              {models[selectedModel].price[selectedMode].basePrice}{' '}
               <Coins className="h-4 w-4" />
             </span>
             <TooltipProvider>
@@ -328,7 +329,8 @@ export function ImageEditor() {
                     disabled={
                       (selectedMode !== 'auto' && !hasDrawing) ||
                       isSubmitting ||
-                      credits < models[selectedModel].basePrice
+                      credits <
+                        models[selectedModel].price[selectedMode].basePrice
                     }
                     className="bg-blue-500 hover:bg-blue-600"
                   >
@@ -340,7 +342,8 @@ export function ImageEditor() {
                         : t('imageEditor.removeBackground')}
                   </Button>
                 </TooltipTrigger>
-                {credits < models[selectedModel].basePrice && (
+                {credits <
+                  models[selectedModel].price[selectedMode].basePrice && (
                   <TooltipContent>
                     <p>{t('dashboard.credits.insufficientCredits')}</p>
                   </TooltipContent>

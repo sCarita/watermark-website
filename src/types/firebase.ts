@@ -25,7 +25,7 @@ export type Model = {
   id: string
   name: string
   procedureRef: DocumentReference<AvailableProcedure>
-  basePrice: number
+  price: Record<string, { basePrice: number }>
   inputFields: {
     auto?: InputFields
     manual?: InputFields
