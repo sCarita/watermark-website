@@ -23,53 +23,21 @@ import { TooltipTrigger } from '@/components/ui/tooltip'
 import { TooltipContent } from '@/components/ui/tooltip'
 import { Tooltip } from '@/components/ui/tooltip'
 import { TooltipProvider } from '@/components/ui/tooltip'
-import { CreditPackage } from '@/types/api'
+import { useStripe } from '@/contexts/StripeContext'
 
 export default function CreditsPage() {
-  const t = useTranslations()
-
-  const { user, credits } = useAuth()
   const searchParams = useSearchParams()
   const success = searchParams.get('success')
   const canceled = searchParams.get('canceled')
+
+  const t = useTranslations()
+  const { user, credits } = useAuth()
+  const { creditPackages, loading: loadingPackages } = useStripe()
 
   const [loadingPurchase, setLoadingPurchase] = useState(false)
 
   const [transactions, setTransactions] = useState<Transaction[]>([])
   const [loadingTransactions, setLoadingTransactions] = useState(false)
-
-  const [creditPackages, setCreditPackages] = useState<Array<CreditPackage>>([])
-  const [loadingPackages, setLoadingPackages] = useState(true)
-
-  useEffect(() => {
-    const fetchStripeProducts = async () => {
-      try {
-        const response = await fetch('/api/stripe/products')
-        const data = await response.json()
-
-        if (data.products) {
-          setCreditPackages(
-            data.products.map((product: CreditPackage) => ({
-              id: product.id,
-              name: product.name,
-              priceId: product.priceId,
-              price: product.price,
-              currency: product.currency,
-              quantity: product.quantity,
-              credits: product.credits,
-            })),
-          )
-        }
-      } catch (error) {
-        console.error('Error fetching Stripe products:', error)
-        toast.error('Failed to load credit packages')
-      } finally {
-        setLoadingPackages(false)
-      }
-    }
-
-    fetchStripeProducts()
-  }, [])
 
   useEffect(() => {
     if (success) {
@@ -156,7 +124,7 @@ export default function CreditsPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {loadingPackages ? (
               <div className="col-span-3 flex items-center justify-center p-8">
                 <Loader2 className="h-10 w-10 animate-spin" />

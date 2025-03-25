@@ -485,7 +485,9 @@
     "benefits": {
       "autoRemoval": "Eliminación automática de marca de agua (5 créditos/imagen)",
       "quality": "Resultados de alta calidad",
-      "neverExpire": "Los créditos nunca caducan"
+      "neverExpire": "Los créditos nunca caducan",
+      "standardQuality": "Resultados de calidad estándar",
+      "noCard": "Sin tarjeta de crédito"
     }
   },
   "faqs": {

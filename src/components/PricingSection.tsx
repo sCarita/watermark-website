@@ -1,72 +1,94 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Check, ImageIcon, Layers, MousePointer, Type, Zap } from 'lucide-react'
-import { Slider } from '@/components/ui/slider'
+import {
+  Check,
+  ImageIcon,
+  Layers,
+  Loader2,
+  MousePointer,
+  Type,
+  Zap,
+} from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
-
-// Define package types
-type Package = {
-  id: string
-  credits: number
-  price: number
-  discount: number
-  isBestValue?: boolean
-}
+import { useStripe } from '@/contexts/StripeContext'
+import { CreditPackage } from '@/types/api'
+import { Badge } from './ui/badge'
 
 export default function PricingSection() {
   const t = useTranslations()
-
-  // Define available packages
-  const packages: Package[] = [
-    { id: 'p1', credits: 100, price: 14.99, discount: 0 },
-    { id: 'p2', credits: 500, price: 69.99, discount: 5 },
-    { id: 'p3', credits: 1000, price: 134.99, discount: 10 },
-    { id: 'p4', credits: 2500, price: 318.75, discount: 15 },
-    { id: 'p5', credits: 5000, price: 599.99, discount: 20 },
-    {
-      id: 'p6',
-      credits: 10000,
-      price: 999.99,
-      discount: 25,
-      isBestValue: true,
-    },
-  ]
+  const { creditPackages, loading: loadingPackages } = useStripe()
 
   // State for selected package and credit amount
-  const [selectedPackage, setSelectedPackage] = useState<Package | null>(
-    packages[0],
+  const [selectedPackage, setSelectedPackage] = useState<CreditPackage | null>(
+    creditPackages[0],
   )
-  const [creditAmount, setCreditAmount] = useState<number>(500)
+  const [creditAmount, setCreditAmount] = useState<number>(100)
   const [regularPrice, setRegularPrice] = useState<number>(0)
   const [discountedPrice, setDiscountedPrice] = useState<number>(0)
   const [savings, setSavings] = useState<number>(0)
+  const [discounts, setDiscounts] = useState<number[]>([])
 
   // Calculate prices based on credit amount
   useEffect(() => {
-    // Find the appropriate discount tier based on credit amount
-    let discount = 0
-    if (creditAmount >= 10000) discount = 25
-    else if (creditAmount >= 5000) discount = 20
-    else if (creditAmount >= 2500) discount = 15
-    else if (creditAmount >= 1000) discount = 10
-    else if (creditAmount >= 500) discount = 5
+    // Find the appropriate package based on credit amount
+    let selectedPkg = null
+    for (const pkg of creditPackages) {
+      if (creditAmount >= pkg.credits) {
+        selectedPkg = pkg
+      }
+    }
 
-    // Calculate prices
-    const basePrice = creditAmount * 0.149 // Base price per credit
-    const discountedPrice = basePrice * (1 - discount / 100)
+    if (selectedPkg && creditPackages.length > 1) {
+      // Use package[1] as the base price per credit reference
+      const baseRatePerCredit =
+        creditPackages[0].price / creditPackages[0].credits
 
-    setRegularPrice(basePrice)
-    setDiscountedPrice(discountedPrice)
-    setSavings(basePrice - discountedPrice)
+      // Calculate regular price (what it would cost at the base rate)
+      const regular = baseRatePerCredit * selectedPkg.credits
+
+      // The discounted price is the package's actual price
+      const discounted = selectedPkg.price
+
+      // Calculate savings
+      const savingsAmount = regular - discounted
+
+      setRegularPrice(regular)
+      setDiscountedPrice(discounted)
+      setSavings(savingsAmount)
+    } else {
+      setRegularPrice(0)
+      setDiscountedPrice(0)
+      setSavings(0)
+    }
   }, [creditAmount])
 
+  useEffect(() => {
+    if (creditPackages.length > 0) {
+      setSelectedPackage(creditPackages[0])
+
+      let discounts = []
+      for (const pkg of creditPackages) {
+        // Calculate base price using the rate from the smallest package
+        const baseRatePerCredit =
+          creditPackages[0].price / creditPackages[0].credits
+        const regularPrice = baseRatePerCredit * pkg.credits
+
+        // Calculate discount percentage
+        const discountPercentage = Math.round(
+          ((regularPrice - pkg.price) / regularPrice) * 100,
+        )
+        discounts.push(discountPercentage)
+      }
+      setDiscounts(discounts)
+    }
+  }, [creditPackages])
+
   // Handle package selection
-  const handleSelectPackage = (pkg: Package) => {
+  const handleSelectPackage = (pkg: CreditPackage) => {
     setSelectedPackage(pkg)
     setCreditAmount(pkg.credits)
   }
@@ -92,7 +114,9 @@ export default function PricingSection() {
 
         <div className="flex-grow p-6">
           <div className="mb-6 flex items-baseline">
-            <span className="text-4xl font-bold">$0</span>
+            <span className="text-4xl font-bold">
+              {creditPackages[0]?.currency === 'eur' ? '€' : '$'} 0
+            </span>
             <span className="ml-2 text-slate-400">
               {t('pricing.plans.freeDaily.perDay')}
             </span>
@@ -118,7 +142,7 @@ export default function PricingSection() {
                 <Check className="h-3 w-3 text-blue-400" />
               </div>
               <span className="ml-3 text-slate-300">
-                Basic watermark removal
+                {t('pricing.benefits.standardQuality')}
               </span>
             </li>
             <li className="flex items-start">
@@ -126,15 +150,7 @@ export default function PricingSection() {
                 <Check className="h-3 w-3 text-blue-400" />
               </div>
               <span className="ml-3 text-slate-300">
-                Standard quality results
-              </span>
-            </li>
-            <li className="flex items-start">
-              <div className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-500/20">
-                <Check className="h-3 w-3 text-blue-400" />
-              </div>
-              <span className="ml-3 text-slate-300">
-                No credit card required
+                {t('pricing.benefits.noCard')}
               </span>
             </li>
           </ul>
@@ -154,8 +170,8 @@ export default function PricingSection() {
           <h3 className="mb-3 font-bold">
             {t('pricing.plans.toolCredits.title')}
           </h3>
-          <div className="grid grid-cols-3 gap-2">
-            {packages.slice(0, 6).map((pkg) => (
+          <div className="grid grid-cols-2 gap-2">
+            {creditPackages.slice(0, 6).map((pkg, index) => (
               <div
                 key={pkg.id}
                 className={cn(
@@ -166,22 +182,29 @@ export default function PricingSection() {
                 )}
                 onClick={() => handleSelectPackage(pkg)}
               >
-                {pkg.discount > 0 && (
+                {discounts[index] > 0 && (
                   <Badge className="absolute -top-1 -right-1 bg-blue-500 px-1 py-0 text-[10px]">
-                    {pkg.discount}%
+                    {discounts[index]}%
                   </Badge>
                 )}
                 <div className="text-sm font-bold text-blue-400">
                   {pkg.credits}
                 </div>
-                <div className="font-bold">${pkg.price}</div>
+                <div className="font-bold">
+                  {pkg.currency === 'eur' ? '€' : '$'} {pkg.price}
+                </div>
               </div>
             ))}
           </div>
+          {loadingPackages && (
+            <div className="flex items-center justify-center">
+              <Loader2 className="h-6 w-6 animate-spin text-blue-400" />
+            </div>
+          )}
         </div>
 
         {/* Calculator */}
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <div className="mb-2 flex justify-between">
             <span className="text-sm text-slate-400">
               {t('pricing.calculator.creditAmount')}
@@ -192,7 +215,7 @@ export default function PricingSection() {
           </div>
           <Slider
             value={[creditAmount]}
-            max={10000}
+            max={1000}
             min={100}
             step={100}
             className="mb-2"
@@ -200,9 +223,9 @@ export default function PricingSection() {
           />
           <div className="flex justify-between text-xs text-slate-500">
             <span>100</span>
-            <span>10,000</span>
+            <span>1000</span>
           </div>
-        </div>
+        </div> */}
 
         {/* Pricing display */}
         <div className="mb-4 rounded-lg border border-slate-700 bg-slate-800 p-2">
@@ -212,7 +235,8 @@ export default function PricingSection() {
                 {t('pricing.calculator.regularPrice')}
               </div>
               <div className="text-lg font-bold text-slate-500 line-through">
-                ${regularPrice.toFixed(2)}
+                {creditPackages[0]?.currency === 'eur' ? '€' : '$'}{' '}
+                {regularPrice.toFixed(2)}
               </div>
             </div>
             <div>
@@ -220,7 +244,8 @@ export default function PricingSection() {
                 {t('pricing.calculator.youPay')}
               </div>
               <div className="text-lg font-bold text-white">
-                ${discountedPrice.toFixed(2)}
+                {creditPackages[0]?.currency === 'eur' ? '€' : '$'}{' '}
+                {discountedPrice.toFixed(2)}
               </div>
             </div>
           </div>
@@ -231,7 +256,8 @@ export default function PricingSection() {
                 {t('pricing.calculator.totalSavings')}
               </div>
               <div className="text-lg font-bold text-green-400">
-                ${savings.toFixed(2)}
+                {creditPackages[0]?.currency === 'eur' ? '€' : '$'}{' '}
+                {savings.toFixed(2)}
               </div>
             </div>
           </div>
@@ -286,14 +312,6 @@ export default function PricingSection() {
               <Check className="h-3 w-3 text-blue-400" />
             </div>
             <span className="ml-2 text-xs text-slate-300">
-              {t('pricing.benefits.autoRemoval')}
-            </span>
-          </div>
-          <div className="flex items-center">
-            <div className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-500/20">
-              <Check className="h-3 w-3 text-blue-400" />
-            </div>
-            <span className="ml-2 text-xs text-slate-300">
               {t('pricing.benefits.quality')}
             </span>
           </div>
@@ -311,11 +329,13 @@ export default function PricingSection() {
           className="w-full bg-gradient-to-r from-sky-500 to-blue-500 hover:from-sky-600 hover:to-blue-600"
           disabled={!selectedPackage && creditAmount < 100}
         >
-          {selectedPackage
-            ? t('pricing.plans.toolCredits.button', {
-                credits: selectedPackage.credits.toLocaleString(),
-              })
-            : t('common.getStarted')}
+          <Link href="/dashboard/credits">
+            {selectedPackage
+              ? t('pricing.plans.toolCredits.button', {
+                  credits: selectedPackage.credits.toLocaleString(),
+                })
+              : t('common.getStarted')}
+          </Link>
         </Button>
       </div>
     </div>

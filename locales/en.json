@@ -488,7 +488,9 @@
     "benefits": {
       "autoRemoval": "Auto watermark removal (5 credits/image)",
       "quality": "High-quality results",
-      "neverExpire": "Credits never expire"
+      "neverExpire": "Credits never expire",
+      "standardQuality": "Standard quality results",
+      "noCard": "No credit card required"
     }
   },
   "faqs": {

@@ -17,6 +17,7 @@ import {
   setRequestLocale,
 } from 'next-intl/server'
 import { ReactNode } from 'react'
+import { StripeProvider } from '@/contexts/StripeContext'
 
 type Props = {
   children: ReactNode
@@ -107,8 +108,10 @@ export default async function LocaleLayout({ children, params }: Props) {
         <NextIntlClientProvider messages={messages} locale={locale}>
           <AuthProvider>
             <ImageEditorProvider>
-              {children}
-              <ClientLayout />
+              <StripeProvider>
+                {children}
+                <ClientLayout />
+              </StripeProvider>
             </ImageEditorProvider>
           </AuthProvider>
         </NextIntlClientProvider>

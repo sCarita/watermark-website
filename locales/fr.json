@@ -485,7 +485,9 @@
     "benefits": {
       "autoRemoval": "Suppression automatique de filigrane (5 crédits/image)",
       "quality": "Résultats de haute qualité",
-      "neverExpire": "Les crédits n'expirent jamais"
+      "neverExpire": "Les crédits n'expirent jamais",
+      "standardQuality": "Résultats de qualité standard",
+      "noCard": "Pas de carte de crédit requise"
     }
   },
   "faqs": {
