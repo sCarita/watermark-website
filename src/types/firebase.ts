@@ -16,9 +16,10 @@ export type RunHistoryDoc = {
   }
   processingTimeMs: number
   runType: string
-  status: string
+  status: 'processing' | 'completed' | 'failed'
   timestamp: string
   userRef: string
+  ipAddress: string
 }
 
 export type Model = {
@@ -106,4 +107,41 @@ export type CreateCheckoutSessionInput = {
 
 export type CreateCheckoutSessionOutput = {
   sessionId: string
+}
+
+export type ListModelVersionsInput = {
+  product: 'watermark'
+}
+
+export type ListModelVersionsOutput = {
+  success: boolean
+  versions: ModelVersion[]
+}
+
+export type ModelVersion = {
+  createdAt: string
+  id: string
+  name: string
+  pricing: {
+    auto: {
+      basePrice: number
+    }
+    manual: {
+      basePrice: number
+    }
+  }
+  version: string
+}
+
+export type GenerateUserApiKeyInput = {}
+
+export type GenerateUserApiKeyOutput = {
+  success: boolean
+  apiKey: string
+}
+
+export type RevokeUserApiKeyInput = {}
+
+export type RevokeUserApiKeyOutput = {
+  success: boolean
 }

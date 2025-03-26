@@ -84,6 +84,7 @@ export function HistoryPanel() {
       const q = query(
         historyRef,
         where('userRef', '==', userRef),
+        where('runType', '==', 'ui'),
         orderBy('timestamp', 'desc'),
       )
 

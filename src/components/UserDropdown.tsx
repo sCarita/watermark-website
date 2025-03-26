@@ -1,6 +1,13 @@
 'use client'
 
-import { Coins, Images, LogOut, Settings2, UserCircle } from 'lucide-react'
+import {
+  Code2,
+  Coins,
+  Images,
+  LogOut,
+  Settings2,
+  UserCircle,
+} from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import {
@@ -47,6 +54,12 @@ export const UserDropdown = () => {
           <DropdownMenuItem className="cursor-pointer rounded px-2 py-1.5 text-sm text-white outline-none hover:bg-slate-800">
             <Coins className="h-4 w-4" />
             {t('common.credits')}
+          </DropdownMenuItem>
+        </Link>
+        <Link href="/dashboard/api">
+          <DropdownMenuItem className="cursor-pointer rounded px-2 py-1.5 text-sm text-white outline-none hover:bg-slate-800">
+            <Code2 className="h-4 w-4" />
+            Api
           </DropdownMenuItem>
         </Link>
         <DropdownMenuSeparator className="my-1 h-px bg-slate-800" />

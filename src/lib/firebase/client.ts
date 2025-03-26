@@ -10,6 +10,12 @@ import {
   UpdateUserProfileInput,
   CreateCheckoutSessionInput,
   CreateCheckoutSessionOutput,
+  ListModelVersionsOutput,
+  ListModelVersionsInput,
+  RevokeUserApiKeyInput,
+  RevokeUserApiKeyOutput,
+  GenerateUserApiKeyOutput,
+  GenerateUserApiKeyInput,
 } from '@/types/firebase'
 
 const firebaseConfig = {
@@ -57,6 +63,21 @@ const createTokenPurchaseCheckout = httpsCallable<
   CreateCheckoutSessionOutput
 >(functions, 'createTokenPurchaseCheckout')
 
+const listModelVersions = httpsCallable<
+  ListModelVersionsInput,
+  ListModelVersionsOutput
+>(functions, 'listModelVersions')
+
+const generateUserApiKey = httpsCallable<
+  GenerateUserApiKeyInput,
+  GenerateUserApiKeyOutput
+>(functions, 'generateUserApiKey')
+
+const revokeUserApiKey = httpsCallable<
+  RevokeUserApiKeyInput,
+  RevokeUserApiKeyOutput
+>(functions, 'revokeUserApiKey')
+
 export {
   app,
   auth,
@@ -67,4 +88,7 @@ export {
   publicprocessautomaskwatermark,
   updateUserProfile,
   createTokenPurchaseCheckout,
+  listModelVersions,
+  revokeUserApiKey,
+  generateUserApiKey,
 }
