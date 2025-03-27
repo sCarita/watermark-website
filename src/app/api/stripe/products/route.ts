@@ -35,9 +35,6 @@ export async function GET(request: Request) {
       ? await getCurrencyForCountry(stripe, countryCode)
       : undefined
 
-    console.log('Country Code:', countryCode)
-    console.log('Currency:', currency)
-
     // Filter to only credit packages and format the response
     const creditPackages: CreditPackage[] = products.data
       .filter((product) => product.metadata.type === 'credit_package')
@@ -50,7 +47,11 @@ export async function GET(request: Request) {
         return {
           id: product.id,
           name: product.name,
-          price: parseInt(userPrice?.unit_amount_decimal || '0') / 100, // Convert from cents
+          price: Number(
+            (parseFloat(userPrice?.unit_amount_decimal || '0') / 100).toFixed(
+              2,
+            ),
+          ), // Convert from cents
           priceId: defaultPrice.id,
           currency: currency || defaultPrice.currency,
           quantity: parseInt(product.metadata.quantity || '0'),
