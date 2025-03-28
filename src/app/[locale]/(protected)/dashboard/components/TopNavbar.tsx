@@ -15,8 +15,11 @@ export function TopNavbar() {
     <header className="border-b border-slate-800 px-4 py-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <Link href="/dashboard" className="text-xl font-semibold">
-            <Logo className="h-5 w-auto" light />
+          <Link
+            href="/dashboard"
+            className="flex items-center text-xl font-semibold"
+          >
+            <Logo className="h-6 w-auto" light />
           </Link>
         </div>
 
