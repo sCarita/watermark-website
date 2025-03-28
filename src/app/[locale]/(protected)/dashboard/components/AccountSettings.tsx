@@ -17,7 +17,7 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Loader2 } from 'lucide-react'
+import { Loader2, Settings } from 'lucide-react'
 import { toast } from 'sonner'
 
 export default function AccountSettings() {
@@ -125,7 +125,10 @@ export default function AccountSettings() {
 
   return (
     <div className="rounded-lg bg-slate-900 p-6">
-      <h1 className="mb-6 text-2xl font-bold text-white">{t('title')}</h1>
+      <div className="mb-6 flex items-center gap-2">
+        <Settings className="h-6 w-6 text-slate-400" />
+        <h1 className="text-2xl font-bold text-white">{t('title')}</h1>
+      </div>
 
       <div className="space-y-8">
         <div>

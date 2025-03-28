@@ -44,7 +44,10 @@ export default function AccountProfile() {
 
   return (
     <div className="rounded-lg bg-slate-900 p-6">
-      <h1 className="mb-6 text-2xl font-bold text-white">{t('title')}</h1>
+      <div className="mb-6 flex items-center gap-2">
+        <User2 className="h-6 w-6 text-slate-400" />
+        <h1 className="text-2xl font-bold text-white">{t('title')}</h1>
+      </div>
 
       <form onSubmit={handleSave} className="space-y-6">
         <div className="flex items-center space-x-4">

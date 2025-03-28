@@ -467,10 +467,10 @@ export default async function Terms({ params }: Props) {
                 <br />
                 Email:{' '}
                 <a
-                  href="mailto:support@clear.photo"
+                  href="mailto:clear.photo.contact@gmail.com"
                   className="text-blue-600 hover:text-blue-800"
                 >
-                  support@clear.photo
+                  clear.photo.contact@gmail.com
                 </a>
               </p>
 

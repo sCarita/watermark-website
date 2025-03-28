@@ -18,7 +18,7 @@ import getStripe from '@/utils/get-stripe'
 import { createTokenPurchaseCheckout } from '@/lib/firebase/client'
 import { useSearchParams } from 'next/navigation'
 import { Transaction } from '@/types/firebase'
-import { Coins, InfoIcon, Loader2 } from 'lucide-react'
+import { Coins, CoinsIcon, InfoIcon, Loader2, Package } from 'lucide-react'
 import { TooltipTrigger } from '@/components/ui/tooltip'
 import { TooltipContent } from '@/components/ui/tooltip'
 import { Tooltip } from '@/components/ui/tooltip'
@@ -117,9 +117,12 @@ export default function CreditsPage() {
         <div className="rounded-lg bg-slate-900 p-6">
           <div className="mb-8">
             <div className="text-center">
-              <h1 className="text-3xl font-semibold text-white">
-                {t('dashboard.credits.currentCredits')}
-              </h1>
+              <div className="flex items-center justify-center gap-2">
+                <CoinsIcon className="h-6 w-6 text-slate-400" />
+                <h1 className="text-3xl font-semibold text-white">
+                  {t('dashboard.credits.currentCredits')}
+                </h1>
+              </div>
               <p className="text-4xl font-bold text-blue-500">{credits}</p>
             </div>
           </div>
@@ -136,9 +139,12 @@ export default function CreditsPage() {
                   className="flex flex-col justify-between rounded-lg border border-slate-800 bg-slate-800/50 p-4 transition-colors hover:border-blue-500"
                 >
                   <div>
-                    <h3 className="text-lg font-medium text-white">
-                      {pkg.name}
-                    </h3>
+                    <div className="flex items-center gap-2">
+                      <Package className="h-4 w-4 text-slate-400" />
+                      <h3 className="text-lg font-medium text-white">
+                        {pkg.name}
+                      </h3>
+                    </div>
                     <p className="mt-1 text-sm text-slate-400">
                       {t('buyCreditsAmmount', { count: pkg.credits })}
                     </p>
@@ -178,7 +184,7 @@ export default function CreditsPage() {
                     <p className="text-center">
                       {t('dashboard.credits.recentTransactionsDescription')}
                       <br />
-                      support@clear.photo
+                      clear.photo.contact@gmail.com
                     </p>
                   </TooltipContent>
                 </Tooltip>
