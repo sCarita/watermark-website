@@ -7,8 +7,8 @@ import { doc, onSnapshot } from 'firebase/firestore'
 import { db } from '@/lib/firebase/client'
 
 interface UserWithCredits extends User {
-  paidTokenBalance?: number
-  freeTokenBalance?: number
+  paidCredits?: number
+  freeCredits?: number
   apiKey?: string
 }
 
@@ -44,9 +44,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const userRef = doc(db, 'users', user.uid)
       const unsubscribe = onSnapshot(userRef, (doc) => {
         if (doc.exists()) {
-          setCredits(
-            doc.data()?.freeTokenBalance + doc.data()?.paidTokenBalance || 0,
-          )
+          setCredits(doc.data()?.freeCredits + doc.data()?.paidCredits || 0)
           setApiKey(doc.data()?.apiKey || null)
         }
       })

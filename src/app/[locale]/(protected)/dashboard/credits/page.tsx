@@ -15,7 +15,7 @@ import { db } from '@/lib/firebase/client'
 import { useTranslations } from 'next-intl'
 import { toast } from 'sonner'
 import getStripe from '@/utils/get-stripe'
-import { createTokenPurchaseCheckout } from '@/lib/firebase/client'
+import { createCreditsPurchaseCheckout } from '@/lib/firebase/client'
 import { useSearchParams } from 'next/navigation'
 import { Transaction } from '@/types/firebase'
 import { Coins, CoinsIcon, InfoIcon, Loader2, Package } from 'lucide-react'
@@ -85,7 +85,7 @@ export default function CreditsPage() {
 
     setLoadingPurchase(true)
     try {
-      const checkoutResult = await createTokenPurchaseCheckout({
+      const checkoutResult = await createCreditsPurchaseCheckout({
         priceId,
         successUrl: `${window.location.origin}/dashboard/credits/success`,
         cancelUrl: `${window.location.origin}/dashboard/credits/canceled?canceled=true`,

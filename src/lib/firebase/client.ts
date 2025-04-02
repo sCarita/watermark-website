@@ -58,10 +58,10 @@ const updateUserProfile = httpsCallable<
   UpdateUserProfileOutput
 >(functions, 'updateUserProfile')
 
-const createTokenPurchaseCheckout = httpsCallable<
+const createCreditsPurchaseCheckout = httpsCallable<
   CreateCheckoutSessionInput,
   CreateCheckoutSessionOutput
->(functions, 'createTokenPurchaseCheckout')
+>(functions, 'createCreditsPurchaseCheckout')
 
 const listModelVersions = httpsCallable<
   ListModelVersionsInput,
@@ -87,7 +87,7 @@ export {
   publicprocessmanualmaskwatermark,
   publicprocessautomaskwatermark,
   updateUserProfile,
-  createTokenPurchaseCheckout,
+  createCreditsPurchaseCheckout,
   listModelVersions,
   revokeUserApiKey,
   generateUserApiKey,
