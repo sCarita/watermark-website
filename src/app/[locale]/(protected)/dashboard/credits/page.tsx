@@ -217,8 +217,12 @@ export default function CreditsPage() {
                           {new Date(transaction.createdAt).toLocaleString()}
                         </td>
                         <td className="p-3 text-sm text-slate-300">
-                          {transaction.type === 'spend' ||
-                          transaction.type === 'penalty' ? (
+                          {transaction.type === 'refund' ? (
+                            <span className="text-red-500">
+                              -{transaction.refundedAmount || 0}
+                            </span>
+                          ) : transaction.type === 'spend' ||
+                            transaction.type === 'penalty' ? (
                             <span className="text-red-500">
                               -
                               {(transaction.freeAmount || 0) +
@@ -238,9 +242,11 @@ export default function CreditsPage() {
                               transaction.type === 'spend' ||
                               transaction.type === 'penalty'
                                 ? 'bg-red-500/20 text-red-400'
-                                : transaction.type === 'buy'
-                                  ? 'bg-green-500/20 text-green-400'
-                                  : 'bg-blue-500/20 text-blue-400'
+                                : transaction.type === 'refund'
+                                  ? 'bg-yellow-500/20 text-yellow-400'
+                                  : transaction.type === 'buy'
+                                    ? 'bg-green-500/20 text-green-400'
+                                    : 'bg-blue-500/20 text-blue-400'
                             }`}
                           >
                             {transaction.type}

@@ -66,12 +66,19 @@ export type Transaction = {
   createdAt: string
   freeAmount: number
   paidAmount: number
+  refundedAmount: number
   type: TransactionType
   userRef: string
   status: TransactionStatus
 }
 
-type TransactionType = 'airdrop' | 'buy' | 'restitution' | 'penalty' | 'spend'
+type TransactionType =
+  | 'airdrop'
+  | 'buy'
+  | 'restitution'
+  | 'penalty'
+  | 'spend'
+  | 'refund'
 type TransactionStatus = 'pending' | 'completed' | 'failed'
 
 // Function Input/Output Types
