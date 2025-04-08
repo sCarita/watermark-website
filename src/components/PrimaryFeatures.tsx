@@ -7,9 +7,9 @@ import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background-features.jpg'
-import screenshotManualBrush from '@/images/screenshots/manual-brush.png'
-import screenshotManualObject from '@/images/screenshots/manual-object.png'
-import Demo0 from '@/images/screenshots/demo_0.png'
+import screenshotManualBrush from '@/images/screenshots/manual_removal.png'
+import screenshotManualObject from '@/images/screenshots/object_removal.png'
+import Demo0 from '@/images/screenshots/auto_removal.png'
 import screenshotApiIntegration from '@/images/screenshots/api-integration.jpeg'
 import { useTranslations } from 'next-intl'
 
