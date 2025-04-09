@@ -186,10 +186,10 @@ export function ImageEditor() {
             <p className="mb-4 text-slate-400">
               {t('imageEditor.uploadImageDescription')}
               {selectedModel === 'watermark'
-                ? 'watermarks'
+                ? ' watermarks'
                 : selectedModel === 'text'
-                  ? 'text'
-                  : 'background'}
+                  ? ' text'
+                  : ' background'}
               .
             </p>
             <div className="mb-6 grid grid-cols-2 gap-4">

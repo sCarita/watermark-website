@@ -30,7 +30,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig)
 const auth = getAuth(app)
-const functions = getFunctions(app, 'us-central1')
+const functions = getFunctions(app, 'europe-west2')
 const db = getFirestore(app)
 
 const processmanualmaskwatermark = httpsCallable<
