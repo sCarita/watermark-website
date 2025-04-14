@@ -9,6 +9,9 @@ import { Container } from '@/components/Container'
 import screenshotContacts from '@/images/screenshots/devices.png'
 import screenshotInventory from '@/images/screenshots/bulk.png'
 import screenshotProfitLoss from '@/images/screenshots/clarity.png'
+import screenshotContactsMobile from '@/images/screenshots/devices-mobile.png'
+import screenshotInventoryMobile from '@/images/screenshots/bulk-mobile.png'
+import screenshotProfitLossMobile from '@/images/screenshots/clarity-mobile.png'
 import { useTranslations } from 'next-intl'
 
 interface Feature {
@@ -67,7 +70,7 @@ function FeaturesMobile() {
       name: t('secondaryFeatures.features.0.name'),
       summary: t('secondaryFeatures.features.0.summary'),
       description: t('secondaryFeatures.features.0.description'),
-      image: screenshotProfitLoss,
+      image: screenshotProfitLossMobile,
       icon: function ReportingIcon() {
         let id = useId()
         return (
@@ -100,7 +103,7 @@ function FeaturesMobile() {
       name: t('secondaryFeatures.features.1.name'),
       summary: t('secondaryFeatures.features.1.summary'),
       description: t('secondaryFeatures.features.1.description'),
-      image: screenshotInventory,
+      image: screenshotInventoryMobile,
       icon: function InventoryIcon() {
         return (
           <>
@@ -126,7 +129,7 @@ function FeaturesMobile() {
       name: t('secondaryFeatures.features.2.name'),
       summary: t('secondaryFeatures.features.2.summary'),
       description: t('secondaryFeatures.features.2.description'),
-      image: screenshotContacts,
+      image: screenshotContactsMobile,
       icon: function ContactsIcon() {
         return (
           <>

@@ -6,7 +6,7 @@ import ImageComparisonSlider from './ImageComparisonSlider'
 import { useTranslations } from 'next-intl'
 // Import your local images
 import originalImage from '@/images/screenshots/original.png'
-import processedImage from '@/images/screenshots/processed.jpg'
+import processedImage from '@/images/screenshots/processed.png'
 
 const Showcase = () => {
   const t = useTranslations()
