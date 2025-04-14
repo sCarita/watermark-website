@@ -323,9 +323,9 @@
         "description": "Nous proposons un tutoriel détaillé expliquant comment retirer un watermark d'une photo en quelques minutes. Vous n'avez pas besoin de compétences techniques."
       },
       {
-        "name": "Supprimer le filigrane Shutterstock",
+        "name": "Supprimer le filigrane",
         "summary": "Compatible avec tous les grands sites d'images",
-        "description": "Notre IA est capable de gérer les filigranes les plus communs. Shutterstock, iStock, ou autres, vous pouvez dire adieu aux logos imposants."
+        "description": "Notre IA est capable de gérer les filigranes les plus communs. banques d'images ou autres, vous pouvez dire adieu aux logos imposants."
       },
       {
         "name": "Fonctionnement sur tous les appareils",
@@ -351,7 +351,7 @@
         }
       },
       {
-        "content": "Je cherchais comment supprimer un filigrane gratuitement, surtout un logo Shutterstock récalcitrant. Avec clear.photo, fini les images marquées !",
+        "content": "Je cherchais comment supprimer un filigrane gratuitement, surtout un logo récalcitrant. Avec clear.photo, fini les images marquées !",
         "author": {
           "name": "Jean Dupont",
           "role": "Blogueur Voyage"
@@ -379,7 +379,7 @@
         }
       },
       {
-        "content": "Même pour supprimer le filigrane Shutterstock, clear.photo gère très bien. Je l'utilise presque tous les jours pour mes projets.",
+        "content": "Même pour supprimer le filigrane, clear.photo gère très bien. Je l'utilise presque tous les jours pour mes projets.",
         "author": {
           "name": "Kevin Moreau",
           "role": "Photographe professionnel"
@@ -499,8 +499,8 @@
         "answer": "Notre formule gratuite vous permet de tester l'IA. Téléversez votre image, sélectionnez la zone à enlever, et le filigrane disparaît instantanément."
       },
       {
-        "question": "Puis-je supprimer le filigrane Shutterstock ou d'autres banques d'images ?",
-        "answer": "Oui, nous sommes compatibles avec la plupart des filigranes connus, y compris Shutterstock. Veillez simplement à respecter les conditions d'utilisation légales."
+        "question": "Puis-je supprimer le filigrane ou d'autres banques d'images ?",
+        "answer": "Oui, nous sommes compatibles avec la plupart des filigranes connus. Veillez simplement à respecter les conditions d'utilisation légales."
       },
       {
         "question": "Avez-vous un guide pour supprimer un filigrane rapidement ?",

@@ -347,7 +347,7 @@
     "subtitle": "Our watermark remover has turned skeptics into believers. Read why people are raving about clear.photo.",
     "testimonials": [
       {
-        "content": "clear.photo made removing Shutterstock watermarks a breeze. My marketing materials look so clean now!",
+        "content": "clear.photo made removing watermarks a breeze. My marketing materials look so clean now!",
         "author": {
           "name": "Sheryl Berge",
           "role": "CEO at Lynch LLC"
@@ -510,7 +510,7 @@
         "answer": "Absolutely. Our higher-tier plans offer bulk removal, and the Enterprise plan even removes unlimited watermarks with no daily cap."
       },
       {
-        "question": "Can I remove Shutterstock or Getty Images watermarks?",
+        "question": "Can I remove Banks of Images watermarks?",
         "answer": "Yes. clear.photo can eliminate any watermark, but please ensure you have the legal right to remove a watermark before doing so."
       },
       {
@@ -655,7 +655,7 @@
   },
   "metadata": {
     "title": "clear.photo - Remove watermarks from your images",
-    "description": "Free online watermark remover tool. Easily remove watermarks, logos, and text from photos and images. Our AI-powered technology helps you get rid of watermarks from Getty Images, Shutterstock, and more. Clean up your pictures with the best free watermark remover available online.",
+    "description": "Free online watermark remover tool. Easily remove watermarks, logos, and text from photos and images. Our AI-powered technology helps you get rid of watermarks. Clean up your pictures with the best free watermark remover available online.",
     "blog": {
       "title": "clear.photo Blog - Watermark Removal Guides & Technology",
       "description": "Learn how AI technology removes watermarks from images, step-by-step guides, and expert tips for watermark removal. Discover the latest in AI-powered photo editing."
