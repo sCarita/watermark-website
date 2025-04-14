@@ -161,6 +161,10 @@ export function ImageEditor() {
   }
 
   useEffect(() => {
+    handleReset()
+  }, [selectedMode])
+
+  useEffect(() => {
     if (processedImage && selectedImage)
       toast.success('Image processed successfully')
   }, [processedImage, selectedImage])
@@ -221,9 +225,13 @@ export function ImageEditor() {
           <>
             <div
               className="transition-transforml relative w-full"
-              style={{
-                transform: `scale(${zoomLevel / 100})`,
-              }}
+              style={
+                selectedMode !== 'manual'
+                  ? {
+                      transform: `scale(${zoomLevel / 100})`,
+                    }
+                  : {}
+              }
             >
               {(selectedMode === 'auto' || processedImage) && (
                 <NextImage
@@ -239,6 +247,7 @@ export function ImageEditor() {
                   ref={canvasEditorRef}
                   selectedImage={selectedImage}
                   brushSize={brushSize}
+                  zoomLevel={zoomLevel}
                   hasDrawing={setHasDrawing}
                   onDrawingChange={(maskBase64) => setMaskBase64(maskBase64)}
                 />
