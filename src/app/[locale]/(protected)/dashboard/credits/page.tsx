@@ -184,7 +184,7 @@ export default function CreditsPage() {
                     <p className="text-center">
                       {t('dashboard.credits.recentTransactionsDescription')}
                       <br />
-                      clear.photo.contact@gmail.com
+                      help@clear.photo
                     </p>
                   </TooltipContent>
                 </Tooltip>
